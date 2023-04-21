@@ -1,4 +1,4 @@
-package com.example.test;
+package program;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Text helloText = new Text("Hello");

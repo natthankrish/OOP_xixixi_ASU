@@ -1,4 +1,4 @@
-package datastore;
+package program.datastore;
 
 public class InventoryData {
 }

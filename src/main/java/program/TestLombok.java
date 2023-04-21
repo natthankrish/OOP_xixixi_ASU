@@ -1,4 +1,4 @@
-package com.example.test;
+package program;
 
 import lombok.*;
 @AllArgsConstructor
