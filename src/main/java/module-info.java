@@ -1,4 +1,4 @@
-module com.example.test {
+module program {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -8,6 +8,6 @@ module com.example.test {
     requires json;
     requires json.simple;
 
-    opens com.example.test to javafx.fxml;
-    exports com.example.test;
+    opens program to javafx.fxml;
+    exports program;
 }

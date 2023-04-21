@@ -1,4 +1,4 @@
-package com.example.test.datastore;
+package program.datastore;
 
 // Java program to read JSON from a file
 
