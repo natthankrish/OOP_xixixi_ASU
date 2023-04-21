@@ -5,6 +5,8 @@ module com.example.test {
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
     requires lombok;
+    requires json;
+    requires json.simple;
 
     opens com.example.test to javafx.fxml;
     exports com.example.test;
