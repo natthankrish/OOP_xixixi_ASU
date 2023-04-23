@@ -6,11 +6,13 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import lombok.*;
 import program.components.Clock;
+import program.components.VerticalTabPane;
 
 @Getter
 public class SideContainer extends Group {
     private Rectangle component;
     private Clock clock;
+    private VerticalTabPane tabs;
     private ClockThread clockThread;
     public SideContainer() {
         this.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() / 15);
@@ -24,6 +26,8 @@ public class SideContainer extends Group {
         this.clock = new Clock();
         this.getChildren().add(this.clock);
 
+        this.tabs = new VerticalTabPane();
+        this.getChildren().add(this.tabs);
         this.clockThread = new ClockThread(this.clock);
     }
 }
