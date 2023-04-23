@@ -6,6 +6,8 @@ import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import program.components.NewLabel;
+
 import java.io.IOException;
 
 public class Main extends Application {
