@@ -56,7 +56,6 @@ public class TransactionData {
 
         List<List<Long>> receipt = new ArrayList<>();
         JSONArray arr = (JSONArray) b.get("receipt");
-        arr.forEach(o -> );
 
         Long totalPrice = (Long) b.get("totalPrice");
         Long discount = (Long) b.get("discount");
@@ -67,7 +66,7 @@ public class TransactionData {
 
 //        System.out.println(id + stock + name + price + purchasePrice + category + image);
 
-        System.out.println("A product with id: "+ id +", called "+ name +", has been added to "+ category +" category.");
+//        System.out.println("A product with id: "+ id +", called "+ name +", has been added to "+ category +" category.");
     }
 
 
