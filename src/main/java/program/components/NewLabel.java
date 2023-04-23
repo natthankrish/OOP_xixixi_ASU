@@ -1,8 +1,6 @@
 package program.components;
 import javafx.scene.control.Label;
-import lombok.Setter;
 
-@Setter
 public class NewLabel extends Label{
     private String labelText;
     private int size; // in pixel
@@ -14,15 +12,49 @@ public class NewLabel extends Label{
         super("");
         this.size = 0;
         this.weight = 0;
+        setStyle();
     }
 
     public NewLabel(String text, int size, String color, String bgColor, int weight) {
-        super("");
+        super(text);
         this.labelText = text;
         this.size = size;
         this.color = color;
         this.bgColor = bgColor;
         this.weight = weight;
+        setStyle();
+    }
+    public NewLabel(String text, int size, String color, int weight) {
+        super("");
+        this.labelText = text;
+        this.size = size;
+        this.color = color;
+        this.weight = weight;
+        setStyle();
+    }
+
+    public void setLabelText(String labelText) {
+        this.labelText = labelText;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+        setStyle();
+    }
+
+    public  void setSize (int size) {
+        this.size = size;
+        setStyle();
+    }
+
+    public void setBgColor (String bgColor) {
+        this.bgColor = bgColor;
+        setStyle();
+    }
+
+    public void setWeight (int weight) {
+        this.weight = weight;
+        setStyle();
     }
     public void setStyle() {
         String colorStyle = "";
