@@ -6,5 +6,6 @@ module program {
     requires lombok;
     requires org.json;
     requires json.simple;
+    requires annotations;
     exports program;
 }
