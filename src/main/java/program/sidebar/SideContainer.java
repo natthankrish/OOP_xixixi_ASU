@@ -24,6 +24,6 @@ public class SideContainer extends Group {
         this.clock = new Clock(this.component);
         this.getChildren().add(this.clock);
 
-        this.clockThread = new ClockThread(this.clock);
+//        this.clockThread = new ClockThread(this.clock);
     }
 }

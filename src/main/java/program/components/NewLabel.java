@@ -56,6 +56,11 @@ public class NewLabel extends Label{
         this.weight = weight;
         setStyle();
     }
+
+    public void setLayout(int x, int y) {
+        this.setLayoutX(x);
+        this.setLayoutY(y);
+    }
     public void setStyle() {
         String colorStyle = "";
         String sizeStyle = "";
