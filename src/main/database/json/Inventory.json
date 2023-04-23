@@ -1,0 +1,137 @@
+[
+  {
+    "id" : 1,
+    "stock": 10,
+    "name" : "Caramel Latte",
+    "price" : 25000,
+    "purchasePrice": 15000,
+    "category": "Coffee",
+    "image" : ""
+  },
+  {
+    "id" : 2,
+    "stock": 5,
+    "name" : "Vanila Latte",
+    "price" : 25000,
+    "purchasePrice": 15000,
+    "category": "Coffee",
+    "image" : ""
+  },
+  {
+    "id" : 3,
+    "stock": 8,
+    "name" : "Americano",
+    "price" : 18000,
+    "purchasePrice": 10000,
+    "category": "Coffee",
+    "image" : ""
+  },
+  {
+    "id" : 4,
+    "stock": 4,
+    "name" : "Milk Tea",
+    "price" : 28000,
+    "purchasePrice": 20000,
+    "category": "Tea",
+    "image" : ""
+  },
+  {
+    "id" : 5,
+    "stock": 20,
+    "name" : "Green Tea",
+    "price" : 15000,
+    "purchasePrice": 8000,
+    "category": "Tea",
+    "image" : ""
+  },
+  {
+    "id" : 6,
+    "stock": 18,
+    "name" : "Earl Grey Tea",
+    "price" : 15000,
+    "purchasePrice": 9000,
+    "category": "Tea",
+    "image" : ""
+  },
+  {
+    "id" : 7,
+    "stock": 0,
+    "name" : "Soy Milk",
+    "price" : 12000,
+    "purchasePrice": 7500,
+    "category": "Milk",
+    "image" : ""
+  },
+  {
+    "id" : 8,
+    "stock": 6,
+    "name" : "Almond Milk",
+    "price" : 15000,
+    "purchasePrice": 10000,
+    "category": "Milk",
+    "image" : ""
+  },
+  {
+    "id" : 9,
+    "stock": 27,
+    "name" : "Croissant",
+    "price" : 30000,
+    "purchasePrice": 20000,
+    "category": "Pastry",
+    "image" : ""
+  },
+  {
+    "id" : 10,
+    "stock": 5,
+    "name" : "Croffle",
+    "price" : 19000,
+    "purchasePrice": 10000,
+    "category": "Pastry",
+    "image" : ""
+  },
+  {
+    "id" : 11,
+    "stock": 10,
+    "name" : "Creme Brulee",
+    "price" : 24000,
+    "purchasePrice": 20000,
+    "category": "Custard",
+    "image" : ""
+  },
+  {
+    "id" : 12,
+    "stock": 13,
+    "name" : "Pumpkin Flan",
+    "price" : 28000,
+    "purchasePrice": 19000,
+    "category": "Custard",
+    "image" : ""
+  },
+  {
+    "id" : 13,
+    "stock": 8,
+    "name" : "Cheese Cake",
+    "price" : 29000,
+    "purchasePrice": 19500,
+    "category": "Cake",
+    "image" : ""
+  },
+  {
+    "id": 14,
+    "stock": 10,
+    "name": "Red Velvet Cake",
+    "price": 35000,
+    "purchasePrice": 24000,
+    "category": "Cake",
+    "image": ""
+  },
+  {
+    "id" : 15,
+    "stock": 10,
+    "name" : "Blackforest Cake",
+    "price" : 40000,
+    "purchasePrice": 28000,
+    "category": "Cake",
+    "image" : ""
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "idBill": 1,
+    "idClient" : 2,
+    "receipt" : [
+      {
+        "idProduct": 14,
+        "quantity": 1,
+        "priceOfProducts":35000
+      },
+      {
+        "idProduct" : 4,
+        "quantity" : 2,
+        "priceOfProducts": 56000
+      }
+    ],
+    "totalPrice": 91000,
+    "discount": 18200,
+    "isFixed": true,
+    "transactionTime": ""
+  },
+  {
+    "idBill": 2,
+    "idClient" : 2,
+    "receipt" : [
+      {
+        "idProduct": 2,
+        "quantity": 1,
+        "priceOfProducts":25000
+      },
+      {
+        "idProduct" : 11,
+        "quantity" : 3,
+        "priceOfProducts": 72000
+      }
+    ],
+    "totalPrice": 97000,
+    "discount": 0,
+    "isFixed": false,
+    "transactionTime": ""
+  },
+  {
+    "idBill": 3,
+    "idClient" : 3,
+    "receipt" : [
+      {
+        "idProduct": 9,
+        "quantity": 2,
+        "priceOfProducts":60000
+      },
+      {
+        "idProduct" : 10,
+        "quantity" : 1,
+        "priceOfProducts": 19000
+      },
+      {
+        "idProduct" : 14,
+        "quantity" : 2,
+        "priceOfProducts": 70000
+      }
+    ],
+    "totalPrice": 149000,
+    "discount": 14900,
+    "isFixed": true,
+    "transactionTime": ""
+  },
+  {
+    "idBill": 4,
+    "idClient" : 4,
+    "receipt" : [
+      {
+        "idProduct": 9,
+        "quantity": 1,
+        "priceOfProducts":30000
+      }
+    ],
+    "totalPrice": 30000,
+    "discount": 3000,
+    "isFixed": true,
+    "transactionTime": ""
+  },
+  {
+    "idBill": 5,
+    "idClient" : 5,
+    "receipt" : [
+      {
+        "idProduct": 2,
+        "quantity": 2,
+        "priceOfProducts":50000
+      },
+      {
+        "idProduct" : 5,
+        "quantity" : 1,
+        "priceOfProducts": 15000
+      }
+    ],
+    "totalPrice": 65000,
+    "discount": 0,
+    "isFixed": true,
+    "transactionTime": ""
+  },
+  {
+    "idBill": 6,
+    "idClient" : 6,
+    "receipt" : [
+      {
+        "idProduct": 15,
+        "quantity": 1,
+        "priceOfProducts":40000
+      },
+      {
+        "idProduct" : 7,
+        "quantity" : 3,
+        "priceOfProducts": 36000
+      }
+    ],
+    "totalPrice": 76000,
+    "discount": 7600,
+    "isFixed": true,
+    "transactionTime": ""
+  },
+  {
+    "idBill": 7,
+    "idClient" : 7,
+    "receipt" : [
+      {
+        "idProduct": 12,
+        "quantity": 1,
+        "priceOfProducts":28000
+      },
+      {
+        "idProduct" : 14,
+        "quantity" : 1,
+        "priceOfProducts": 35000
+      }
+    ],
+    "totalPrice": 63000,
+    "discount": 6300,
+    "isFixed": false,
+    "transactionTime": ""
+  }
+]
