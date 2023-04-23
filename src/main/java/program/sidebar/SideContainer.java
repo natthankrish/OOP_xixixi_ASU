@@ -4,7 +4,9 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
+import lombok.*;
 
+@Getter
 public class SideContainer {
     private Group root;
     private Rectangle component;
@@ -16,9 +18,5 @@ public class SideContainer {
         this.component.setY(Screen.getPrimary().getVisualBounds().getHeight() / 15);
         this.component.setFill(Color.valueOf("#F5EBEB"));
         this.root.getChildren().add(this.component);
-    }
-
-    public Group getComponent() {
-        return root;
     }
 }

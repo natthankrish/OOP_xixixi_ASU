@@ -4,7 +4,9 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
+import lombok.*;
 
+@Getter
 public class TopContainer {
     private Group root;
     private Rectangle component;
@@ -15,9 +17,5 @@ public class TopContainer {
         this.component.setHeight(Screen.getPrimary().getVisualBounds().getHeight() / 15);
         this.component.setFill(Color.valueOf("#E4D0D0"));
         this.root.getChildren().add(this.component);
-    }
-
-    public Group getComponent() {
-        return root;
     }
 }
