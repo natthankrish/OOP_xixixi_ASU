@@ -68,8 +68,7 @@ public class NewLabel extends Label{
             colorStyle = String.format("-fx-text-fill: %s ;", this.color);
         }
         if (this.size != 0) {
-            int fontSizeInPoint = (int)(this.size * 0.75);
-            sizeStyle = String.format("-fx-font-family: Inter; -fx-font-size: %dpx; ", fontSizeInPoint);
+            sizeStyle = String.format("-fx-font-family: Inter; -fx-font-size: %dpx; ", this.size);
         }
         if (this.weight != 0) {
             weightStyle = String.format("-fx-font-weight: %d; ", this.weight);
