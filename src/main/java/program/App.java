@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import program.topbar.TopContainer;
 import program.sidebar.SideContainer;
+import program.sidebar.ClockThread;
 
 public class App extends Application {
     @Override
@@ -15,10 +16,10 @@ public class App extends Application {
         Group root = new Group();
 
         TopContainer topContainer = new TopContainer();
-        root.getChildren().add(topContainer.getRoot());
+        root.getChildren().add(topContainer);
 
         SideContainer sideContainer = new SideContainer();
-        root.getChildren().add(sideContainer.getRoot());
+        root.getChildren().add(sideContainer);
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -29,16 +30,11 @@ public class App extends Application {
         stage.setTitle("BNMO");
         stage.setMaximized(true);
         stage.show();
+    }
 
-//        Text helloText = new Text("Hello");
-//        VBox root = new VBox(helloText);
-//        root.setAlignment(Pos.CENTER);
-//
-//        stage.setScene(scene);
-//        stage.show();
-//        stage.setTitle("Hello!");
-//        stage.show();
-//        TestLombok lombok = new TestLombok(1, 1);
-//        System.out.println(lombok.getId() + " " + lombok.getStock());
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        ClockThread.appClosed = true;
     }
 }
