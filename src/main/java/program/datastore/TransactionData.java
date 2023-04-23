@@ -56,17 +56,23 @@ public class TransactionData {
 
         List<List<Long>> receipt = new ArrayList<>();
         JSONArray arr = (JSONArray) b.get("receipt");
+        arr.forEach( o -> receipt.add(getParseReceiptArr((JSONObject) o)));
 
         Long totalPrice = (Long) b.get("totalPrice");
         Long discount = (Long) b.get("discount");
         Boolean isFixed = (Boolean) b.get("isFixed");
         String transactionTime = (String) b.get("transactionTime");
 
-
-
 //        System.out.println(id + stock + name + price + purchasePrice + category + image);
 
 //        System.out.println("A product with id: "+ id +", called "+ name +", has been added to "+ category +" category.");
+    }
+
+    public List<Long> getParseReceiptArr(JSONObject o) {
+        List<Long> tuple = new ArrayList<>();
+        Long idP = (Long) o.get("idProduct");
+        Long quantity = (Long) o.get("quantity");
+        Long
     }
 
 
