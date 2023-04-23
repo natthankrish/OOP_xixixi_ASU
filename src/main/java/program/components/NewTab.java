@@ -44,7 +44,8 @@ public class NewTab extends Tab {
         if (this.bgColor != null) {
             bgStyle = String.format("-fx-background-color: %s; ", this.bgColor);
         }
-        String style = colorStyle + sizeStyle + weightStyle + bgStyle;
+        String style = colorStyle + sizeStyle + weightStyle + bgStyle + "-fx-tab-border-radius: 9px 9px 9px 9px;";
+        System.out.println(style);
         setStyle(style);
     }
 }

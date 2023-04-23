@@ -5,7 +5,16 @@
     -fx-tab-min-width: 30px;
     -fx-tab-max-width: 30px;
 }
+
 .tab-pane .tab:selected {
-    -fx-background-color: #ffffff;
-    -fx-text-fill: #F5EBEB;
+    -fx-background-color: #867070;
+}
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+    -fx-font-weight: bold;
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
 }
