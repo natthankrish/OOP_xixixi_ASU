@@ -6,12 +6,12 @@
       {
         "idProduct": 14,
         "quantity": 1,
-        "priceOfProducts":35000
+        "subtotal":35000
       },
       {
         "idProduct" : 4,
         "quantity" : 2,
-        "priceOfProducts": 56000
+        "subtotal": 56000
       }
     ],
     "totalPrice": 91000,
@@ -26,12 +26,12 @@
       {
         "idProduct": 2,
         "quantity": 1,
-        "priceOfProducts":25000
+        "subtotal":25000
       },
       {
         "idProduct" : 11,
         "quantity" : 3,
-        "priceOfProducts": 72000
+        "subtotal": 72000
       }
     ],
     "totalPrice": 97000,
@@ -46,17 +46,17 @@
       {
         "idProduct": 9,
         "quantity": 2,
-        "priceOfProducts":60000
+        "subtotal":60000
       },
       {
         "idProduct" : 10,
         "quantity" : 1,
-        "priceOfProducts": 19000
+        "subtotal": 19000
       },
       {
         "idProduct" : 14,
         "quantity" : 2,
-        "priceOfProducts": 70000
+        "subtotal": 70000
       }
     ],
     "totalPrice": 149000,
@@ -71,7 +71,7 @@
       {
         "idProduct": 9,
         "quantity": 1,
-        "priceOfProducts":30000
+        "subtotal":30000
       }
     ],
     "totalPrice": 30000,
@@ -86,12 +86,12 @@
       {
         "idProduct": 2,
         "quantity": 2,
-        "priceOfProducts":50000
+        "subtotal":50000
       },
       {
         "idProduct" : 5,
         "quantity" : 1,
-        "priceOfProducts": 15000
+        "subtotal": 15000
       }
     ],
     "totalPrice": 65000,
@@ -106,12 +106,12 @@
       {
         "idProduct": 15,
         "quantity": 1,
-        "priceOfProducts":40000
+        "subtotal":40000
       },
       {
         "idProduct" : 7,
         "quantity" : 3,
-        "priceOfProducts": 36000
+        "subtotal": 36000
       }
     ],
     "totalPrice": 76000,
@@ -126,12 +126,12 @@
       {
         "idProduct": 12,
         "quantity": 1,
-        "priceOfProducts":28000
+        "subtotal":28000
       },
       {
         "idProduct" : 14,
         "quantity" : 1,
-        "priceOfProducts": 35000
+        "subtotal": 35000
       }
     ],
     "totalPrice": 63000,
