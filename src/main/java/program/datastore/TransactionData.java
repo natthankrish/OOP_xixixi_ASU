@@ -63,16 +63,21 @@ public class TransactionData {
         Boolean isFixed = (Boolean) b.get("isFixed");
         String transactionTime = (String) b.get("transactionTime");
 
-//        System.out.println(id + stock + name + price + purchasePrice + category + image);
+//        System.out.println(" "+ idBill + idClient + totalPrice + discount + isFixed + transactionTime);
+//        System.out.println(receipt);
 
-//        System.out.println("A product with id: "+ id +", called "+ name +", has been added to "+ category +" category.");
+        System.out.println("A transaction with id: "+ idBill +", of client "+ idClient +", has been added with total price of "+totalPrice+".");
     }
 
     public List<Long> getParseReceiptArr(JSONObject o) {
         List<Long> tuple = new ArrayList<>();
         Long idP = (Long) o.get("idProduct");
         Long quantity = (Long) o.get("quantity");
-        Long
+        Long subtotal = (Long) o.get("subtotal");
+        tuple.add(idP);
+        tuple.add(quantity);
+        tuple.add(subtotal);
+        return tuple;
     }
 
 
