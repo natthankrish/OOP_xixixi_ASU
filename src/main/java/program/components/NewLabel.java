@@ -4,7 +4,6 @@ import javafx.scene.text.Font;
 import lombok.Setter;
 
 @Setter
-@Getter
 public class NewLabel extends Label {
     private String labelText;
     private int size; // in pixel
