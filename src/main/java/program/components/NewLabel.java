@@ -43,5 +43,19 @@ public class NewLabel extends Label{
         if (this.weight != 0) {
             setStyle(String.format("-fx-font-weight: %d;", this.weight));
         }
+        if (this.bgColor != null) {
+            setStyle(String.format("-fx-background-color: %s;", this.bgColor));
+        }
     }
+
+    // example on how to call
+    //    NewLabel label = new NewLabel();
+    //        label.setColor("#867070");
+    //        label.setLabelText("Hello");
+    //        label.setBgColor("#FFFFF");
+    //        label.setSize(32);
+    //        label.setWeight(700);
+    //        label.setStyle();
+    //    NewLabel labelh1 = new NewLabel("Hello", 32, "#867070", "#FFFFFF", 700);
+    //        labelh1.setStyle();
 }
