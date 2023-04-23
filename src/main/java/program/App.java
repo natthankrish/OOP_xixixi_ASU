@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import program.topbar.TopContainer;
 import program.sidebar.SideContainer;
+import program.sidebar.ClockThread;
 
 public class App extends Application {
     @Override
@@ -40,5 +41,11 @@ public class App extends Application {
 //        stage.show();
 //        TestLombok lombok = new TestLombok(1, 1);
 //        System.out.println(lombok.getId() + " " + lombok.getStock());
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        ClockThread.appOpened = true;
     }
 }

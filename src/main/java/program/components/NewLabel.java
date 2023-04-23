@@ -1,9 +1,11 @@
 package program.components;
 import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 import lombok.Setter;
 
 @Setter
-public class NewLabel extends Label{
+@Getter
+public class NewLabel extends Label {
     private String labelText;
     private int size; // in pixel
     private String color;
@@ -12,8 +14,9 @@ public class NewLabel extends Label{
 
     public NewLabel() {
         super("");
-        this.size = 0;
-        this.weight = 0;
+        this.size = 36;
+        this.weight = 700;
+        setFont(new Font("Inter", 36));
     }
 
     public NewLabel(String text, int size, String color, String bgColor, int weight) {
