@@ -1,18 +1,11 @@
 package program.components;
 
-import javafx.application.Platform;
 import javafx.scene.Group;
-import javafx.scene.control.Label;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import lombok.*;
-import program.components.NewLabel;
 
 @Getter
 public class Clock extends Group {

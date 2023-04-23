@@ -7,7 +7,7 @@ import program.components.Clock;
 
 public class ClockThread {
     private Thread timer;
-    public volatile static boolean appOpened = false;
+    public volatile static boolean appClosed = false;
 
     // this is timer thread which will update out time view every second
     public ClockThread (Clock clock) {
@@ -16,7 +16,7 @@ public class ClockThread {
             SimpleDateFormat date = new SimpleDateFormat("d");
             SimpleDateFormat month = new SimpleDateFormat("MMM");
             SimpleDateFormat year = new SimpleDateFormat("yyyy");
-            while(!appOpened) {
+            while(!appClosed) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {}

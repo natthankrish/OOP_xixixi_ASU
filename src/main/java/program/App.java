@@ -30,22 +30,11 @@ public class App extends Application {
         stage.setTitle("BNMO");
         stage.setMaximized(true);
         stage.show();
-
-//        Text helloText = new Text("Hello");
-//        VBox root = new VBox(helloText);
-//        root.setAlignment(Pos.CENTER);
-//
-//        stage.setScene(scene);
-//        stage.show();
-//        stage.setTitle("Hello!");
-//        stage.show();
-//        TestLombok lombok = new TestLombok(1, 1);
-//        System.out.println(lombok.getId() + " " + lombok.getStock());
     }
 
     @Override
     public void stop() throws Exception {
         super.stop();
-        ClockThread.appOpened = true;
+        ClockThread.appClosed = true;
     }
 }
