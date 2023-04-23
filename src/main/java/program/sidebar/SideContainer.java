@@ -7,16 +7,14 @@ import javafx.stage.Screen;
 import lombok.*;
 
 @Getter
-public class SideContainer {
-    private Group root;
+public class SideContainer extends Group {
     private Rectangle component;
     public SideContainer() {
-        this.root = new Group();
         this.component = new Rectangle();
         this.component.setWidth(Screen.getPrimary().getVisualBounds().getWidth() / 5);
         this.component.setHeight(Screen.getPrimary().getVisualBounds().getHeight() * 14 / 15);
         this.component.setY(Screen.getPrimary().getVisualBounds().getHeight() / 15);
         this.component.setFill(Color.valueOf("#F5EBEB"));
-        this.root.getChildren().add(this.component);
+        this.getChildren().add(this.component);
     }
 }

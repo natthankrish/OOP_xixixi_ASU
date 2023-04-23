@@ -15,10 +15,10 @@ public class App extends Application {
         Group root = new Group();
 
         TopContainer topContainer = new TopContainer();
-        root.getChildren().add(topContainer.getRoot());
+        root.getChildren().add(topContainer);
 
         SideContainer sideContainer = new SideContainer();
-        root.getChildren().add(sideContainer.getRoot());
+        root.getChildren().add(sideContainer);
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
