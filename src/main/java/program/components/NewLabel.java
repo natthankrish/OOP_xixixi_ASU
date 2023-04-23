@@ -65,7 +65,7 @@ public class NewLabel extends Label{
             setText(this.labelText);
         }
         if (this.color != null) {
-            colorStyle = String.format("-fx-text-fill: %s ", this.color);
+            colorStyle = String.format("-fx-text-fill: %s ;", this.color);
         }
         if (this.size != 0) {
             int fontSizeInPoint = (int)(this.size * 0.75);
