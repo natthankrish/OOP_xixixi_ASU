@@ -1,0 +1,66 @@
+[
+  {
+    "id" : 1,
+    "status" : "customer",
+    "name" : "",
+    "phoneNumber" : "",
+    "point": 0,
+    "active" : false,
+    "transactionHistory" : []
+  },
+  {
+    "id" : 2,
+    "status" : "member",
+    "name" : "Juan Christopher Santoso",
+    "phoneNumber" : "081122223333",
+    "point": 100000,
+    "active" : true,
+    "transactionHistory" : [1, 2]
+  },
+  {
+    "id" : 3,
+    "status" : "vip",
+    "name" : "Antonio Natthan Krishna",
+    "phoneNumber" : "081121213030",
+    "point": 500000,
+    "active" : true,
+    "transactionHistory" : [3]
+  },
+  {
+    "id" : 4,
+    "status" : "vip",
+    "name" : "Brigita Tri Carolina",
+    "phoneNumber" : "081245450088",
+    "point": 60000,
+    "active" : false,
+    "transactionHistory" : [4]
+  },
+  {
+    "id" : 5,
+    "status" : "member",
+    "name" : "Melvin Kent Jonathan",
+    "phoneNumber" : "081344883322",
+    "point": 120000,
+    "active" : true,
+    "transactionHistory" : [5]
+  },
+  {
+    "id" : 6,
+    "status" : "member",
+    "name" : "Daniel Egiant Sitanggang",
+    "phoneNumber" : "081300119966",
+    "point": 50000,
+    "active" : false,
+    "transactionHistory" : [6]
+  },
+  {
+    "id" : 7,
+    "status" : "vip",
+    "name" : "Ilham Akbar",
+    "phoneNumber" : "081257571010",
+    "point": 999999999,
+    "active" : true,
+    "transactionHistory" : [7]
+  }
+]
+

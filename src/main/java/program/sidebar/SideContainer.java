@@ -23,7 +23,7 @@ public class SideContainer extends Group {
         this.component.setFill(Color.valueOf("#F5EBEB"));
         this.getChildren().add(this.component);
 
-        this.clock = new Clock();
+        this.clock = new Clock(this.component);
         this.getChildren().add(this.clock);
 
         this.tabs = new VerticalTabPane();
