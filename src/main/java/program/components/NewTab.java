@@ -20,6 +20,7 @@ public class NewTab extends Tab {
         this.color = color;
         this.bgColor = bgColor;
         this.weight = weight;
+        setStyle();
     }
 
     public void setStyle() {
