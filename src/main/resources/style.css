@@ -1,0 +1,11 @@
+.tab-pane {
+    -fx-background-color: transparent;
+    -fx-tab-min-height: 300px;
+    -fx-tab-max-height: 300px;
+    -fx-tab-min-width: 30px;
+    -fx-tab-max-width: 30px;
+}
+.tab-pane .tab:selected {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #F5EBEB;
+}

@@ -12,7 +12,7 @@ import program.components.VerticalTabPane;
 public class SideContainer extends Group {
     private Rectangle component;
     private Clock clock;
-    private VerticalTabPane tabs;
+    private VerticalTabPane tabsContainer;
     private ClockThread clockThread;
     public SideContainer() {
         this.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() / 15);
@@ -26,8 +26,8 @@ public class SideContainer extends Group {
         this.clock = new Clock(this.component);
         this.getChildren().add(this.clock);
 
-        this.tabs = new VerticalTabPane();
-        this.getChildren().add(this.tabs);
+        this.tabsContainer = new VerticalTabPane();
+        this.getChildren().add(this.tabsContainer);
         this.clockThread = new ClockThread(this.clock);
     }
 }
