@@ -1,36 +1,34 @@
 package program.components;
-import javafx.scene.control.Label;
+
+import javafx.scene.control.Tab;
 import lombok.Setter;
 
 @Setter
-public class NewLabel extends Label{
-    private String labelText;
+public class NewTab extends Tab {
+    private String tabText;
     private int size; // in pixel
     private String color;
     private String bgColor;
     private int weight;
-
-    public NewLabel() {
+    public NewTab() {
         super("");
-        this.size = 0;
-        this.weight = 0;
     }
-
-    public NewLabel(String text, int size, String color, String bgColor, int weight) {
+    public NewTab(String tabText, int size, String color, String bgColor, int weight) {
         super("");
-        this.labelText = text;
+        this.tabText = tabText;
         this.size = size;
         this.color = color;
         this.bgColor = bgColor;
         this.weight = weight;
     }
+
     public void setStyle() {
         String colorStyle = "";
         String sizeStyle = "";
         String weightStyle = "";
         String bgStyle = "";
-        if (this.labelText != null) {
-            setText(this.labelText);
+        if (this.tabText != null) {
+            setText(this.tabText);
         }
         if (this.color != null) {
             colorStyle = String.format("-fx-text-fill: %s ", this.color);
@@ -48,15 +46,4 @@ public class NewLabel extends Label{
         String style = colorStyle + sizeStyle + weightStyle + bgStyle;
         setStyle(style);
     }
-
-    // example on how to call
-    //    NewLabel label = new NewLabel();
-    //        label.setColor("#867070");
-    //        label.setLabelText("Hello");
-    //        label.setBgColor("#FFFFF");
-    //        label.setSize(32);
-    //        label.setWeight(700);
-    //        label.setStyle();
-    //    NewLabel labelh1 = new NewLabel("Hello", 32, "#867070", "#FFFFFF", 700);
-    //        labelh1.setStyle();
 }
