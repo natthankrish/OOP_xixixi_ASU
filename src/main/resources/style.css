@@ -9,7 +9,7 @@
 .tab-pane .tab:selected {
     -fx-background-color: #867070;
 }
-.tab .tab-label {
+.tab:selected .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: white;
     -fx-font-weight: 700;
