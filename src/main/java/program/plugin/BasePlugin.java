@@ -1,5 +1,7 @@
 package program.plugin;
 
-public class BasePlugin {
+import program.sidebar.TabThread;
+
+public class BasePlugin{
 
 }
