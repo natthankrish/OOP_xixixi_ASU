@@ -7,5 +7,6 @@ module program {
     requires org.json;
     requires json.simple;
     requires annotations;
+    requires com.google.gson;
     exports program;
 }

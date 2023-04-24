@@ -1,142 +1,135 @@
 [
   {
-    "idBill": 1,
-    "idClient" : 2,
-    "receipt" : [
-      {
-        "idProduct": 14,
-        "quantity": 1,
-        "subtotal":35000.0
-      },
-      {
-        "idProduct" : 4,
-        "quantity" : 2,
-        "subtotal": 56000.0
-      }
-    ],
+    "idClient": 2,
     "totalPrice": 91000.0,
-    "discount": 18200.0,
-    "isFixed": true,
-    "transactionTime": ""
-  },
-  {
-    "idBill": 2,
-    "idClient" : 2,
-    "receipt" : [
+    "receipt": [
       {
-        "idProduct": 2,
         "quantity": 1,
-        "subtotal":25000.0
+        "subtotal": 35000.0,
+        "idProduct": 14
       },
       {
-        "idProduct" : 11,
-        "quantity" : 3,
-        "subtotal": 72000.0
+        "quantity": 2,
+        "subtotal": 56000.0,
+        "idProduct": 4
       }
     ],
+    "transactionTime": "",
+    "isFixed": true,
+    "idBill": 1
+  },
+  {
+    "idClient": 2,
     "totalPrice": 97000.0,
-    "discount": 0.0,
-    "isFixed": false,
-    "transactionTime": ""
-  },
-  {
-    "idBill": 3,
-    "idClient" : 3,
-    "receipt" : [
+    "receipt": [
       {
-        "idProduct": 9,
-        "quantity": 2,
-        "subtotal":60000.5
+        "quantity": 1,
+        "subtotal": 25000.0,
+        "idProduct": 2
       },
       {
-        "idProduct" : 10,
-        "quantity" : 1,
-        "subtotal": 19000.0
-      },
-      {
-        "idProduct" : 14,
-        "quantity" : 2,
-        "subtotal": 70000.0
+        "quantity": 3,
+        "subtotal": 72000.0,
+        "idProduct": 11
       }
     ],
+    "transactionTime": "",
+    "isFixed": false,
+    "idBill": 2
+  },
+  {
+    "idClient": 3,
     "totalPrice": 149000.5,
-    "discount": 14900.0,
-    "isFixed": true,
-    "transactionTime": ""
-  },
-  {
-    "idBill": 4,
-    "idClient" : 4,
-    "receipt" : [
+    "receipt": [
       {
-        "idProduct": 9,
-        "quantity": 1,
-        "subtotal":30000.0
-      }
-    ],
-    "totalPrice": 30000.0,
-    "discount": 3000.0,
-    "isFixed": true,
-    "transactionTime": ""
-  },
-  {
-    "idBill": 5,
-    "idClient" : 5,
-    "receipt" : [
-      {
-        "idProduct": 2,
         "quantity": 2,
-        "subtotal":50000.0
+        "subtotal": 60000.5,
+        "idProduct": 9
       },
       {
-        "idProduct" : 5,
-        "quantity" : 1,
-        "subtotal": 15000.0
+        "quantity": 1,
+        "subtotal": 19000.0,
+        "idProduct": 10
+      },
+      {
+        "quantity": 2,
+        "subtotal": 70000.0,
+        "idProduct": 14
       }
     ],
+    "transactionTime": "",
+    "isFixed": true,
+    "idBill": 3
+  },
+  {
+    "idClient": 4,
+    "totalPrice": 30000.0,
+    "receipt": [
+      {
+        "quantity": 1,
+        "subtotal": 30000.0,
+        "idProduct": 9
+      }
+    ],
+    "transactionTime": "",
+    "isFixed": true,
+    "idBill": 4
+  },
+  {
+    "idClient": 5,
     "totalPrice": 65000.0,
-    "discount": 0.0,
-    "isFixed": true,
-    "transactionTime": ""
-  },
-  {
-    "idBill": 6,
-    "idClient" : 6,
-    "receipt" : [
+    "receipt": [
       {
-        "idProduct": 15,
-        "quantity": 1,
-        "subtotal":40000.0
+        "quantity": 2,
+        "subtotal": 50000.0,
+        "idProduct": 2
       },
       {
-        "idProduct" : 7,
-        "quantity" : 3,
-        "subtotal": 36000.0
+        "quantity": 1,
+        "subtotal": 15000.0,
+        "idProduct": 5
       }
     ],
+    "transactionTime": "",
+    "isFixed": true,
+    "idBill": 5
+  },
+  {
+    "idClient": 6,
     "totalPrice": 76000.0,
-    "discount": 7600.0,
-    "isFixed": true,
-    "transactionTime": ""
-  },
-  {
-    "idBill": 7,
-    "idClient" : 7,
-    "receipt" : [
+    "receipt": [
       {
-        "idProduct": 12,
         "quantity": 1,
-        "subtotal":28000.0
+        "subtotal": 40000.0,
+        "idProduct": 15
       },
       {
-        "idProduct" : 14,
-        "quantity" : 1,
-        "subtotal": 35000.0
+        "quantity": 3,
+        "subtotal": 36000.0,
+        "idProduct": 7
       }
     ],
+    "transactionTime": "",
+    "isFixed": true,
+    "idBill": 6
+  },
+  {
+    "idClient": 7,
     "totalPrice": 63000.0,
-    "discount": 6300.0,
+    "receipt": [
+      {
+        "quantity": 1,
+        "subtotal": 28000.0,
+        "idProduct": 12
+      },
+      {
+        "quantity": 1,
+        "subtotal": 35000.0,
+        "idProduct": 14
+      }
+    ],
+    "transactionTime": "",
     "isFixed": false,
-    "transactionTime": ""
+    "idBill": 7
   }
 ]
