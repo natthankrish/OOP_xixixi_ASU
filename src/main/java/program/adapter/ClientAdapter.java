@@ -13,24 +13,14 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
-import lombok.*;
+import program.container.ClientContainer;
 import program.entities.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 
-public class ClientData {
-    private List<? super Client> buffer;
-    private int amount;
 
-    public void reset(){
-        buffer = new ArrayList <>();
-        amount = 0;
-    }
+public class ClientAdapter {
 
-    public void readDataJSON() {
+    public void readDataJSON(ClientContainer cc) {
         String filePath = new java.io.File("").getAbsolutePath();
         var clientDatabasePath = filePath + "\\src\\main\\database\\json\\Client.json";
 
@@ -39,14 +29,14 @@ public class ClientData {
 
         try (FileReader reader = new FileReader(clientDatabasePath))
         {
-            reset();
+            cc.reset();
             //Read JSON file
             Object obj = jsonParser.parse(reader);
 
             JSONArray clientList = (JSONArray) obj;
 
             //Iterate over client array
-            clientList.forEach( client -> parseClientObject( (JSONObject) client ) );
+            clientList.forEach( client -> parseClientObjectJSON( cc, (JSONObject) client ) );
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -57,12 +47,12 @@ public class ClientData {
         }
     }
 
-    public void writeDataJSON() {
+    public void writeDataJSON(ClientContainer cc) {
         String filePath = new java.io.File("").getAbsolutePath();
         var clientDatabasePath = filePath + "\\src\\main\\database\\json\\Client.json";
 
         JSONArray clientsArr = new JSONArray();
-        for (Object o : buffer) {
+        for (Object o : cc.getBuffer()) {
             JSONObject clientObj = new JSONObject();
             if (o instanceof Customer){
                 Customer cr = (Customer) o;
@@ -111,7 +101,7 @@ public class ClientData {
         }
     }
 
-    public void parseClientObject(JSONObject c) {
+    public void parseClientObjectJSON(ClientContainer cc, JSONObject c) {
         // Get every element
         String status = (String) c.get("status");
         if (status.equals("customer")){
@@ -125,7 +115,7 @@ public class ClientData {
 
             Customer cr = new Customer(id);
             cr.setTransactionHistory(arrTransaction);
-            buffer.add(cr);
+            cc.getBuffer().add(cr);
 
         }
         else if (status.equals("member")){
@@ -142,8 +132,7 @@ public class ClientData {
 
             Member m = new Member(id, name, phoneNumber, point, active);
             m.setTransactionHistory(arrTransaction);
-            buffer.add(m);
-
+            cc.getBuffer().add(m);
 
         }
         else if (status.equals("vip")){
@@ -160,9 +149,9 @@ public class ClientData {
 
             VIP v = new VIP(id, name, phoneNumber, point, active);
             v.setTransactionHistory(arrTransaction);
-            buffer.add(v);
+            cc.getBuffer().add(v);
         }
-        amount++;
+        cc.increaseAmount();
 
     }
 

@@ -133,5 +133,14 @@
     "purchasePrice": 28000.0,
     "stock": 17,
     "category": "Cake"
+  },
+  {
+    "image": "",
+    "price": 24000.0,
+    "name": "Vanilla Milkshake",
+    "id": 16,
+    "purchasePrice": 18000.0,
+    "stock": 10,
+    "category": "Milk"
   }
 ]

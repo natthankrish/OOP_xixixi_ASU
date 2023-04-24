@@ -2,21 +2,27 @@ package program.adapter;
 
 // Java program to read JSON from a file
 
+import program.container.ClientContainer;
+import program.container.InventoryContainer;
+import program.container.TransactionContainer;
 import program.entities.*;
 
 public class Example
 {
     public static void main(String[] args) throws Exception {
-        ClientData cd = new ClientData();
-        InventoryData id = new InventoryData();
-        TransactionData td = new TransactionData();
+        ClientContainer cc = new ClientContainer();
+        InventoryContainer ic = new InventoryContainer();
+        TransactionContainer tc = new TransactionContainer();
+        ClientAdapter cd = new ClientAdapter();
+        InventoryAdapter id = new InventoryAdapter();
+        TransactionAdapter td = new TransactionAdapter();
 
 //        System.out.println("Loading client data...");
-//        cd.readDataJSON();
+//        cd.readDataJSON(cc);
         System.out.println("Loading inventory data...");
-        id.readDataJSON();
+        id.readDataJSON(ic);
 //        System.out.println("Loading transaction data...");
-//        td.readDataJSON();
+//        td.readDataJSON(tc);
 
 //        Test Entities Creation
 //        Bill b = new Bill();
@@ -27,7 +33,7 @@ public class Example
 
 //        Testing Class Input
 
-//        cd.getBuffer().forEach(o -> {
+//        cc.getBuffer().forEach(o -> {
 //                if (o instanceof VIP){
 //                    ((VIP) o).display();
 //                } else if (o instanceof  Member){
@@ -37,29 +43,30 @@ public class Example
 //                }
 //        });
 
-        for ( Product p : id.getBuffer()) {
+        for ( Product p : ic.getBuffer()) {
             p.display();
         }
-//        for (Bill b : td.getBuffer()){
+//        for (Bill b : tc.getBuffer()){
 //            b.display();
 //        }
 
 //        Add item
-//        id.addProduct(16, 10, "Vanilla Milkshake", 24000.0, 18000.0, "Milk", "");
+        Product pr = new Product(16, 10, "Vanilla Milkshake", 24000.0, 18000.0, "Milk", "");
+        ic.addProduct(pr);
 //        Remove Item
-//        id.removeProduct(16);
+//        ic.removeProduct(16);
 //        Get Item
-//        Product l = id.getProductById(15);
-//        l.setStock(17);
+//        Product l = ic.getProductById(15);
+//        l.setStock(20);
 
-        for (Product p : id.getBuffer()){
+        for (Product p : ic.getBuffer()){
             p.display();
         }
 
 //        Write Data
-//        cd.writeDataJSON();
-        id.writeDataJSON();
-//        td.writeDataJSON();
+//        cd.writeDataJSON(cc);
+        id.writeDataJSON(ic);
+//        td.writeDataJSON(tc);
 
     }
 }
