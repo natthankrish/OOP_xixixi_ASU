@@ -15,7 +15,6 @@
       }
     ],
     "totalPrice": 91000.0,
-    "discount": 18200.0,
     "isFixed": true,
     "transactionTime": ""
   },
@@ -35,7 +34,6 @@
       }
     ],
     "totalPrice": 97000.0,
-    "discount": 0.0,
     "isFixed": false,
     "transactionTime": ""
   },
@@ -60,7 +58,6 @@
       }
     ],
     "totalPrice": 149000.5,
-    "discount": 14900.0,
     "isFixed": true,
     "transactionTime": ""
   },
@@ -75,7 +72,6 @@
       }
     ],
     "totalPrice": 30000.0,
-    "discount": 3000.0,
     "isFixed": true,
     "transactionTime": ""
   },
@@ -95,7 +91,6 @@
       }
     ],
     "totalPrice": 65000.0,
-    "discount": 0.0,
     "isFixed": true,
     "transactionTime": ""
   },
@@ -115,7 +110,6 @@
       }
     ],
     "totalPrice": 76000.0,
-    "discount": 7600.0,
     "isFixed": true,
     "transactionTime": ""
   },
@@ -135,7 +129,6 @@
       }
     ],
     "totalPrice": 63000.0,
-    "discount": 6300.0,
     "isFixed": false,
     "transactionTime": ""
   }

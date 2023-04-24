@@ -70,11 +70,10 @@ public class TransactionData {
         }
 
         Double totalPrice = (Double) b.get("totalPrice");
-        Double discount = (Double) b.get("discount");
         Boolean isFixed = (Boolean) b.get("isFixed");
         String transactionTime = (String) b.get("transactionTime");
 
-        Bill bi = new Bill(idBill, idClient, receipt, totalPrice, discount, isFixed, transactionTime);
+        Bill bi = new Bill(idBill, idClient, receipt, totalPrice, isFixed, transactionTime);
         buffer.add(bi);
         amount++;
     }

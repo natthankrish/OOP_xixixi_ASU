@@ -12,7 +12,6 @@ public class Bill {
     private Integer idClient;
     private List<List<Object>> receipt;
     private Double totalPrice;
-    private Double discount;
     private Boolean isFixedBill;
     private String transactionTime;
 
@@ -92,7 +91,7 @@ public class Bill {
         for ( List<Object> l : receipt) {
             System.out.println("[ "+ l.get(0)+", "+l.get(1)+", "+l.get(2)+" ]");
         }
-        System.out.println("Total price: "+ totalPrice +", Discount: "+ discount);
+        System.out.println("Total price: "+ totalPrice);
         System.out.println("Fix status: "+ isFixedBill +", Time: "+ transactionTime);
     }
 
