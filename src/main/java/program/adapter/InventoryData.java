@@ -106,7 +106,6 @@ public class InventoryData {
 
     // Getter
     public Product getProductById(Integer id){
-        Integer idx = 0;
         for (Product p: buffer ) {
             Integer tempID = p.getId();
             if (tempID.equals(id)){
@@ -123,7 +122,7 @@ public class InventoryData {
     }
 
     public void removeProduct(Integer id) {
-        Integer idx = 0;
+        int idx = 0;
         for ( Product p : buffer) {
             Integer tempID = p.getId();
             if (tempID.equals(id)){
@@ -134,5 +133,6 @@ public class InventoryData {
             idx++;
         }
     }
+
 
 }

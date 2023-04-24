@@ -21,7 +21,7 @@ abstract public class Client {
         transactionHistory.add(id);
     }
     public void removeTransaction(Integer id){
-        Integer idx = 0;
+        int idx = 0;
         for ( Integer tempID: transactionHistory ) {
             if (tempID.equals(id)){
                 transactionHistory.remove(idx);

@@ -31,7 +31,7 @@ public class Bill {
         }
     }
 
-    public void updateBilLItem(Integer id, Integer quantity, Double subtotal){
+    public void updateBillItem(Integer id, Integer quantity, Double subtotal){
         // Only insert the parameter for the changing element, else will be inserted as null
         // e.g. if you want to ONLY change the quantity, insert (id, quantity, null)
         if (!isFixedBill){
@@ -57,7 +57,7 @@ public class Bill {
     public void removeBillItem(Integer id){
 
         if (!isFixedBill){
-            Integer idx = 0;
+            int idx = 0;
             for (List<Object> l: receipt) {
                 if (l.get(0).equals(id)){
                     receipt.remove(idx);
