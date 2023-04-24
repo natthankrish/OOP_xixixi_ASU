@@ -1,5 +1,7 @@
 package program.adapter;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -9,6 +11,7 @@ import program.entities.Bill;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
@@ -54,7 +57,42 @@ public class TransactionData {
     }
 
     public void writeDataJSON() {
+        String filePath = new java.io.File("").getAbsolutePath();
+        var transactionDatabasePath = filePath + "\\src\\main\\database\\json\\Transaction.json";
 
+        JSONArray transactionsArr = new JSONArray();
+        for (Bill b : buffer) {
+            JSONObject billObj = new JSONObject();
+            billObj.put("idBill", b.getIdBill());
+            billObj.put("idClient", b.getIdClient());
+
+            JSONArray receiptArr = new JSONArray();
+            for (List<Object> r : b.getReceipt()){
+                JSONObject rec = new JSONObject();
+                rec.put("idProduct", r.get(0));
+                rec.put("quantity", r.get(1));
+                rec.put("subtotal", r.get(2));
+                receiptArr.add(rec);
+            }
+            billObj.put("receipt", receiptArr);
+            billObj.put("totalPrice", b.getTotalPrice());
+            billObj.put("isFixed", b.getIsFixedBill());
+            billObj.put("transactionTime", b.getTransactionTime());
+            transactionsArr.add(billObj);
+
+        }
+
+        //Write JSON file
+        try (FileWriter file = new FileWriter(transactionDatabasePath)) {
+            //We can write any JSONArray or JSONObject instance to the file
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            System.out.println(gson.toJson(transactionsArr));
+            file.write(gson.toJson(transactionsArr));
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void parseBillObject(JSONObject b) {

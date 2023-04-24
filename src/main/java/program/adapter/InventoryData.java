@@ -6,9 +6,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import program.entities.Product;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
@@ -54,7 +58,34 @@ public class InventoryData {
     }
 
     public void writeDataJSON() {
+        String filePath = new java.io.File("").getAbsolutePath();
+        var inventoryDatabasePath = filePath + "\\src\\main\\database\\json\\Inventory.json";
+        // Make array
+        JSONArray productsArr = new JSONArray();
+        for (Product p : buffer) {
+            JSONObject productObj = new JSONObject();
+            productObj.put("id", p.getId());
+            productObj.put("stock", p.getStock());
+            productObj.put("name", p.getName());
+            productObj.put("price", p.getPrice());
+            productObj.put("purchasePrice", p.getPurchasePrice());
+            productObj.put("category", p.getCategory());
+            productObj.put("image", p.getImage());
 
+            productsArr.add(productObj);
+        }
+
+        //Write JSON file
+        try (FileWriter file = new FileWriter(inventoryDatabasePath)) {
+            //We can write any JSONArray or JSONObject instance to the file
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//            System.out.println(gson.toJson(productsArr));
+            file.write(gson.toJson(productsArr));
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void parseProductObject(JSONObject p) {

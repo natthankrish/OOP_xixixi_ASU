@@ -1,66 +1,78 @@
 [
   {
-    "id" : 1,
-    "status" : "customer",
-    "name" : "",
-    "phoneNumber" : "",
+    "phoneNumber": "",
+    "name": "",
+    "active": false,
+    "transactionHistory": [],
+    "id": 1,
     "point": 0,
-    "active" : false,
-    "transactionHistory" : []
+    "status": "customer"
   },
   {
-    "id" : 2,
-    "status" : "member",
-    "name" : "Juan Christopher Santoso",
-    "phoneNumber" : "081122223333",
-    "point": 100000,
-    "active" : true,
-    "transactionHistory" : [1, 2]
+    "phoneNumber": "081122223333",
+    "name": "Juan Christopher Santoso",
+    "active": true,
+    "transactionHistory": [
+      1,
+      2
+    ],
+    "id": 2,
+    "point": 100000.0,
+    "status": "member"
   },
   {
-    "id" : 3,
-    "status" : "vip",
-    "name" : "Antonio Natthan Krishna",
-    "phoneNumber" : "081121213030",
-    "point": 500000,
-    "active" : true,
-    "transactionHistory" : [3]
+    "phoneNumber": "081121213030",
+    "name": "Antonio Natthan Krishna",
+    "active": true,
+    "transactionHistory": [
+      3
+    ],
+    "id": 3,
+    "point": 500000.0,
+    "status": "vip"
   },
   {
-    "id" : 4,
-    "status" : "vip",
-    "name" : "Brigita Tri Carolina",
-    "phoneNumber" : "081245450088",
-    "point": 60000,
-    "active" : false,
-    "transactionHistory" : [4]
+    "phoneNumber": "081245450088",
+    "name": "Brigita Tri Carolina",
+    "active": false,
+    "transactionHistory": [
+      4
+    ],
+    "id": 4,
+    "point": 60000.0,
+    "status": "vip"
   },
   {
-    "id" : 5,
-    "status" : "member",
-    "name" : "Melvin Kent Jonathan",
-    "phoneNumber" : "081344883322",
-    "point": 120000,
-    "active" : true,
-    "transactionHistory" : [5]
+    "phoneNumber": "081344883322",
+    "name": "Melvin Kent Jonathan",
+    "active": true,
+    "transactionHistory": [
+      5
+    ],
+    "id": 5,
+    "point": 120000.0,
+    "status": "member"
   },
   {
-    "id" : 6,
-    "status" : "member",
-    "name" : "Daniel Egiant Sitanggang",
-    "phoneNumber" : "081300119966",
-    "point": 50000,
-    "active" : false,
-    "transactionHistory" : [6]
+    "phoneNumber": "081300119966",
+    "name": "Daniel Egiant Sitanggang",
+    "active": false,
+    "transactionHistory": [
+      6
+    ],
+    "id": 6,
+    "point": 50000.0,
+    "status": "member"
   },
   {
-    "id" : 7,
-    "status" : "vip",
-    "name" : "Ilham Akbar",
-    "phoneNumber" : "081257571010",
-    "point": 100000,
-    "active" : true,
-    "transactionHistory" : [7]
+    "phoneNumber": "081257571010",
+    "name": "Ilham Akbar",
+    "active": true,
+    "transactionHistory": [
+      7
+    ],
+    "id": 7,
+    "point": 100000.0,
+    "status": "vip"
   }
 ]
-

@@ -1,137 +1,137 @@
 [
   {
-    "id" : 1,
+    "image": "",
+    "price": 25000.0,
+    "name": "Caramel Latte",
+    "id": 1,
+    "purchasePrice": 15000.0,
     "stock": 10,
-    "name" : "Caramel Latte",
-    "price" : 25000.0,
-    "purchasePrice": 15000.0,
-    "category": "Coffee",
-    "image" : ""
+    "category": "Coffee"
   },
   {
-    "id" : 2,
+    "image": "",
+    "price": 25000.0,
+    "name": "Vanila Latte",
+    "id": 2,
+    "purchasePrice": 15000.0,
     "stock": 5,
-    "name" : "Vanila Latte",
-    "price" : 25000.0,
-    "purchasePrice": 15000.0,
-    "category": "Coffee",
-    "image" : ""
+    "category": "Coffee"
   },
   {
-    "id" : 3,
-    "stock": 8,
-    "name" : "Americano",
-    "price" : 18000.0,
+    "image": "",
+    "price": 18000.0,
+    "name": "Americano",
+    "id": 3,
     "purchasePrice": 10000.0,
-    "category": "Coffee",
-    "image" : ""
+    "stock": 8,
+    "category": "Coffee"
   },
   {
-    "id" : 4,
+    "image": "",
+    "price": 28000.0,
+    "name": "Milk Tea",
+    "id": 4,
+    "purchasePrice": 20000.0,
     "stock": 4,
-    "name" : "Milk Tea",
-    "price" : 28000.0,
-    "purchasePrice": 20000.0,
-    "category": "Tea",
-    "image" : ""
+    "category": "Tea"
   },
   {
-    "id" : 5,
-    "stock": 20,
-    "name" : "Green Tea",
-    "price" : 15000.0,
+    "image": "",
+    "price": 15000.0,
+    "name": "Green Tea",
+    "id": 5,
     "purchasePrice": 8000.0,
-    "category": "Tea",
-    "image" : ""
+    "stock": 20,
+    "category": "Tea"
   },
   {
-    "id" : 6,
-    "stock": 18,
-    "name" : "Earl Grey Tea",
-    "price" : 15000.0,
+    "image": "",
+    "price": 15000.0,
+    "name": "Earl Grey Tea",
+    "id": 6,
     "purchasePrice": 9000.0,
-    "category": "Tea",
-    "image" : ""
+    "stock": 18,
+    "category": "Tea"
   },
   {
-    "id" : 7,
-    "stock": 0,
-    "name" : "Soy Milk",
-    "price" : 12000.0,
+    "image": "",
+    "price": 12000.0,
+    "name": "Soy Milk",
+    "id": 7,
     "purchasePrice": 7500.0,
-    "category": "Milk",
-    "image" : ""
+    "stock": 0,
+    "category": "Milk"
   },
   {
-    "id" : 8,
+    "image": "",
+    "price": 15000.0,
+    "name": "Almond Milk",
+    "id": 8,
+    "purchasePrice": 10000.0,
     "stock": 6,
-    "name" : "Almond Milk",
-    "price" : 15000.0,
-    "purchasePrice": 10000.0,
-    "category": "Milk",
-    "image" : ""
+    "category": "Milk"
   },
   {
-    "id" : 9,
+    "image": "",
+    "price": 30000.0,
+    "name": "Croissant",
+    "id": 9,
+    "purchasePrice": 20000.0,
     "stock": 27,
-    "name" : "Croissant",
-    "price" : 30000.0,
-    "purchasePrice": 20000.0,
-    "category": "Pastry",
-    "image" : ""
+    "category": "Pastry"
   },
   {
-    "id" : 10,
-    "stock": 5,
-    "name" : "Croffle",
-    "price" : 19000.0,
+    "image": "",
+    "price": 19000.0,
+    "name": "Croffle",
+    "id": 10,
     "purchasePrice": 10000.0,
-    "category": "Pastry",
-    "image" : ""
+    "stock": 5,
+    "category": "Pastry"
   },
   {
-    "id" : 11,
-    "stock": 10,
-    "name" : "Creme Brulee",
-    "price" : 24000.0,
+    "image": "",
+    "price": 24000.0,
+    "name": "Creme Brulee",
+    "id": 11,
     "purchasePrice": 20000.0,
-    "category": "Custard",
-    "image" : ""
+    "stock": 10,
+    "category": "Custard"
   },
   {
-    "id" : 12,
-    "stock": 13,
-    "name" : "Pumpkin Flan",
-    "price" : 28000.0,
+    "image": "",
+    "price": 28000.0,
+    "name": "Pumpkin Flan",
+    "id": 12,
     "purchasePrice": 19000.0,
-    "category": "Custard",
-    "image" : ""
+    "stock": 13,
+    "category": "Custard"
   },
   {
-    "id" : 13,
-    "stock": 8,
-    "name" : "Cheese Cake",
-    "price" : 29000.0,
+    "image": "",
+    "price": 29000.0,
+    "name": "Cheese Cake",
+    "id": 13,
     "purchasePrice": 19500.0,
-    "category": "Cake",
-    "image" : ""
+    "stock": 8,
+    "category": "Cake"
   },
   {
-    "id": 14,
-    "stock": 10,
-    "name": "Red Velvet Cake",
+    "image": "",
     "price": 35000.0,
+    "name": "Red Velvet Cake",
+    "id": 14,
     "purchasePrice": 24000.0,
-    "category": "Cake",
-    "image": ""
+    "stock": 10,
+    "category": "Cake"
   },
   {
-    "id" : 15,
-    "stock": 10,
-    "name" : "Blackforest Cake",
-    "price" : 40000.0,
+    "image": "",
+    "price": 40000.0,
+    "name": "Blackforest Cake",
+    "id": 15,
     "purchasePrice": 28000.0,
-    "category": "Cake",
-    "image" : ""
+    "stock": 10,
+    "category": "Cake"
   }
 ]

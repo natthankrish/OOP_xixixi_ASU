@@ -13,10 +13,10 @@ public class Example
 
         System.out.println("Loading client data...");
         cd.readDataJSON();
-        System.out.println("Loading inventory data...");
-        id.readDataJSON();
-        System.out.println("Loading transaction data...");
-        td.readDataJSON();
+//        System.out.println("Loading inventory data...");
+//        id.readDataJSON();
+//        System.out.println("Loading transaction data...");
+//        td.readDataJSON();
 
 //        Test Entities Creation
 //        Bill b = new Bill();
@@ -37,13 +37,17 @@ public class Example
                 }
         });
 
-        for ( Product p : id.getBuffer()) {
-            p.display();
-        }
-        for (Bill b : td.getBuffer()){
-            b.display();
-        }
+//        for ( Product p : id.getBuffer()) {
+//            p.display();
+//        }
+//        for (Bill b : td.getBuffer()){
+//            b.display();
+//        }
 
+//        Write Data
+        cd.writeDataJSON();
+//        id.writeDataJSON();
+//        td.writeDataJSON();
 
     }
 }

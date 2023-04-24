@@ -3,9 +3,12 @@ package program.adapter;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
@@ -55,7 +58,57 @@ public class ClientData {
     }
 
     public void writeDataJSON() {
+        String filePath = new java.io.File("").getAbsolutePath();
+        var clientDatabasePath = filePath + "\\src\\main\\database\\json\\Client.json";
 
+        JSONArray clientsArr = new JSONArray();
+        for (Object o : buffer) {
+            JSONObject clientObj = new JSONObject();
+            if (o instanceof Customer){
+                Customer cr = (Customer) o;
+                clientObj.put("id", cr.getId());
+                clientObj.put("status", "customer");
+                clientObj.put("name", "");
+                clientObj.put("phoneNumber","");
+                clientObj.put("point", 0);
+                clientObj.put("active", false);
+                clientObj.put("transactionHistory", cr.getTransactionHistory());
+                System.out.println("customer");
+            } else if (o instanceof Member){
+                Member mr = (Member) o;
+                clientObj.put("id", mr.getId());
+                clientObj.put("status", "member");
+                clientObj.put("name", mr.getName());
+                clientObj.put("phoneNumber",mr.getPhoneNumber());
+                clientObj.put("point", mr.getPoint());
+                clientObj.put("active", mr.getActive());
+                clientObj.put("transactionHistory", mr.getTransactionHistory());
+                System.out.println("member");
+            } else if (o instanceof VIP){
+                VIP vp = (VIP) o;
+                clientObj.put("id", vp.getId());
+                clientObj.put("status", "vip");
+                clientObj.put("name", vp.getName());
+                clientObj.put("phoneNumber",vp.getPhoneNumber());
+                clientObj.put("point", vp.getPoint());
+                clientObj.put("active", vp.getActive());
+                clientObj.put("transactionHistory", vp.getTransactionHistory());
+                System.out.println("vip");
+            }
+            clientsArr.add(clientObj);
+        }
+
+        //Write JSON file
+        try (FileWriter file = new FileWriter(clientDatabasePath)) {
+            //We can write any JSONArray or JSONObject instance to the file
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            System.out.println(gson.toJson(clientsArr));
+            file.write(gson.toJson(clientsArr));
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void parseClientObject(JSONObject c) {
@@ -79,7 +132,7 @@ public class ClientData {
             Integer id = ((Long) c.get("id")).intValue();
             String name = (String) c.get("name");
             String phoneNumber = (String) c.get("phoneNumber");
-            Double point = ((Long) c.get("point")).doubleValue();
+            Double point = ((Double) c.get("point"));
             Boolean active = ((Boolean) c.get("active")).booleanValue();
 
             // Get Transaction List
@@ -97,7 +150,7 @@ public class ClientData {
             Integer id = ((Long) c.get("id")).intValue();
             String name = (String) c.get("name");
             String phoneNumber = (String) c.get("phoneNumber");
-            Double point = ((Long) c.get("point")).doubleValue();
+            Double point = ((Double) c.get("point"));
             Boolean active = ((Boolean) c.get("active")).booleanValue();
 
             // Get Transaction List

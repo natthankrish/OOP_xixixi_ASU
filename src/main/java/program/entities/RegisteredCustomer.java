@@ -29,4 +29,12 @@ abstract public class RegisteredCustomer extends Client{
     public void subtractPoint(Double p){
         this.point -= p;
     }
+
+    public void changeActiveStatus() {
+        if (this.active){
+            this.active = false;
+        } else {
+            this.active = true;
+        }
+    }
 }
