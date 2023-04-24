@@ -58,7 +58,7 @@
     "status" : "vip",
     "name" : "Ilham Akbar",
     "phoneNumber" : "081257571010",
-    "point": 999999999,
+    "point": 100000,
     "active" : true,
     "transactionHistory" : [7]
   }

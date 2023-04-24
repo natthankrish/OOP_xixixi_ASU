@@ -2,6 +2,8 @@ package program.datastore;
 
 // Java program to read JSON from a file
 
+import program.entities.*;
+
 public class Example
 {
     public static void main(String[] args) throws Exception {
@@ -15,5 +17,12 @@ public class Example
         id.readDataJSON();
         System.out.println("Loading transaction data...");
         td.readDataJSON();
+
+//        Test Entities Creation
+//        Bill b = new Bill();
+//        Customer c = new Customer(1);
+//        Member m = new Member(2, "", "", 0.0, true);
+//        VIP v = new VIP(3, "", "", 0.0, true);
+//        Product p = new Product();
     }
 }
