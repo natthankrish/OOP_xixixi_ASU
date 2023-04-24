@@ -51,22 +51,33 @@ public class TransactionData {
 
     public void parseClientObject(JSONObject b) {
         // Get every element
-        Long idBill = (Long) b.get("idBill");
-        Long idClient = (Long) b.get("idClient");
+        int idBill = ((Long) b.get("idBill")).intValue();
+        int idClient = ((Long) b.get("idClient")).intValue();
 
-        List<List<Long>> receipt = new ArrayList<>();
+        List<List<Object>> receipt = new ArrayList<>();
         JSONArray arr = (JSONArray) b.get("receipt");
+        arr.forEach( o -> receipt.add(getParseReceiptArr((JSONObject) o)));
 
-        Long totalPrice = (Long) b.get("totalPrice");
-        Long discount = (Long) b.get("discount");
+        Double totalPrice = (Double) b.get("totalPrice");
+        Double discount = (Double) b.get("discount");
         Boolean isFixed = (Boolean) b.get("isFixed");
         String transactionTime = (String) b.get("transactionTime");
 
+//        System.out.println(" "+ idBill + idClient + totalPrice + discount + isFixed + transactionTime);
+//        System.out.println(receipt);
 
+        System.out.println("A transaction with id: "+ idBill +", of client "+ idClient +", has been added with total price of "+totalPrice+".");
+    }
 
-//        System.out.println(id + stock + name + price + purchasePrice + category + image);
-
-//        System.out.println("A product with id: "+ id +", called "+ name +", has been added to "+ category +" category.");
+    public List<Object> getParseReceiptArr(JSONObject o) {
+        List<Object> tuple = new ArrayList<>();
+        Integer idP = ((Long) o.get("idProduct")).intValue();
+        Integer quantity = ((Long) o.get("quantity")).intValue();
+        Double subtotal = (Double) o.get("subtotal");
+        tuple.add(idP);
+        tuple.add(quantity);
+        tuple.add(subtotal);
+        return tuple;
     }
 
 
