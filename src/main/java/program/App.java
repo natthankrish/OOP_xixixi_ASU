@@ -9,6 +9,10 @@ import program.components.NewTab;
 import program.topbar.TopContainer;
 import program.sidebar.SideContainer;
 import program.sidebar.ClockThread;
+import program.components.SearchBar;
+import javafx.scene.layout.StackPane;
+import java.util.Arrays;
+import java.util.List;
 
 public class App extends Application {
     @Override
@@ -30,12 +34,21 @@ public class App extends Application {
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.setScene(scene);
 
+        // search bar
+        List<String> itemList = Arrays.asList("Apple", "Banana", "Cherry", "Elderberry");
+        SearchBar searchBar = new SearchBar("Search", itemList);
+        StackPane rut = new StackPane(searchBar);
+        stage.setScene(new Scene(rut, 300, 250));
+        stage.show();
+
         // Show Main Window
         Image applogo = new Image("file:assets/logo.png");
         stage.getIcons().add(applogo);
         stage.setTitle("BNMO");
         stage.setMaximized(true);
         stage.show();
+
+
     }
 
     @Override
