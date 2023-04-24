@@ -12,7 +12,7 @@ public class ClockThread {
     // this is timer thread which will update out time view every second
     public ClockThread (Clock clock) {
         this.timer = new Thread(() -> {
-            SimpleDateFormat time = new SimpleDateFormat("hh:mm:ss");
+            SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
             SimpleDateFormat date = new SimpleDateFormat("d");
             SimpleDateFormat month = new SimpleDateFormat("MMM");
             SimpleDateFormat year = new SimpleDateFormat("yyyy");
