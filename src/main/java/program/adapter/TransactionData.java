@@ -1,4 +1,4 @@
-package program.datastore;
+package program.adapter;
 
 import lombok.*;
 import org.json.simple.JSONArray;
