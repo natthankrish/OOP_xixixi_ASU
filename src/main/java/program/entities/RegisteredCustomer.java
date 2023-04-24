@@ -5,10 +5,10 @@ import lombok.*;
 @Setter
 
 abstract public class RegisteredCustomer extends Client{
-    private String name;
-    private String phoneNumber;
-    private Double point;
-    private Boolean active;
+    protected String name;
+    protected String phoneNumber;
+    protected Double point;
+    protected Boolean active;
 
     // Constructor
     public RegisteredCustomer(Integer newID, String name, String phoneNumber, Double point, Boolean active){
@@ -17,6 +17,7 @@ abstract public class RegisteredCustomer extends Client{
         this.phoneNumber = phoneNumber;
         this.point = point;
         this.active = active;
+        this.status = null;
     }
 
     @Override

@@ -9,6 +9,7 @@ public class Customer extends Client{
     // Constructor
     public Customer(Integer newID) {
         super(newID);
+        this.status = "customer";
     }
 
     // Methods
@@ -16,4 +17,11 @@ public class Customer extends Client{
     public Double payment(Double n, Double point) {
         return n;
     }
+
+    public void display(){
+        System.out.println("Customer");
+        System.out.println("ID: "+id);
+        System.out.println(transactionHistory);
+    }
+
 }

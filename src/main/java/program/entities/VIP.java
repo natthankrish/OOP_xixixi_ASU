@@ -10,6 +10,7 @@ public class VIP extends RegisteredCustomer{
     public static Double FIXED_DISCOUNT_RATE = 0.1;
     public VIP(Integer newID, String name, String phoneNumber, Double point, Boolean active){
         super(newID, name, phoneNumber, point, active);
+        this.status = "vip";
     }
 
 
@@ -28,5 +29,13 @@ public class VIP extends RegisteredCustomer{
             addPoint(tempPoint);
             return tempPrice - point;
         }
+    }
+
+    public void display(){
+        System.out.println("VIP");
+        System.out.println("ID: "+id+", Name: "+name);
+        System.out.println(transactionHistory);
+        System.out.println("Phone Number: "+ phoneNumber);
+        System.out.println("Point: "+ point+", Active: "+ active);
     }
 }

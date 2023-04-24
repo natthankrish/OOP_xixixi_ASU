@@ -5,10 +5,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import program.entities.Product;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,7 +18,13 @@ import java.io.IOException;
 @Setter
 
 public class InventoryData {
+    private List<Product> buffer;
     private int amount;
+
+    public void reset() {
+        buffer = new ArrayList<>();
+        amount = 0;
+    }
 
     public void readDataJSON() {
         String filePath = new java.io.File("").getAbsolutePath();
@@ -27,13 +35,14 @@ public class InventoryData {
 
         try (FileReader reader = new FileReader(inventoryDatabasePath))
         {
+            reset();
             //Read JSON file
             Object obj = jsonParser.parse(reader);
 
             JSONArray inventoryList = (JSONArray) obj;
 
             //Iterate over client array
-            inventoryList.forEach( product -> parseClientObject( (JSONObject) product ) );
+            inventoryList.forEach( product -> parseProductObject( (JSONObject) product ) );
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -48,7 +57,7 @@ public class InventoryData {
 
     }
 
-    public void parseClientObject(JSONObject p) {
+    public void parseProductObject(JSONObject p) {
         // Get every element
         Integer id = ((Long) p.get("id")).intValue();
         Integer stock = ((Long) p.get("stock")).intValue();
@@ -58,11 +67,41 @@ public class InventoryData {
         String category = (String) p.get("category");
         String image = (String) p.get("image");
 
+        Product pr = new Product(id, stock, name, price, purchasePrice, category, image);
+        buffer.add(pr);
+        amount++;
 
+    }
 
-//        System.out.println(id + stock + name + price + purchasePrice + category + image);
+    // Getter
+    public Product getProductById(Integer id){
+        Integer idx = 0;
+        for (Product p: buffer ) {
+            Integer tempID = p.getId();
+            if (tempID.equals(id)){
+                return p;
+            }
+        }
+        return null;
+    }
 
-        System.out.println("A product with id: "+ id +", called "+ name +", has been added to "+ category +" category.");
+    public void addProduct(Integer id, Integer stock, String name, Double price, Double purchasePrice, String category, String image){
+        Product p = new Product(id, stock, name, price, purchasePrice, category, image);
+        buffer.add(p);
+        amount++;
+    }
+
+    public void removeProduct(Integer id) {
+        Integer idx = 0;
+        for ( Product p : buffer) {
+            Integer tempID = p.getId();
+            if (tempID.equals(id)){
+                buffer.remove(idx);
+                amount--;
+                break;
+            }
+            idx++;
+        }
     }
 
 }

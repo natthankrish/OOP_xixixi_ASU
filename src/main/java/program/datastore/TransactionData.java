@@ -5,6 +5,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import program.entities.Bill;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,7 +18,13 @@ import java.util.*;
 @Setter
 
 public class TransactionData {
+    private List<Bill> buffer;
     private int amount;
+
+    public void reset(){
+        buffer = new ArrayList<>();
+        amount = 0;
+    }
 
     public void readDataJSON() {
         String filePath = new java.io.File("").getAbsolutePath();
@@ -28,13 +35,14 @@ public class TransactionData {
 
         try (FileReader reader = new FileReader(transactionDatabasePath))
         {
+            reset();
             //Read JSON file
             Object obj = jsonParser.parse(reader);
 
             JSONArray transactionList = (JSONArray) obj;
 
             //Iterate over client array
-            transactionList.forEach( bill -> parseClientObject( (JSONObject) bill ));
+            transactionList.forEach( bill -> parseBillObject( (JSONObject) bill ));
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -49,25 +57,28 @@ public class TransactionData {
 
     }
 
-    public void parseClientObject(JSONObject b) {
+    public void parseBillObject(JSONObject b) {
         // Get every element
         int idBill = ((Long) b.get("idBill")).intValue();
         int idClient = ((Long) b.get("idClient")).intValue();
 
         List<List<Object>> receipt = new ArrayList<>();
         JSONArray arr = (JSONArray) b.get("receipt");
-        arr.forEach( o -> receipt.add(getParseReceiptArr((JSONObject) o)));
+        for (Object o: arr) {
+            List<Object> tuple = getParseReceiptArr((JSONObject) o);
+            receipt.add(tuple);
+        }
 
         Double totalPrice = (Double) b.get("totalPrice");
         Double discount = (Double) b.get("discount");
         Boolean isFixed = (Boolean) b.get("isFixed");
         String transactionTime = (String) b.get("transactionTime");
 
-//        System.out.println(" "+ idBill + idClient + totalPrice + discount + isFixed + transactionTime);
-//        System.out.println(receipt);
-
-        System.out.println("A transaction with id: "+ idBill +", of client "+ idClient +", has been added with total price of "+totalPrice+".");
+        Bill bi = new Bill(idBill, idClient, receipt, totalPrice, discount, isFixed, transactionTime);
+        buffer.add(bi);
+        amount++;
     }
+
 
     public List<Object> getParseReceiptArr(JSONObject o) {
         List<Object> tuple = new ArrayList<>();

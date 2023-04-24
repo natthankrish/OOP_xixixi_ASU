@@ -87,4 +87,13 @@ public class Bill {
         transactionTime = time;
     }
 
+    public void display() {
+        System.out.println("ID: "+idBill+", IDClient: "+ idClient);
+        for ( List<Object> l : receipt) {
+            System.out.println("[ "+ l.get(0)+", "+l.get(1)+", "+l.get(2)+" ]");
+        }
+        System.out.println("Total price: "+ totalPrice +", Discount: "+ discount);
+        System.out.println("Fix status: "+ isFixedBill +", Time: "+ transactionTime);
+    }
+
 }

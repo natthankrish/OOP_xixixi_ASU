@@ -24,5 +24,26 @@ public class Example
 //        Member m = new Member(2, "", "", 0.0, true);
 //        VIP v = new VIP(3, "", "", 0.0, true);
 //        Product p = new Product();
+
+//        Testing Class Input
+
+        cd.getBuffer().forEach(o -> {
+                if (o instanceof VIP){
+                    ((VIP) o).display();
+                } else if (o instanceof  Member){
+                    ((Member) o).display();
+                } else {
+                    ((Customer) o).display();
+                }
+        });
+
+        for ( Product p : id.getBuffer()) {
+            p.display();
+        }
+        for (Bill b : td.getBuffer()){
+            b.display();
+        }
+
+
     }
 }
