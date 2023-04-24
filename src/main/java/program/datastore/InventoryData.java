@@ -64,5 +64,4 @@ public class InventoryData {
 
         System.out.println("A product with id: "+ id +", called "+ name +", has been added to "+ category +" category.");
     }
-
 }

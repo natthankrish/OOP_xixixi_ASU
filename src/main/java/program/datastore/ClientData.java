@@ -9,7 +9,6 @@ import java.util.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
-
 import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
@@ -71,5 +70,4 @@ public class ClientData {
             System.out.println("A "+ status +" with id: "+ id +", named "+name+", has been added.");
         }
     }
-
 }
