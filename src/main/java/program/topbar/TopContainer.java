@@ -8,12 +8,14 @@ import program.components.NewImage;
 
 @Getter
 public class TopContainer extends Group {
+    private TopbarFunctional topbar;
     private Background component;
     private NewImage logo;
     private LogoThread logoThread;
     public TopContainer() {
+        this.topbar = new TopbarFunctional();
         this.component = new Background(Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight() / 15, "#E4D0D0");
-        this.getChildren().add(this.component);
+        this.getChildren().addAll(this.component, this.topbar);
 
         this.logo = new NewImage("assets/logo/1.png");
         this.logo.setDimension(this.component.getHeight() * 32 / 27, this.component.getHeight() * 2 / 3);
