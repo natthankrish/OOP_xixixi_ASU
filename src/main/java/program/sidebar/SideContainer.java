@@ -1,26 +1,22 @@
 package program.sidebar;
 
 import javafx.scene.Group;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import lombok.*;
+import program.components.Background;
 import program.components.Clock;
 import program.components.VerticalTabPane;
 
 @Getter
 public class SideContainer extends Group {
-    private Rectangle component;
+    private Background component;
     private Clock clock;
     private VerticalTabPane tabsContainer;
     private ClockThread clockThread;
     public SideContainer() {
         this.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() / 15);
 
-        this.component = new Rectangle();
-        this.component.setWidth(Screen.getPrimary().getVisualBounds().getWidth() / 5);
-        this.component.setHeight(Screen.getPrimary().getVisualBounds().getHeight() * 14 / 15);
-        this.component.setFill(Color.valueOf("#F5EBEB"));
+        this.component = new Background(Screen.getPrimary().getVisualBounds().getWidth() / 5, Screen.getPrimary().getVisualBounds().getHeight() * 14 / 15, "#F5EBEB");
         this.getChildren().add(this.component);
 
         this.clock = new Clock(this.component);

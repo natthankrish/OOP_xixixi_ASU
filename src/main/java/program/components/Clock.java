@@ -9,13 +9,13 @@ import lombok.*;
 
 @Getter
 public class Clock extends Group {
-    private Rectangle background;
+    private Background background;
     private NewLabel time;
     private NewLabel date;
     private NewLabel month;
     private NewLabel year;
 
-    public Clock(Rectangle rec) {
+    public Clock(Background rec) {
         this.setLayoutY(rec.getHeight() * 69 / 80);
         this.setLayoutX(rec.getWidth() * 1 / 10);
 
@@ -26,13 +26,9 @@ public class Clock extends Group {
 //        this.time.setTextFill(Color.valueOf("#E4D0D0"));
 //        this.time.setFont(Font.font("Inter", FontWeight.BOLD, 36));
 
-        this.background = new Rectangle();
-        this.background.setWidth(165);
-        this.background.setHeight(45);
-        this.background.setFill(Color.valueOf("#867070"));
+        this.background = new Background(165, 45, "#867070");
         this.background.setLayoutY(rec.getHeight() * 5 / 200);
-        this.background.setArcHeight(20);
-        this.background.setArcWidth(20);
+        this.background.setArc(20);
 
         this.date = new NewLabel();
         this.date.setText("23");
