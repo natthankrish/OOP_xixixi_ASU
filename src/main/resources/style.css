@@ -18,3 +18,36 @@
 .tab-pane .tab-header-area .tab-header-background {
     -fx-opacity: 0;
 }
+.menu-bar {
+    -fx-padding: 15 10;
+    -fx-background-color:transparent;
+}
+.menu {
+    -fx-padding: 10 30;
+    -fx-text-fill: #867070;
+    -fx-font-family: 'Inter';
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-background-radius: 9;
+}
+.menu .label {
+    -fx-text-fill: #867070;
+}
+.menu:hover {
+    -fx-background-color: #D5B4B4;
+}
+.menu:showing {
+    -fx-background-color: #D5B4B4;
+}
+.menu .label:hover {
+    -fx-text-fill: #867070;
+}
+.menu-item .label {
+    -fx-text-fill: #867070;
+}
+.menu-item .label:hover {
+    -fx-text-fill: white;
+}
+.menu-item:focused {
+    -fx-background-color: #D5B4B4;
+}
