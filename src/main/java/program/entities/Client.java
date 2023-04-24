@@ -6,8 +6,8 @@ import lombok.*;
 @Setter
 
 abstract public class Client {
-    private Integer id;
-    private List<Integer> transactionHistory;
+    protected Integer id;
+    protected List<Integer> transactionHistory;
 
     // Constructor
     public Client(Integer newID) {
@@ -30,4 +30,6 @@ abstract public class Client {
             idx++;
         }
     }
+
+
 }

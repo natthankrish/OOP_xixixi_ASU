@@ -29,4 +29,12 @@ public class VIP extends RegisteredCustomer{
             return tempPrice - point;
         }
     }
+
+    public void display(){
+        System.out.println("VIP");
+        System.out.println("ID: "+id+", Name: "+name);
+        System.out.println(transactionHistory);
+        System.out.println("Phone Number: "+ phoneNumber);
+        System.out.println("Point: "+ point+", Active: "+ active);
+    }
 }

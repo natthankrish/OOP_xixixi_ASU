@@ -11,7 +11,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
 import lombok.*;
-import program.entities.Product;
+import program.entities.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,8 +19,13 @@ import program.entities.Product;
 @Setter
 
 public class ClientData {
-    private List<Product> buffer;
+    private List<? super Client> buffer;
     private int amount;
+
+    public void reset(){
+        buffer = new ArrayList <>();
+        amount = 0;
+    }
 
     public void readDataJSON() {
         String filePath = new java.io.File("").getAbsolutePath();
@@ -31,6 +36,7 @@ public class ClientData {
 
         try (FileReader reader = new FileReader(clientDatabasePath))
         {
+            reset();
             //Read JSON file
             Object obj = jsonParser.parse(reader);
 
@@ -54,54 +60,59 @@ public class ClientData {
 
     public void parseClientObject(JSONObject c) {
         // Get every element
-        Integer id = ((Long) c.get("id")).intValue();
         String status = (String) c.get("status");
-        String name = (String) c.get("name");
-        String phoneNumber = (String) c.get("phoneNumber");
-        Double point = ((Long) c.get("point")).doubleValue();
-        Boolean active = ((Boolean) c.get("active")).booleanValue();
-
-        // Get Transaction List
-        JSONArray arr = (JSONArray) c.get("transactionHistory");
-        List<Integer> arrTransaction = new ArrayList<>();
-        arr.forEach( i -> arrTransaction.add( ((Long) i).intValue() ));
-
-//        System.out.println(id + status + name + phoneNumber + point + active);
-//        System.out.println(arr);
         if (status.equals("customer")){
-            System.out.println("An unnamed customer with id: "+ id+" has beed added.");
-        } else {
-            System.out.println("A "+ status +" with id: "+ id +", named "+name+", has been added.");
+
+            Integer id = ((Long) c.get("id")).intValue();
+
+            // Get Transaction List
+            JSONArray arr = (JSONArray) c.get("transactionHistory");
+            List<Integer> arrTransaction = new ArrayList<>();
+            arr.forEach( i -> arrTransaction.add( ((Long) i).intValue() ));
+
+            Customer cr = new Customer(id);
+            cr.setTransactionHistory(arrTransaction);
+            buffer.add(cr);
+
         }
+        else if (status.equals("member")){
+            Integer id = ((Long) c.get("id")).intValue();
+            String name = (String) c.get("name");
+            String phoneNumber = (String) c.get("phoneNumber");
+            Double point = ((Long) c.get("point")).doubleValue();
+            Boolean active = ((Boolean) c.get("active")).booleanValue();
+
+            // Get Transaction List
+            JSONArray arr = (JSONArray) c.get("transactionHistory");
+            List<Integer> arrTransaction = new ArrayList<>();
+            arr.forEach( i -> arrTransaction.add( ((Long) i).intValue() ));
+
+            Member m = new Member(id, name, phoneNumber, point, active);
+            m.setTransactionHistory(arrTransaction);
+            buffer.add(m);
+
+
+        }
+        else if (status.equals("vip")){
+            Integer id = ((Long) c.get("id")).intValue();
+            String name = (String) c.get("name");
+            String phoneNumber = (String) c.get("phoneNumber");
+            Double point = ((Long) c.get("point")).doubleValue();
+            Boolean active = ((Boolean) c.get("active")).booleanValue();
+
+            // Get Transaction List
+            JSONArray arr = (JSONArray) c.get("transactionHistory");
+            List<Integer> arrTransaction = new ArrayList<>();
+            arr.forEach( i -> arrTransaction.add( ((Long) i).intValue() ));
+
+            VIP v = new VIP(id, name, phoneNumber, point, active);
+            v.setTransactionHistory(arrTransaction);
+            buffer.add(v);
+        }
+        amount++;
+
     }
 
-    public Product getProductById(Integer id){
-        Integer idx = 0;
-        for (Product p: buffer ) {
-            Integer tempID = p.getId();
-            if (tempID.equals(id)){
-                return p;
-            }
-        }
-        return null;
-    }
-
-    public void addProduct(Integer id, Integer stock, String name, Double price, Double purchasePrice, String category, String image){
-        Product p = new Product(id, stock, name, price, purchasePrice, category, image);
-        buffer.add(p);
-    }
-
-    public void removeProduct(Integer id) {
-        Integer idx = 0;
-        for ( Product p : buffer) {
-            Integer tempID = p.getId();
-            if (tempID.equals(id)){
-                buffer.remove(idx);
-                break;
-            }
-            idx++;
-        }
-    }
 
 
 }
