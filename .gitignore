@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 src/main/java/program/MainBrigita.java
+src/main/java/program/plugin/PluginClassLoader.java
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

@@ -1,41 +1,56 @@
 package program.sidebar;
 
 
-import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.scene.layout.VBox;
 import program.components.NewLabel;
 import program.components.NewTab;
 
-public class TabThread extends NewTab {
+import java.lang.reflect.Constructor;
 
+public class TabThread extends NewTab {
     private Thread tabThread;
-    private final Task<Void> task;
-    public TabThread(String tabText, int size, String color, String bgColor, int weight) {
+    private Class<?> pluginClass;
+    private Object pluginInstance;
+    private Task<Void> task;
+    public TabThread(String tabText, int size, String color, String bgColor, int weight, Class<?> pluginClass) {
         super(tabText, size, color, bgColor, weight);
-        NewLabel progressLabel = new NewLabel("Hello", 16, "#867070", "#D5B4B466", 700);
-        VBox vbox = new VBox(progressLabel);
-        setContent(vbox);
+        setEmpty();
+        this.pluginClass = pluginClass;
+        addPluginInstance();
+
         this.task = new Task<>() {
             @Override
             protected Void call() throws Exception {
-                // Do some time-consuming work here
-                for (int i = 0; i < 10; i++) {
-                    Thread.sleep(1000); // turns off the thread every 1 seconds
-                    final String message = String.format("Test %d", i);
-                    Platform.runLater(() -> progressLabel.setText(message));
-                }
+                pluginClass.getMethod("run").invoke(pluginInstance);
                 return null;
             }
         };
-
-        progressLabel.textProperty().bind(task.messageProperty());
-
         setOnSelectionChanged(event -> {
-            if (isSelected() && !this.task.isRunning()) {
+            if (this.task != null && isSelected() && !this.task.isRunning()) {
                 this.tabThread = new Thread(this.task);
                 this.tabThread.start();
             }
         });
+
+        setOnClosed(event -> {
+            if (this.task != null && this.task.isRunning()) {
+                this.task.cancel();
+                this.tabThread.interrupt();
+            }
+        });
+    }
+
+    public void addPluginInstance() {
+        try {
+            Constructor<?> constructor = this.pluginClass.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            pluginInstance = constructor.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void setEmpty() {
+        NewLabel empty = new NewLabel("This page is empty", 16, "#867070", "#D5B4B466", 700);
+        setContent(empty);
     }
 }
