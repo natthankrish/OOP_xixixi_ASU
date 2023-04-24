@@ -57,7 +57,7 @@ public class NewLabel extends Label{
         setStyle();
     }
 
-    public void setLayout(int x, int y) {
+    public void setLayout(double x, double y) {
         this.setLayoutX(x);
         this.setLayoutY(y);
     }

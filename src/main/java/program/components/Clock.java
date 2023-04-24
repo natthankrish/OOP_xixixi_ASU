@@ -20,35 +20,20 @@ public class Clock extends Group {
         this.setLayoutX(rec.getWidth() * 1 / 10);
 
         this.time = new NewLabel("23:59:59", 36, "#E4D0D0", 700);
-//        this.time.setText("23:59:59");
-        this.time.setLayoutX(rec.getWidth() * 3 / 100);
-        this.time.setLayoutY(rec.getHeight() * 9 / 400);
-//        this.time.setTextFill(Color.valueOf("#E4D0D0"));
-//        this.time.setFont(Font.font("Inter", FontWeight.BOLD, 36));
+        this.time.setLayout(rec.getWidth() * 3 / 100, rec.getHeight() * 9 / 400);
 
         this.background = new Background(165, 45, "#867070");
-        this.background.setLayoutY(rec.getHeight() * 5 / 200);
+        this.background.setPosition(0,rec.getHeight() * 5 / 200);
         this.background.setArc(20);
 
-        this.date = new NewLabel();
-        this.date.setText("23");
-        this.date.setLayoutX(rec.getWidth() * 45 / 100);
-        this.date.setTextFill(Color.valueOf("#867070"));
-        this.date.setFont(Font.font("Inter", FontWeight.BOLD, 60));
+        this.date = new NewLabel("23", 60, "#867070", 700);
+        this.date.setLayout(rec.getWidth() * 45 / 100, 0);
 
-        this.month = new NewLabel();
-        this.month.setText("AUG");
-        this.month.setLayoutX(rec.getWidth() * 65 / 100);
-        this.month.setLayoutY(rec.getHeight() * 5 / 500);
-        this.month.setFont(Font.font("Inter", FontWeight.BOLD, 24));
-        this.month.setTextFill(Color.valueOf("#867070"));
+        this.month = new NewLabel("DEC", 24, "#867070", 700);
+        this.month.setLayout(rec.getWidth() * 65 / 100, rec.getHeight() * 5 / 500);
 
-        this.year = new NewLabel();
-        this.year.setText("2023");
-        this.year.setLayoutX(rec.getWidth() * 65 / 100);
-        this.year.setLayoutY(rec.getHeight() * 20 / 500);
-        this.year.setTextFill(Color.valueOf("#867070"));
-        this.year.setFont(Font.font("Inter", FontWeight.BOLD, 24));
+        this.year = new NewLabel("9999", 24, "#867070", 700);
+        this.year.setLayout(rec.getWidth() * 65 / 100, rec.getHeight() * 20 / 500);
 
         this.getChildren().add(this.background);
         this.getChildren().add(this.time);
