@@ -9,6 +9,7 @@ import program.components.NewTab;
 import program.topbar.TopContainer;
 import program.sidebar.SideContainer;
 import program.sidebar.ClockThread;
+import program.topbar.LogoThread;
 import program.components.SearchBar;
 import javafx.scene.layout.StackPane;
 import java.util.Arrays;
@@ -35,11 +36,11 @@ public class App extends Application {
         stage.setScene(scene);
 
         // search bar
-        List<String> itemList = Arrays.asList("Apple", "Banana", "Cherry", "Elderberry");
-        SearchBar searchBar = new SearchBar("Search", itemList);
-        StackPane rut = new StackPane(searchBar);
-        stage.setScene(new Scene(rut, 300, 250));
-        stage.show();
+//        List<String> itemList = Arrays.asList("Apple", "Banana", "Cherry", "Elderberry");
+//        SearchBar searchBar = new SearchBar("Search", itemList);
+//        StackPane rut = new StackPane(searchBar);
+//        stage.setScene(new Scene(rut, 300, 250));
+//        stage.show();
 
         // Show Main Window
         Image applogo = new Image("file:assets/logo.png");
@@ -55,5 +56,6 @@ public class App extends Application {
     public void stop() throws Exception {
         super.stop();
         ClockThread.appClosed = true;
+        LogoThread.appClosed = true;
     }
 }
