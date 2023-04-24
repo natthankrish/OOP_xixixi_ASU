@@ -1,4 +1,4 @@
-package program.datastore;
+package program.adapter;
 
 // Java program to read JSON from a file
 
