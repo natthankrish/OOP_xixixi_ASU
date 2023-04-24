@@ -17,7 +17,6 @@ abstract public class RegisteredCustomer extends Client{
         this.phoneNumber = phoneNumber;
         this.point = point;
         this.active = active;
-        this.status = null;
     }
 
     @Override

@@ -7,13 +7,11 @@ import lombok.*;
 
 abstract public class Client {
     protected Integer id;
-    protected String status;
     protected List<Integer> transactionHistory;
 
     // Constructor
     public Client(Integer newID) {
         this.id = newID;
-        this.status = null;
         this.transactionHistory = new ArrayList<>();
     }
 

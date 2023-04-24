@@ -9,7 +9,6 @@ public class Customer extends Client{
     // Constructor
     public Customer(Integer newID) {
         super(newID);
-        this.status = "customer";
     }
 
     // Methods

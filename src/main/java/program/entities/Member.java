@@ -9,7 +9,6 @@ public class Member extends RegisteredCustomer{
     public static Double FIXED_POINT_RATE = 0.01;
     public Member(Integer newID, String name, String phoneNumber, Double point, Boolean active){
         super(newID, name, phoneNumber, point, active);
-        this.status = "member";
     }
 
 

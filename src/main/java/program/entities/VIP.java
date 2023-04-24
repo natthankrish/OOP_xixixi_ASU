@@ -10,7 +10,6 @@ public class VIP extends RegisteredCustomer{
     public static Double FIXED_DISCOUNT_RATE = 0.1;
     public VIP(Integer newID, String name, String phoneNumber, Double point, Boolean active){
         super(newID, name, phoneNumber, point, active);
-        this.status = "vip";
     }
 
 
