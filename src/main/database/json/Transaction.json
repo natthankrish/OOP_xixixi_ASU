@@ -6,16 +6,16 @@
       {
         "idProduct": 14,
         "quantity": 1,
-        "subtotal":35000
+        "subtotal":35000.0
       },
       {
         "idProduct" : 4,
         "quantity" : 2,
-        "subtotal": 56000
+        "subtotal": 56000.0
       }
     ],
-    "totalPrice": 91000,
-    "discount": 18200,
+    "totalPrice": 91000.0,
+    "discount": 18200.0,
     "isFixed": true,
     "transactionTime": ""
   },
@@ -26,16 +26,16 @@
       {
         "idProduct": 2,
         "quantity": 1,
-        "subtotal":25000
+        "subtotal":25000.0
       },
       {
         "idProduct" : 11,
         "quantity" : 3,
-        "subtotal": 72000
+        "subtotal": 72000.0
       }
     ],
-    "totalPrice": 97000,
-    "discount": 0,
+    "totalPrice": 97000.0,
+    "discount": 0.0,
     "isFixed": false,
     "transactionTime": ""
   },
@@ -46,21 +46,21 @@
       {
         "idProduct": 9,
         "quantity": 2,
-        "subtotal":60000
+        "subtotal":60000.5
       },
       {
         "idProduct" : 10,
         "quantity" : 1,
-        "subtotal": 19000
+        "subtotal": 19000.0
       },
       {
         "idProduct" : 14,
         "quantity" : 2,
-        "subtotal": 70000
+        "subtotal": 70000.0
       }
     ],
-    "totalPrice": 149000,
-    "discount": 14900,
+    "totalPrice": 149000.5,
+    "discount": 14900.0,
     "isFixed": true,
     "transactionTime": ""
   },
@@ -71,11 +71,11 @@
       {
         "idProduct": 9,
         "quantity": 1,
-        "subtotal":30000
+        "subtotal":30000.0
       }
     ],
-    "totalPrice": 30000,
-    "discount": 3000,
+    "totalPrice": 30000.0,
+    "discount": 3000.0,
     "isFixed": true,
     "transactionTime": ""
   },
@@ -86,16 +86,16 @@
       {
         "idProduct": 2,
         "quantity": 2,
-        "subtotal":50000
+        "subtotal":50000.0
       },
       {
         "idProduct" : 5,
         "quantity" : 1,
-        "subtotal": 15000
+        "subtotal": 15000.0
       }
     ],
-    "totalPrice": 65000,
-    "discount": 0,
+    "totalPrice": 65000.0,
+    "discount": 0.0,
     "isFixed": true,
     "transactionTime": ""
   },
@@ -106,16 +106,16 @@
       {
         "idProduct": 15,
         "quantity": 1,
-        "subtotal":40000
+        "subtotal":40000.0
       },
       {
         "idProduct" : 7,
         "quantity" : 3,
-        "subtotal": 36000
+        "subtotal": 36000.0
       }
     ],
-    "totalPrice": 76000,
-    "discount": 7600,
+    "totalPrice": 76000.0,
+    "discount": 7600.0,
     "isFixed": true,
     "transactionTime": ""
   },
@@ -126,16 +126,16 @@
       {
         "idProduct": 12,
         "quantity": 1,
-        "subtotal":28000
+        "subtotal":28000.0
       },
       {
         "idProduct" : 14,
         "quantity" : 1,
-        "subtotal": 35000
+        "subtotal": 35000.0
       }
     ],
-    "totalPrice": 63000,
-    "discount": 6300,
+    "totalPrice": 63000.0,
+    "discount": 6300.0,
     "isFixed": false,
     "transactionTime": ""
   }

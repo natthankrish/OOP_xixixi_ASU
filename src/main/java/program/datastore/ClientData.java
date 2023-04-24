@@ -11,12 +11,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
 import lombok.*;
+import program.entities.Product;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 
 public class ClientData {
+    private List<Product> buffer;
     private int amount;
 
     public void readDataJSON() {
@@ -51,17 +54,17 @@ public class ClientData {
 
     public void parseClientObject(JSONObject c) {
         // Get every element
-        Long id = (Long) c.get("id");
+        Integer id = ((Long) c.get("id")).intValue();
         String status = (String) c.get("status");
         String name = (String) c.get("name");
         String phoneNumber = (String) c.get("phoneNumber");
-        Long point = (Long) c.get("point");
-        Boolean active = (Boolean) c.get("active");
+        Double point = ((Long) c.get("point")).doubleValue();
+        Boolean active = ((Boolean) c.get("active")).booleanValue();
 
         // Get Transaction List
         JSONArray arr = (JSONArray) c.get("transactionHistory");
-        List<Long> arrTransaction = new ArrayList<>();
-        arr.forEach( i -> arrTransaction.add( (Long) i));
+        List<Integer> arrTransaction = new ArrayList<>();
+        arr.forEach( i -> arrTransaction.add( ((Long) i).intValue() ));
 
 //        System.out.println(id + status + name + phoneNumber + point + active);
 //        System.out.println(arr);
@@ -71,5 +74,34 @@ public class ClientData {
             System.out.println("A "+ status +" with id: "+ id +", named "+name+", has been added.");
         }
     }
+
+    public Product getProductById(Integer id){
+        Integer idx = 0;
+        for (Product p: buffer ) {
+            Integer tempID = p.getId();
+            if (tempID.equals(id)){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public void addProduct(Integer id, Integer stock, String name, Double price, Double purchasePrice, String category, String image){
+        Product p = new Product(id, stock, name, price, purchasePrice, category, image);
+        buffer.add(p);
+    }
+
+    public void removeProduct(Integer id) {
+        Integer idx = 0;
+        for ( Product p : buffer) {
+            Integer tempID = p.getId();
+            if (tempID.equals(id)){
+                buffer.remove(idx);
+                break;
+            }
+            idx++;
+        }
+    }
+
 
 }

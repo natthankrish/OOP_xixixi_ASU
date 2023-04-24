@@ -50,11 +50,11 @@ public class InventoryData {
 
     public void parseClientObject(JSONObject p) {
         // Get every element
-        Long id = (Long) p.get("id");
-        Long stock = (Long) p.get("stock");
+        Integer id = ((Long) p.get("id")).intValue();
+        Integer stock = ((Long) p.get("stock")).intValue();
         String name = (String) p.get("name");
-        Long price = (Long) p.get("price");
-        Long purchasePrice = (Long) p.get("purchasePrice");
+        Double price = (Double) p.get("price");
+        Double purchasePrice = (Double) p.get("purchasePrice");
         String category = (String) p.get("category");
         String image = (String) p.get("image");
 
