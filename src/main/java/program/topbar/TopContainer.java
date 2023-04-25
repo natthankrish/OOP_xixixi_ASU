@@ -11,7 +11,7 @@ public class TopContainer extends Group {
     private TopbarFunctional topbar;
     private Background component;
     private NewImage logo;
-    private LogoThread logoThread;
+
     public TopContainer() {
         this.topbar = new TopbarFunctional();
         this.component = new Background(Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight() / 15, "#E4D0D0");
@@ -22,6 +22,6 @@ public class TopContainer extends Group {
         this.logo.setPosition(this.component.getWidth() - (this.logo.getFitWidth() * 1.5), this.component.getHeight()/2 - this.logo.getFitHeight()/2);
         this.getChildren().add(this.logo);
 
-        this.logoThread = new LogoThread(this.logo);
+        new LogoThread(this.logo).start();
     }
 }

@@ -12,7 +12,7 @@ public class SideContainer extends Group {
     private Background component;
     private Clock clock;
     private VerticalTabPane tabsContainer;
-    private ClockThread clockThread;
+
     public SideContainer() {
         this.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() / 15);
 
@@ -24,6 +24,6 @@ public class SideContainer extends Group {
 
         this.tabsContainer = new VerticalTabPane();
         this.getChildren().add(this.tabsContainer);
-        this.clockThread = new ClockThread(this.clock);
+        new ClockThread(this.clock).start();
     }
 }
