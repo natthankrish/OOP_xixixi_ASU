@@ -35,7 +35,7 @@ public class NewImage extends ImageView {
 
     public void nextImage() {
         this.id++;
-        if (this.id == 3) {
+        if (this.id == 13) {
             this.id = 1;
         }
         this.changeImage("assets/logo/" + this.id + ".png");
