@@ -28,6 +28,7 @@ public class Bill {
             arr.add(tempSubtotal);
             this.receipt.add(arr);
             updateTransactionTime();
+            recalculateTotalPrice();
         }
     }
 
@@ -45,23 +46,26 @@ public class Bill {
                 if (!quantity.equals(null)){
                     temp.set(1, quantity);
                     updateTransactionTime();
+                    recalculateTotalPrice();
                 }
                 if (!subtotal.equals(null)){
                     temp.set(2, subtotal);
                     updateTransactionTime();
+                    recalculateTotalPrice();
                 }
             }
         }
     }
 
     public void removeBillItem(Integer id){
-
+        // Delete item based on the product id
         if (!isFixedBill){
             int idx = 0;
             for (List<Object> l: receipt) {
                 if (l.get(0).equals(id)){
                     receipt.remove(idx);
                     updateTransactionTime();
+                    recalculateTotalPrice();
                     break;
                 }
                 idx++;
@@ -70,11 +74,24 @@ public class Bill {
         }
     }
 
+    public boolean isProductIDInReceipt(int id){
+        // Check whether a product with certain ID is already in the receipt
+        for (List<Object> tuple: receipt) {
+            if (tuple.get(0).equals(id)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public void setFixed() {
+        // Make temporary bill to be a fixed one
         this.isFixedBill = true;
     }
 
     public void updateTransactionTime(){
+        // updating transaction time everytime the receipt is changed
         Date date = new Date();
         Integer d = date.getDate();
         Integer m = date.getMonth();
@@ -87,12 +104,21 @@ public class Bill {
     }
 
     public void display() {
-        System.out.println("ID: "+idBill+", IDClient: "+ idClient);
-        for ( List<Object> l : receipt) {
-            System.out.println("[ "+ l.get(0)+", "+l.get(1)+", "+l.get(2)+" ]");
+        System.out.println("ID: " + idBill + ", IDClient: " + idClient);
+        for (List<Object> l : receipt) {
+            System.out.println("[ " + l.get(0) + ", " + l.get(1) + ", " + l.get(2) + " ]");
         }
-        System.out.println("Total price: "+ totalPrice);
-        System.out.println("Fix status: "+ isFixedBill +", Time: "+ transactionTime);
+        System.out.println("Total price: " + totalPrice);
+        System.out.println("Fix status: " + isFixedBill + ", Time: " + transactionTime);
+
+    }
+
+    public void recalculateTotalPrice(){
+        Double res = 0.0;
+        for ( List<Object> tuple: receipt) {
+            res += (Double) tuple.get(2);
+        }
+        this.totalPrice = res;
     }
 
 }
