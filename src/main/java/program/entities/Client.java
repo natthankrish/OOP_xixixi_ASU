@@ -30,4 +30,13 @@ abstract public class Client {
             idx++;
         }
     }
+
+    public boolean isTransactionIDInTransaction(Integer id){
+        for (Integer tempID: transactionHistory) {
+            if (tempID.equals(id)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
