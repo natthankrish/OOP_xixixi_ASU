@@ -18,12 +18,13 @@ import program.container.TransactionContainer;
 import program.entities.*;
 
 
-public class JSONAdapter {
+public class JSONAdapter implements Adapter{
+    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\json\\Client.json";
+    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\json\\Inventory.json";
+    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\json\\Transaction.json";
 
     // CLIENT DATA
     public void readDataClient(ClientContainer cc) {
-        String filePath = new java.io.File("").getAbsolutePath();
-        var clientDatabasePath = filePath + "\\src\\main\\database\\json\\Client.json";
 
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
@@ -49,8 +50,6 @@ public class JSONAdapter {
     }
 
     public void writeDataClient(ClientContainer cc) {
-        String filePath = new java.io.File("").getAbsolutePath();
-        var clientDatabasePath = filePath + "\\src\\main\\database\\json\\Client.json";
 
         JSONArray clientsArr = new JSONArray();
         for (Object o : cc.getBuffer()) {
@@ -158,9 +157,6 @@ public class JSONAdapter {
 
     // INVENTORY DATA
     public void readDataInventory(InventoryContainer ic) {
-        String filePath = new java.io.File("").getAbsolutePath();
-        var inventoryDatabasePath = filePath + "\\src\\main\\database\\json\\Inventory.json";
-
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
 
@@ -201,8 +197,6 @@ public class JSONAdapter {
     }
 
     public void writeDataInventory(InventoryContainer ic) {
-        String filePath = new java.io.File("").getAbsolutePath();
-        var inventoryDatabasePath = filePath + "\\src\\main\\database\\json\\Inventory.json";
         // Make array
         JSONArray productsArr = new JSONArray();
         for (Product p : ic.getBuffer()) {
@@ -233,9 +227,6 @@ public class JSONAdapter {
 
     // TRANSACTION DATA
     public void readDataTransaction(TransactionContainer tc) {
-        String filePath = new java.io.File("").getAbsolutePath();
-        var transactionDatabasePath = filePath + "\\src\\main\\database\\json\\Transaction.json";
-
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
 
@@ -293,9 +284,6 @@ public class JSONAdapter {
 
 
     public void writeDataTransaction(TransactionContainer tc) {
-        String filePath = new java.io.File("").getAbsolutePath();
-        var transactionDatabasePath = filePath + "\\src\\main\\database\\json\\Transaction.json";
-
         JSONArray transactionsArr = new JSONArray();
         for (Bill b : tc.getBuffer()) {
             JSONObject billObj = new JSONObject();
