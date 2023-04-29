@@ -101,6 +101,7 @@ public class Bill {
         Integer ss = date.getSeconds();
         String time = d+"/"+m+"/"+y+"/"+hh+":"+mm+":"+ss;
         transactionTime = time;
+        System.out.println(time);
     }
 
     public void display() {
