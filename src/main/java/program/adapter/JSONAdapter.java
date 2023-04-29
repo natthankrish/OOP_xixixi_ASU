@@ -189,8 +189,9 @@ public class JSONAdapter implements Adapter{
         Double purchasePrice = (Double) p.get("purchasePrice");
         String category = (String) p.get("category");
         String image = (String) p.get("image");
+        Boolean active = (Boolean) p.get("active");
 
-        Product pr = new Product(id, stock, name, price, purchasePrice, category, image);
+        Product pr = new Product(id, stock, name, price, purchasePrice, category, image, active);
         ic.getBuffer().add(pr);
         ic.increaseAmount();
 
@@ -208,6 +209,7 @@ public class JSONAdapter implements Adapter{
             productObj.put("purchasePrice", p.getPurchasePrice());
             productObj.put("category", p.getCategory());
             productObj.put("image", p.getImage());
+            productObj.put("active", p.getActive());
 
             productsArr.add(productObj);
         }
