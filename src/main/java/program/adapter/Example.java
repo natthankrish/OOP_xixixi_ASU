@@ -60,8 +60,5 @@ public class Example
 //        ja.writeDataInventory(ic);
         ja.writeDataTransaction(tc);
 
-        Bill b = new Bill();
-        b.updateTransactionTime();
-
     }
 }
