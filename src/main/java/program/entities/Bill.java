@@ -13,7 +13,7 @@ public class Bill {
     private List<List<Object>> receipt;
     private Double totalPrice;
     private Boolean isFixedBill;
-    private String transactionTime;
+    private Time transactionTime;
 
     public void addBillItem(Integer id, Integer quantity, Double subtotal){
         // subtotal is the value of product's price * quantity
@@ -92,16 +92,7 @@ public class Bill {
 
     public void updateTransactionTime(){
         // updating transaction time everytime the receipt is changed
-        Date date = new Date();
-        Integer d = date.getDate();
-        Integer m = date.getMonth();
-        Integer y = date.getYear() + 1900;
-        Integer hh = date.getHours();
-        Integer mm = date.getMinutes();
-        Integer ss = date.getSeconds();
-        String time = d+"/"+m+"/"+y+"/"+hh+":"+mm+":"+ss;
-        transactionTime = time;
-        System.out.println(time);
+        transactionTime.updateCurrentTime();
     }
 
     public void display() {
@@ -110,7 +101,7 @@ public class Bill {
             System.out.println("[ " + l.get(0) + ", " + l.get(1) + ", " + l.get(2) + " ]");
         }
         System.out.println("Total price: " + totalPrice);
-        System.out.println("Fix status: " + isFixedBill + ", Time: " + transactionTime);
+        System.out.println("Fix status: " + isFixedBill + ", Time: " + transactionTime.getStringTime());
 
     }
 

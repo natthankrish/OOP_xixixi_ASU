@@ -266,7 +266,10 @@ public class JSONAdapter implements Adapter{
 
         Double totalPrice = (Double) b.get("totalPrice");
         Boolean isFixed = (Boolean) b.get("isFixed");
-        String transactionTime = (String) b.get("transactionTime");
+        String time = (String) b.get("transactionTime");
+        Time transactionTime = new Time();
+        transactionTime.setStringTime(time);
+        transactionTime.parseTimeFromString();
 
         Bill bi = new Bill(idBill, idClient, receipt, totalPrice, isFixed, transactionTime);
         tc.getBuffer().add(bi);
@@ -303,7 +306,7 @@ public class JSONAdapter implements Adapter{
             billObj.put("receipt", receiptArr);
             billObj.put("totalPrice", b.getTotalPrice());
             billObj.put("isFixed", b.getIsFixedBill());
-            billObj.put("transactionTime", b.getTransactionTime());
+            billObj.put("transactionTime", b.getTransactionTime().getStringTime());
             transactionsArr.add(billObj);
 
         }
