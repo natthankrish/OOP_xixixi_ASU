@@ -16,9 +16,6 @@ public class Clock extends Group {
     private NewLabel year;
 
     public Clock(Background rec) {
-        this.setLayoutY(rec.getHeight() * 69 / 80);
-        this.setLayoutX(rec.getWidth() * 1 / 10);
-
         this.time = new NewLabel("23:59:59", 36, "#E4D0D0", 700);
         this.time.setLayout(rec.getWidth() * 3 / 100, rec.getHeight() * 9 / 400);
 
@@ -40,5 +37,10 @@ public class Clock extends Group {
         this.getChildren().add(this.date);
         this.getChildren().add(this.month);
         this.getChildren().add(this.year);
+    }
+
+    public void setLayout(double x, double y) {
+        this.setLayoutY(x);
+        this.setLayoutX(y);
     }
 }

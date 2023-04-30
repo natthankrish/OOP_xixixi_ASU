@@ -21,15 +21,11 @@ public class App extends Application {
         // Setting Scene Buffer
         Group root = new Group();
 
-        TopContainer topContainer = new TopContainer();
-        root.getChildren().add(topContainer);
-
         SideContainer sideContainer = new SideContainer();
-        NewTab tab1 = new NewTab("Inventory", 16, "#867070", "#D5B4B466", 700);
-        NewTab tab2 = new NewTab("Member", 16, "#867070", "#D5B4B466", 700);
-        sideContainer.getTabsContainer().getTabs().addAll(tab1, tab2);
-        sideContainer.getTabsContainer().setVertical();
         root.getChildren().add(sideContainer);
+
+        TopContainer topContainer = new TopContainer(sideContainer.getTabsContainer());
+        root.getChildren().add(topContainer);
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());

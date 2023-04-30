@@ -13,7 +13,7 @@ public class TabThread extends NewTab {
     private Object pluginInstance;
     private Task<Void> task;
     public TabThread(String tabText, int size, String color, String bgColor, int weight, Class<?> pluginClass) {
-        super(tabText, size, color, bgColor, weight);
+        super(tabText, size, color, bgColor, weight, 3);
         setEmpty();
         this.pluginClass = pluginClass;
         addPluginInstance();
