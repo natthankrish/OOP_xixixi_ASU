@@ -3,10 +3,7 @@ package program.adapter;
 import program.container.ClientContainer;
 import program.container.InventoryContainer;
 import program.container.TransactionContainer;
-import program.entities.Bill;
-import program.entities.Customer;
-import program.entities.Member;
-import program.entities.VIP;
+import program.entities.*;
 
 import java.io.File;
 
@@ -67,7 +64,7 @@ public class XMLAdapter implements Adapter{
     }
     public void writeDataTransaction(TransactionContainer tc){
         try {
-            JAXBContext context = JAXBContext.newInstance(TransactionContainer.class, Bill.class);
+            JAXBContext context = JAXBContext.newInstance(TransactionContainer.class, Bill.class, ReceiptInfo.class, Time.class);
             Marshaller marshaller = context.createMarshaller();
             //Required formatting
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);

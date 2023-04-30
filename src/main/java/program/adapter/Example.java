@@ -68,8 +68,8 @@ public class Example
 //        ja.writeDataInventory(ic);
 //        xa.writeDataInventory(ic);
         System.out.println("Writing transaction data...");
-        ja.writeDataTransaction(tc);
-//        xa.writeDataTransaction(tc);
+//        ja.writeDataTransaction(tc);
+        xa.writeDataTransaction(tc);
 
     }
 }

@@ -309,7 +309,6 @@ public class JSONAdapter implements Adapter{
         try (FileWriter file = new FileWriter(transactionDatabasePath)) {
             //We can write any JSONArray or JSONObject instance to the file
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            System.out.println(gson.toJson(transactionsArr));
             file.write(gson.toJson(transactionsArr));
             file.flush();
 
