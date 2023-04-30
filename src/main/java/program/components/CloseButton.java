@@ -17,4 +17,20 @@ public class CloseButton extends Button {
             -fx-pref-width: 23;
         """);
     }
+
+    public void show() {
+        this.setStyle("""
+            -fx-pref-height: 23;
+            -fx-pref-width: 23;
+        """);
+    }
+
+    public void hide() {
+        this.setStyle("""
+            -fx-pref-height: 0;
+            -fx-pref-width: 0;
+        """);
+    }
+
+
 }

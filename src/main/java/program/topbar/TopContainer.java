@@ -1,10 +1,13 @@
 package program.topbar;
 
 import javafx.scene.Group;
+import javafx.scene.control.TabPane;
 import javafx.stage.Screen;
 import lombok.*;
 import program.components.Background;
 import program.components.NewImage;
+import program.sidebar.ScrollTabPane;
+import program.sidebar.SideContainer;
 
 @Getter
 public class TopContainer extends Group {
@@ -12,8 +15,8 @@ public class TopContainer extends Group {
     private Background component;
     private NewImage logo;
 
-    public TopContainer() {
-        this.topbar = new TopbarFunctional();
+    public TopContainer(ScrollTabPane tab) {
+        this.topbar = new TopbarFunctional(tab);
         this.component = new Background(Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight() / 15, "#E4D0D0");
         this.getChildren().addAll(this.component, this.topbar);
 

@@ -1,53 +1,49 @@
 package program.topbar;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
+import program.components.NewTab;
+import program.sidebar.ScrollTabPane;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TopbarFunctional extends MenuBar {
 
-    public TopbarFunctional() {
-        // "Go To Page" menu
-        Menu goToPageMenu = new Menu("Go To Page");
-        MenuItem page1Item = new MenuItem("Page 1");
-        MenuItem page2Item = new MenuItem("Page 2");
-        MenuItem page3Item = new MenuItem("Page 3");
-        goToPageMenu.getItems().addAll(page1Item, page2Item, page3Item);
+    List<Menu> menuList;
+    List<List<MenuItem>> itemMenuList;
+    ScrollTabPane tabBuffer;
 
-        // "Settings" menu
-        Menu settingsMenu = new Menu("Settings");
-        MenuItem settingsItem = new MenuItem("Open Settings");
-        settingsMenu.getItems().addAll(settingsItem);
+    public TopbarFunctional(ScrollTabPane tab) {
+        this.tabBuffer = tab;
+        this.menuList = new ArrayList<>();
+        this.itemMenuList = new ArrayList<>();
 
-        // "Report" menu
-        Menu reportMenu = new Menu("Report");
-        MenuItem reportItem = new MenuItem("Generate Report");
-        reportMenu.getItems().addAll(reportItem);
+        // Menu List
+        this.menuList.add(new Menu("Go To Page"));
+        this.menuList.add(new Menu("Settings"));
+        this.menuList.add(new Menu("Report"));
+        for (int i = 0; i < 3; i++) {
+            this.itemMenuList.add(new ArrayList<>());
+        }
 
-        // ACTIONS
-        page1Item.setOnAction(event -> {
-            // Code to navigate to Page 1
-            System.out.println("Navigating to Page 1...");
-        });
-        page2Item.setOnAction(event -> {
-            // Code to navigate to Page 2
-            System.out.println("Navigating to Page 2...");
-        });
-        page3Item.setOnAction(event -> {
-            // Code to navigate to Page 3
-            System.out.println("Navigating to Page 3...");
-        });
+        // Item Menu List
+        this.itemMenuList.get(0).add(new MenuItem("Transaction"));
+        this.itemMenuList.get(0).add(new MenuItem("Register Member"));
+        this.itemMenuList.get(0).add(new MenuItem("Member Directory"));
+        this.itemMenuList.get(0).add(new MenuItem("Item Directory"));
 
-        settingsItem.setOnAction(event -> {
-            // Code to open settings
-            System.out.println("Opening Settings...");
-        });
+        this.itemMenuList.get(1).add(new MenuItem("Open Settings"));
 
-        reportItem.setOnAction(event -> {
-            // Code to generate report
-            System.out.println("Generating Report...");
-        });
+        this.itemMenuList.get(2).add(new MenuItem("Sales Report"));
+        this.itemMenuList.get(2).add(new MenuItem("Bill History"));
 
-        // Add menus to menu bar
-        this.getMenus().addAll(goToPageMenu, settingsMenu, reportMenu);
+        for (int i = 0; i < this.menuList.size(); i++) {
+            for (MenuItem item : this.itemMenuList.get(i)) {
+                this.menuList.get(i).getItems().add(item);
+                item.setOnAction(event -> {
+                    this.tabBuffer.addTab(item.getText());
+                });
+            }
+            this.getMenus().add(this.menuList.get(i));
+        }
     }
 }
