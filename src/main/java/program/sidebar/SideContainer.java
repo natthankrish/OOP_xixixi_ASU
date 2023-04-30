@@ -4,6 +4,7 @@ import javafx.scene.Group;
 import javafx.stage.Screen;
 import lombok.*;
 import program.components.*;
+import program.page.BasePage;
 
 @Getter
 public class SideContainer extends Group {
@@ -23,13 +24,17 @@ public class SideContainer extends Group {
         this.head.setLayout(this.component.getWidth()/15, this.component.getWidth()/25);
         this.getChildren().add(this.head);
 
+        this.closeAllButton = new CloseAllButton();
+        this.closeAllButton.setLayout(this.component.getWidth() * 11/15, this.component.getWidth()*2/25);
+        this.getChildren().add(this.closeAllButton);
+
         this.clock = new Clock(this.component);
-        this.clock.setLayout(this.component.getHeight() * 69 / 80, this.component.getWidth() * 1 / 10);
+        this.clock.setLayout(this.component.getWidth() * 1 / 10, this.component.getHeight() * 69 / 80);
         this.getChildren().add(this.clock);
 
-        this.tabsContainer = new ScrollTabPane(this.component.getWidth(), this.component.getHeight());
+        this.tabsContainer = new ScrollTabPane(this.component.getWidth(), this.component.getHeight() * 60 /80);
         this.getChildren().add(this.tabsContainer);
-        this.tabsContainer.setLayoutY(100);
+        this.tabsContainer.setLayoutY(this.component.getWidth()/5);
 
         new ClockThread(this.clock).start();
     }

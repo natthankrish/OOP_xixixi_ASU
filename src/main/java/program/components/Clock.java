@@ -40,7 +40,7 @@ public class Clock extends Group {
     }
 
     public void setLayout(double x, double y) {
-        this.setLayoutY(x);
-        this.setLayoutX(y);
+        this.setLayoutY(y);
+        this.setLayoutX(x);
     }
 }

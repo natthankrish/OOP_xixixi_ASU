@@ -6,6 +6,9 @@ import javafx.scene.image.Image;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import program.components.NewTab;
+import program.page.*;
+import program.page.BillHistory;
+import program.page.Settings;
 import program.topbar.TopContainer;
 import program.sidebar.SideContainer;
 import program.sidebar.ClockThread;
@@ -16,18 +19,24 @@ import java.util.Arrays;
 import java.util.List;
 
 public class App extends Application {
+
+    private static Group root;
+    private static BasePage page;
     @Override
     public void start(Stage stage) throws Exception {
         // Setting Scene Buffer
-        Group root = new Group();
+        App.root = new Group();
+
+        App.page = new BasePage();
+        root.getChildren().add(App.page);
 
         SideContainer sideContainer = new SideContainer();
-        root.getChildren().add(sideContainer);
+        App.root.getChildren().add(sideContainer);
 
         TopContainer topContainer = new TopContainer(sideContainer.getTabsContainer());
-        root.getChildren().add(topContainer);
+        App.root.getChildren().add(topContainer);
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(App.root);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.setScene(scene);
 
@@ -48,6 +57,11 @@ public class App extends Application {
 
     }
 
+    public static void setPageBuffer(BasePage newPage) {
+        App.root.getChildren().remove(App.page);
+        App.page = newPage;
+        App.root.getChildren().add(App.page);
+    }
     @Override
     public void stop() throws Exception {
         super.stop();

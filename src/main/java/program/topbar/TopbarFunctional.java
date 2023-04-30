@@ -40,7 +40,7 @@ public class TopbarFunctional extends MenuBar {
             for (MenuItem item : this.itemMenuList.get(i)) {
                 this.menuList.get(i).getItems().add(item);
                 item.setOnAction(event -> {
-                    this.tabBuffer.getTabContainer().getTabs().add(new NewTab(item.getText(), 16, "#867070", "#D5B4B466", 700, this.tabBuffer.getPrefWidth()));
+                    this.tabBuffer.addTab(item.getText());
                 });
             }
             this.getMenus().add(this.menuList.get(i));

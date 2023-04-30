@@ -2,42 +2,34 @@ package program.sidebar;
 
 import javafx.geometry.Side;
 import javafx.scene.Group;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import lombok.Getter;
+import program.components.CloseAllButton;
+import program.components.NewTab;
+import program.page.BasePage;
 
 @Getter
 public class ScrollTabPane extends ScrollPane {
-    TabPane tabContainer;
+    private VBox buffer;
     public ScrollTabPane(double x, double y) {
         super();
-        this.tabContainer = new TabPane();
-        this.tabContainer.setBackground(Background.fill(Color.valueOf("#F5EBEB")));
+        this.buffer = new VBox();
         this.setBackground(Background.fill(Color.valueOf("#F5EBEB")));
         this.setStyle("-fx-background:#F5EBEB;-fx-background-color:transparent;");
-        this.setContent(this.tabContainer);
-        this.setPrefSize(9*x/10, 200);
-        this.setVertical();
-
+        this.setPrefSize(9*x/10, y);
         this.setLayoutX(x/20);
+        this.setContent(this.buffer);
+        this.setFitToWidth(true);
+        this.buffer.setSpacing(10);
     }
-    public void setVertical() {
-        this.tabContainer.setSide(Side.LEFT);
-        this.tabContainer.setRotateGraphic(true);
-        Label l = null;
-        StackPane stp = null;
-        for(Tab t : this.tabContainer.getTabs()){
-            l = new Label(t.getText());
-            l.setRotate(90);
-            stp = new StackPane(new Group(l));
-            stp.setRotate(90);
-            t.setGraphic(stp);
-            t.setText("");
-        }
+
+    public void addTab(String text) {
+        this.buffer.getChildren().add(new NewTab(text, this.buffer.getChildren(), this.getPrefWidth()));
+        this.buffer.getChildren().get(this.buffer.getChildren().size()-1).onMouseClickedProperty();
     }
+
 }
