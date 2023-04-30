@@ -254,11 +254,11 @@ public class JSONAdapter implements Adapter{
         Integer idBill = ((Long) b.get("idBill")).intValue();
         Integer idClient = ((Long) b.get("idClient")).intValue();
 
-        List<List<Object>> receipt = new ArrayList<>();
+        List<ReceiptInfo> receipt = new ArrayList<>();
         JSONArray arr = (JSONArray) b.get("receipt");
         for (Object o: arr) {
-            List<Object> tuple = getParseReceiptArr((JSONObject) o);
-            receipt.add(tuple);
+            ReceiptInfo info = getParseReceiptArr((JSONObject) o);
+            receipt.add(info);
         }
 
         Double totalPrice = (Double) b.get("totalPrice");
@@ -273,15 +273,12 @@ public class JSONAdapter implements Adapter{
         tc.increaseAmount();
     }
 
-    public List<Object> getParseReceiptArr(JSONObject o) {
-        List<Object> tuple = new ArrayList<>();
+    public ReceiptInfo getParseReceiptArr(JSONObject o) {
         Integer idP = ((Long) o.get("idProduct")).intValue();
         Integer quantity = ((Long) o.get("quantity")).intValue();
         Double subtotal = (Double) o.get("subtotal");
-        tuple.add(idP);
-        tuple.add(quantity);
-        tuple.add(subtotal);
-        return tuple;
+        ReceiptInfo info = new ReceiptInfo(idP, quantity, subtotal);
+        return info;
     }
 
 
@@ -293,11 +290,11 @@ public class JSONAdapter implements Adapter{
             billObj.put("idClient", b.getIdClient());
 
             JSONArray receiptArr = new JSONArray();
-            for (List<Object> r : b.getReceipt()){
+            for (ReceiptInfo r : b.getReceipt()){
                 JSONObject rec = new JSONObject();
-                rec.put("idProduct", r.get(0));
-                rec.put("quantity", r.get(1));
-                rec.put("subtotal", r.get(2));
+                rec.put("idProduct", r.getProductID());
+                rec.put("quantity", r.getQuantity());
+                rec.put("subtotal", r.getSubtotal());
                 receiptArr.add(rec);
             }
             billObj.put("receipt", receiptArr);
