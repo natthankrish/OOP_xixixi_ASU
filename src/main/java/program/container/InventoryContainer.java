@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType (XmlAccessType.FIELD)
 
 public class InventoryContainer {
-    @XmlAnyElement(lax = true)
+    @XmlElement(name = "Product")
     public List<Product> buffer;
     @XmlElement(name = "Amount")
     private int amount;

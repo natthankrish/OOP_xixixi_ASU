@@ -20,16 +20,18 @@ public class Example
         JSONAdapter ja = new JSONAdapter();
         XMLAdapter xa = new XMLAdapter();
 
-//        System.out.println("Loading client data...");
+        // READ DATA
+        System.out.println("Loading client data...");
 //        ja.readDataClient(cc);
-//        System.out.println("Loading inventory data...");
+        xa.readDataClient(cc);
+        System.out.println("Loading inventory data...");
 //        ja.readDataInventory(ic);
+        xa.readDataInventory(ic);
         System.out.println("Loading transaction data...");
-        ja.readDataTransaction(tc);
+//        ja.readDataTransaction(tc);
+        xa.readDataTransaction(tc);
 
-
-//        Testing Class Input
-
+        // DISPLAY TO TEST DATA
 //        cc.getBuffer().forEach(o -> {
 //                if (o instanceof VIP){
 //                    ((VIP) o).display();
@@ -39,13 +41,13 @@ public class Example
 //                    ((Customer) o).display();
 //                }
 //        });
-
-//        for ( Product p : ic.getBuffer()) {
-//            p.display();
-//        }
 //        for (Bill b : tc.getBuffer()){
 //            b.display();
 //        }
+//        for ( Product p : ic.getBuffer()) {
+//            p.display();
+//        }
+
 
 //        Add item
 //        Product pr = new Product(ic.getMaxID()+1, 10, "Strawberry Milkshake", 24000.0, 18000.0, "Milk", "", true);
@@ -60,13 +62,13 @@ public class Example
 //            p.display();
 //        }
 
-//        Write Data
-//        System.out.println("Writing client data...");
+        // WRITE DATA
+        System.out.println("Writing client data...");
 //        ja.writeDataClient(cc);
-//        xa.writeDataClient(cc);
-//        System.out.println("Writing inventory data...");
-//        ja.writeDataInventory(ic);
-//        xa.writeDataInventory(ic);
+        xa.writeDataClient(cc);
+        System.out.println("Writing inventory data...");
+        ja.writeDataInventory(ic);
+        xa.writeDataInventory(ic);
         System.out.println("Writing transaction data...");
 //        ja.writeDataTransaction(tc);
         xa.writeDataTransaction(tc);

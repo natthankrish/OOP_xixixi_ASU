@@ -23,6 +23,10 @@ abstract public class Client {
     // Methods
     abstract public Double payment(Double n, Double point);
     public void addTransaction(Integer id){
+        if (transactionHistory == null){
+            // Handle case if equal null, because some XML data reading can result null value
+            transactionHistory = new ArrayList<>();
+        }
         transactionHistory.add(id);
     }
     public void removeTransaction(Integer id){
