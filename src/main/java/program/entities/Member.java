@@ -1,8 +1,17 @@
 package program.entities;
 
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import lombok.*;
+
+@NoArgsConstructor
 @Getter
 @Setter
+@XmlRootElement(name = "Member")
+@XmlAccessorType(XmlAccessType.FIELD)
 
 public class Member extends RegisteredCustomer{
 

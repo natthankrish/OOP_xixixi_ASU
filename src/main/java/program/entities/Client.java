@@ -1,10 +1,15 @@
 package program.entities;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.*;
 import lombok.*;
+@NoArgsConstructor
 @Getter
 @Setter
-
+@XmlRootElement(name = "Client")
+@XmlAccessorType (XmlAccessType.FIELD)
 abstract public class Client {
     protected Integer id;
     protected List<Integer> transactionHistory;

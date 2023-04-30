@@ -7,14 +7,19 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@XmlRootElement(name = "InventoryContainer")
+@XmlAccessorType (XmlAccessType.FIELD)
 
 public class InventoryContainer {
+    @XmlAnyElement(lax = true)
     public List<Product> buffer;
+    @XmlElement(name = "Amount")
     private int amount;
 
     public void reset() {

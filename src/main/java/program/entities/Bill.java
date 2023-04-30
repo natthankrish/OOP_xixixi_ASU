@@ -2,15 +2,21 @@ package program.entities;
 
 import java.util.*;
 import lombok.*;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-
+@XmlRootElement(name = "Bill")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Bill {
     private Integer idBill;
     private Integer idClient;
-    private List<List<Object>> receipt;
+    private List<ReceiptInfo> receipt;
     private Double totalPrice;
     private Boolean isFixedBill;
     private Time transactionTime;
@@ -19,14 +25,8 @@ public class Bill {
         // subtotal is the value of product's price * quantity
         // search for it first from the product's list before insert is as the parameter
         if (!isFixedBill){
-            Integer tempID = id;
-            Integer tempQuantity = quantity;
-            Double tempSubtotal = subtotal;
-            List<Object> arr = new ArrayList<>();
-            arr.add(tempID);
-            arr.add(tempQuantity);
-            arr.add(tempSubtotal);
-            this.receipt.add(arr);
+            ReceiptInfo info = new ReceiptInfo(id, quantity, subtotal);
+            this.receipt.add(info);
             updateTransactionTime();
             recalculateTotalPrice();
         }
@@ -36,23 +36,17 @@ public class Bill {
         // Only insert the parameter for the changing element, else will be inserted as null
         // e.g. if you want to ONLY change the quantity, insert (id, quantity, null)
         if (!isFixedBill){
-            List<Object> temp = null;
-            for (List<Object> l: receipt) {
-                if (l.get(0).equals(id)){
-                    temp = l;
+            ReceiptInfo info = null;
+            for (ReceiptInfo i: receipt) {
+                if (i.getProductID().equals(id)){
+                    info = i;
                 }
             }
-            if (!temp.equals(null)){
-                if (!quantity.equals(null)){
-                    temp.set(1, quantity);
-                    updateTransactionTime();
-                    recalculateTotalPrice();
-                }
-                if (!subtotal.equals(null)){
-                    temp.set(2, subtotal);
-                    updateTransactionTime();
-                    recalculateTotalPrice();
-                }
+            if (!info.equals(null)){
+                info.setQuantity(quantity);
+                info.setSubtotal(subtotal);
+                updateTransactionTime();
+                recalculateTotalPrice();
             }
         }
     }
@@ -61,8 +55,8 @@ public class Bill {
         // Delete item based on the product id
         if (!isFixedBill){
             int idx = 0;
-            for (List<Object> l: receipt) {
-                if (l.get(0).equals(id)){
+            for (ReceiptInfo i: receipt) {
+                if (i.getProductID().equals(id)){
                     receipt.remove(idx);
                     updateTransactionTime();
                     recalculateTotalPrice();
@@ -76,8 +70,8 @@ public class Bill {
 
     public boolean isProductIDInReceipt(int id){
         // Check whether a product with certain ID is already in the receipt
-        for (List<Object> tuple: receipt) {
-            if (tuple.get(0).equals(id)){
+        for (ReceiptInfo i: receipt) {
+            if (i.getProductID().equals(id)){
                 return true;
             }
         }
@@ -97,8 +91,8 @@ public class Bill {
 
     public void display() {
         System.out.println("ID: " + idBill + ", IDClient: " + idClient);
-        for (List<Object> l : receipt) {
-            System.out.println("[ " + l.get(0) + ", " + l.get(1) + ", " + l.get(2) + " ]");
+        for (ReceiptInfo i : receipt) {
+            System.out.println("[ " + i.getProductID() + ", " + i.getQuantity() + ", " + i.getSubtotal() + " ]");
         }
         System.out.println("Total price: " + totalPrice);
         System.out.println("Fix status: " + isFixedBill + ", Time: " + transactionTime.getStringTime());
@@ -107,8 +101,8 @@ public class Bill {
 
     public void recalculateTotalPrice(){
         Double res = 0.0;
-        for ( List<Object> tuple: receipt) {
-            res += (Double) tuple.get(2);
+        for ( ReceiptInfo i: receipt) {
+            res += (Double) i.getSubtotal();
         }
         this.totalPrice = res;
     }

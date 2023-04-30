@@ -1,9 +1,16 @@
 package program.entities;
 
 import lombok.*;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@NoArgsConstructor
 @Getter
 @Setter
-
+@XmlRootElement(name = "RegisteredCustomer")
+@XmlAccessorType(XmlAccessType.FIELD)
 abstract public class RegisteredCustomer extends Client{
     protected String name;
     protected String phoneNumber;
