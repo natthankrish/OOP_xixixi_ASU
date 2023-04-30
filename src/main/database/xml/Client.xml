@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ClientContainer>
+    <Customer>
+        <id>1</id>
+    </Customer>
+    <Member>
+        <id>2</id>
+        <transactionHistory>1</transactionHistory>
+        <transactionHistory>2</transactionHistory>
+        <name>Juan Christopher Santoso</name>
+        <phoneNumber>081122223333</phoneNumber>
+        <point>100000.0</point>
+        <active>true</active>
+    </Member>
+    <VIP>
+        <id>3</id>
+        <transactionHistory>3</transactionHistory>
+        <name>Antonio Natthan Krishna</name>
+        <phoneNumber>081121213030</phoneNumber>
+        <point>500000.0</point>
+        <active>true</active>
+    </VIP>
+    <VIP>
+        <id>4</id>
+        <transactionHistory>4</transactionHistory>
+        <name>Brigita Tri Carolina</name>
+        <phoneNumber>081245450088</phoneNumber>
+        <point>60000.0</point>
+        <active>false</active>
+    </VIP>
+    <Member>
+        <id>5</id>
+        <transactionHistory>5</transactionHistory>
+        <name>Melvin Kent Jonathan</name>
+        <phoneNumber>081344883322</phoneNumber>
+        <point>120000.0</point>
+        <active>true</active>
+    </Member>
+    <Member>
+        <id>6</id>
+        <transactionHistory>6</transactionHistory>
+        <name>Daniel Egiant Sitanggang</name>
+        <phoneNumber>081300119966</phoneNumber>
+        <point>50000.0</point>
+        <active>false</active>
+    </Member>
+    <VIP>
+        <id>7</id>
+        <transactionHistory>7</transactionHistory>
+        <name>Ilham Akbar</name>
+        <phoneNumber>081257571010</phoneNumber>
+        <point>100000.0</point>
+        <active>true</active>
+    </VIP>
+    <Amount>7</Amount>
+</ClientContainer>

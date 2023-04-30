@@ -1,5 +1,11 @@
 package program.container;
 
+// Access for XML Adapter
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAnyElement;
 
 import program.entities.*;
 
@@ -12,8 +18,12 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@XmlRootElement(name = "ClientContainer")
+@XmlAccessorType (XmlAccessType.FIELD)
 public class ClientContainer{
+    @XmlAnyElement(lax=true)
     private List<? super Client> buffer;
+    @XmlElement(name = "Amount")
     private int amount;
 
     public void reset() {
@@ -29,8 +39,7 @@ public class ClientContainer{
     }
     public Customer getCustomerById(Integer id){
         for (Object obj : buffer) {
-            if (obj instanceof Customer){
-                Customer cr = (Customer) obj;
+            if (obj instanceof Customer cr){
                 Integer tempID = cr.getId();
                 if (tempID.equals(id)){
                     return cr;
@@ -42,8 +51,7 @@ public class ClientContainer{
 
     public Member getMemberById(Integer id){
         for (Object obj : buffer) {
-            if (obj instanceof Member){
-                Member mr = (Member) obj;
+            if (obj instanceof Member mr){
                 Integer tempID = mr.getId();
                 if (tempID.equals(id)){
                     return mr;
@@ -55,8 +63,7 @@ public class ClientContainer{
 
     public VIP getVIPById(Integer id){
         for (Object obj : buffer) {
-            if (obj instanceof VIP){
-                VIP vp = (VIP) obj;
+            if (obj instanceof VIP vp){
                 Integer tempID = vp.getId();
                 if (tempID.equals(id)){
                     return vp;

@@ -54,8 +54,7 @@ public class JSONAdapter implements Adapter{
         JSONArray clientsArr = new JSONArray();
         for (Object o : cc.getBuffer()) {
             JSONObject clientObj = new JSONObject();
-            if (o instanceof Customer){
-                Customer cr = (Customer) o;
+            if (o instanceof Customer cr){
                 clientObj.put("id", cr.getId());
                 clientObj.put("status", "customer");
                 clientObj.put("name", "");
@@ -64,8 +63,7 @@ public class JSONAdapter implements Adapter{
                 clientObj.put("active", false);
                 clientObj.put("transactionHistory", cr.getTransactionHistory());
                 System.out.println("customer");
-            } else if (o instanceof Member){
-                Member mr = (Member) o;
+            } else if (o instanceof Member mr){
                 clientObj.put("id", mr.getId());
                 clientObj.put("status", "member");
                 clientObj.put("name", mr.getName());
@@ -74,8 +72,7 @@ public class JSONAdapter implements Adapter{
                 clientObj.put("active", mr.getActive());
                 clientObj.put("transactionHistory", mr.getTransactionHistory());
                 System.out.println("member");
-            } else if (o instanceof VIP){
-                VIP vp = (VIP) o;
+            } else if (o instanceof VIP vp){
                 clientObj.put("id", vp.getId());
                 clientObj.put("status", "vip");
                 clientObj.put("name", vp.getName());

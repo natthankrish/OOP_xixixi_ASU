@@ -10,10 +10,15 @@ import program.entities.*;
 public class Example
 {
     public static void main(String[] args) throws Exception {
-//        ClientContainer cc = new ClientContainer();
-//        InventoryContainer ic = new InventoryContainer();
+
+        // CONTAINER
+        ClientContainer cc = new ClientContainer();
+        InventoryContainer ic = new InventoryContainer();
         TransactionContainer tc = new TransactionContainer();
+
+        // ADAPTER
         JSONAdapter ja = new JSONAdapter();
+        XMLAdapter xa = new XMLAdapter();
 
 //        System.out.println("Loading client data...");
 //        ja.readDataClient(cc);
@@ -38,9 +43,9 @@ public class Example
 //        for ( Product p : ic.getBuffer()) {
 //            p.display();
 //        }
-        for (Bill b : tc.getBuffer()){
-            b.display();
-        }
+//        for (Bill b : tc.getBuffer()){
+//            b.display();
+//        }
 
 //        Add item
 //        Product pr = new Product(ic.getMaxID()+1, 10, "Strawberry Milkshake", 24000.0, 18000.0, "Milk", "", true);
@@ -56,9 +61,15 @@ public class Example
 //        }
 
 //        Write Data
+//        System.out.println("Writing client data...");
 //        ja.writeDataClient(cc);
+//        xa.writeDataClient(cc);
+//        System.out.println("Writing inventory data...");
 //        ja.writeDataInventory(ic);
-        ja.writeDataTransaction(tc);
+//        xa.writeDataInventory(ic);
+        System.out.println("Writing transaction data...");
+//        ja.writeDataTransaction(tc);
+        xa.writeDataTransaction(tc);
 
     }
 }

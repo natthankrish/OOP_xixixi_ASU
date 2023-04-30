@@ -3,8 +3,8 @@ package program.container;
 
 import lombok.*;
 import program.entities.Bill;
-import program.entities.Product;
 
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +13,12 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@XmlRootElement(name = "ClientContainer")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class TransactionContainer {
+    @XmlAnyElement(lax = true)
     public List<Bill> buffer;
+    @XmlElement(name = "Amount")
     private int amount;
 
     public void reset() {
