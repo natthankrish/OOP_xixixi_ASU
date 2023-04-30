@@ -10,6 +10,7 @@ import java.io.File;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 public class XMLAdapter implements Adapter{
 
@@ -20,6 +21,21 @@ public class XMLAdapter implements Adapter{
     public void readDataClient(ClientContainer cc){
 
 
+        try
+        {
+            File xmlFile = new File(clientDatabasePath);
+            JAXBContext context = JAXBContext.newInstance(ClientContainer.class, Customer.class, Member.class, VIP.class);
+            Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
+
+            ClientContainer temp = (ClientContainer) jaxbUnmarshaller.unmarshal(xmlFile);
+
+            cc.setAmount(temp.getAmount());
+            cc.setBuffer(temp.getBuffer());
+        }
+        catch (JAXBException e)
+        {
+            e.printStackTrace();
+        }
 
     }
     public void writeDataClient(ClientContainer cc){
@@ -41,7 +57,21 @@ public class XMLAdapter implements Adapter{
     }
 
     public void readDataInventory(InventoryContainer ic){
-        
+        try
+        {
+            File xmlFile = new File(inventoryDatabasePath);
+            JAXBContext context = JAXBContext.newInstance(InventoryContainer.class);
+            Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
+
+            InventoryContainer temp = (InventoryContainer) jaxbUnmarshaller.unmarshal(xmlFile);
+
+            ic.setAmount(temp.getAmount());
+            ic.setBuffer(temp.getBuffer());
+        }
+        catch (JAXBException e)
+        {
+            e.printStackTrace();
+        }
     }
     public void writeDataInventory(InventoryContainer ic){
         try {
@@ -60,11 +90,25 @@ public class XMLAdapter implements Adapter{
     }
 
     public void readDataTransaction(TransactionContainer tc){
-        
+        try
+        {
+            File xmlFile = new File(transactionDatabasePath);
+            JAXBContext context = JAXBContext.newInstance(TransactionContainer.class, Bill.class);
+            Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
+
+            TransactionContainer temp = (TransactionContainer) jaxbUnmarshaller.unmarshal(xmlFile);
+
+            tc.setAmount(temp.getAmount());
+            tc.setBuffer(temp.getBuffer());
+        }
+        catch (JAXBException e)
+        {
+            e.printStackTrace();
+        }
     }
     public void writeDataTransaction(TransactionContainer tc){
         try {
-            JAXBContext context = JAXBContext.newInstance(TransactionContainer.class, Bill.class, ReceiptInfo.class, Time.class);
+            JAXBContext context = JAXBContext.newInstance(TransactionContainer.class, Bill.class);
             Marshaller marshaller = context.createMarshaller();
             //Required formatting
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
