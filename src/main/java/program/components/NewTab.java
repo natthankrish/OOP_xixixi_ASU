@@ -5,6 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import lombok.Getter;
 import lombok.Setter;
 import program.page.*;
@@ -16,14 +17,16 @@ public class NewTab extends HBox {
     private static CloseAllButton closeAllButton;
     private static ObservableList<Node> listTabs;
     private static NewTab currentTab;
+    private static VBox tabBuffer;
     private Button tabButton;
     private String textButton;
     private CloseButton closeButton;
     private BasePage page;
 
-    public NewTab(String tabText, ObservableList<Node> listTabs, double width, CloseAllButton closeAllButton) {
+    public NewTab(String tabText, ObservableList<Node> listTabs, double width, CloseAllButton closeAllButton, VBox tabBuffer) {
         NewTab.listTabs = listTabs;
         NewTab.closeAllButton = closeAllButton;
+        NewTab.tabBuffer = tabBuffer;
         this.textButton = tabText;
         this.closeButton = new CloseButton();
         this.tabButton = new Button();
@@ -56,7 +59,7 @@ public class NewTab extends HBox {
             this.process(width, false);
         });
 
-        this.setOnMouseExited(event -> {
+        NewTab.tabBuffer.setOnMouseExited(event -> {
             if (NewTab.currentTab != null) {
                 NewTab.currentTab.process(width, false);
             }
