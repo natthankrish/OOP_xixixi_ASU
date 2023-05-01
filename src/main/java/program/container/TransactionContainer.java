@@ -17,7 +17,7 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TransactionContainer {
     @XmlAnyElement(lax = true)
-    public List<Bill> buffer;
+    private List<Bill> buffer;
     @XmlElement(name = "Amount")
     private int amount;
 

@@ -18,7 +18,7 @@ import jakarta.xml.bind.annotation.*;
 
 public class InventoryContainer {
     @XmlElement(name = "Product")
-    public List<Product> buffer;
+    private List<Product> buffer;
     @XmlElement(name = "Amount")
     private int amount;
 

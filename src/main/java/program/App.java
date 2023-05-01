@@ -40,7 +40,6 @@ public class App extends Application {
     private static ClientContainer cc;
     private static InventoryContainer ic;
     private static TransactionContainer tc;
-
     private static Adapter adapter;
     private static Group root;
     private static BasePage page;
@@ -88,6 +87,7 @@ public class App extends Application {
     @Override
     public void stop() throws Exception {
         super.stop();
+        updateDB();
         ClockThread.appClosed = true;
         LogoThread.appClosed = true;
     }
@@ -108,10 +108,10 @@ public class App extends Application {
         this.adapter.readDataInventory(ic);
         this.adapter.readDataTransaction(tc);
 
-        for (Product p:
-             tc) {
-            p.display();
-        }
+//        for (Product p:
+//             ic.getBuffer()) {
+//            p.display();
+//        }
     }
 
     public String readConfig() {
@@ -132,11 +132,28 @@ public class App extends Application {
     }
 
     public void updateDB(){
-
+        if (adapter instanceof JSONAdapter){
+            writeConfig("json");
+        } else if (adapter instanceof XMLAdapter){
+            writeConfig("xml");
+        } else if (adapter instanceof OBJAdapter){
+            writeConfig("obj");
+        }
+        adapter.writeDataClient(cc);
+        adapter.writeDataInventory(ic);
+        adapter.writeDataTransaction(tc);
     }
 
-    public void writeConfig(String config) throws Exception{
-        String configurePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\configure.txt";
+    public void writeConfig(String config){
+        try{
+            String configurePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\configure.txt";
+
+            FileWriter fw = new FileWriter(configurePath);
+            fw.write(config);
+            fw.close();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
 
     }
 }
