@@ -1,20 +1,26 @@
 package program.components;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+
 import java.io.File;
 
 public class CloseButton extends Button {
-    private ImageView logo;
-    private static ImageView PathToIV(String path) {
-        File imgFile = new File(path);
-        return new ImageView(imgFile.toURI().toString());
-    }
+
+    private ImageView img;
     public CloseButton() {
         super();
-        this.logo = PathToIV("../../../../assets/Close.png");
+        this.img = new ImageView("file:assets/Close.png");
         this.setStyle("""
-            -fx-pref-height: 23;
-            -fx-pref-width: 23;
+            -fx-border-color: transparent;
+            -fx-border-width: 0;
+            -fx-background-radius: 0;
+            -fx-background-color: transparent;
         """);
+        this.setBackground(Background.EMPTY);
+        this.img.setFitWidth(35);
+        this.img.setFitHeight(35);
+        this.setGraphic(this.img);
     }
+
 }

@@ -40,6 +40,10 @@ public class Background extends Rectangle {
         this.setArcHeight(x);
     }
 
+    public void changeBackground(String hex) {
+        this.setFill(Color.valueOf(hex));
+    }
+
 
 
 }

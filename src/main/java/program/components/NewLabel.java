@@ -1,7 +1,7 @@
 package program.components;
 import javafx.scene.control.Label;
 
-public class NewLabel extends Label{
+public class NewLabel extends Label {
     private String labelText;
     private int size; // in pixel
     private String color;
@@ -25,7 +25,7 @@ public class NewLabel extends Label{
         setStyle();
     }
     public NewLabel(String text, int size, String color, int weight) {
-        super("");
+        super(text);
         this.labelText = text;
         this.size = size;
         this.color = color;
@@ -61,14 +61,12 @@ public class NewLabel extends Label{
         this.setLayoutX(x);
         this.setLayoutY(y);
     }
+
     public void setStyle() {
         String colorStyle = "";
         String sizeStyle = "";
         String weightStyle = "";
         String bgStyle = "";
-        if (this.labelText != null) {
-            setText(this.labelText);
-        }
         if (this.color != null) {
             colorStyle = String.format("-fx-text-fill: %s ;", this.color);
         }
