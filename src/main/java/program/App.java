@@ -33,8 +33,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.io.*;
 
-@Getter
-@Setter
+
 public class App extends Application {
 
     private static ClientContainer cc;
@@ -154,6 +153,15 @@ public class App extends Application {
         } catch(IOException e){
             e.printStackTrace();
         }
+    }
 
+    public ClientContainer getClientContainer(){
+        return cc;
+    }
+    public InventoryContainer getInventoryContainer(){
+        return ic;
+    }
+    public TransactionContainer getTransactionContainer(){
+        return tc;
     }
 }
