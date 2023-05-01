@@ -15,9 +15,11 @@ import program.page.BasePage;
 @Getter
 public class ScrollTabPane extends ScrollPane {
     private VBox buffer;
-    public ScrollTabPane(double x, double y) {
+    private static CloseAllButton closeAllButton;
+    public ScrollTabPane(double x, double y, CloseAllButton closeAllButton) {
         super();
         this.buffer = new VBox();
+        ScrollTabPane.closeAllButton = closeAllButton;
         this.setBackground(Background.fill(Color.valueOf("#F5EBEB")));
         this.setStyle("-fx-background:#F5EBEB;-fx-background-color:transparent;");
         this.setPrefSize(9*x/10, y);
@@ -28,7 +30,7 @@ public class ScrollTabPane extends ScrollPane {
     }
 
     public void addTab(String text) {
-        this.buffer.getChildren().add(new NewTab(text, this.buffer.getChildren(), this.getPrefWidth()));
+        this.buffer.getChildren().add(new NewTab(text, this.buffer.getChildren(), this.getPrefWidth(), ScrollTabPane.closeAllButton));
     }
 
 }

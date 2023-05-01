@@ -32,7 +32,7 @@ public class SideContainer extends Group {
         this.clock.setLayout(this.component.getWidth() * 1 / 10, this.component.getHeight() * 69 / 80);
         this.getChildren().add(this.clock);
 
-        this.tabsContainer = new ScrollTabPane(this.component.getWidth(), this.component.getHeight() * 60 /80);
+        this.tabsContainer = new ScrollTabPane(this.component.getWidth(), this.component.getHeight() * 60 /80, this.closeAllButton);
         this.getChildren().add(this.tabsContainer);
         this.tabsContainer.setLayoutY(this.component.getWidth()/5);
 

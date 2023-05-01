@@ -13,16 +13,18 @@ import program.App;
 @Setter
 @Getter
 public class NewTab extends HBox {
+    private static CloseAllButton closeAllButton;
+    private static ObservableList<Node> listTabs;
+    private static NewTab currentTab;
     private Button tabButton;
     private String textButton;
-    private static ObservableList<Node> listTabs;
     private CloseButton closeButton;
     private BasePage page;
-    private static NewTab currentTab;
 
-    public NewTab(String tabText, ObservableList<Node> listTabs, double width) {
-        this.textButton = tabText;
+    public NewTab(String tabText, ObservableList<Node> listTabs, double width, CloseAllButton closeAllButton) {
         NewTab.listTabs = listTabs;
+        NewTab.closeAllButton = closeAllButton;
+        this.textButton = tabText;
         this.closeButton = new CloseButton();
         this.tabButton = new Button();
 
@@ -79,6 +81,11 @@ public class NewTab extends HBox {
 
         });
 
+        NewTab.closeAllButton.setOnMouseClicked(event -> {
+            NewTab.listTabs.clear();
+            NewTab.currentTab = null;
+            App.setPageBuffer(new BasePage());
+        });
     }
 
 
