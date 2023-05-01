@@ -5,7 +5,19 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import program.adapter.Adapter;
+import program.adapter.JSONAdapter;
+import program.adapter.OBJAdapter;
+import program.adapter.XMLAdapter;
 import program.components.NewTab;
+import program.container.ClientContainer;
+import program.container.InventoryContainer;
+import program.container.TransactionContainer;
+import program.entities.Product;
 import program.page.*;
 import program.page.BillHistory;
 import program.page.Settings;
@@ -15,15 +27,28 @@ import program.sidebar.ClockThread;
 import program.topbar.LogoThread;
 import program.components.SearchBar;
 import javafx.scene.layout.StackPane;
+
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
+import java.io.*;
 
+@Getter
+@Setter
 public class App extends Application {
 
+    private static ClientContainer cc;
+    private static InventoryContainer ic;
+    private static TransactionContainer tc;
+
+    private static Adapter adapter;
     private static Group root;
     private static BasePage page;
     @Override
     public void start(Stage stage) throws Exception {
+        // Setup DB
+        setupDB();
+
         // Setting Scene Buffer
         App.root = new Group();
 
@@ -65,5 +90,53 @@ public class App extends Application {
         super.stop();
         ClockThread.appClosed = true;
         LogoThread.appClosed = true;
+    }
+
+    public void setupDB() {
+        String config = readConfig();
+        if (config.equals("json")){
+            this.adapter = new JSONAdapter();
+        } else if (config.equals("xml")){
+            this.adapter = new XMLAdapter();
+        } else if (config.equals("obj")){
+            this.adapter = new OBJAdapter();
+        }
+        cc = new ClientContainer();
+        ic = new InventoryContainer();
+        tc = new TransactionContainer();
+        this.adapter.readDataClient(cc);
+        this.adapter.readDataInventory(ic);
+        this.adapter.readDataTransaction(tc);
+
+        for (Product p:
+             tc) {
+            p.display();
+        }
+    }
+
+    public String readConfig() {
+        try {
+            String configurePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\configure.txt";
+            File file = new File(configurePath);
+
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            return br.readLine();
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+            return null;
+        } catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public void updateDB(){
+
+    }
+
+    public void writeConfig(String config) throws Exception{
+        String configurePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\configure.txt";
+
     }
 }
