@@ -50,15 +50,12 @@ public class InventoryContainer {
     }
 
     public void removeProduct(Integer id){
-        int idx = 0;
         for (Product obj : buffer){
             Integer tempID = obj.getId();
             if (tempID.equals(id)){
-                buffer.remove(idx);
-                amount--;
+                obj.setActive(false);
                 break;
             }
-            idx++;
         }
     }
 

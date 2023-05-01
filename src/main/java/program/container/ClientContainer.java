@@ -89,22 +89,21 @@ public class ClientContainer{
     }
 
     public void removeClient(Integer id){
-        int idx = 0;
         for (Object obj : buffer){
             Integer tempID = 0;
-            if (obj instanceof Customer){
-                tempID = ((Customer)obj).getId();
-            } else if ( obj instanceof Member){
-                tempID = ((Member)obj).getId();
-            } else if ( obj instanceof VIP){
-                tempID = ((VIP)obj).getId();
+            if (obj instanceof Member mr){
+                tempID = mr.getId();
+                if(tempID.equals(id)){
+                    mr.setActive(false);
+                    break;
+                }
+            } else if ( obj instanceof VIP vp){
+                tempID = vp.getId();
+                if (tempID.equals(id)) {
+                    vp.setActive(false);
+                    break;
+                }
             }
-            if (tempID.equals(id)){
-                buffer.remove(idx);
-                amount--;
-                break;
-            }
-            idx++;
         }
     }
 

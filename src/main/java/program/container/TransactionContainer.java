@@ -48,18 +48,18 @@ public class TransactionContainer {
         amount++;
     }
 
-    public void removeProduct(Integer id){
-        int idx = 0;
-        for (Bill obj : buffer){
-            Integer tempID = obj.getIdBill();
-            if (tempID.equals(id)){
-                buffer.remove(idx);
-                amount--;
-                break;
-            }
-            idx++;
-        }
-    }
+//    public void removeProduct(Integer id){
+//        int idx = 0;
+//        for (Bill obj : buffer){
+//            Integer tempID = obj.getIdBill();
+//            if (tempID.equals(id)){
+//                buffer.remove(idx);
+//                amount--;
+//                break;
+//            }
+//            idx++;
+//        }
+//    }
 
     public Integer getMaxID() {
         Integer max = 0;
