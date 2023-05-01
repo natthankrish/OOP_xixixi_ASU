@@ -67,7 +67,7 @@ public class NewTab extends HBox {
             if (idx == NewTab.listTabs.size() - 1) {
                 if (idx - 1 < 0) {
                     NewTab.currentTab = null;
-                    App.setPageBuffer(new BasePage());
+                    App.setPageBuffer(new HomePage());
                 } else {
                     NewTab.currentTab = (NewTab) NewTab.listTabs.get(idx - 1);
                     NewTab.currentTab.process(width, true);
@@ -84,7 +84,7 @@ public class NewTab extends HBox {
         NewTab.closeAllButton.setOnMouseClicked(event -> {
             NewTab.listTabs.clear();
             NewTab.currentTab = null;
-            App.setPageBuffer(new BasePage());
+            App.setPageBuffer(new HomePage());
         });
     }
 

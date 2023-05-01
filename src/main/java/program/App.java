@@ -27,7 +27,7 @@ public class App extends Application {
         // Setting Scene Buffer
         App.root = new Group();
 
-        App.page = new BasePage();
+        App.page = new HomePage();
         root.getChildren().add(App.page);
 
         SideContainer sideContainer = new SideContainer();
@@ -53,8 +53,6 @@ public class App extends Application {
         stage.setTitle("BNMO");
         stage.setMaximized(true);
         stage.show();
-
-
     }
 
     public static void setPageBuffer(BasePage newPage) {
