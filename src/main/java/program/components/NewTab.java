@@ -1,14 +1,18 @@
 package program.components;
 
 import javafx.collections.ObservableList;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import lombok.Getter;
 import lombok.Setter;
 import program.page.*;
 import program.App;
 
 @Setter
-public class NewTab extends Button {
+@Getter
+public class NewTab extends Group {
+    Button tabButton;
     String textButton;
     ObservableList<Node> otherButton;
     CloseButton closeButton;
@@ -18,24 +22,26 @@ public class NewTab extends Button {
         this.textButton = tabText;
         this.otherButton = othernode;
         this.closeButton = new CloseButton();
+        this.tabButton = new Button();
 
         this.initializePage(tabText);
 
-        this.setPrefWidth(width);
-        this.setPrefHeight(35);
-        this.setStyle("""
+        this.tabButton.setPrefWidth(width);
+        this.tabButton.setPrefHeight(35);
+        this.tabButton.setStyle("""
                     -fx-text-fill: #867070;
                     -fx-background-color: rgba(213, 180, 180, 0.4);
                     -fx-font-size: 18;
                     -fx-font-weight: bold;
                     -fx-background-radius: 9;
                 """);
-        this.setText(this.textButton);
+        this.tabButton.setText(this.textButton);
 
-        this.setOnMouseClicked(event -> {
+        this.tabButton.setOnMouseClicked(event -> {
             for (Node item: this.otherButton) {
+                NewTab itemunit = (NewTab) item;
                 if (this != item) {
-                    item.setStyle("""
+                    itemunit.getTabButton().setStyle("""
                     -fx-text-fill: #867070;
                     -fx-background-color: rgba(213, 180, 180, 0.4);
                     -fx-font-size: 18;
@@ -45,7 +51,7 @@ public class NewTab extends Button {
                 } else {
                     App.setPageBuffer(this.page);
                     this.closeButton.show();
-                    this.setStyle("""
+                    this.tabButton.setStyle("""
                     -fx-text-fill: #F5EBEB;
                     -fx-background-color: rgba(134, 112, 112, 0.6);
                     -fx-font-size: 18;
@@ -55,6 +61,8 @@ public class NewTab extends Button {
                 }
             }
         });
+
+        this.getChildren().add(this.tabButton);
     }
 
 

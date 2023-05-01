@@ -29,7 +29,6 @@ public class ScrollTabPane extends ScrollPane {
 
     public void addTab(String text) {
         this.buffer.getChildren().add(new NewTab(text, this.buffer.getChildren(), this.getPrefWidth()));
-        this.buffer.getChildren().get(this.buffer.getChildren().size()-1).onMouseClickedProperty();
     }
 
 }

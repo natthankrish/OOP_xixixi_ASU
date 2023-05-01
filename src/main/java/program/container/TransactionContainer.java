@@ -4,7 +4,7 @@ package program.container;
 import lombok.*;
 import program.entities.Bill;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 

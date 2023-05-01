@@ -8,8 +8,8 @@ module program {
     requires json.simple;
     requires annotations;
     requires com.google.gson;
-    requires java.xml.bind;
+    requires jakarta.xml.bind;
     exports program;
-    opens program.container to java.xml.bind;
-    opens program.entities to java.xml.bind, com.sun.xml.bind;
+    opens program.container to jakarta.xml.bind;
+    opens program.entities to jakarta.xml.bind;
 }
