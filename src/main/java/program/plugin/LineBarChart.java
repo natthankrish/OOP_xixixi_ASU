@@ -1,6 +1,14 @@
 package program.plugin;
 
-public interface LineBarChart {
-    void showLineChart();
-    void showBarChart();
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.lang.reflect.Method;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface LineBarChart {
+    Class<? extends Method> showLineChart();
+    Class<? extends Method> showBarChart();
 }
