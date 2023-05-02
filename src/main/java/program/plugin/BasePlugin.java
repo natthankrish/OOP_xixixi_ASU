@@ -1,7 +1,5 @@
 package program.plugin;
 
-
-
 public class BasePlugin {
     // show empty page
 
