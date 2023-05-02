@@ -18,7 +18,7 @@ import jakarta.xml.bind.annotation.*;
 
 public class InventoryContainer {
     @XmlElement(name = "Product")
-    public List<Product> buffer;
+    private List<Product> buffer;
     @XmlElement(name = "Amount")
     private int amount;
 
@@ -50,15 +50,12 @@ public class InventoryContainer {
     }
 
     public void removeProduct(Integer id){
-        int idx = 0;
         for (Product obj : buffer){
             Integer tempID = obj.getId();
             if (tempID.equals(id)){
-                buffer.remove(idx);
-                amount--;
+                obj.setActive(false);
                 break;
             }
-            idx++;
         }
     }
 

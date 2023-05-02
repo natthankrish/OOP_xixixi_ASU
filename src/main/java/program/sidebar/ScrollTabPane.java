@@ -30,7 +30,7 @@ public class ScrollTabPane extends ScrollPane {
     }
 
     public void addTab(String text) {
-        this.buffer.getChildren().add(new NewTab(text, this.buffer.getChildren(), this.getPrefWidth(), ScrollTabPane.closeAllButton));
+        this.buffer.getChildren().add(new NewTab(text, this.buffer.getChildren(), this.getPrefWidth(), ScrollTabPane.closeAllButton, this.buffer));
     }
 
 }

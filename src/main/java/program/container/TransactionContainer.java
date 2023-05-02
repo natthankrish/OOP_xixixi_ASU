@@ -17,7 +17,7 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TransactionContainer {
     @XmlAnyElement(lax = true)
-    public List<Bill> buffer;
+    private List<Bill> buffer;
     @XmlElement(name = "Amount")
     private int amount;
 
@@ -48,18 +48,18 @@ public class TransactionContainer {
         amount++;
     }
 
-    public void removeProduct(Integer id){
-        int idx = 0;
-        for (Bill obj : buffer){
-            Integer tempID = obj.getIdBill();
-            if (tempID.equals(id)){
-                buffer.remove(idx);
-                amount--;
-                break;
-            }
-            idx++;
-        }
-    }
+//    public void removeProduct(Integer id){
+//        int idx = 0;
+//        for (Bill obj : buffer){
+//            Integer tempID = obj.getIdBill();
+//            if (tempID.equals(id)){
+//                buffer.remove(idx);
+//                amount--;
+//                break;
+//            }
+//            idx++;
+//        }
+//    }
 
     public Integer getMaxID() {
         Integer max = 0;
