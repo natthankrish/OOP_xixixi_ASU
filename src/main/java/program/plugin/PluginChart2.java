@@ -1,6 +1,6 @@
 package program.plugin;
 
-public class PluginChart2 implements ChartPlugin {
+public class PluginChart2 extends ChartPlugin {
     @Override
     public void showLineChart() {
         throw new UnsupportedOperationException("PluginChart2 does not support Pie chart.");
@@ -13,6 +13,10 @@ public class PluginChart2 implements ChartPlugin {
 
     @Override
     public void showPieChart() {
+        if (!this.hasBeenLoaded()) {
+            BasePlugin.showEmptyPage();
+        }
         // showing pie chart
+        BasePlugin.addPieChart();
     }
 }

@@ -21,6 +21,7 @@ import program.entities.Product;
 import program.page.*;
 import program.page.BillHistory;
 import program.page.Settings;
+import program.plugin.Loader;
 import program.topbar.TopContainer;
 import program.sidebar.SideContainer;
 import program.sidebar.ClockThread;
@@ -76,6 +77,11 @@ public class App extends Application {
         stage.setTitle("BNMO");
         stage.setMaximized(true);
         stage.show();
+    }
+
+    public void loadPlugin(String jarPath) throws Exception {
+        Loader jarLoader = new Loader();
+        jarLoader.loadJarFile(jarPath);
     }
 
     public static void setPageBuffer(BasePage newPage) {
