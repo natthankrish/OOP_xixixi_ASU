@@ -5,33 +5,20 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import program.adapter.Adapter;
 import program.adapter.JSONAdapter;
 import program.adapter.OBJAdapter;
 import program.adapter.XMLAdapter;
-import program.components.NewTab;
 import program.container.ClientContainer;
 import program.container.InventoryContainer;
 import program.container.TransactionContainer;
-import program.entities.Product;
 import program.page.*;
-import program.page.BillHistory;
-import program.page.Settings;
 import program.plugin.Loader;
 import program.topbar.TopContainer;
 import program.sidebar.SideContainer;
 import program.sidebar.ClockThread;
 import program.topbar.LogoThread;
-import program.components.SearchBar;
-import javafx.scene.layout.StackPane;
-
-import java.text.ParseException;
-import java.util.Arrays;
-import java.util.List;
+import java.util.ArrayList;
 import java.io.*;
 
 
@@ -53,6 +40,17 @@ public class App extends Application {
 
         App.page = new HomePage();
         root.getChildren().add(App.page);
+
+//        ArrayList<Class<?>> classes = loadPlugin("C:/Users/gitac/Desktop/GIts/OOP/TUBES 2 OOP/OOP_xixixi_ASU/test/PluginChart-1.0.0.jar");
+//        ChartPlugin chartPlugin1 = null;
+//        for (Class<?> clazz: classes) {
+//            if (clazz.isAnnotationPresent(ChartPluginAnnotation.class)) {
+//                System.out.println("here");
+//                Object instance = clazz.newInstance();
+//                chartPlugin1 = (ChartPlugin) instance;
+//            }
+//        }
+
 
         SideContainer sideContainer = new SideContainer();
         App.root.getChildren().add(sideContainer);
@@ -78,10 +76,9 @@ public class App extends Application {
         stage.setMaximized(true);
         stage.show();
     }
-
-    public void loadPlugin(String jarPath) throws Exception {
+    public ArrayList<Class<?>> loadPlugin(String jarPath) throws Exception {
         Loader jarLoader = new Loader();
-        jarLoader.loadJarFile(jarPath);
+        return jarLoader.loadJarFile(jarPath);
     }
 
     public static void setPageBuffer(BasePage newPage) {
