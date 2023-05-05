@@ -22,7 +22,7 @@ import java.io.*;
 
 public class App extends Application {
 
-    private Adapter adapter;
+    private static Adapter adapter;
     private static Group root;
     private static BasePage page;
     @Override
