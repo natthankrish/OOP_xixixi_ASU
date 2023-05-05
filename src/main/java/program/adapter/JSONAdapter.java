@@ -62,7 +62,6 @@ public class JSONAdapter implements Adapter{
                 clientObj.put("point", 0);
                 clientObj.put("active", false);
                 clientObj.put("transactionHistory", cr.getTransactionHistory());
-                System.out.println("customer");
             } else if (o instanceof Member mr){
                 clientObj.put("id", mr.getId());
                 clientObj.put("status", "member");
@@ -71,7 +70,6 @@ public class JSONAdapter implements Adapter{
                 clientObj.put("point", mr.getPoint());
                 clientObj.put("active", mr.getActive());
                 clientObj.put("transactionHistory", mr.getTransactionHistory());
-                System.out.println("member");
             } else if (o instanceof VIP vp){
                 clientObj.put("id", vp.getId());
                 clientObj.put("status", "vip");
@@ -80,7 +78,6 @@ public class JSONAdapter implements Adapter{
                 clientObj.put("point", vp.getPoint());
                 clientObj.put("active", vp.getActive());
                 clientObj.put("transactionHistory", vp.getTransactionHistory());
-                System.out.println("vip");
             }
             clientsArr.add(clientObj);
         }

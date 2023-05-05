@@ -11,10 +11,7 @@ public class Example
 {
     public static void main(String[] args) throws Exception {
 
-        // CONTAINER
-        ClientContainer cc = new ClientContainer();
-        InventoryContainer ic = new InventoryContainer();
-        TransactionContainer tc = new TransactionContainer();
+        Manager manager = Manager.getInstance();
 
         // ADAPTER
         JSONAdapter ja = new JSONAdapter();
@@ -22,17 +19,17 @@ public class Example
 
         // READ DATA
         System.out.println("Loading client data...");
-//        ja.readDataClient(cc);
-        xa.readDataClient(cc);
+//        ja.readDataClient(manager.getClientContainer());
+        xa.readDataClient(manager.getClientContainer());
         System.out.println("Loading inventory data...");
-//        ja.readDataInventory(ic);
-        xa.readDataInventory(ic);
+//        ja.readDataInventory(manager.getInventoryContainer());
+        xa.readDataInventory(manager.getInventoryContainer());
         System.out.println("Loading transaction data...");
-//        ja.readDataTransaction(tc);
-        xa.readDataTransaction(tc);
+//        ja.readDataTransaction(manager.getTransactionContainer());
+        xa.readDataTransaction(manager.getTransactionContainer());
 
         // DISPLAY TO TEST DATA
-//        cc.getBuffer().forEach(o -> {
+//        manager.getClientContainer().getBuffer().forEach(o -> {
 //                if (o instanceof VIP){
 //                    ((VIP) o).display();
 //                } else if (o instanceof  Member){
@@ -41,10 +38,10 @@ public class Example
 //                    ((Customer) o).display();
 //                }
 //        });
-//        for (Bill b : tc.getBuffer()){
+//        for (Bill b : manager.getTransactionContainer().getBuffer()){
 //            b.display();
 //        }
-//        for ( Product p : ic.getBuffer()) {
+//        for ( Product p : manager.getInventoryContainer().getBuffer()) {
 //            p.display();
 //        }
 
@@ -64,14 +61,14 @@ public class Example
 
         // WRITE DATA
         System.out.println("Writing client data...");
-//        ja.writeDataClient(cc);
-        xa.writeDataClient(cc);
+//        ja.writeDataClient(manager.getClientContainer());
+        xa.writeDataClient(manager.getClientContainer());
         System.out.println("Writing inventory data...");
-        ja.writeDataInventory(ic);
-        xa.writeDataInventory(ic);
+//        ja.writeDataInventory(manager.getInventoryContainer());
+        xa.writeDataInventory(manager.getInventoryContainer());
         System.out.println("Writing transaction data...");
-//        ja.writeDataTransaction(tc);
-        xa.writeDataTransaction(tc);
+//        ja.writeDataTransaction(manager.getTransactionContainer());
+        xa.writeDataTransaction(manager.getTransactionContainer());
 
     }
 }
