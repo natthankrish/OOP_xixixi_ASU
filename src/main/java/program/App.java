@@ -5,13 +5,11 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import program.entities.*;
 import program.adapter.Adapter;
 import program.adapter.JSONAdapter;
 import program.adapter.OBJAdapter;
 import program.adapter.XMLAdapter;
-import program.container.ClientContainer;
-import program.container.InventoryContainer;
-import program.container.TransactionContainer;
 import program.page.*;
 import program.plugin.Loader;
 import program.topbar.TopContainer;
@@ -24,14 +22,12 @@ import java.io.*;
 
 public class App extends Application {
 
-    private static ClientContainer cc;
-    private static InventoryContainer ic;
-    private static TransactionContainer tc;
-    private static Adapter adapter;
+    private Adapter adapter;
     private static Group root;
     private static BasePage page;
     @Override
     public void start(Stage stage) throws Exception {
+
         // Setup DB
         setupDB();
 
@@ -50,6 +46,7 @@ public class App extends Application {
 //                chartPlugin1 = (ChartPlugin) instance;
 //            }
 //        }
+
 
 
         SideContainer sideContainer = new SideContainer();
@@ -95,7 +92,9 @@ public class App extends Application {
     }
 
     public void setupDB() {
+        Manager manager = Manager.getInstance();
         String config = readConfig();
+
         if (config.equals("json")){
             this.adapter = new JSONAdapter();
         } else if (config.equals("xml")){
@@ -103,17 +102,10 @@ public class App extends Application {
         } else if (config.equals("obj")){
             this.adapter = new OBJAdapter();
         }
-        cc = new ClientContainer();
-        ic = new InventoryContainer();
-        tc = new TransactionContainer();
-        this.adapter.readDataClient(cc);
-        this.adapter.readDataInventory(ic);
-        this.adapter.readDataTransaction(tc);
+        this.adapter.readDataClient(manager.getClientContainer());
+        this.adapter.readDataInventory(manager.getInventoryContainer());
+        this.adapter.readDataTransaction(manager.getTransactionContainer());
 
-//        for (Product p:
-//             ic.getBuffer()) {
-//            p.display();
-//        }
     }
 
     public String readConfig() {
@@ -134,6 +126,7 @@ public class App extends Application {
     }
 
     public void updateDB(){
+        Manager manager = Manager.getInstance();
         if (adapter instanceof JSONAdapter){
             writeConfig("json");
         } else if (adapter instanceof XMLAdapter){
@@ -141,9 +134,9 @@ public class App extends Application {
         } else if (adapter instanceof OBJAdapter){
             writeConfig("obj");
         }
-        adapter.writeDataClient(cc);
-        adapter.writeDataInventory(ic);
-        adapter.writeDataTransaction(tc);
+        adapter.writeDataClient(manager.getClientContainer());
+        adapter.writeDataInventory(manager.getInventoryContainer());
+        adapter.writeDataTransaction(manager.getTransactionContainer());
     }
 
     public void writeConfig(String config){
@@ -158,13 +151,4 @@ public class App extends Application {
         }
     }
 
-    public ClientContainer getClientContainer(){
-        return cc;
-    }
-    public InventoryContainer getInventoryContainer(){
-        return ic;
-    }
-    public TransactionContainer getTransactionContainer(){
-        return tc;
-    }
 }
