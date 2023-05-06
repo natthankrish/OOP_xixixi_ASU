@@ -42,7 +42,7 @@ public class App extends Application {
         root.getChildren().add(App.page);
 
         String cwd = System.getProperty("user.dir");
-        ArrayList<Class<?>> classes = loadPlugin(cwd + "/test/PluginChart-1.0.0.jar");
+        ArrayList<Class<?>> classes = loadPlugin(cwd + "/Main/test/PluginChart-1.0.0.jar");
 //        ChartPlugin chartPlugin1 = null;
 //        ChartPluginLineBar chartLine = null;
         Map<String, Double> map = new HashMap<>();
