@@ -41,7 +41,8 @@ public class App extends Application {
         App.page = new HomePage();
         root.getChildren().add(App.page);
 
-        ArrayList<Class<?>> classes = loadPlugin("C:/Users/gitac/Desktop/GIts/OOP/TUBES 2 OOP/OOP_xixixi_ASU/test/PluginChart-1.0.0.jar");
+        String cwd = System.getProperty("user.dir");
+        ArrayList<Class<?>> classes = loadPlugin(cwd + "/test/PluginChart-1.0.0.jar");
         ChartPlugin chartPlugin1 = null;
         Object pluginClass = null;
         Method method = null;
