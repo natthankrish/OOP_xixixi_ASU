@@ -2,6 +2,7 @@ package program;
 
 import javafx.application.Application;
 import javafx.scene.Group;
+import javafx.scene.chart.Chart;
 import javafx.scene.image.Image;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -11,11 +12,12 @@ import program.adapter.JSONAdapter;
 import program.adapter.OBJAdapter;
 import program.adapter.XMLAdapter;
 import program.page.*;
+import program.plugin.ChartPlugin;
 import program.plugin.Loader;
-import program.topbar.TopContainer;
-import program.sidebar.SideContainer;
 import program.sidebar.ClockThread;
 import program.topbar.LogoThread;
+
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.io.*;
 
@@ -37,26 +39,34 @@ public class App extends Application {
         App.page = new HomePage();
         root.getChildren().add(App.page);
 
-//        ArrayList<Class<?>> classes = loadPlugin("C:/Users/gitac/Desktop/GIts/OOP/TUBES 2 OOP/OOP_xixixi_ASU/test/PluginChart-1.0.0.jar");
-//        ChartPlugin chartPlugin1 = null;
-//        for (Class<?> clazz: classes) {
-//            if (clazz.isAnnotationPresent(ChartPluginAnnotation.class)) {
-//                System.out.println("here");
-//                Object instance = clazz.newInstance();
-//                chartPlugin1 = (ChartPlugin) instance;
-//            }
-//        }
+        ArrayList<Class<?>> classes = loadPlugin("C:/Users/gitac/Desktop/GIts/OOP/TUBES 2 OOP/OOP_xixixi_ASU/test/PluginChart-1.0.0.jar");
+        ChartPlugin chartPlugin1 = null;
+        Object pluginClass = null;
+        Method method = null;
+        for (Class<?> clazz: classes) {
+            ArrayList<String> interfaceName = getInterfaceName(clazz);
+            for (String interfacez : interfaceName) {
+                if (interfacez.equals("ChartPlugin")) {
+                    pluginClass = clazz.getDeclaredConstructor().newInstance();
+                    method = clazz.getMethod("showLineChart");
+                    break;
+                }
+            }
+        }
 
+//        ChartPlugin chartPlugin = (ChartPlugin) pluginClass;
+        Group basepluginpage = (Group) method.invoke(pluginClass);
 
+        App.root.getChildren().add(basepluginpage);
 
-        SideContainer sideContainer = new SideContainer();
-        App.root.getChildren().add(sideContainer);
+//        SideContainer sideContainer = new SideContainer();
+//        App.root.getChildren().add(sideContainer);
 
-        TopContainer topContainer = new TopContainer(sideContainer.getTabsContainer());
-        App.root.getChildren().add(topContainer);
+//        TopContainer topContainer = new TopContainer(sideContainer.getTabsContainer());
+//        App.root.getChildren().add(topContainer);
 
         Scene scene = new Scene(App.root);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+//        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.setScene(scene);
 
         // search bar
@@ -72,6 +82,21 @@ public class App extends Application {
         stage.setTitle("BNMO");
         stage.setMaximized(true);
         stage.show();
+    }
+
+    public ArrayList<String> getInterfaceName(Class clazz) {
+        Class<?>[] interfaces = clazz.getInterfaces();
+        ArrayList<String> interfaceName = new ArrayList<>();
+        for (Class interfacez : interfaces) {
+            int index = interfacez.getName().lastIndexOf(".");
+            if (index >= 0) {
+                String newName = interfacez.getName().substring(index + 1);
+                interfaceName.add(newName);
+            } else {
+                interfaceName.add(interfacez.getName());
+            }
+        }
+        return interfaceName;
     }
     public ArrayList<Class<?>> loadPlugin(String jarPath) throws Exception {
         Loader jarLoader = new Loader();
