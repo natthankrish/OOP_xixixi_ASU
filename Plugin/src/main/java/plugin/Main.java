@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import program.plugin.ChartPluginLineBar;
+import org.example.program.plugin.ChartPluginLineBar;
 
 import java.util.HashMap;
 import java.util.Map;

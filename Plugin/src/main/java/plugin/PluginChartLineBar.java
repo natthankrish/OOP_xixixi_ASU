@@ -1,7 +1,7 @@
 package plugin;
 
 import javafx.scene.Group;
-import program.plugin.ChartPluginLineBar;
+import org.example.program.plugin.ChartPluginLineBar;
 
 import java.util.Map;
 public class PluginChartLineBar implements ChartPluginLineBar {
