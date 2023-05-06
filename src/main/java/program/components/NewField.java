@@ -32,6 +32,21 @@ public class NewField extends VBox {
         setSpacing(5);
         setStyle();
         }
+    public NewField(int width, int height){
+        super();
+        this.height = height;
+        this.width = width;
+        textProperty = new SimpleStringProperty("");
+        textField = new TextField();
+        textField.setPromptText("Field...");
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            textProperty.set(newValue);
+        });
+
+        getChildren().add(textField);
+        setSpacing(5);
+        setStyle();
+    }
     public String getText() {
         return textProperty.get();
     }
@@ -43,9 +58,9 @@ public class NewField extends VBox {
     public void setStyle(){
         String width = "";
         String height = "";
-        String bgColor = "";
-        String color = "";
-        String radius = "";
+        String bgColor = "-fx-background-color: #F5EBEB;";
+        String color = "-fx-text-fill: #867070;";
+        String radius = "-fx-background-radius: 20px;";
         if (this.height != 0){
             height = String.format("-fx-pref-height: %d; ", this.height);
         }

@@ -94,7 +94,7 @@ public class MemberDirectory extends BasePage {
                 2222222);
         this.detailMember.setLayout(770,180);
 
-        this.newField = new NewField(200, 20, "#F5EBEB", "#867070",50);
+        this.newField = new NewField(200,20);
         this.newField.setLayout(200,200);
 
         this.getChildren().addAll(this.label,
