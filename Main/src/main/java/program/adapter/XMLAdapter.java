@@ -1,26 +1,23 @@
 package program.adapter;
 
-import program.containers.ClientContainer;
-import program.containers.InventoryContainer;
-import program.containers.TransactionContainer;
-import program.entities.*;
-
-import java.io.File;
-
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import program.containers.ClientContainer;
+import program.containers.InventoryContainer;
+import program.containers.TransactionContainer;
+import program.entities.Bill;
+import program.entities.Product;
 import program.entities.clients.Client;
-import program.entities.clients.Customer;
-import program.entities.clients.Member;
-import program.entities.clients.VIP;
+
+import java.io.File;
 
 public class XMLAdapter implements Adapter{
 
-    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\xml\\Client.xml";
-    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\xml\\Inventory.xml";
-    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\xml\\Transaction.xml";
+    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\xml\\Client.xml";
+    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\xml\\Inventory.xml";
+    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\xml\\Transaction.xml";
 
     public void readDataClient(ClientContainer cc){
 

@@ -2,25 +2,24 @@ package program;
 
 import javafx.application.Application;
 import javafx.scene.Group;
-import javafx.scene.chart.Chart;
-import javafx.scene.image.Image;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import program.containers.Manager;
 import program.adapter.Adapter;
 import program.adapter.JSONAdapter;
 import program.adapter.OBJAdapter;
 import program.adapter.XMLAdapter;
-import program.page.*;
+import program.containers.Manager;
+import program.page.HomePage;
 import program.plugin.Loader;
 import program.sidebar.ClockThread;
 import program.sidebar.SideContainer;
 import program.topbar.LogoThread;
 import program.topbar.TopContainer;
 
+import java.io.*;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -158,7 +157,8 @@ public class App extends Application {
 
     public String readConfig() {
         try {
-            String configurePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\configure.txt";
+            String configurePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\configure.txt";
+            System.out.println(configurePath);
             File file = new File(configurePath);
 
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -189,7 +189,7 @@ public class App extends Application {
 
     public void writeConfig(String config){
         try{
-            String configurePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\configure.txt";
+            String configurePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\configure.txt";
 
             FileWriter fw = new FileWriter(configurePath);
             fw.write(config);

@@ -2,6 +2,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+src/main/java/program/MainBrigita.java
+src/main/java/program/plugin/PluginClassLoader.java
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -11,7 +13,6 @@ target/
 *.iws
 *.iml
 *.ipr
-
 ### Eclipse ###
 .apt_generated
 .classpath

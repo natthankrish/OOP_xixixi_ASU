@@ -13,4 +13,5 @@ module program {
     opens program.containers to jakarta.xml.bind;
     opens program.entities to jakarta.xml.bind, com.sun.xml.bind;
     opens program.entities.clients to jakarta.xml.bind, com.sun.xml.bind, com.sun.xml.bind.core;
+    exports program.plugin;
 }

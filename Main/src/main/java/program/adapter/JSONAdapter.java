@@ -1,31 +1,35 @@
 package program.adapter;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.*;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
-
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import program.containers.ClientContainer;
 import program.containers.InventoryContainer;
 import program.containers.TransactionContainer;
-import program.entities.*;
+import program.entities.Bill;
+import program.entities.Product;
+import program.entities.ReceiptInfo;
+import program.entities.Time;
 import program.entities.clients.Client;
 import program.entities.clients.Customer;
 import program.entities.clients.Member;
 import program.entities.clients.VIP;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class JSONAdapter implements Adapter{
-    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\json\\Client.json";
-    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\json\\Inventory.json";
-    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\json\\Transaction.json";
+    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\json\\Client.json";
+    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\json\\Inventory.json";
+    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\json\\Transaction.json";
 
     // CLIENT DATA
     public void readDataClient(ClientContainer cc) {
