@@ -12,7 +12,6 @@ import program.adapter.JSONAdapter;
 import program.adapter.OBJAdapter;
 import program.adapter.XMLAdapter;
 import program.page.*;
-import program.plugin.ChartPlugin;
 import program.plugin.Loader;
 import program.sidebar.ClockThread;
 import program.sidebar.SideContainer;
@@ -22,13 +21,15 @@ import program.topbar.TopContainer;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class App extends Application {
 
     private static Adapter adapter;
     private static Group root;
-    private static BasePage page;
+    private static Group page;
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -43,29 +44,48 @@ public class App extends Application {
 
         String cwd = System.getProperty("user.dir");
         ArrayList<Class<?>> classes = loadPlugin(cwd + "/test/PluginChart-1.0.0.jar");
-        ChartPlugin chartPlugin1 = null;
+//        ChartPlugin chartPlugin1 = null;
+//        ChartPluginLineBar chartLine = null;
+        Map<String, Double> map = new HashMap<>();
+        map.put("Caramel Latte", 50000.0 * 3);
+        map.put("Vanilla Late", 55000.0 * 3);
+        map.put("Pisang Goreng", 2000.0);
+        map.put("Pisang Rebus", 2000.0);
+        map.put("Pisang Bakar", 2000.0);
+        map.put("Pisang Ijo", 2000.0);
+        map.put("Pisang Kukus", 2000.0);
+        map.put("Pisang Cincin", 2000.0);
+        map.put("Pisang Kolek", 2000.0);
+
         Object pluginClass = null;
         Method method = null;
+        Method method2 = null;
         for (Class<?> clazz: classes) {
             ArrayList<String> interfaceName = getInterfaceName(clazz);
             for (String interfacez : interfaceName) {
-                if (interfacez.equals("ChartPlugin")) {
+                if (interfacez.equals("ChartPluginLineBar")) {
+                    System.out.println(clazz.getName());
                     pluginClass = clazz.getDeclaredConstructor().newInstance();
-                    method = clazz.getMethod("showLineChart");
+                    method = clazz.getMethod("showLineChart", String.class, String.class, String.class, String.class, Map.class);
+                    method2 = clazz.getMethod("showBarChart", String.class, String.class, String.class, String.class, Map.class);
                     break;
                 }
             }
         }
 
-//        ChartPlugin chartPlugin = (ChartPlugin) pluginClass;
-        Group basepluginpage = (Group) method.invoke(pluginClass);
 
-        App.root.getChildren().add(basepluginpage);
+        method.invoke(pluginClass, "Product Name", "Total Sales", "Food Income", "Food ID", map);
+        Group basepluginpage = (Group) method2.invoke(pluginClass, "Product Name", "Total Sales", "Food Income", "Food ID", map);
+
+//        ChartPlugin chartPlugin = (ChartPlugin) pluginClass;
+
+//        App.root.getChildren().add(basepluginpage);
 
         SideContainer sideContainer = new SideContainer();
         App.root.getChildren().add(sideContainer);
 
         TopContainer topContainer = new TopContainer(sideContainer.getTabsContainer());
+        topContainer.getTopbar().addMenuITem("Plugin 1", basepluginpage);
         App.root.getChildren().add(topContainer);
 
         Scene scene = new Scene(App.root);
@@ -106,7 +126,7 @@ public class App extends Application {
         return jarLoader.loadJarFile(jarPath);
     }
 
-    public static void setPageBuffer(BasePage newPage) {
+    public static void setPageBuffer(Group newPage) {
         App.root.getChildren().remove(App.page);
         App.page = newPage;
         App.root.getChildren().add(App.page);
@@ -138,7 +158,7 @@ public class App extends Application {
 
     public String readConfig() {
         try {
-            String configurePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\configure.txt";
+            String configurePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\configure.txt";
             File file = new File(configurePath);
 
             BufferedReader br = new BufferedReader(new FileReader(file));

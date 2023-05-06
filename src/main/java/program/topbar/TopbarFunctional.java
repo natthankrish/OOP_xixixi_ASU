@@ -1,4 +1,5 @@
 package program.topbar;
+import javafx.scene.Group;
 import javafx.scene.control.*;
 import program.components.NewTab;
 import program.sidebar.ScrollTabPane;
@@ -45,5 +46,12 @@ public class TopbarFunctional extends MenuBar {
             }
             this.getMenus().add(this.menuList.get(i));
         }
+    }
+
+    public void addMenuITem(String text, Group page) {
+        MenuItem item = new MenuItem(text);
+        this.itemMenuList.get(0).add(item);
+        this.menuList.get(0).getItems().add(item);
+        item.setOnAction(event -> this.tabBuffer.addTabPlugin(item.getText(), page));
     }
 }
