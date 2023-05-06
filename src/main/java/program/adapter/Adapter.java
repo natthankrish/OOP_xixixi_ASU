@@ -1,8 +1,8 @@
 package program.adapter;
 
-import program.container.ClientContainer;
-import program.container.InventoryContainer;
-import program.container.TransactionContainer;
+import program.containers.ClientContainer;
+import program.containers.InventoryContainer;
+import program.containers.TransactionContainer;
 
 public interface Adapter {
 

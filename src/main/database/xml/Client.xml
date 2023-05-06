@@ -1,56 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ClientContainer>
-    <Customer>
+    <Client>
         <id>1</id>
-    </Customer>
-    <Member>
+        <type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="customer"/>
+    </Client>
+    <Client>
         <id>2</id>
         <transactionHistory>1</transactionHistory>
         <transactionHistory>2</transactionHistory>
-        <name>Juan Christopher Santoso</name>
-        <phoneNumber>081122223333</phoneNumber>
-        <point>100000.0</point>
-        <active>true</active>
-    </Member>
-    <VIP>
+        <type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="member">
+            <name>Juan Christopher Santoso</name>
+            <phoneNumber>081122223333</phoneNumber>
+            <point>100000.0</point>
+            <active>true</active>
+        </type>
+    </Client>
+    <Client>
         <id>3</id>
         <transactionHistory>3</transactionHistory>
-        <name>Antonio Natthan Krishna</name>
-        <phoneNumber>081121213030</phoneNumber>
-        <point>500000.0</point>
-        <active>true</active>
-    </VIP>
-    <VIP>
+        <type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="vip">
+            <name>Antonio Natthan Krishna</name>
+            <phoneNumber>081121213030</phoneNumber>
+            <point>500000.0</point>
+            <active>true</active>
+        </type>
+    </Client>
+    <Client>
         <id>4</id>
         <transactionHistory>4</transactionHistory>
-        <name>Brigita Tri Carolina</name>
-        <phoneNumber>081245450088</phoneNumber>
-        <point>60000.0</point>
-        <active>false</active>
-    </VIP>
-    <Member>
+        <type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="vip">
+            <name>Brigita Tri Carolina</name>
+            <phoneNumber>081245450088</phoneNumber>
+            <point>60000.0</point>
+            <active>false</active>
+        </type>
+    </Client>
+    <Client>
         <id>5</id>
         <transactionHistory>5</transactionHistory>
-        <name>Melvin Kent Jonathan</name>
-        <phoneNumber>081344883322</phoneNumber>
-        <point>120000.0</point>
-        <active>true</active>
-    </Member>
-    <Member>
+        <type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="member">
+            <name>Melvin Kent Jonathan</name>
+            <phoneNumber>081344883322</phoneNumber>
+            <point>120000.0</point>
+            <active>true</active>
+        </type>
+    </Client>
+    <Client>
         <id>6</id>
         <transactionHistory>6</transactionHistory>
-        <name>Daniel Egiant Sitanggang</name>
-        <phoneNumber>081300119966</phoneNumber>
-        <point>50000.0</point>
-        <active>false</active>
-    </Member>
-    <VIP>
+        <type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="member">
+            <name>Daniel Egiant Sitanggang</name>
+            <phoneNumber>081300119966</phoneNumber>
+            <point>50000.0</point>
+            <active>false</active>
+        </type>
+    </Client>
+    <Client>
         <id>7</id>
         <transactionHistory>7</transactionHistory>
-        <name>Ilham Akbar</name>
-        <phoneNumber>081257571010</phoneNumber>
-        <point>100000.0</point>
-        <active>true</active>
-    </VIP>
+        <type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="vip">
+            <name>Ilham Akbar</name>
+            <phoneNumber>081257571010</phoneNumber>
+            <point>100000.0</point>
+            <active>true</active>
+        </type>
+    </Client>
     <Amount>7</Amount>
 </ClientContainer>

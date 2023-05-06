@@ -1,24 +1,23 @@
-package program.container;
-
-import program.entities.Product;
+package program.containers;
 
 
 import lombok.*;
+import program.entities.Bill;
 
+import jakarta.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.xml.bind.annotation.*;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@XmlRootElement(name = "InventoryContainer")
-@XmlAccessorType (XmlAccessType.FIELD)
-
-public class InventoryContainer {
-    @XmlElement(name = "Product")
-    private List<Product> buffer;
+@XmlRootElement(name = "ClientContainer")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class TransactionContainer {
+    @XmlAnyElement(lax = true)
+    private List<Bill> buffer;
     @XmlElement(name = "Amount")
     private int amount;
 
@@ -34,9 +33,9 @@ public class InventoryContainer {
         amount--;
     }
 
-    public Product getProductById(Integer id){
-        for (Product obj : buffer){
-            Integer tempID = obj.getId();
+    public Bill getProductById(Integer id){
+        for (Bill obj : buffer){
+            Integer tempID = obj.getIdBill();
             if (tempID.equals(id)){
                 return obj;
             }
@@ -44,26 +43,29 @@ public class InventoryContainer {
         return null;
     }
 
-    public void addProduct(Product obj){
+    public void addProduct(Bill obj){
         buffer.add(obj);
         amount++;
     }
 
-    public void removeProduct(Integer id){
-        for (Product obj : buffer){
-            Integer tempID = obj.getId();
-            if (tempID.equals(id)){
-                obj.setActive(false);
-                break;
-            }
-        }
-    }
+//    public void removeProduct(Integer id){
+//        int idx = 0;
+//        for (Bill obj : buffer){
+//            Integer tempID = obj.getIdBill();
+//            if (tempID.equals(id)){
+//                buffer.remove(idx);
+//                amount--;
+//                break;
+//            }
+//            idx++;
+//        }
+//    }
 
     public Integer getMaxID() {
         Integer max = 0;
         boolean first = true;
-        for (Product obj: buffer){
-            Integer tempID = obj.getId();
+        for (Bill obj: buffer){
+            Integer tempID = obj.getIdBill();
             if (first) {
                 max = tempID;
                 first = false;
@@ -75,5 +77,4 @@ public class InventoryContainer {
         }
         return max;
     }
-
 }

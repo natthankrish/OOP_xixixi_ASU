@@ -5,7 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import program.entities.*;
+import program.containers.Manager;
 import program.adapter.Adapter;
 import program.adapter.JSONAdapter;
 import program.adapter.OBJAdapter;

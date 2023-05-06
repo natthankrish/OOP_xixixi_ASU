@@ -1,12 +1,8 @@
 [
   {
-    "phoneNumber": "",
-    "name": "",
-    "active": false,
     "transactionHistory": [],
     "id": 1,
-    "point": 0,
-    "status": "customer"
+    "type": "customer"
   },
   {
     "phoneNumber": "081122223333",
@@ -17,8 +13,8 @@
       2
     ],
     "id": 2,
-    "point": 100000.0,
-    "status": "member"
+    "type": "member",
+    "point": 100000.0
   },
   {
     "phoneNumber": "081121213030",
@@ -28,8 +24,8 @@
       3
     ],
     "id": 3,
-    "point": 500000.0,
-    "status": "vip"
+    "type": "vip",
+    "point": 500000.0
   },
   {
     "phoneNumber": "081245450088",
@@ -39,8 +35,8 @@
       4
     ],
     "id": 4,
-    "point": 60000.0,
-    "status": "vip"
+    "type": "vip",
+    "point": 60000.0
   },
   {
     "phoneNumber": "081344883322",
@@ -50,8 +46,8 @@
       5
     ],
     "id": 5,
-    "point": 120000.0,
-    "status": "member"
+    "type": "member",
+    "point": 120000.0
   },
   {
     "phoneNumber": "081300119966",
@@ -61,8 +57,8 @@
       6
     ],
     "id": 6,
-    "point": 50000.0,
-    "status": "member"
+    "type": "member",
+    "point": 50000.0
   },
   {
     "phoneNumber": "081257571010",
@@ -72,7 +68,7 @@
       7
     ],
     "id": 7,
-    "point": 100000.0,
-    "status": "vip"
+    "type": "vip",
+    "point": 100000.0
   }
 ]

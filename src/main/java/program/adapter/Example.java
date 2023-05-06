@@ -2,10 +2,8 @@ package program.adapter;
 
 // Java program to read JSON from a file
 
-import program.container.ClientContainer;
-import program.container.InventoryContainer;
-import program.container.TransactionContainer;
-import program.entities.*;
+import program.containers.Manager;
+import program.entities.clients.Client;
 
 public class Example
 {
@@ -23,21 +21,15 @@ public class Example
         xa.readDataClient(manager.getClientContainer());
         System.out.println("Loading inventory data...");
 //        ja.readDataInventory(manager.getInventoryContainer());
-        xa.readDataInventory(manager.getInventoryContainer());
+//        xa.readDataInventory(manager.getInventoryContainer());
         System.out.println("Loading transaction data...");
 //        ja.readDataTransaction(manager.getTransactionContainer());
-        xa.readDataTransaction(manager.getTransactionContainer());
+//        xa.readDataTransaction(manager.getTransactionContainer());
 
         // DISPLAY TO TEST DATA
-//        manager.getClientContainer().getBuffer().forEach(o -> {
-//                if (o instanceof VIP){
-//                    ((VIP) o).display();
-//                } else if (o instanceof  Member){
-//                    ((Member) o).display();
-//                } else {
-//                    ((Customer) o).display();
-//                }
-//        });
+        for (Client c : manager.getClientContainer().getBuffer()){
+            c.display();
+        }
 //        for (Bill b : manager.getTransactionContainer().getBuffer()){
 //            b.display();
 //        }
@@ -65,10 +57,10 @@ public class Example
         xa.writeDataClient(manager.getClientContainer());
         System.out.println("Writing inventory data...");
 //        ja.writeDataInventory(manager.getInventoryContainer());
-        xa.writeDataInventory(manager.getInventoryContainer());
+//        xa.writeDataInventory(manager.getInventoryContainer());
         System.out.println("Writing transaction data...");
 //        ja.writeDataTransaction(manager.getTransactionContainer());
-        xa.writeDataTransaction(manager.getTransactionContainer());
+//        xa.writeDataTransaction(manager.getTransactionContainer());
 
     }
 }

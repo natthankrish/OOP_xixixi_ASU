@@ -12,10 +12,14 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
-import program.container.ClientContainer;
-import program.container.InventoryContainer;
-import program.container.TransactionContainer;
+import program.containers.ClientContainer;
+import program.containers.InventoryContainer;
+import program.containers.TransactionContainer;
 import program.entities.*;
+import program.entities.clients.Client;
+import program.entities.clients.Customer;
+import program.entities.clients.Member;
+import program.entities.clients.VIP;
 
 
 public class JSONAdapter implements Adapter{
@@ -52,32 +56,19 @@ public class JSONAdapter implements Adapter{
     public void writeDataClient(ClientContainer cc) {
 
         JSONArray clientsArr = new JSONArray();
-        for (Object o : cc.getBuffer()) {
+        for (Client c : cc.getBuffer()) {
             JSONObject clientObj = new JSONObject();
-            if (o instanceof Customer cr){
-                clientObj.put("id", cr.getId());
-                clientObj.put("status", "customer");
-                clientObj.put("name", "");
-                clientObj.put("phoneNumber","");
-                clientObj.put("point", 0);
-                clientObj.put("active", false);
-                clientObj.put("transactionHistory", cr.getTransactionHistory());
-            } else if (o instanceof Member mr){
-                clientObj.put("id", mr.getId());
-                clientObj.put("status", "member");
-                clientObj.put("name", mr.getName());
-                clientObj.put("phoneNumber",mr.getPhoneNumber());
-                clientObj.put("point", mr.getPoint());
-                clientObj.put("active", mr.getActive());
-                clientObj.put("transactionHistory", mr.getTransactionHistory());
-            } else if (o instanceof VIP vp){
-                clientObj.put("id", vp.getId());
-                clientObj.put("status", "vip");
-                clientObj.put("name", vp.getName());
-                clientObj.put("phoneNumber",vp.getPhoneNumber());
-                clientObj.put("point", vp.getPoint());
-                clientObj.put("active", vp.getActive());
-                clientObj.put("transactionHistory", vp.getTransactionHistory());
+            clientObj.put("id", c.getId());
+            clientObj.put("transactionHistory", c.getTransactionHistory());
+            if (c.getType() instanceof Customer){
+                clientObj.put("type", "customer");
+            } else {
+                if (c.getType() instanceof Member){ clientObj.put("type", "member"); }
+                else if (c.getType() instanceof VIP){ clientObj.put("type", "vip"); }
+                clientObj.put("name", c.getName());
+                clientObj.put("phoneNumber",c.getPhoneNumber());
+                clientObj.put("point", c.getPoint());
+                clientObj.put("active", c.getActiveStatus());
             }
             clientsArr.add(clientObj);
         }
@@ -97,54 +88,29 @@ public class JSONAdapter implements Adapter{
 
     public void parseClientObject(ClientContainer cc, JSONObject c) {
         // Get every element
-        String status = (String) c.get("status");
+        String status = (String) c.get("type");
+        Integer id = ((Long) c.get("id")).intValue();
+        JSONArray arr = (JSONArray) c.get("transactionHistory");
+        List<Integer> arrTransaction = new ArrayList<>();
+        arr.forEach( i -> arrTransaction.add( ((Long) i).intValue() ));
+
+        Client client = new Client(id, arrTransaction, null);
+
         if (status.equals("customer")){
-
-            Integer id = ((Long) c.get("id")).intValue();
-
-            // Get Transaction List
-            JSONArray arr = (JSONArray) c.get("transactionHistory");
-            List<Integer> arrTransaction = new ArrayList<>();
-            arr.forEach( i -> arrTransaction.add( ((Long) i).intValue() ));
-
-            Customer cr = new Customer(id);
-            cr.setTransactionHistory(arrTransaction);
-            cc.getBuffer().add(cr);
-
+            client.makeClientACustomer();
         }
-        else if (status.equals("member")){
-            Integer id = ((Long) c.get("id")).intValue();
+        else {
             String name = (String) c.get("name");
             String phoneNumber = (String) c.get("phoneNumber");
             Double point = ((Double) c.get("point"));
             Boolean active = ((Boolean) c.get("active")).booleanValue();
-
-            // Get Transaction List
-            JSONArray arr = (JSONArray) c.get("transactionHistory");
-            List<Integer> arrTransaction = new ArrayList<>();
-            arr.forEach( i -> arrTransaction.add( ((Long) i).intValue() ));
-
-            Member m = new Member(id, name, phoneNumber, point, active);
-            m.setTransactionHistory(arrTransaction);
-            cc.getBuffer().add(m);
-
+            if (status.equals("member")){
+                client.makeClientAMember(name, phoneNumber, point, active);
+            } else {
+                client.makeClientAVIP(name, phoneNumber, point, active);
+            }
         }
-        else if (status.equals("vip")){
-            Integer id = ((Long) c.get("id")).intValue();
-            String name = (String) c.get("name");
-            String phoneNumber = (String) c.get("phoneNumber");
-            Double point = ((Double) c.get("point"));
-            Boolean active = ((Boolean) c.get("active")).booleanValue();
-
-            // Get Transaction List
-            JSONArray arr = (JSONArray) c.get("transactionHistory");
-            List<Integer> arrTransaction = new ArrayList<>();
-            arr.forEach( i -> arrTransaction.add( ((Long) i).intValue() ));
-
-            VIP v = new VIP(id, name, phoneNumber, point, active);
-            v.setTransactionHistory(arrTransaction);
-            cc.getBuffer().add(v);
-        }
+        cc.getBuffer().add(client);
         cc.increaseAmount();
 
     }

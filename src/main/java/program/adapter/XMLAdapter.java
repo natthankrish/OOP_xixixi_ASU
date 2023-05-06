@@ -1,8 +1,8 @@
 package program.adapter;
 
-import program.container.ClientContainer;
-import program.container.InventoryContainer;
-import program.container.TransactionContainer;
+import program.containers.ClientContainer;
+import program.containers.InventoryContainer;
+import program.containers.TransactionContainer;
 import program.entities.*;
 
 import java.io.File;
@@ -11,6 +11,10 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import program.entities.clients.Client;
+import program.entities.clients.Customer;
+import program.entities.clients.Member;
+import program.entities.clients.VIP;
 
 public class XMLAdapter implements Adapter{
 
@@ -24,7 +28,7 @@ public class XMLAdapter implements Adapter{
         try
         {
             File xmlFile = new File(clientDatabasePath);
-            JAXBContext context = JAXBContext.newInstance(ClientContainer.class, Customer.class, Member.class, VIP.class);
+            JAXBContext context = JAXBContext.newInstance(ClientContainer.class);
             Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
 
             ClientContainer temp = (ClientContainer) jaxbUnmarshaller.unmarshal(xmlFile);
@@ -41,7 +45,10 @@ public class XMLAdapter implements Adapter{
     public void writeDataClient(ClientContainer cc){
 
         try {
-            JAXBContext context = JAXBContext.newInstance(ClientContainer.class, Customer.class, Member.class, VIP.class);
+            for (Client c: cc.getBuffer()) {
+                c.display();
+            }
+            JAXBContext context = JAXBContext.newInstance(ClientContainer.class, Client.class);
             Marshaller marshaller = context.createMarshaller();
 
             //Required formatting
@@ -50,6 +57,7 @@ public class XMLAdapter implements Adapter{
             File xmlFile = new File(clientDatabasePath);
             //Write XML to StringWriter
             marshaller.marshal(cc, xmlFile);
+
         }
         catch ( JAXBException e) {
             e.printStackTrace();
@@ -60,7 +68,7 @@ public class XMLAdapter implements Adapter{
         try
         {
             File xmlFile = new File(inventoryDatabasePath);
-            JAXBContext context = JAXBContext.newInstance(InventoryContainer.class);
+            JAXBContext context = JAXBContext.newInstance(InventoryContainer.class, Product.class);
             Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
 
             InventoryContainer temp = (InventoryContainer) jaxbUnmarshaller.unmarshal(xmlFile);
@@ -75,7 +83,7 @@ public class XMLAdapter implements Adapter{
     }
     public void writeDataInventory(InventoryContainer ic){
         try {
-            JAXBContext context = JAXBContext.newInstance(InventoryContainer.class);
+            JAXBContext context = JAXBContext.newInstance(InventoryContainer.class, Product.class);
             Marshaller marshaller = context.createMarshaller();
             //Required formatting
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);

@@ -1,8 +1,4 @@
-package program.entities;
-
-import program.container.ClientContainer;
-import program.container.InventoryContainer;
-import program.container.TransactionContainer;
+package program.containers;
 
 import lombok.*;
 @Setter
