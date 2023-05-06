@@ -15,7 +15,9 @@ import program.page.*;
 import program.plugin.ChartPlugin;
 import program.plugin.Loader;
 import program.sidebar.ClockThread;
+import program.sidebar.SideContainer;
 import program.topbar.LogoThread;
+import program.topbar.TopContainer;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -59,14 +61,14 @@ public class App extends Application {
 
         App.root.getChildren().add(basepluginpage);
 
-//        SideContainer sideContainer = new SideContainer();
-//        App.root.getChildren().add(sideContainer);
+        SideContainer sideContainer = new SideContainer();
+        App.root.getChildren().add(sideContainer);
 
-//        TopContainer topContainer = new TopContainer(sideContainer.getTabsContainer());
-//        App.root.getChildren().add(topContainer);
+        TopContainer topContainer = new TopContainer(sideContainer.getTabsContainer());
+        App.root.getChildren().add(topContainer);
 
         Scene scene = new Scene(App.root);
-//        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.setScene(scene);
 
         // search bar
