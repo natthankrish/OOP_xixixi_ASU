@@ -7,7 +7,7 @@ import java.io.File;
 
 public class CloseButton extends Button {
 
-    private ImageView img;
+    protected ImageView img;
     public CloseButton() {
         super();
         this.img = new ImageView("file:assets/Close.png");
