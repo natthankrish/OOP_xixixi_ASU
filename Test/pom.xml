@@ -8,11 +8,11 @@
     <artifactId>MainProgram</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-<!--    <properties>-->
-<!--&lt;!&ndash;        <start-class>org.example.program.App</start-class>&ndash;&gt;-->
-<!--&lt;!&ndash;        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>&ndash;&gt;-->
-<!--&lt;!&ndash;        <junit.version>5.9.2</junit.version>&ndash;&gt;-->
-<!--    </properties>-->
+    <properties>
+        <start-class>org.example.program.App</start-class>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>5.9.2</junit.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -77,18 +77,18 @@
             <artifactId>bootstrapfx-core</artifactId>
             <version>0.4.0</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-api</artifactId>-->
-<!--            <version>${junit.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-engine</artifactId>-->
-<!--            <version>${junit.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
