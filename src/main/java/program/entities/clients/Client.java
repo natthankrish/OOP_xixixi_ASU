@@ -3,6 +3,8 @@ package program.entities.clients;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
+
+import java.io.Serializable;
 import java.util.*;
 
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -13,7 +15,7 @@ import lombok.*;
 @Setter
 @XmlRootElement(name = "Client")
 @XmlAccessorType (XmlAccessType.FIELD)
-public class Client {
+public class Client implements Serializable {
     private Integer id;
     private List<Integer> transactionHistory;
     @XmlJavaTypeAdapter(ClientXMLAdapter.class)

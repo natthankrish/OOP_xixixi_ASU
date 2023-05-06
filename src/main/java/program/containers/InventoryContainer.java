@@ -5,6 +5,7 @@ import program.entities.Product;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.xml.bind.annotation.*;
@@ -16,7 +17,7 @@ import jakarta.xml.bind.annotation.*;
 @XmlRootElement(name = "InventoryContainer")
 @XmlAccessorType (XmlAccessType.FIELD)
 
-public class InventoryContainer {
+public class InventoryContainer implements Serializable {
     @XmlElement(name = "Product")
     private List<Product> buffer;
     @XmlElement(name = "Amount")

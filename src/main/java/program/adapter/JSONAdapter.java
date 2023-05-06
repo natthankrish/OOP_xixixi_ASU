@@ -23,9 +23,9 @@ import program.entities.clients.VIP;
 
 
 public class JSONAdapter implements Adapter{
-    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\json\\Client.json";
-    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\json\\Inventory.json";
-    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\json\\Transaction.json";
+    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\json\\Client.json";
+    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\json\\Inventory.json";
+    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\json\\Transaction.json";
 
     // CLIENT DATA
     public void readDataClient(ClientContainer cc) {

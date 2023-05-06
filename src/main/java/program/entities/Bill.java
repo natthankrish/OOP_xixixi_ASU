@@ -1,5 +1,6 @@
 package program.entities;
 
+import java.io.Serializable;
 import java.util.*;
 import lombok.*;
 
@@ -13,7 +14,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @Setter
 @XmlRootElement(name = "Bill")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Bill {
+public class Bill implements Serializable {
     private Integer idBill;
     private Integer idClient;
     private List<ReceiptInfo> receipt;

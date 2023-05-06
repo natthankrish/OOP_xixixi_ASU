@@ -5,6 +5,8 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
+import java.io.Serializable;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -12,7 +14,7 @@ import lombok.*;
 @XmlRootElement(name = "VIP")
 @XmlAccessorType(XmlAccessType.FIELD)
 
-public class VIP implements ClientType {
+public class VIP implements ClientType, Serializable {
     private String name;
     private String phoneNumber;
     private Double point;

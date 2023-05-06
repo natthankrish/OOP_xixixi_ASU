@@ -1,5 +1,6 @@
 package program.entities;
 
+import java.io.Serializable;
 import java.util.*;
 import lombok.*;
 
@@ -8,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 
-public class Time{
+public class Time implements Serializable {
     private Integer date;
     private Integer month;
     private Integer year;

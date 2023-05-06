@@ -3,6 +3,7 @@ package program.containers;
 // Access for XML Adapter
 import jakarta.xml.bind.annotation.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import program.entities.clients.VIP;
 @XmlRootElement(name = "ClientContainer")
 @XmlAccessorType (XmlAccessType.FIELD)
 @XmlSeeAlso({Customer.class, Member.class, VIP.class})
-public class ClientContainer{
+public class ClientContainer implements Serializable {
     @XmlElement(name = "Client")
     private List<Client> buffer;
     @XmlElement(name = "Amount")

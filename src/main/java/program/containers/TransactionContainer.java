@@ -5,6 +5,8 @@ import lombok.*;
 import program.entities.Bill;
 
 import jakarta.xml.bind.annotation.*;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ import java.util.List;
 @Setter
 @XmlRootElement(name = "ClientContainer")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class TransactionContainer {
+public class TransactionContainer implements Serializable {
     @XmlAnyElement(lax = true)
     private List<Bill> buffer;
     @XmlElement(name = "Amount")

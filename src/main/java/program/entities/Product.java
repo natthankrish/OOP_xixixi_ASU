@@ -5,6 +5,9 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 import lombok.*;
+
+import java.io.Serializable;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -12,7 +15,7 @@ import lombok.*;
 @XmlRootElement(name = "Product")
 @XmlAccessorType (XmlAccessType.FIELD)
 
-public class Product {
+public class Product implements Serializable {
     private Integer id;
     private Integer stock;
     private String name;

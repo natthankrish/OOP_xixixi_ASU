@@ -18,9 +18,9 @@ import program.entities.clients.VIP;
 
 public class XMLAdapter implements Adapter{
 
-    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\xml\\Client.xml";
-    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\xml\\Inventory.xml";
-    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\database\\xml\\Transaction.xml";
+    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\xml\\Client.xml";
+    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\xml\\Inventory.xml";
+    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\xml\\Transaction.xml";
 
     public void readDataClient(ClientContainer cc){
 
