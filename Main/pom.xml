@@ -123,8 +123,16 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
+                            <executable>java</executable>
                             <mainClass>org.example.program.App</mainClass>
+                            <arguments>
+                                <argument>--module-path</argument>
+                                <argument>${java.home}/lib</argument>
+                                <argument>--add-modules</argument>
+                                <argument>javafx.controls,javafx.fxml</argument>
+                            </arguments>
                         </configuration>
+
                     </execution>
                 </executions>
             </plugin>

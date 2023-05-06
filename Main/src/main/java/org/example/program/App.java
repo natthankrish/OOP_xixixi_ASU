@@ -42,7 +42,7 @@ public class App extends Application {
         root.getChildren().add(App.page);
 
         String cwd = System.getProperty("user.dir");
-        ArrayList<Class<?>> classes = loadPlugin(cwd + "/Main/test/PluginChart-1.0.0.jar");
+        ArrayList<Class<?>> classes = loadPlugin(cwd + "/test/PluginChart-1.0.0.jar");
 //        ChartPlugin chartPlugin1 = null;
 //        ChartPluginLineBar chartLine = null;
         Map<String, Double> map = new HashMap<>();
@@ -157,7 +157,7 @@ public class App extends Application {
 
     public String readConfig() {
         try {
-            String configurePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\configure.txt";
+            String configurePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\configure.txt";
             System.out.println(configurePath);
             File file = new File(configurePath);
 
@@ -189,7 +189,7 @@ public class App extends Application {
 
     public void writeConfig(String config){
         try{
-            String configurePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\configure.txt";
+            String configurePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\configure.txt";
 
             FileWriter fw = new FileWriter(configurePath);
             fw.write(config);

@@ -27,9 +27,9 @@ import java.util.List;
 
 
 public class JSONAdapter implements Adapter{
-    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\json\\Client.json";
-    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\json\\Inventory.json";
-    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\json\\Transaction.json";
+    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\json\\Client.json";
+    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\json\\Inventory.json";
+    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\json\\Transaction.json";
 
     // CLIENT DATA
     public void readDataClient(ClientContainer cc) {

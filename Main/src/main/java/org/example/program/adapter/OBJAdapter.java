@@ -11,9 +11,9 @@ import java.io.ObjectInputStream;
 
 public class OBJAdapter implements Adapter{
 
-    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\obj\\Client.obj";
-    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\obj\\Inventory.obj";
-    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\obj\\Transaction.obj";
+    private static final String clientDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\obj\\Client.obj";
+    private static final String inventoryDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\obj\\Inventory.obj";
+    private static final String transactionDatabasePath = new java.io.File("").getAbsolutePath() + "\\src\\main\\datastore\\obj\\Transaction.obj";
 
     public void readDataClient(ClientContainer cc){
         try {
