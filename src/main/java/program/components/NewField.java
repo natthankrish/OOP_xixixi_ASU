@@ -1,66 +1,91 @@
 package program.components;
 
-import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
 
 
-public class NewField extends Button {
-    private Label label;
-    private ComboBox<String> comboBox;
-    private VBox itemList;
+public class NewField extends VBox {
+    private TextField textField;
+    private StringProperty textProperty;
+    int width;
+    String bgColor;
+    String color;
+    int radius;
+    int height;
+    public NewField(int width, int height, String bgColor, String color, int radius) {
+        super();
+        this.height = height;
+        this.width = width;
+        this.color = color;
+        this.bgColor = bgColor;
+        this.radius = radius;
+        textProperty = new SimpleStringProperty("");
+        textField = new TextField();
+        textField.setPromptText("Field...");
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            textProperty.set(newValue);
+            });
 
-    public NewField(String labelText, String[] items) {
-        this.label = new Label(labelText);
-        this.comboBox = new ComboBox<String>(FXCollections.observableArrayList(items));
-        this.itemList = new VBox();
-        this.itemList.setAlignment(Pos.CENTER_LEFT);
-        this.itemList.setSpacing(10);
-        this.itemList.setPadding(new Insets(10));
-
-        // create some items to add to the list
-        for (int i = 1; i <= 20; i++) {
-            Label item = new Label("Item " + i);
-            itemList.getChildren().add(item);
+        getChildren().add(textField);
+        setSpacing(5);
+        setStyle();
         }
-
-        // create the button that will display the dropdown
-        Button showDropdownBtn = new Button("▼");
-        showDropdownBtn.setOnAction(e -> {
-            // create a scroll pane to hold the list of items
-            ScrollPane scrollPane = new ScrollPane(itemList);
-            scrollPane.setFitToWidth(true);
-            scrollPane.setPrefViewportWidth(300);
-            scrollPane.setPrefViewportHeight(200);
-
-            // create a new stage to display the scroll pane
-            Stage dropdownStage = new Stage();
-            dropdownStage.setScene(new Scene(scrollPane));
-            dropdownStage.show();
+    public NewField(int width, int height){
+        super();
+        this.height = height;
+        this.width = width;
+        textProperty = new SimpleStringProperty("");
+        textField = new TextField();
+        textField.setPromptText("Field...");
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            textProperty.set(newValue);
         });
 
-        // add components to the layout
-        this.getChildren().addAll(label, comboBox, showDropdownBtn);
-        this.setAlignment(Pos.CENTER_LEFT);
-        this.setPadding(new Insets(10));
+        getChildren().add(textField);
+        setSpacing(5);
+        setStyle();
+    }
+    public String getText() {
+        return textProperty.get();
     }
 
-    public void setSelectedItem(String item) {
-        this.comboBox.setValue(item);
+    public StringProperty textProperty() {
+        return textProperty;
     }
 
-    public String getSelectedItem() {
-        return this.comboBox.getValue();
+    public void setStyle(){
+        String width = "";
+        String height = "";
+        String bgColor = "-fx-background-color: #F5EBEB;";
+        String color = "-fx-text-fill: #867070;";
+        String radius = "-fx-background-radius: 20px;";
+        if (this.height != 0){
+            height = String.format("-fx-pref-height: %d; ", this.height);
+        }
+        if (this.width != 0){
+            width = String.format("-fx-pref-width: %d;", this.width);
+        }
+        if (this.bgColor != null){
+            bgColor = String.format("-fx-background-color: %s; ", this.bgColor);
+        }
+        if (this.color != null){
+            color = String.format("-fx-text-fill: %s ;",this.color);
+        }
+        if (this.radius != 0){
+            radius = String.format("-fx-background-radius: %dpx", this.radius);
+        }
+
+        String style = width + height + bgColor + color + radius;
+        textField.setStyle(style);
+        setStyle(style);
+
     }
-    // example on how to call
-    // NewButton button = new NewButton("Click me!", 100, 50);
-    // button.setStyle();
+    public void setLayout(double x, double y) {
+        this.setLayoutX(x);
+        this.setLayoutY(y);
+    }
 }
+
 
