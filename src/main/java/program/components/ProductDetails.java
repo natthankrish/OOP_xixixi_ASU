@@ -5,8 +5,15 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Screen;
+import program.entities.Product;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +32,7 @@ public class ProductDetails extends ScrollPanel {
     private NewButton changeImage;
     private NewButton confirmChanges;
 
-    public ProductDetails(String productName) {
+    public ProductDetails(Product product) {
         super(Screen.getPrimary().getVisualBounds().getWidth() * 5 / 16, Screen.getPrimary().getVisualBounds().getHeight() * 5 / 8);
         this.buffer.setPadding(new Insets(30, this.getPrefWidth()/20, 30, this.getPrefWidth()/20));
         this.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 9 / 20);
@@ -33,11 +40,28 @@ public class ProductDetails extends ScrollPanel {
         this.setStyle("-fx-background:#F5EBEB;-fx-background-color:transparent;");
         this.buffer.setAlignment(Pos.TOP_CENTER);
 
-        this.image = new NewImage("assets/products/No_Image_Available.jpg");
+        this.image = new NewImage(product.getImage());
         this.image.setDimension(this.getPrefWidth()/2,this.getPrefWidth()/2);
         this.addItem(this.image);
 
         this.changeImage = new NewButton("Change Image", 150, 10);
+        this.changeImage.setOnMouseClicked(event -> {
+            FileChooser fd = new FileChooser();
+            File filename = fd.showOpenDialog(null);
+            if (filename != null) {
+                Path src = Paths.get(filename.getPath());
+                Path dest = Paths.get("assets/products/" + src.getFileName());
+                File destFile = new File(dest.toString());
+                if (!destFile.exists()) {
+                    try {
+                        Files.copy(src, dest);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                this.image.changeImage(dest.toString());
+            }
+        });
         this.addItem(this.changeImage);
 
         HBox titleHBox = new HBox();
@@ -48,11 +72,11 @@ public class ProductDetails extends ScrollPanel {
         name.setAlignment(Pos.CENTER_LEFT);
         name.setPrefWidth(this.getPrefWidth() * 2 / 3);
 
-        this.name = new NewLabel(productName, 27, "#867070", 700);
+        this.name = new NewLabel(product.getName(), 27, "#867070", 700);
         name.getChildren().add(this.name);
-        name.getChildren().add(new NewLabel("Product ID", 20, "#867070", 700));
+        name.getChildren().add(new NewLabel(String.valueOf(product.getId()), 20, "#867070", 700));
 
-        this.status = new NewButton("Available", 100, 40);
+        this.status = new NewButton(product.getStock() == 0 ? "Sold" : "Available", 100, 40);
         this.status.setDisable(true);
 
         HBox statusbuf = new HBox(this.status);
@@ -78,10 +102,10 @@ public class ProductDetails extends ScrollPanel {
         label4.setPrefWidth(this.getPrefWidth()/2);
 
         List<String> wkwk = new ArrayList<>();
-        this.category = new NewField("Category", this.getPrefWidth()/3, 40);
-        this.stock = new NewField("Stock", this.getPrefWidth()/3, 40);
-        this.sellingPrice = new NewField("Selling Price", this.getPrefWidth()/3, 40);
-        this.purchasedPrice = new NewField("Purchased price", this.getPrefWidth()/3, 40);
+        this.category = new NewField(product.getCategory(), this.getPrefWidth()/3, 40);
+        this.stock = new NewField(String.valueOf(product.getStock()), this.getPrefWidth()/3, 40);
+        this.sellingPrice = new NewField(String.valueOf(product.getPrice()), this.getPrefWidth()/3, 40);
+        this.purchasedPrice = new NewField(String.valueOf(product.getPurchasePrice()), this.getPrefWidth()/3, 40);
 
         hbox1.getChildren().addAll(label1, this.category);
         hbox2.getChildren().addAll(label2, this.stock);

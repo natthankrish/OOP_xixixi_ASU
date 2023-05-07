@@ -5,7 +5,10 @@ import javafx.scene.Node;
 import program.App;
 import javafx.stage.Screen;
 import program.components.*;
+import program.containers.Manager;
+import program.entities.Product;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +17,8 @@ public class ItemDirectory extends BasePage {
     private Group addItemPage;
     private NewButton backToItemDetails;
     private NewButton addItemButton;
-    private List<String> data;
+    private List<Product> data;
+
     private ScrollPanel buffer;
     private SearchBar searchBar;
     private ProductDetails currentDetails;
@@ -44,21 +48,24 @@ public class ItemDirectory extends BasePage {
         search.setPosition(Screen.getPrimary().getVisualBounds().getWidth() * 4 / 20, Screen.getPrimary().getVisualBounds().getHeight() * 7 / 40);
         this.detailpage.getChildren().add(search);
 
-        this.data = new ArrayList();
-        this.data.add("haha");
-        this.searchBar = new SearchBar(this.data);
+        List<String> hehe = new ArrayList();
+        this.searchBar = new SearchBar(hehe);
         this.searchBar.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 5 / 20);
         this.searchBar.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 7 / 40);
         this.detailpage.getChildren().add(searchBar);
 
-        this.buffer = new ScrollPanel(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8, 500);
+        this.buffer = new ScrollPanel(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8, Screen.getPrimary().getVisualBounds().getHeight() * 5 / 8);
         this.buffer.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
         this.buffer.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 9 / 40);
         this.detailpage.getChildren().add(buffer);
 
-        this.addProductItem("Halo");
-        this.addProductItem("xixi");
-        this.addProductItem("wmldm");
+        Manager m = Manager.getInstance();
+        this.data = m.getInventoryContainer().getBuffer();
+        for (Product item: this.data) {
+            if (item.getActive()) {
+                this.addProductItem(item);
+            }
+        }
 
         NewLabel headAdd = new NewLabel("Add Item To Directory", 60, "#867070", 700);
         headAdd.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
@@ -87,8 +94,8 @@ public class ItemDirectory extends BasePage {
         this.detailpage.getChildren().add(this.currentDetails);
     }
 
-    public void addProductItem(String name) {
-        ProductItem productItem = new ProductItem(name);
+    public void addProductItem(Product product) {
+        ProductItem productItem = new ProductItem(product);
         productItem.setOnMouseClicked(event -> {
             this.changeCurrentDetails(productItem.getDetails());
         });

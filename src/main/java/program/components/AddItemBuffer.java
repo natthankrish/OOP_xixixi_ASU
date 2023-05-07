@@ -4,9 +4,19 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import lombok.*;
+import java.nio.file.Files;
+import java.io.*;
 
+import javax.swing.*;
+import java.awt.FileDialog;
+import java.awt.Frame;
+import java.io.File;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 @Getter
@@ -24,7 +34,7 @@ public class AddItemBuffer extends Group {
     public AddItemBuffer() {
         this.background = new Background(Screen.getPrimary().getVisualBounds().getWidth()*7/10, Screen.getPrimary().getVisualBounds().getHeight()/2, "#F5EBEB");
         this.getChildren().add(background);
-        this.image = new NewImage("assets/products/No_Image_Available.jpg");
+        this.image = new NewImage("assets/products/No_Available_Image.jpg");
 
         HBox hbox = new HBox();
         hbox.setAlignment(Pos.CENTER_LEFT);
@@ -33,6 +43,25 @@ public class AddItemBuffer extends Group {
 
         this.image.setDimension(background.getHeight() * 7/ 10,background.getHeight() * 7/ 10);
         this.changeimg = new NewButton("Change Image", 150, 40);
+        this.changeimg.setOnMouseClicked(event -> {
+            FileChooser fd = new FileChooser();
+            File filename = fd.showOpenDialog(null);
+            if (filename != null) {
+                Path src = Paths.get(filename.getPath());
+                Path dest = Paths.get("assets/products/" + src.getFileName());
+                File destFile = new File(dest.toString());
+                if (!destFile.exists()) {
+                    try {
+                        Files.copy(src, dest);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                this.image.changeImage(dest.toString());
+            }
+        });
+
+
 
         VBox vBox = new VBox(this.image, this.changeimg);
         vBox.setAlignment(Pos.BASELINE_CENTER);
@@ -53,7 +82,7 @@ public class AddItemBuffer extends Group {
         NewLabel label2 = new NewLabel("Stock", 22, "#867070", 700);
         NewLabel label3 = new NewLabel("Selling Price", 22, "#867070", 700);
         NewLabel label4 = new NewLabel("Purchased Price", 22, "#867070", 700);
-        NewLabel label5 = new NewLabel("Purchased Price", 22, "#867070", 700);
+        NewLabel label5 = new NewLabel("Name", 22, "#867070", 700);
 
         label1.setPrefWidth(background.getWidth()/4);
         label2.setPrefWidth(background.getWidth()/4);
@@ -76,6 +105,10 @@ public class AddItemBuffer extends Group {
         vBox2.getChildren().addAll(hbox5, hbox1, hbox2, hbox3, hbox4);
 
         this.submitButton = new NewButton("Add", 200, 35);
+        this.submitButton.setOnMouseClicked(event -> {
+            // CALL DATABASE HERE
+        });
+
         HBox buttons = new HBox(this.submitButton);
         buttons.setPrefWidth(background.getWidth());
         buttons.setAlignment(Pos.CENTER);

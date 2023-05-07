@@ -9,6 +9,7 @@ module program {
     requires annotations;
     requires com.google.gson;
     requires jakarta.xml.bind;
+    requires java.desktop;
     exports program;
     opens program.containers to jakarta.xml.bind;
     opens program.entities to jakarta.xml.bind, com.sun.xml.bind;
