@@ -19,15 +19,14 @@ public class CardMember extends BorderPane {
     private NewLabel customerName;
     private int id;
     private String phone;
-    private CloseButton closeButton;
 
     public CardMember(String customerName, int id, String phone) {
         this.customerName = new NewLabel(customerName, 24, "#867070", 700);
         this.id = id;
         this.phone = phone;
-        this.closeButton = new CloseButton();
-        this.closeButton.img.setFitWidth(25);
-        this.closeButton.img.setFitHeight(25);
+//        this.closeButton = new CloseButton();
+//        this.closeButton.img.setFitWidth(25);
+//        this.closeButton.img.setFitHeight(25);
 
         // Set up the card's layout
         setPadding(new Insets(10));
@@ -48,7 +47,7 @@ public class CardMember extends BorderPane {
         nameQuantityBox.setAlignment(Pos.TOP_LEFT);
 
         // Set up the close button and price
-        VBox closeButtonPriceBox = new VBox(5, this.closeButton, priceText);
+        VBox closeButtonPriceBox = new VBox(5, priceText);
         closeButtonPriceBox.setAlignment(Pos.TOP_RIGHT);
 
         // Combine the nameQuantityBox and imageView in an HBox

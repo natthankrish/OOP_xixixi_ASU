@@ -18,35 +18,68 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.example.program.page.Transaction;
+import org.example.program.entities.clients.Client;
+import org.example.program.entities.clients.ClientType;
+import org.example.program.entities.clients.Member;
+import org.example.program.entities.clients.VIP;
 
 public class DetailMember extends BorderPane {
     private NewLabel name;
     private int id;
-    private String phone;
     private CustomButton statusButton;
-    private CustomButton makeVIP;
-    private CustomButton deactivated;
+    private CustomButton kiri;
+    private CustomButton kanan;
     private int transaksiCount;
 
     private String terakhirTransaksi;
 
-    private String pelanggan;
+    private Client pelanggan;
 
     private int total;
     public DetailMember(String name,
-                          int id,
-                          String phone,
-                          String pelanggan,
-                          int transaksiCount,
-                          String terakhirTransaksi,
-                          int total) {
-        this.name = new NewLabel(name, 24, "#867070", 700);
+                        int id,
+                        Client pelanggan,
+                        int transaksiCount,
+                        String terakhirTransaksi,
+                        int total) {
+        this.name = new NewLabel(name, 25, "#867070", 700);
         this.id = id;
-        this.phone = phone;
-        this.statusButton = new CustomButton(pelanggan, 12,"#FFFFFF","#BEB2B2","bold",10,10,10,10);
-        this.makeVIP = new CustomButton("Make VIP", 16, "#FFFFFF", "#867070", "bold", 10,10,10,10);
-        this.deactivated = new CustomButton("Deactivated", 16, "#FFFFFF", "#867070", "bold", 10,10,10,10);
+        String valtype = "";
+        if (pelanggan.getType() instanceof Member
+                && pelanggan.getActiveStatus()){
+            valtype = "Member";
+        } else if (pelanggan.getType() instanceof VIP
+                && pelanggan.getActiveStatus()){
+            valtype = "VIP";
+        }
+        else{
+            valtype = "Deactivated";
+        }
+
+        String buttonKiri = "";
+        if(pelanggan.getType() instanceof Member
+                && pelanggan.getActiveStatus()){
+            buttonKiri = "Make VIP";
+        }
+        else if(pelanggan .getType() instanceof VIP
+                && pelanggan.getActiveStatus()){
+            buttonKiri = "Make Regular";
+        }
+        else {
+            buttonKiri = "Activate as Member";
+        }
+
+        String buttonKanan = "";
+        if (!pelanggan.getActiveStatus()){
+            buttonKanan = "Activate as VIP";
+        }
+        else {
+            buttonKanan = "Deactivated";
+        }
+
+        this.statusButton = new CustomButton(valtype, 12,"#FFFFFF","#BEB2B2","bold",10,10,10,10);
+        this.kiri = new CustomButton(buttonKiri, 16, "#FFFFFF", "#867070", "bold", 10,10,10,10);
+        this.kanan = new CustomButton(buttonKanan, 16, "#FFFFFF", "#867070", "bold", 10,10,10,10);
         this.transaksiCount = transaksiCount;
         this.pelanggan = pelanggan;
         this.total = total;
@@ -61,11 +94,11 @@ public class DetailMember extends BorderPane {
 
 
         // Set up the item name and quantity
-        Text phoneText = new Text(String.valueOf(phone));
-        phoneText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15) );
-        phoneText.setFill(Color.web("#867070"));
+//        Text phoneText = new Text(this.date);
+//        phoneText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15) );
+//        phoneText.setFill(Color.web("#867070"));
 
-        Text idText = new Text("ID " + String.valueOf(id) + " - " + String.valueOf(phone));
+        Text idText = new Text("ID" + String.valueOf(id));
         idText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
         idText.setFill(Color.web("#867070"));
 
@@ -94,8 +127,8 @@ public class DetailMember extends BorderPane {
         spendTotalData.setFill(Color.web("#867070"));
 
         HBox bottom = new HBox(20,
-                this.makeVIP,
-                this.deactivated
+                this.kiri,
+                this.kanan
         );
         bottom.setAlignment(Pos.BOTTOM_CENTER);
 
@@ -124,31 +157,56 @@ public class DetailMember extends BorderPane {
 
         // Set up the main content of the card
         StackPane contentPane = new StackPane();
-        contentPane.getChildren().addAll(topBox, status, isi, data,bottom);
+        contentPane.getChildren().addAll(topBox,status, isi, data, bottom);
         setCenter(contentPane);
 
         // Add event handler for mouse click
-        setOnMouseClicked(event -> {
-            System.out.println("customer clicked!");
-            // Add code here to perform the desired action when the card is click
-        });
-
-        // Add event handlers for mouse enter and exit
-        setOnMouseEntered(event -> {
-            setCursor(Cursor.HAND);
-            setBackground(new Background(new BackgroundFill(Color.web("EAD7D7"), new CornerRadii(10), Insets.EMPTY)));
-        });
-
-        setOnMouseExited(event -> {
-            setCursor(Cursor.DEFAULT);
-            setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
-        });
+//        setOnMouseClicked(event -> {
+//            System.out.println("customer clicked!");
+//            // Add code here to perform the desired action when the card is click
+//        });
+//
+//        // Add event handlers for mouse enter and exit
+//        setOnMouseEntered(event -> {
+//            setCursor(Cursor.HAND);
+//            setBackground(new Background(new BackgroundFill(Color.web("EAD7D7"), new CornerRadii(10), Insets.EMPTY)));
+//        });
+//
+//        setOnMouseExited(event -> {
+//            setCursor(Cursor.DEFAULT);
+//            setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
+//        });
     }
+
+//    public void setData(String name,
+//                        int id,
+//                        String phone,
+//                        String pelanggan,
+//                        int transaksiCount,
+//                        String terakhirTransaksi,
+//                        int total) {
+//        // Set the data for the DetailMember object
+//        // This code will depend on how you want to display the data in the DetailMember object
+//        this.name.setText(name);
+//        this.id.setText(String.valueOf(id));
+//        this.phone.setText(phone);
+//        this.pelanggan.setText(pelanggan);
+//        this.transaksiCount.setText(String.valueOf(transaksiCount));
+//        this.terakhirTransaksi.setText(terakhirTransaksi);
+//        this.total.setText(String.valueOf(total));
+//    }
 
 
     public void setLayout(double x, double y) {
         this.setLayoutX(x);
         this.setLayoutY(y);
     }
-}
 
+    public CustomButton getKanan() {
+        return this.kanan;
+    }
+
+    public CustomButton getKiri() {
+        return this.kiri;
+    }
+}

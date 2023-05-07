@@ -17,11 +17,13 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import lombok.Getter;
 
 public class AddNew extends BorderPane {
-
+    @Getter
     private Bill bill;
     private Cart cart;
     private Commodity product = null;
@@ -30,6 +32,8 @@ public class AddNew extends BorderPane {
     public AddNew(Bill bill, Cart cart){
         this.bill = bill;
         this.cart = cart;
+        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(213, 180, 180, 0.3), new CornerRadii(30), Insets.EMPTY);
+        Background bg = new Background(backgroundFill);
                 
         // Set up the labels
         NewLabel titleLabel = new NewLabel("Add New", 44, "#867070", 700);
@@ -52,6 +56,27 @@ public class AddNew extends BorderPane {
         NewLabel itemNameField = new NewLabel(" ", 16, "#867070", 700);
         NewLabel categoryField = new NewLabel(" ", 16, "#867070", 700);
         
+        BorderPane IDItemPane = new BorderPane();
+        VBox IDItemBox = new VBox(5, IDItemField);
+        IDItemPane.setCenter(IDItemBox);
+        IDItemPane.setPadding(new Insets(10));
+        IDItemPane.setBackground(bg);
+        IDItemPane.setPrefSize(340, 30);
+
+        BorderPane itemNamePane = new BorderPane();
+        VBox itemNameBox = new VBox(5, itemNameField);
+        itemNamePane.setCenter(itemNameBox);
+        itemNamePane.setPadding(new Insets(10));
+        itemNamePane.setBackground(bg);
+        itemNamePane.setPrefSize(340, 30);
+
+        BorderPane categoryPane = new BorderPane();
+        VBox categoryBox = new VBox(5, categoryField);
+        categoryPane.setCenter(categoryBox);
+        categoryPane.setPadding(new Insets(10));
+        categoryPane.setBackground(bg);
+        categoryPane.setPrefSize(500, 30);
+
         CustomButton minusButton = new CustomButton("-", 16, "#867070", "#F5EBEB", "bold", 10, 10, 10, 10);
         CustomButton plusButton = new CustomButton("+", 16, "#867070", "#F5EBEB", "bold", 10, 10, 10, 10);
         this.quantity = 0;
@@ -73,7 +98,7 @@ public class AddNew extends BorderPane {
         
         setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
         
-        VBox container = new VBox(5, titleLabel, searchBox, idItemLabel, IDItemField, itemNameLabel, itemNameField, categoryLabel, categoryField, quantityLabel, quantityBox, priceBox, bottomBox);
+        VBox container = new VBox(5, titleLabel, searchBox, idItemLabel, IDItemPane, itemNameLabel, itemNamePane, categoryLabel, categoryPane, quantityLabel, quantityBox, priceBox, bottomBox);
 
         setCenter(container);
         setPadding(new Insets(20));
@@ -84,14 +109,13 @@ public class AddNew extends BorderPane {
                 quantityNumberLabel.setText(Integer.toString(quantity));
                 priceTotalNumberLabel.setText("IDR " + Double.toString(quantity * product.getPrice()));
             } 
-                System.out.println("Minus clicked!");
-            }
-        );
+        });
         plusButton.setOnAction(event -> {
+            // if (product.getStock() > quantity) {
+            // }
             quantity += 1;
             quantityNumberLabel.setText(Integer.toString(quantity));
             priceTotalNumberLabel.setText("IDR " + Double.toString(quantity * product.getPrice()));
-            System.out.println("Plus clicked!");
         });
 
         addToCartButton.setOnAction(event -> {
@@ -131,7 +155,7 @@ public class AddNew extends BorderPane {
                 itemNameField.setText(product.getName());
                 categoryField.setText(product.getCategory());
                 priceEachNumberLabel.setText("IDR " + Double.toString(product.getPrice()));
-                quantity = 1;
+                quantity = 0;
                 quantityNumberLabel.setText(Integer.toString(quantity));
                 priceTotalNumberLabel.setText("IDR " + Double.toString(product.getPrice()));
             }

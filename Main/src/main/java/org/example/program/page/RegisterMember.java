@@ -1,40 +1,53 @@
 package org.example.program.page;
 
 import javafx.geometry.Pos;
+import javafx.stage.Screen;
+import org.example.program.components.*;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
+
+import java.util.ArrayList;
+import java.util.List;
+import javafx.geometry.Pos;
 import org.example.program.components.CardRegister;
 import org.example.program.components.DetailRegister;
 import org.example.program.components.NewLabel;
 import org.example.program.components.SearchBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import org.example.program.containers.Manager;
+import org.example.program.containers.TransactionContainer;
+import org.example.program.entities.bills.Bill;
+import org.example.program.entities.bills.Time;
+import org.example.program.entities.clients.Client;
+import org.example.program.entities.clients.ClientType;
+import org.example.program.entities.clients.Customer;
+import org.example.program.entities.clients.Member;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RegisterMember extends BasePage {
     private NewLabel label;
-    private SearchBar searchBar;
+    private NewField searchBar;
     private VBox cardContainer;
     private ScrollPane scrollPane;
-    private DetailRegister detailRegister;
+    private DetailRegister currentDetails;
+    private AddRegister addRegister;
+    private List<Client> name;
+
 
     public RegisterMember() {
         this.changeBackground("#FFFFFF");
         this.label = new NewLabel("Register Member", 48, "#867070", 700);
         this.label.setLayout(45, 35);
 
-        String[][] cardData = {
-                {"nolan", "123", "29/20/2020"},
-                {"mike", "456", "30/20/2020"},
-                {"jane", "789", "01/21/2021"},
-                {"june", "289", "01/21/2021"},
-                {"dune", "729", "01/21/2021"},
-                {"jake", "489", "01/21/2021"},
-                {"jake", "489", "01/21/2021"},
-                {"k", "489", "01/21/2021"},
-                {"i", "489", "01/21/2021"},
-
-        };
+        Manager m = Manager.getInstance();
+        TransactionContainer tc = m.getTransactionContainer();
+        this.name = m.getClientContainer().getBuffer();
+        for (Client c : this.name){
+            c.display();
+        }
 
         this.cardContainer = new VBox(10);
         this.cardContainer.setAlignment(Pos.CENTER);
@@ -42,10 +55,45 @@ public class RegisterMember extends BasePage {
         this.cardContainer.setLayoutX(55);
         this.cardContainer.setLayoutY(200);
 
-        for (String[] data : cardData) {
-            CardRegister card = new CardRegister(data[0], Integer.parseInt(data[1]), data[2]);
-            card.setLayout(55, 200);
-            cardContainer.getChildren().add(card);
+        for (Client client : name) {
+            if (client.getType() instanceof Customer){
+                CardRegister card = new CardRegister(client.getName(),
+                        client.getId(),
+                        client.getPhoneNumber());
+
+                card.setOnMouseClicked(event -> {
+                    Bill a = tc.getBillById(client.getId());
+                    Time tgl = a.getTransactionTime();
+                    int tot = 0;
+                    // Iterate to calculate total spend
+                    for (Integer i : client.getTransactionHistory()){
+                        Bill b = tc.getBillById(client.getId());
+                        tot += b.getTotalPrice();
+                    }
+
+                    DetailRegister newDetails = new DetailRegister(client.getName(),client.getId(), client.getPhoneNumber(), client.getType(), client.getTransactionHistory().size(),tgl.getStringTime(),tot);
+                    this.getChildren().remove(this.currentDetails);
+                    this.currentDetails= newDetails;
+                    this.currentDetails.setLayout(770,180);
+                    this.getChildren().add(this.currentDetails);
+
+                    this.currentDetails.getRegisterButton().setOnMouseClicked(event1 -> {
+                        this.addRegister = new AddRegister("Customer Name", "Phone Number");
+//                    this.getChildren().remove(this.addRegister);
+                        this.addRegister.setLayout(770,500);
+                        this.addRegister.getConfirm().setOnMouseClicked(event2 -> {
+                            cardContainer.getChildren().clear();
+                            client.setName(this.addRegister.getCustomerName().getText());
+                            client.setPhoneNumber(String.valueOf(this.addRegister.getPhoneNumber().getText()));
+                            client.makeClientAMember(this.addRegister.getCustomerName().getText(),this.addRegister.getPhoneNumber().getText(),0.0, true);
+
+                        });
+                        this.getChildren().add(this.addRegister);
+                    });
+                });
+                card.setLayout(55, 200);
+                cardContainer.getChildren().add(card);
+            }
         }
 
         // Mengubah VBox menjadi ScrollPane dan menambahkan cardContainer ke dalam ScrollPane
@@ -57,29 +105,44 @@ public class RegisterMember extends BasePage {
         this.scrollPane.setLayoutX(55);
         this.scrollPane.setLayoutY(180);
 
-        List<String> itemList = new ArrayList<String>();
-        itemList.add("kon 1");
-        itemList.add("kon 2");
-        itemList.add("kon 3");
-        itemList.add("kon 4");
-        itemList.add("kon 5");
-        itemList.add("kon 6");
-        itemList.add("kon 7");
-        itemList.add("kon 8");
+        this.searchBar = new NewField("Search", Screen.getPrimary().getVisualBounds().getWidth() * 3 / 16, 40);
+        this.searchBar.setLayoutX(410);
+        this.searchBar.setLayoutY(130);
+        this.searchBar.setOnKeyReleased(event -> {
+            this.cardContainer.getChildren().removeAll();
+            for (Client client : this.name) {
+                if (client.getType() instanceof Customer){
+                    if (client.getName() != null && client.getName().toLowerCase().contains(this.searchBar.getText().toLowerCase())
+                            || String.valueOf(client.getId()).contains(this.searchBar.getText().toLowerCase())) {
+                        if (client.getActiveStatus() != null && client.getActiveStatus()){
+                            CardRegister card = new CardRegister(client.getName(), client.getId(), client.getPhoneNumber());
+                            card.setLayout(55, 200);
+                            cardContainer.getChildren().add(card);
+                            card.setOnMouseClicked(e -> {
+                                int tot = 0;
+                                for (Integer i : client.getTransactionHistory()){
+                                    Bill b = tc.getBillById(client.getId());
+                                    tot += b.getTotalPrice();
+                                }
 
-        this.searchBar = new SearchBar(itemList);
-        this.searchBar.setLayout(477,140);
+                                DetailRegister newDetail = new DetailRegister(client.getName(),client.getId(),client.getPhoneNumber(),client.getType(),client.getTransactionHistory().size(),"",tot);
 
-        this.detailRegister = new DetailRegister("Nama Customer",
-                123,
-                "12/12/2012",
-                "Member",
-                123,
-                "20/20/2020",
-                20000000
-                );
-        this.detailRegister.setLayout(770,180);
+                                this.getChildren().remove(this.currentDetails);
+                                this.currentDetails = newDetail;
+                                this.currentDetails.setLayout(770,180);
+                                this.getChildren().add(this.currentDetails);
+                            });
+                        }
+                    }
+                }
+            }
 
-        this.getChildren().addAll(this.label, this.scrollPane, this.searchBar, this.detailRegister);
+
+        });
+
+        this.getChildren().addAll(this.label,
+                this.scrollPane,
+                this.searchBar
+        );
     }
 }

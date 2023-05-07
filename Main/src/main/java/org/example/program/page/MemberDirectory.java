@@ -1,11 +1,29 @@
 package org.example.program.page;
 
+import javafx.stage.Screen;
+import org.example.program.components.CustomButton;
+import org.example.program.components.NewLabel;
+import org.example.program.components.SearchBar;
 import org.example.program.components.*;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.VBox;
-import javafx.geometry.Pos;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.geometry.Pos;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
+import org.example.program.containers.Manager;
+import org.example.program.containers.TransactionContainer;
+import org.example.program.entities.bills.Bill;
+import org.example.program.entities.bills.Time;
+import org.example.program.entities.clients.Client;
+import org.example.program.entities.clients.ClientType;
+import org.example.program.entities.clients.Member;
+import org.example.program.entities.clients.VIP;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class MemberDirectory extends BasePage {
@@ -13,52 +31,148 @@ public class MemberDirectory extends BasePage {
     private CustomButton buttonMember;
     private CustomButton buttonDeactivated;
     private NewLabel label;
-    private SearchBar searchBar;
+    private NewField searchBar;
     private CardMember card;
     private VBox cardContainer;
     private ScrollPane scrollPane;
     private DetailMember detailMember;
-    private NewField newField;
+    private CustomButton lastClickedButton;
+    private List<Client> name;
     public MemberDirectory() {
+
+        Manager m = Manager.getInstance();
+        TransactionContainer tc = m.getTransactionContainer();
+        this.name = m.getClientContainer().getBuffer();
+        System.out.println(name);
 
         this.changeBackground("#FFFFFF");
         this.label = new NewLabel("Member Directory", 48, "#867070", 700);
         this.label.setLayout(45, 35);
 
-        List<String> itemList = new ArrayList<String>();
-        itemList.add("kon 1");
-        itemList.add("kon 2");
-        itemList.add("kon 3");
-        itemList.add("mem 1");
-        itemList.add("mem 2");
-        itemList.add("kim 1");
-        itemList.add("kim 2");
-        itemList.add("kim 3");
+        this.buttonVIP = new CustomButton("VIP", 16, "#FFFFFF", "#867070", "bold", 10,0,0,10);
+        this.buttonVIP.setOnMouseClicked(event -> {
 
-        this.searchBar = new SearchBar(itemList);
-        this.searchBar.setLayout(55,140);
+            cardContainer.getChildren().clear();
+            List<Client> vipClients = name.stream().filter(client -> client.getType() instanceof VIP
+                    && client.getActiveStatus()).toList();
 
-        this.buttonVIP = new CustomButton("VIP", 12, "#FFFFFF", "#867070", "bold", 10,0,0,10);
-        this.buttonVIP.setLayout(330,142);
+            for (Client clientVIP : vipClients) {
+                System.out.println(clientVIP);
 
-        this.buttonMember = new CustomButton("Member", 12, "#FFFFFF", "#867070", "bold",1,1,1,1);
-        this.buttonMember.setLayout(363, 142);
+                CardMember card = new CardMember(clientVIP.getName(), clientVIP.getId(), clientVIP.getPhoneNumber());
+                card.setLayout(55, 200);
 
-        this.buttonDeactivated = new CustomButton("Deactivated", 12, "#FFFFFF", "#867070", "bold", 0,10,10,0);
-        this.buttonDeactivated.setLayout(423,142);
+                cardContainer.getChildren().add(card);
 
-        String[][] cardData = {
-                {"nolan", "123", "29/20/2020"},
-                {"mike", "456", "30/20/2020"},
-                {"jane", "789", "01/21/2021"},
-                {"june", "289", "01/21/2021"},
-                {"dune", "729", "01/21/2021"},
-                {"jake", "489", "01/21/2021"},
-                {"jake", "489", "01/21/2021"},
-                {"k", "489", "01/21/2021"},
-                {"i", "489", "01/21/2021"},
+                card.setOnMouseClicked(e -> {
+                    Bill a = tc.getBillById(clientVIP.getId());
+                    Time tgl = a.getTransactionTime();
+                    int tot = 0;
+                    for (Integer i : clientVIP.getTransactionHistory()){
+                        Bill b = tc.getBillById(clientVIP.getId());
+                        tot += b.getTotalPrice();
+                    }
 
-        };
+                    DetailMember newDetail = new DetailMember(clientVIP.getName(),clientVIP.getId(), clientVIP, clientVIP.getTransactionHistory().size(), tgl.getStringTime(), tot);
+
+                    this.getChildren().remove(this.detailMember);
+                    this.detailMember = newDetail;
+                    this.detailMember.getKanan().setOnMouseClicked(e2 -> {
+                        clientVIP.setInactive();
+                    });
+                    this.detailMember.getKiri().setOnMouseClicked(e2 -> {
+                        clientVIP.makeClientAMember(clientVIP.getName(),clientVIP.getPhoneNumber(), clientVIP.getPoint(), clientVIP.getActiveStatus());
+                    });
+                    this.detailMember.setLayout(770,180);
+                    this.getChildren().add(this.detailMember);
+                });
+            }
+
+        });
+        this.buttonVIP.setLayout(480,130);
+
+
+        this.buttonMember = new CustomButton("Member", 16, "#FFFFFF", "#867070", "bold",1,1,1,1);
+        this.buttonMember.setOnMouseClicked(event -> {
+            cardContainer.getChildren().clear();
+            List<Client> memberClients = name.stream().filter(client -> client.getType() instanceof Member
+                    && client.getActiveStatus()!= null && client.getActiveStatus()).toList();
+
+            for (Client clientMember : memberClients) {
+                CardMember card = new CardMember(clientMember.getName(), clientMember.getId(), clientMember.getPhoneNumber());
+                card.setLayout(55, 200);
+                cardContainer.getChildren().add(card);
+
+                card.setOnMouseClicked(e -> {
+                    Bill a = tc.getBillById(clientMember.getId());
+                    Time tgl = a.getTransactionTime();
+                    int tot = 0;
+                    for (Integer i : clientMember.getTransactionHistory()){
+                        Bill b = tc.getBillById(clientMember.getId());
+                        tot += b.getTotalPrice();
+                    }
+
+                    DetailMember newDetail = new DetailMember(clientMember.getName(),clientMember.getId(), clientMember, clientMember.getTransactionHistory().size(), tgl.getStringTime(), tot);
+
+                    this.getChildren().remove(this.detailMember);
+                    this.detailMember = newDetail;
+                    this.detailMember.getKanan().setOnMouseClicked(e2 -> {
+                        clientMember.setInactive();
+                    });
+                    this.detailMember.getKiri().setOnMouseClicked(e2 -> {
+                        clientMember.makeClientAVIP(clientMember.getName(),clientMember.getPhoneNumber(), clientMember.getPoint(), clientMember.getActiveStatus());
+                    });
+                    this.detailMember.setLayout(770,180);
+                    this.getChildren().add(this.detailMember);
+                });
+            }
+
+        });
+        this.buttonMember.setLayout(522, 130);
+
+
+        this.buttonDeactivated = new CustomButton("Deactivated", 16, "#FFFFFF", "#867070", "bold", 0,10,10,0);
+        this.buttonDeactivated.setOnMouseClicked(event -> {
+            cardContainer.getChildren().clear();
+            List<Client> deactivatedList = name.stream().filter(client ->
+                    ((client.getType() instanceof VIP && !client.getActiveStatus())
+                            || (client.getType() instanceof Member && !client.getActiveStatus())
+                    )
+            ).toList();
+
+            for (Client deactivated : deactivatedList) {
+                CardMember card = new CardMember(deactivated.getName(), deactivated.getId(), deactivated.getPhoneNumber());
+                card.setLayout(55, 200);
+                cardContainer.getChildren().add(card);
+
+                card.setOnMouseClicked(e -> {
+                    Bill a = tc.getBillById(deactivated.getId());
+                    Time tgl = a.getTransactionTime();
+                    int tot = 0;
+                    for (Integer i : deactivated.getTransactionHistory()){
+                        Bill b = tc.getBillById(deactivated.getId());
+                        tot += b.getTotalPrice();
+                    }
+
+                    DetailMember newDetail = new DetailMember(deactivated.getName(),deactivated.getId(), deactivated, deactivated.getTransactionHistory().size(),tgl.getStringTime(),tot);
+
+                    this.getChildren().remove(this.detailMember);
+                    this.detailMember = newDetail;
+                    this.detailMember.getKanan().setOnMouseClicked(e2 -> {
+                        deactivated.setActive();
+                        deactivated.makeClientAVIP(deactivated.getName(),deactivated.getPhoneNumber(),deactivated.getPoint(),deactivated.getActiveStatus());
+                    });
+                    this.detailMember.getKiri().setOnMouseClicked(e2 -> {
+                        deactivated.setActive();
+                        deactivated.makeClientAMember(deactivated.getName(),deactivated.getPhoneNumber(), deactivated.getPoint(), deactivated.getActiveStatus());
+                    });
+                    this.detailMember.setLayout(770,180);
+                    this.getChildren().add(this.detailMember);
+                });
+            }
+
+        });
+        this.buttonDeactivated.setLayout(605,130);
 
         this.cardContainer = new VBox(10);
         this.cardContainer.setAlignment(Pos.CENTER);
@@ -66,13 +180,98 @@ public class MemberDirectory extends BasePage {
         this.cardContainer.setLayoutX(55);
         this.cardContainer.setLayoutY(200);
 
-        for (String[] data : cardData) {
-            CardMember card = new CardMember(data[0], Integer.parseInt(data[1]), data[2]);
-            card.setLayout(55, 200);
-            cardContainer.getChildren().add(card);
-        }
+        for (Client client : this.name) {
+            if (client.getActiveStatus() != null && client.getActiveStatus()){
+                CardMember card = new CardMember(client.getName(), client.getId(), client.getPhoneNumber());
+                card.setLayout(55, 200);
+                cardContainer.getChildren().add(card);
 
-        // Mengubah VBox menjadi ScrollPane dan menambahkan cardContainer ke dalam ScrollPane
+                card.setOnMouseClicked(event -> {
+                    Bill a = tc.getBillById(client.getId());
+                    Time date = a.getTransactionTime();
+                    int tot = 0;
+
+                    for (Integer i : client.getTransactionHistory()){
+                        Bill b = tc.getBillById(client.getId());
+                        tot += b.getTotalPrice();
+                    }
+
+
+                    DetailMember newDetail = new DetailMember(client.getName(),client.getId(), client, client.getTransactionHistory().size(),date.getStringTime(),tot);
+
+                    this.getChildren().remove(this.detailMember);
+                    this.detailMember = newDetail;
+
+                    if(client.getType() instanceof Member){
+                        this.detailMember.getKanan().setOnMouseClicked(e2 -> {
+                            client.setInactive();
+                        });
+                        this.detailMember.getKiri().setOnMouseClicked(e2 -> {
+                            client.makeClientAVIP(client.getName(),client.getPhoneNumber(), client.getPoint(), client.getActiveStatus());
+                        });
+                    }
+                    else {
+                        this.detailMember.getKanan().setOnMouseClicked(e2 -> {
+                            client.setInactive();
+                        });
+                        this.detailMember.getKiri().setOnMouseClicked(e2 -> {
+                            client.makeClientAMember(client.getName(),client.getPhoneNumber(), client.getPoint(), client.getActiveStatus());
+                        });
+                    }
+                    this.detailMember.setLayout(770,180);
+                    this.getChildren().add(this.detailMember);
+                });
+            }
+        }
+        this.searchBar = new NewField("Search", Screen.getPrimary().getVisualBounds().getWidth() * 3 / 16, 40);
+        this.searchBar.setLayoutX(100);
+        this.searchBar.setLayoutY(130);
+        this.searchBar.setOnKeyReleased(event -> {
+            this.cardContainer.getChildren().clear();
+            for (Client client : this.name) {
+                if (client.getName() != null && client.getName().toLowerCase().contains(this.searchBar.getText().toLowerCase())) {
+                    if (client.getActiveStatus() != null && client.getActiveStatus()){
+                        CardMember card = new CardMember(client.getName(), client.getId(), client.getPhoneNumber());
+                        card.setLayout(55, 200);
+                        cardContainer.getChildren().add(card);
+                        card.setOnMouseClicked(e -> {
+                            Bill a = tc.getBillById(client.getId());
+                            Time tgl = a.getTransactionTime();
+                            int tot = 0;
+                            for (Integer i : client.getTransactionHistory()){
+                                Bill b = tc.getBillById(client.getId());
+                                tot += b.getTotalPrice();
+                            }
+
+                            DetailMember newDetail = new DetailMember(client.getName(),client.getId(), client, client.getTransactionHistory().size(), tgl.getStringTime(), tot);
+
+                            this.getChildren().remove(this.detailMember);
+                            this.detailMember = newDetail;
+                            if(client.getType() instanceof Member){
+                                this.detailMember.getKanan().setOnMouseClicked(e2 -> {
+                                    client.setInactive();
+                                });
+                                this.detailMember.getKiri().setOnMouseClicked(e2 -> {
+                                    client.makeClientAVIP(client.getName(),client.getPhoneNumber(), client.getPoint(), client.getActiveStatus());
+                                });
+                            }
+                            else {
+                                this.detailMember.getKanan().setOnMouseClicked(e2 -> {
+                                    client.setInactive();
+                                });
+                                this.detailMember.getKiri().setOnMouseClicked(e2 -> {
+                                    client.makeClientAMember(client.getName(),client.getPhoneNumber(), client.getPoint(), client.getActiveStatus());
+                                });
+                            }
+                            this.detailMember.setLayout(770,180);
+                            this.getChildren().add(this.detailMember);
+                        });
+                    }
+                }
+            }
+
+
+        });
         this.scrollPane = new ScrollPane();
         this.scrollPane.setContent(cardContainer);
         this.scrollPane.setFitToWidth(true);
@@ -81,27 +280,13 @@ public class MemberDirectory extends BasePage {
         this.scrollPane.setLayoutX(55);
         this.scrollPane.setLayoutY(180);
 
-        this.detailMember = new DetailMember(
-                "kuntul",
-                123,
-                "0866666666",
-                "VIP",
-                12,
-                "13/13/2013",
-                2222222);
-        this.detailMember.setLayout(770,180);
-
-        this.newField = new NewField(200,20);
-        this.newField.setLayout(200,200);
 
         this.getChildren().addAll(this.label,
-                this.searchBar,
                 this.buttonVIP,
                 this.buttonMember,
                 this.buttonDeactivated,
                 this.scrollPane,
-                this.detailMember,
-                this.newField
+                this.searchBar
         );
     }
 }
