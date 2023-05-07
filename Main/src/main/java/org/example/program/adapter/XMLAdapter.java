@@ -12,6 +12,7 @@ import org.example.program.entities.Product;
 import org.example.program.entities.clients.Client;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class XMLAdapter implements Adapter{
 
@@ -32,6 +33,12 @@ public class XMLAdapter implements Adapter{
 
             cc.setAmount(temp.getAmount());
             cc.setBuffer(temp.getBuffer());
+
+            for (Client c : cc.getBuffer()){
+                if (c.getTransactionHistory() == null){
+                    c.setTransactionHistory(new ArrayList<>());
+                }
+            }
         }
         catch (JAXBException e)
         {
@@ -105,6 +112,12 @@ public class XMLAdapter implements Adapter{
 
             tc.setAmount(temp.getAmount());
             tc.setBuffer(temp.getBuffer());
+
+            for (Bill b : tc.getBuffer()){
+                if (b.getReceipt() == null){
+                    b.setReceipt(new ArrayList<>());
+                }
+            }
         }
         catch (JAXBException e)
         {

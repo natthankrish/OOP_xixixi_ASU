@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.ajg</groupId>
-    <artifactId>PluginCurrency</artifactId>
+    <artifactId>PluginCharges</artifactId>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
