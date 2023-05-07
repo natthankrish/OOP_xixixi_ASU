@@ -1,32 +1,37 @@
 package org.example.program.components;
 
-import java.util.List;
+import java.util.Iterator;
+import org.example.program.entities.Bill;
+import org.example.program.entities.ReceiptInfo;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 public class Cart extends BorderPane {
-    private List<ItemCard> itemCards;
+    private Bill bill;
     private NewLabel titleLabel;
     private VBox contentPane;
 
-    public Cart(List<ItemCard> cards) {
-        // Set up the title and the member
+    public Cart(Bill bill) {
+        this.bill = bill;
+        // Set up the title
         this.titleLabel = new NewLabel("Cart", 44, "#867070", 700);
-        this.itemCards = cards;
 
         // make a scrollable container of the cads;
         this.contentPane = new VBox(10);
       
-        // add all the itemcards to the scrollable container
-        contentPane.getChildren().addAll(itemCards);
-
+        // add all the receiptInfo to the scrollable container
+        Iterator<ReceiptInfo> iterator = this.bill.getReceipt().iterator();
+        while (iterator.hasNext()) {
+            ReceiptInfo item = iterator.next();
+            ItemCard itemCard = new ItemCard(this.bill, contentPane, item);
+            contentPane.getChildren().add(itemCard);
+        }
+        
         ScrollPane scrollPane = new ScrollPane(contentPane);
         scrollPane.setPrefHeight(520); // Set the preferred height of the scroll pane
         scrollPane.setFitToWidth(true);
-
-
 
         // put the title and the scrollable container in a vbox
         VBox container = new VBox(5, this.titleLabel, scrollPane);
@@ -34,19 +39,30 @@ public class Cart extends BorderPane {
 
         setCenter(container);
         setPrefWidth(470); // Set the width to match the item card size
+    
+        setOnMouseExited(event -> {
+            
+        });
+    
     }
 
     // Method to add an item card to the cart
-    public void addItemCard(ItemCard itemCard) {
-        itemCards.add(itemCard);
+    public void addItemCard(ReceiptInfo receiptInfo) {
+        // itemCards.add(itemCard);
         // itemCardsBox.getChildren().add(itemCard);
+        ItemCard itemCard = new ItemCard(this.bill, contentPane, receiptInfo);
         contentPane.getChildren().add(itemCard);
     }
     
     // Method to remove an item card from the cart
-    public void removeItemCard(ItemCard itemCard) {
-        itemCards.remove(itemCard);
+    public void removeItemCard(ReceiptInfo receiptInfo) {
+        // itemCards.remove(itemCard);
         // itemCardsBox.getChildren().remove(itemCard);
-        contentPane.getChildren().add(itemCard);
+        ItemCard itemCard = new ItemCard(this.bill, contentPane, receiptInfo);
+        contentPane.getChildren().remove(itemCard);
+    }
+
+    public VBox getContentPane(){
+        return this.contentPane;
     }
 }
