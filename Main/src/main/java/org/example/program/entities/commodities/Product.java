@@ -1,4 +1,4 @@
-package org.example.program.entities;
+package org.example.program.entities.commodities;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -11,12 +11,10 @@ import java.util.Observable;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @XmlRootElement(name = "Product")
 @XmlAccessorType (XmlAccessType.FIELD)
 
-public class Product extends Observable implements Serializable {
+public class Product extends Observable implements Serializable, Commodity {
     private Integer id;
     private Integer stock;
     private String name;
@@ -46,25 +44,33 @@ public class Product extends Observable implements Serializable {
         setStock(getStock()-n);
     }
 
-    public void setActive() {
-        this.active = true;
-    }
-    public void setInactive() {
-        this.active = false;
-    }
+    public Integer getId(){ return id; }
+    public Integer getStock(){ return stock;}
+    public String getName(){ return name; }
 
-    public void setStock(Integer newStock){
-        this.stock = newStock;
-        notifyObservers();
-    }
+    public Double getPurchasePrice() {return purchasePrice;}
+    public Double getPrice(){return price;}
+    public String getCategory(){return category;}
 
-    public void setPrice(Double newPrice){
-        this.price = newPrice;
-        notifyObservers();
-    }
+    public String getImage(){return image;}
 
-    public void setPurchasePrice(Double newPurchasePrice){
-        this.purchasePrice = newPurchasePrice;
-        notifyObservers();
-    }
+    public Boolean getActive(){return active;}
+
+    public void setID(Integer i){id = i;}
+
+    public void setStock(Integer newStock){stock = newStock;}
+
+    public void setName(String newName) {name = newName;}
+
+    public void setPurchasePrice(Double newPurchasePrice) {purchasePrice = newPurchasePrice;}
+
+    public void setPrice(Double newPrice){ price = newPrice;}
+
+    public void setCategory(String newCategory){category = newCategory;}
+
+    public void setImage(String newImage){image = newImage;}
+
+    public void setActive(Boolean newActive) { this.active = newActive; }
+
+    public String getCurrency() { return "IDR";}
 }

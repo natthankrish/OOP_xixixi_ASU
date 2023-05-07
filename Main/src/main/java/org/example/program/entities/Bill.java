@@ -8,6 +8,8 @@ import lombok.*;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import org.example.program.entities.ReceiptInfo;
+import org.example.program.entities.Time;
 
 @NoArgsConstructor
 @AllArgsConstructor

@@ -2,9 +2,9 @@ package org.example.program.adapter;
 
 import org.example.program.containers.Manager;
 import org.example.program.entities.Bill;
-import org.example.program.entities.Product;
+import org.example.program.entities.commodities.Commodity;
+import org.example.program.entities.commodities.Product;
 import org.example.program.entities.clients.Client;
-import org.json.simple.JSONArray;
 
 public class DataDriver {
 
@@ -32,7 +32,7 @@ public class DataDriver {
             c.display();
         }
 
-        for (Product p : m.getInventoryContainer().getBuffer()){
+        for (Commodity p : m.getInventoryContainer().getBuffer()){
             p.display();
         }
 

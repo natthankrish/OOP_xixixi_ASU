@@ -1,9 +1,7 @@
 package PluginPie;
-import javafx.scene.Group;
 import javafx.scene.chart.*;
 import javafx.stage.Screen;
 import javafx.util.Pair;
-import org.example.program.topbar.TopContainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.example.program.page.BasePage;

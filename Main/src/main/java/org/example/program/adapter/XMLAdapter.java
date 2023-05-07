@@ -8,7 +8,7 @@ import org.example.program.containers.ClientContainer;
 import org.example.program.containers.InventoryContainer;
 import org.example.program.containers.TransactionContainer;
 import org.example.program.entities.Bill;
-import org.example.program.entities.Product;
+import org.example.program.entities.commodities.Product;
 import org.example.program.entities.clients.Client;
 
 import java.io.File;

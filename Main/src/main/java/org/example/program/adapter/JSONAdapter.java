@@ -2,6 +2,7 @@ package org.example.program.adapter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.example.program.entities.commodities.Commodity;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -10,7 +11,7 @@ import org.example.program.containers.ClientContainer;
 import org.example.program.containers.InventoryContainer;
 import org.example.program.containers.TransactionContainer;
 import org.example.program.entities.Bill;
-import org.example.program.entities.Product;
+import org.example.program.entities.commodities.Product;
 import org.example.program.entities.ReceiptInfo;
 import org.example.program.entities.Time;
 import org.example.program.entities.clients.Client;
@@ -166,7 +167,7 @@ public class JSONAdapter implements Adapter{
     public void writeDataInventory(InventoryContainer ic) {
         // Make array
         JSONArray productsArr = new JSONArray();
-        for (Product p : ic.getBuffer()) {
+        for (Commodity p : ic.getBuffer()) {
             JSONObject productObj = new JSONObject();
             productObj.put("id", p.getId());
             productObj.put("stock", p.getStock());

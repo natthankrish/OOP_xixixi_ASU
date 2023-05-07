@@ -22,4 +22,6 @@ module MainProgram {
     exports org.example.program.page;
     exports org.example.program.containers;
     exports org.example.program.entities.clients;
+    opens org.example.program.entities.commodities to com.sun.xml.bind, jakarta.xml.bind;
+    exports org.example.program.entities.commodities;
 }

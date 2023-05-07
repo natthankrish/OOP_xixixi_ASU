@@ -110,7 +110,7 @@ public class App extends Application {
             ArrayList<String> interfaceName = getInterfaceName(clazz);
             for (String interfacez : interfaceName) {
                 if (interfacez.equals("Plugin")) {
-                    System.out.println(clazz.getName());
+                    System.out.println("Equal Plugin Class  :  " + clazz.getName());
                     pluginClass = clazz.getDeclaredConstructor().newInstance();
                     break;
                 }
