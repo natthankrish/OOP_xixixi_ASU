@@ -28,7 +28,7 @@ public class Bill implements Serializable {
         // subtotal is the value of product's price * quantity
         // search for it first from the product's list before insert is as the parameter
         if (!isFixedBill){
-            ReceiptInfo info = new ReceiptInfo(id, quantity, subtotal);
+            ReceiptInfo info = new ReceiptInfo(id, quantity, subtotal, true);
             this.receipt.add(info);
             updateTransactionTime();
             recalculateTotalPrice();

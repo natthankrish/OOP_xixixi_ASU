@@ -7,6 +7,8 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 @NoArgsConstructor
@@ -16,7 +18,8 @@ import java.util.Observable;
 @XmlRootElement(name = "Product")
 @XmlAccessorType (XmlAccessType.FIELD)
 
-public class Product extends Observable implements Serializable {
+public class Product extends Observable implements Serializable, Subject {
+    private List<Observer> observers;
     private Integer id;
     private Integer stock;
     private String name;
@@ -66,5 +69,22 @@ public class Product extends Observable implements Serializable {
     public void setPurchasePrice(Double newPurchasePrice){
         this.purchasePrice = newPurchasePrice;
         notifyObservers();
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
     }
 }
