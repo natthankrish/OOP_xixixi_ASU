@@ -3,7 +3,7 @@ package org.example.program.components;
 import java.util.ArrayList;
 import java.util.List;
 import org.example.program.containers.Manager;
-import org.example.program.entities.Bill;
+import org.example.program.entities.bills.Bill;
 import org.example.program.entities.clients.Client;
 import org.example.program.entities.clients.Member;
 import javafx.geometry.Insets;

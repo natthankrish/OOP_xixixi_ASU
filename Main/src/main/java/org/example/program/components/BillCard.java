@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 
 import lombok.Getter;
 import org.example.program.containers.Manager;
-import org.example.program.entities.Time;
+import org.example.program.entities.bills.Time;
 import org.example.program.page.BillHistory;
 
 public class BillCard extends BorderPane {

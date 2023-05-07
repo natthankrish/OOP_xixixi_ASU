@@ -1,15 +1,13 @@
 package org.example.program.page;
 
 import javafx.scene.Group;
-import javafx.scene.Node;
-import org.example.program.App;
 import javafx.stage.Screen;
 import org.example.program.components.*;
 import org.example.program.containers.Manager;
-import org.example.program.entities.Product;
+import org.example.program.entities.commodities.Commodity;
+import org.example.program.entities.commodities.Product;
 import lombok.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +18,7 @@ public class ItemDirectory extends BasePage {
     public AddItemBuffer addItemBuffer;
     private NewButton backToItemDetails;
     private NewButton addItemButton;
-    private List<Product> data;
+    private List<Commodity> data;
 
     private ScrollPanel buffer;
     private NewField searchBar;
@@ -59,7 +57,7 @@ public class ItemDirectory extends BasePage {
             this.buffer.removeAll();
             boolean change = false;
             Manager m = Manager.getInstance();
-            for (Product item: this.data) {
+            for (Commodity item: this.data) {
                 if (item.getActive() && (item.getName().toLowerCase().contains(this.searchBar.getText().toLowerCase()) || item.getCategory().toLowerCase().contains(this.searchBar.getText().toLowerCase()) || String.valueOf(item.getId()).contains(this.searchBar.getText()) || String.valueOf(item.getPrice()).contains(this.searchBar.getText()))) {
                     this.addProductItem(item);
                     if (item.getId() == this.itemDetails) {
@@ -81,7 +79,7 @@ public class ItemDirectory extends BasePage {
 
         Manager m = Manager.getInstance();
         this.data = m.getInventoryContainer().getBuffer();
-        for (Product item: this.data) {
+        for (Commodity item: this.data) {
             if (item.getActive()) {
                 this.addProductItem(item);
             }
@@ -178,7 +176,7 @@ public class ItemDirectory extends BasePage {
         if (change) {
             Manager m = Manager.getInstance();
             int id = m.getInventoryContainer().getMaxID();
-            Product product = new Product(new ArrayList<>(), id+1, newStock, this.addItemBuffer.getName().getTextField().getText(), newSellingPrice, newPurchasedPrice, this.addItemBuffer.getCategory().getTextField().getText(), this.addItemBuffer.getImage().getPath(), true);
+            Commodity product = new Product(new ArrayList<>(), id+1, newStock, this.addItemBuffer.getName().getTextField().getText(), newSellingPrice, newPurchasedPrice, this.addItemBuffer.getCategory().getTextField().getText(), this.addItemBuffer.getImage().getPath(), true);
             m.getInventoryContainer().addProduct(product);
             this.changeCurrentDetails(null);
             this.getChildren().remove(this.addItemPage);
@@ -188,7 +186,7 @@ public class ItemDirectory extends BasePage {
         }
     }
 
-    public void addProductItem(Product product) {
+    public void addProductItem(Commodity product) {
         ProductItem productItem = new ProductItem(product);
         if (product.getId().equals(this.itemDetails)) {
             this.changeCurrentDetails(productItem.getDetails());
@@ -260,7 +258,7 @@ public class ItemDirectory extends BasePage {
         this.buffer.removeAll();
         boolean change = false;
         Manager m = Manager.getInstance();
-        for (Product item: this.data) {
+        for (Commodity item: this.data) {
             if (item.getActive()) {
                 this.addProductItem(item);
                 if (item.getId() == this.itemDetails) {

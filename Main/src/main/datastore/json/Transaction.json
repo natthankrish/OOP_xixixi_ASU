@@ -6,11 +6,13 @@
       {
         "quantity": 1,
         "subtotal": 35000.0,
+        "isValid": true,
         "idProduct": 14
       },
       {
         "quantity": 2,
         "subtotal": 56000.0,
+        "isValid": true,
         "idProduct": 4
       }
     ],
@@ -25,21 +27,25 @@
       {
         "quantity": 1,
         "subtotal": 25000.0,
+        "isValid": true,
         "idProduct": 2
       },
       {
         "quantity": 3,
         "subtotal": 72000.0,
+        "isValid": true,
         "idProduct": 11
       },
       {
         "quantity": 2,
         "subtotal": 60000.0,
+        "isValid": true,
         "idProduct": 9
       },
       {
         "quantity": 2,
         "subtotal": 50000.0,
+        "isValid": true,
         "idProduct": 1
       }
     ],
@@ -54,16 +60,19 @@
       {
         "quantity": 2,
         "subtotal": 60000.5,
+        "isValid": true,
         "idProduct": 9
       },
       {
         "quantity": 1,
         "subtotal": 19000.0,
+        "isValid": true,
         "idProduct": 10
       },
       {
         "quantity": 2,
         "subtotal": 70000.0,
+        "isValid": true,
         "idProduct": 14
       }
     ],
@@ -78,6 +87,7 @@
       {
         "quantity": 1,
         "subtotal": 30000.0,
+        "isValid": true,
         "idProduct": 9
       }
     ],
@@ -92,11 +102,13 @@
       {
         "quantity": 2,
         "subtotal": 50000.0,
+        "isValid": true,
         "idProduct": 2
       },
       {
         "quantity": 1,
         "subtotal": 15000.0,
+        "isValid": true,
         "idProduct": 5
       }
     ],
@@ -111,11 +123,13 @@
       {
         "quantity": 1,
         "subtotal": 40000.0,
+        "isValid": true,
         "idProduct": 15
       },
       {
         "quantity": 3,
         "subtotal": 36000.0,
+        "isValid": true,
         "idProduct": 7
       }
     ],
@@ -130,11 +144,13 @@
       {
         "quantity": 1,
         "subtotal": 28000.0,
+        "isValid": true,
         "idProduct": 12
       },
       {
         "quantity": 1,
         "subtotal": 35000.0,
+        "isValid": true,
         "idProduct": 14
       }
     ],

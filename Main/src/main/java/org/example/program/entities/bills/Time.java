@@ -1,4 +1,4 @@
-package org.example.program.entities;
+package org.example.program.entities.bills;
 
 import java.io.Serializable;
 import java.util.*;

@@ -1,4 +1,4 @@
-package org.example.program.entities;
+package org.example.program.entities.bills;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +22,7 @@ public class ReceiptInfo implements Serializable, Observer {
     public void recalculate(Integer quantity){
         this.quantity = quantity;
         Manager m = Manager.getInstance();
+        m.getInventoryContainer().getProductById(productID).registerObserver(this);
         Double priceEach = m.getInventoryContainer().getProductById(productID).getPrice();
         this.subtotal = quantity * priceEach ;
         update();

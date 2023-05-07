@@ -1,8 +1,8 @@
 package org.example.program.components;
 
 import org.example.program.containers.Manager;
-import org.example.program.entities.Bill;
-import org.example.program.entities.ReceiptInfo;
+import org.example.program.entities.bills.Bill;
+import org.example.program.entities.bills.ReceiptInfo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;

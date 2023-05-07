@@ -1,6 +1,7 @@
 package org.example.program.containers;
 
-import org.example.program.entities.Product;
+import org.example.program.entities.commodities.Commodity;
+import org.example.program.entities.commodities.Product;
 
 
 import lombok.*;
@@ -19,7 +20,7 @@ import jakarta.xml.bind.annotation.*;
 
 public class InventoryContainer implements Serializable {
     @XmlElement(name = "Product")
-    private List<Product> buffer;
+    private List<Commodity> buffer;
     @XmlElement(name = "Amount")
     private int amount;
 
@@ -35,8 +36,8 @@ public class InventoryContainer implements Serializable {
         amount--;
     }
 
-    public Product getProductById(Integer id){
-        for (Product obj : buffer){
+    public Commodity getProductById(Integer id){
+        for (Commodity obj : buffer){
             Integer tempID = obj.getId();
             if (tempID.equals(id)){
                 return obj;
@@ -45,13 +46,13 @@ public class InventoryContainer implements Serializable {
         return null;
     }
 
-    public void addProduct(Product obj){
+    public void addProduct(Commodity obj){
         buffer.add(obj);
         amount++;
     }
 
     public void removeProduct(Integer id){
-        for (Product obj : buffer){
+        for (Commodity obj : buffer){
             Integer tempID = obj.getId();
             if (tempID.equals(id)){
                 obj.setActive(false);
@@ -63,7 +64,7 @@ public class InventoryContainer implements Serializable {
     public Integer getMaxID() {
         Integer max = 0;
         boolean first = true;
-        for (Product obj: buffer){
+        for (Commodity obj: buffer){
             Integer tempID = obj.getId();
             if (first) {
                 max = tempID;
