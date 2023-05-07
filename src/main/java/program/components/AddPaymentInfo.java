@@ -1,22 +1,20 @@
 package program.components;
 
-import java.util.List;
-
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class AddPaymentInfo extends BorderPane {
     private NewLabel titleLabel;
-    private NewField IDCustomerField;
-    private NewField customerNameField;
-    private NewField statusField;
+    private DropDown IDCustomerField;
+    private DropDown customerNameField;
+    private DropDown statusField;
     private String[] idList;
     private String[] customerNameList;
     private String[] statusList;
@@ -24,6 +22,9 @@ public class AddPaymentInfo extends BorderPane {
     public AddPaymentInfo(){
         // Set up the labels
         this.titleLabel = new NewLabel("Add New", 44, "#867070", 700);
+        NewLabel idCustomLabel = new NewLabel("Customer's ID", 20, "#867070", 700);
+        NewLabel customerNameLabel = new NewLabel("Customer's Name", 20, "#867070", 700);
+        NewLabel statusLabel = new NewLabel("Status", 20, "#867070", 700);
 
         // set up the fields
         String [] tes = {"melvin", "melvin","melvin","melvin"};
@@ -31,12 +32,17 @@ public class AddPaymentInfo extends BorderPane {
         this.customerNameList = tes;
         this.statusList = tes;
 
-        this.IDCustomerField = new NewField("Customer's ID", idList);
-        this.customerNameField = new NewField("Customer's Name", customerNameList);
-        this.statusField = new NewField("Category", statusList);
+        this.IDCustomerField = new DropDown(idList);
+        this.customerNameField = new DropDown(customerNameList);
+        this.statusField = new DropDown(statusList);
         VBox container = new VBox(5);
-        container.getChildren().addAll(this.titleLabel, IDCustomerField, customerNameField, statusField);
 
+
+        NewLabel usePointsLabel = new NewLabel("Use Points", 20, "#867070", 700);
+        CheckBox checkBox = new CheckBox("Check me");
+        HBox bottomBox = new HBox(10, checkBox, usePointsLabel);
+
+        container.getChildren().addAll(this.titleLabel, idCustomLabel, IDCustomerField, customerNameLabel, customerNameField, statusLabel, statusField, bottomBox);
         setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 
 
