@@ -34,12 +34,11 @@ public class ScrollTabPane extends ScrollPane {
 
         Manager m = Manager.getInstance();
         List<Bill> bills = m.getTransactionContainer().getBuffer();
-        if (bills.size() != 0){
-            for (Bill bill : bills) {
-                if (!bill.getIsFixedBill()){
-                    addTab("Transaction");
-                    Transaction tab = (Transaction)((NewTab) this.buffer.getChildren().get(this.buffer.getChildren().size() - 1)).getPage();
-                    // tab.setBill(bill);
+        System.out.println(bills.size());
+        if (bills.size() != 0) {
+            for (int i = 0; i < bills.size(); i++) {
+                if (!bills.get(i).getIsFixedBill()){
+                    addTabBill(bills.get(i));
                 }
             }
         }
@@ -47,6 +46,10 @@ public class ScrollTabPane extends ScrollPane {
 
     public void addTab(String text) {
         this.buffer.getChildren().add(new NewTab(text, this.buffer.getChildren(), this.getPrefWidth(), ScrollTabPane.closeAllButton, this.buffer));
+    }
+
+    public void addTabBill(Bill bill) {
+        this.buffer.getChildren().add(new NewTab(bill, this.buffer.getChildren(), this.getPrefWidth(), ScrollTabPane.closeAllButton, this.buffer));
     }
 
     public void addTabPlugin(String text, BasePage page) {
