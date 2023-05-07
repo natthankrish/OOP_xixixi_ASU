@@ -55,7 +55,7 @@ public class ProductDetails extends ScrollPanel {
             File filename = fd.showOpenDialog(null);
             if (filename != null) {
                 Path src = Paths.get(filename.getPath());
-                Path dest = Paths.get("assets/products/" + src.getFileName());
+                Path dest = Paths.get("Main/assets/products/" + src.getFileName());
                 File destFile = new File(dest.toString());
                 if (!destFile.exists()) {
                     try {

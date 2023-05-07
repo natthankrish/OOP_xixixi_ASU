@@ -1,6 +1,6 @@
 [
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main\\assets\\products\\images.png",
     "price": 25000.0,
     "name": "Caramel Latte",
     "active": true,
@@ -10,7 +10,7 @@
     "category": "Coffee"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main\\assets\\products\\images.png",
     "price": 25000.0,
     "name": "Vanila Latte",
     "active": true,
@@ -168,5 +168,15 @@
     "purchasePrice": 18000.0,
     "stock": 10,
     "category": "Milk"
+  },
+  {
+    "image": "Main\\assets\\products\\images.png",
+    "price": 10000.0,
+    "name": "Lemon Tea",
+    "active": false,
+    "id": 18,
+    "purchasePrice": 7000.0,
+    "stock": 5,
+    "category": "Tea"
   }
 ]

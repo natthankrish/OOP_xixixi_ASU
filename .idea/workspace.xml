@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03c77ed3-b304-43ce-ae21-6c2737c33aec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Main_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PluginCurrency_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Main/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddItemBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddItemBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +107,7 @@
       <workItem from="1683368468940" duration="61136000" />
       <workItem from="1683464921398" duration="479000" />
       <workItem from="1683465445428" duration="526000" />
-      <workItem from="1683465998725" duration="480000" />
+      <workItem from="1683465998725" duration="4907000" />
     </task>
     <servers />
   </component>
