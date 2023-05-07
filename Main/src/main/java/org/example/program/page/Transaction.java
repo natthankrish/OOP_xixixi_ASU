@@ -22,7 +22,7 @@ public class Transaction extends BasePage {
     public Transaction() {
         this.client = null;
         Manager m = Manager.getInstance();
-        this.bill = m.getTransactionContainer().getProductById(2);
+        this.bill = m.getTransactionContainer().getBillById(2);
         System.out.println(bill.getIdBill() + "");
 
         this.changeBackground("white");
@@ -68,7 +68,7 @@ public class Transaction extends BasePage {
             List<ReceiptInfo> receipts = bill.getReceipt();
             Boolean valid = true;
             for (ReceiptInfo receipt : receipts){
-                if (valid == false) {
+                if (receipt.getIsValid() == false) {
                     valid = false;
                     break;
                 }

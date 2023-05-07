@@ -157,7 +157,7 @@ public class JSONAdapter implements Adapter{
         String image = (String) p.get("image");
         Boolean active = (Boolean) p.get("active");
 
-        Product pr = new Product(id, stock, name, price, purchasePrice, category, image, active);
+        Product pr = new Product(new ArrayList<>(), id, stock, name, price, purchasePrice, category, image, active);
         ic.getBuffer().add(pr);
         ic.increaseAmount();
 
@@ -246,7 +246,7 @@ public class JSONAdapter implements Adapter{
         Integer idP = ((Long) o.get("idProduct")).intValue();
         Integer quantity = ((Long) o.get("quantity")).intValue();
         Double subtotal = (Double) o.get("subtotal");
-        ReceiptInfo info = new ReceiptInfo(idP, quantity, subtotal);
+        ReceiptInfo info = new ReceiptInfo(idP, quantity, subtotal, true);
         return info;
     }
 

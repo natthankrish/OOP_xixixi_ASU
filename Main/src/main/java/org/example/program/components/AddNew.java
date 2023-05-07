@@ -103,9 +103,7 @@ public class AddNew extends BorderPane {
                         ReceiptInfo receipt = card.getReceiptInfo();
                         if(receipt.getProductID().equals(product.getId())){
                             foundSameProduct = true;
-                            receipt.setQuantity(receipt.getQuantity() + quantity);
-                            System.out.println(quantity);
-                            receipt.recalculateSubtotal();
+                            receipt.recalculate(receipt.getQuantity() + quantity);
                             bill.recalculateTotalPrice();
                             card.resetQuantity();
                             break;
@@ -114,7 +112,9 @@ public class AddNew extends BorderPane {
                 }
                         
                 if (!foundSameProduct) {
-                    ReceiptInfo receipt = new ReceiptInfo(product.getId(), quantity, quantity*product.getPrice());
+                    ReceiptInfo receipt = new ReceiptInfo(product.getId(), quantity, quantity*product.getPrice(), true);
+                    receipt.recalculate(receipt.getQuantity());
+                    product.registerObserver(receipt);
                     bill.getReceipt().add(receipt);
                     bill.recalculateTotalPrice();
                     cart.addItemCard(receipt);   

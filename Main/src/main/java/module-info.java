@@ -10,7 +10,7 @@ module MainProgram {
     requires com.google.gson;
     requires jakarta.xml.bind;
     requires java.desktop;
-    requires barcodes;
+//    requires barcodes;
     opens org.example.program;
     exports org.example.program;
     exports org.example.program.entities;

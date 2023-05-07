@@ -87,8 +87,7 @@ public class ItemCard extends BorderPane {
         });
         minusButton.setOnAction(event -> {
             if (receiptInfo.getQuantity() > 1) {
-                receiptInfo.setQuantity(receiptInfo.getQuantity()-1);
-                receiptInfo.recalculateSubtotal();
+                receiptInfo.recalculate(receiptInfo.getQuantity()-1);
                 bill.recalculateTotalPrice();
                 priceText.setText("IDR " + Double.toString(receiptInfo.getSubtotal()));
                 quantityText.setText("Quantity: " + Integer.toString(receiptInfo.getQuantity()));
@@ -103,8 +102,7 @@ public class ItemCard extends BorderPane {
             }
         );
         plusButton.setOnAction(event -> {
-            receiptInfo.setQuantity(receiptInfo.getQuantity()+1);
-            receiptInfo.recalculateSubtotal();
+            receiptInfo.recalculate(receiptInfo.getQuantity()+1);
             bill.recalculateTotalPrice();
             priceText.setText("IDR " + Double.toString(receiptInfo.getSubtotal()));
             quantityText.setText("Quantity: " + Integer.toString(receiptInfo.getQuantity()));
@@ -135,7 +133,7 @@ public class ItemCard extends BorderPane {
     }
 
     public void resetQuantity(){
-        this.receiptInfo.recalculateSubtotal();
+        this.receiptInfo.recalculate(this.receiptInfo.getQuantity());
         this.quantity = this.receiptInfo.getQuantity();
         this.price = this.receiptInfo.getSubtotal();
         this.priceText.setText("IDR " + Double.toString(this.price));
