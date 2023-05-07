@@ -5,17 +5,23 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 import org.example.program.adapter.Adapter;
 import org.example.program.adapter.JSONAdapter;
 import org.example.program.adapter.OBJAdapter;
 import org.example.program.adapter.XMLAdapter;
 import org.example.program.containers.Manager;
+import org.example.program.page.BasePage;
 import org.example.program.page.HomePage;
+import org.example.program.plugin.ChartPluginLineBar;
 import org.example.program.plugin.Loader;
+import org.example.program.plugin.Plugin;
 import org.example.program.sidebar.ClockThread;
 import org.example.program.sidebar.SideContainer;
 import org.example.program.topbar.LogoThread;
 import org.example.program.topbar.TopContainer;
+import org.example.program.topbar.TopbarFunctional;
 
 import java.io.*;
 import java.lang.reflect.Method;
@@ -25,6 +31,8 @@ import java.util.Map;
 
 
 public class App extends Application {
+    @Setter
+    @Getter
 
     private static Adapter adapter;
     private static Group root;
@@ -41,10 +49,6 @@ public class App extends Application {
         App.page = new HomePage();
         root.getChildren().add(App.page);
 
-        String cwd = System.getProperty("user.dir");
-        ArrayList<Class<?>> classes = loadPlugin(cwd + "/Main/test/PluginChart-1.0.0.jar");
-//        ChartPlugin chartPlugin1 = null;
-//        ChartPluginLineBar chartLine = null;
         Map<String, Double> map = new HashMap<>();
         map.put("Caramel Latte", 50000.0 * 3);
         map.put("Vanilla Late", 55000.0 * 3);
@@ -56,53 +60,31 @@ public class App extends Application {
         map.put("Pisang Cincin", 2000.0);
         map.put("Pisang Kolek", 2000.0);
 
-        Object pluginClass = null;
-        Method method = null;
-        Method method2 = null;
-        for (Class<?> clazz: classes) {
-            ArrayList<String> interfaceName = getInterfaceName(clazz);
-            for (String interfacez : interfaceName) {
-                if (interfacez.equals("ChartPluginLineBar")) {
-                    System.out.println(clazz.getName());
-                    pluginClass = clazz.getDeclaredConstructor().newInstance();
-                    method = clazz.getMethod("showLineChart", String.class, String.class, String.class, String.class, Map.class);
-                    method2 = clazz.getMethod("showBarChart", String.class, String.class, String.class, String.class, Map.class);
-                    break;
-                }
-            }
-        }
-
-
-        method.invoke(pluginClass, "Product Name", "Total Sales", "Food Income", "Food ID", map);
-        Group basepluginpage = (Group) method2.invoke(pluginClass, "Product Name", "Total Sales", "Food Income", "Food ID", map);
-
-//        ChartPlugin chartPlugin = (ChartPlugin) pluginClass;
-
-//        App.root.getChildren().add(basepluginpage);
 
         SideContainer sideContainer = new SideContainer();
         App.root.getChildren().add(sideContainer);
 
         TopContainer topContainer = new TopContainer(sideContainer.getTabsContainer());
-        topContainer.getTopbar().addMenuITem("Plugin 1", basepluginpage);
         App.root.getChildren().add(topContainer);
 
         Scene scene = new Scene(App.root);
+
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.setScene(scene);
 
-        // search bar
-//        List<String> itemList = Arrays.asList("Apple", "Banana", "Cherry", "Elderberry");
-//        SearchBar searchBar = new SearchBar("Search", itemList);
-//        StackPane rut = new StackPane(searchBar);
-//        stage.setScene(new Scene(rut, 300, 250));
-//        stage.show();
+        // How to call loadPlugin
+        String cwd = System.getProperty("user.dir");
+        Manager m = Manager.getInstance();
+        loadPlugin(cwd + "/Plugin/target/Plugin-1.0-SNAPSHOT.jar", topContainer, m);
+        loadPlugin(cwd + "/PluginChart2/target/PluginChart2-1.0-SNAPSHOT.jar", topContainer, m);
+
 
         // Show Main Window
-        Image applogo = new Image("file:assets/logo.png");
+        Image applogo = new Image("file:Main/assets/logo.png");
         stage.getIcons().add(applogo);
         stage.setTitle("BNMO");
         stage.setMaximized(true);
+
         stage.show();
     }
 
@@ -120,14 +102,33 @@ public class App extends Application {
         }
         return interfaceName;
     }
-    public ArrayList<Class<?>> loadPlugin(String jarPath) throws Exception {
+    public ArrayList<Class<?>> loadPlugin(String jarPath, TopContainer topContainer, Manager manager) throws Exception {
         Loader jarLoader = new Loader();
+        ArrayList<Class<?>> classes = jarLoader.loadJarFile(jarPath);
+        Object pluginClass = null;
+        for (Class<?> clazz: classes) {
+            ArrayList<String> interfaceName = getInterfaceName(clazz);
+            for (String interfacez : interfaceName) {
+                if (interfacez.equals("Plugin")) {
+                    System.out.println(clazz.getName());
+                    pluginClass = clazz.getDeclaredConstructor().newInstance();
+                    break;
+                }
+            }
+        }
+        if (pluginClass == null) {
+            System.out.println("Jar file not found");
+        } else {
+            Plugin pluginInstance = (Plugin) pluginClass;
+            pluginInstance.setup(topContainer, manager);
+        }
         return jarLoader.loadJarFile(jarPath);
     }
 
-    public static void setPageBuffer(Group newPage) {
+    public static void setPageBuffer(BasePage newPage) {
         App.root.getChildren().remove(App.page);
         App.page = newPage;
+        newPage.refreshData();
         App.root.getChildren().add(App.page);
     }
     @Override

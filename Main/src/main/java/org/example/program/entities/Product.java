@@ -7,6 +7,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Observable;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,7 +16,7 @@ import java.io.Serializable;
 @XmlRootElement(name = "Product")
 @XmlAccessorType (XmlAccessType.FIELD)
 
-public class Product implements Serializable {
+public class Product extends Observable implements Serializable {
     private Integer id;
     private Integer stock;
     private String name;
@@ -50,5 +51,20 @@ public class Product implements Serializable {
     }
     public void setInactive() {
         this.active = false;
+    }
+
+    public void setStock(Integer newStock){
+        this.stock = newStock;
+        notifyObservers();
+    }
+
+    public void setPrice(Double newPrice){
+        this.price = newPrice;
+        notifyObservers();
+    }
+
+    public void setPurchasePrice(Double newPurchasePrice){
+        this.purchasePrice = newPurchasePrice;
+        notifyObservers();
     }
 }

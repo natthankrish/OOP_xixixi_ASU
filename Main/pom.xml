@@ -106,6 +106,12 @@
             <artifactId>maven-plugin-registry</artifactId>
             <version>2.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext7-core</artifactId>
+            <version>7.1.10</version>
+            <type>pom</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -114,7 +120,38 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
+                <executions>
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <source>19</source>
+                            <target>19</target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-testCompile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                        <configuration>
+                            <source>19</source>
+                            <target>19</target>
+                        </configuration>
+                    </execution>
+                </executions>
                 <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.26</version>
+                        </path>
+                    </annotationProcessorPaths>
                     <source>19</source>
                     <target>19</target>
                     <encoding>UTF-8</encoding>
@@ -138,7 +175,6 @@
                                 <argument>javafx.controls,javafx.fxml</argument>
                             </arguments>
                         </configuration>
-
                     </execution>
                 </executions>
             </plugin>

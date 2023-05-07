@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import lombok.Getter;
 import org.example.program.components.CloseAllButton;
 import org.example.program.components.NewTab;
+import org.example.program.page.BasePage;
 
 @Getter
 public class ScrollTabPane extends ScrollPane {
@@ -30,7 +31,7 @@ public class ScrollTabPane extends ScrollPane {
         this.buffer.getChildren().add(new NewTab(text, this.buffer.getChildren(), this.getPrefWidth(), ScrollTabPane.closeAllButton, this.buffer));
     }
 
-    public void addTabPlugin(String text, Group page) {
+    public void addTabPlugin(String text, BasePage page) {
         this.buffer.getChildren().add(new NewTab(text, this.buffer.getChildren(), this.getPrefWidth(), ScrollTabPane.closeAllButton, this.buffer, page));
     }
 

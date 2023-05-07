@@ -9,7 +9,14 @@ module MainProgram {
     requires annotations;
     requires com.google.gson;
     requires jakarta.xml.bind;
-
+    requires java.desktop;
+    requires barcodes;
     opens org.example.program;
+    exports org.example.program;
+    exports org.example.program.entities;
     exports org.example.program.plugin;
+    exports org.example.program.topbar;
+    exports org.example.program.page;
+    exports org.example.program.containers;
+    exports org.example.program.entities.clients;
 }

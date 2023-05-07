@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="03c77ed3-b304-43ce-ae21-6c2737c33aec" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddItemBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddItemBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" afterDir="false" />
+=======
+    <list default="true" id="fea4c96f-431b-4523-8385-8774328b4c5c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/BasePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/BasePlugin.java" afterDir="false" />
+>>>>>>> d78be29745d81a88ba018a812ccba3cbb0b95c3a
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="false" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2PT1iLkiMg3OuibqnUYlMPpzadb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Kuliah/Semester 4/OOP/temp/OOP_xixixi_ASU",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.program.Main" />
+      <module name="Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.program.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Unnamed" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fea4c96f-431b-4523-8385-8774328b4c5c" name="Changes" comment="" />
+      <created>1683466386112</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1682922297364</updated>
+      <workItem from="1682922297446" duration="17100000" />
+      <workItem from="1683368468940" duration="61136000" />
+      <workItem from="1683464921398" duration="479000" />
+      <workItem from="1683465445428" duration="526000" />
+      <workItem from="1683465998725" duration="4907000" />
+=======
+      <updated>1683466386112</updated>
+      <workItem from="1683466388348" duration="809000" />
+      <workItem from="1683467211107" duration="147000" />
+      <workItem from="1683467371876" duration="2181000" />
+>>>>>>> d78be29745d81a88ba018a812ccba3cbb0b95c3a
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
