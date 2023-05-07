@@ -5,6 +5,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 import org.example.program.adapter.Adapter;
 import org.example.program.adapter.JSONAdapter;
 import org.example.program.adapter.OBJAdapter;
@@ -29,6 +31,8 @@ import java.util.Map;
 
 
 public class App extends Application {
+    @Setter
+    @Getter
 
     private static Adapter adapter;
     private static Group root;

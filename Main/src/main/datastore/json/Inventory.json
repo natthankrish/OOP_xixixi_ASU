@@ -168,5 +168,15 @@
     "purchasePrice": 18000.0,
     "stock": 10,
     "category": "Milk"
+  },
+  {
+    "image": "Main\\assets\\products\\images.png",
+    "price": 10000.0,
+    "name": "Lemon Tea",
+    "active": false,
+    "id": 18,
+    "purchasePrice": 7000.0,
+    "stock": 5,
+    "category": "Tea"
   }
 ]
