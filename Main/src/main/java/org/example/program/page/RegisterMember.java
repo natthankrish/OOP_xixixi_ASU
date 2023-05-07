@@ -17,8 +17,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import org.example.program.containers.Manager;
 import org.example.program.containers.TransactionContainer;
-import org.example.program.entities.Bill;
-import org.example.program.entities.Time;
+import org.example.program.entities.bills.Bill;
+import org.example.program.entities.bills.Time;
 import org.example.program.entities.clients.Client;
 import org.example.program.entities.clients.ClientType;
 import org.example.program.entities.clients.Customer;
@@ -45,6 +45,9 @@ public class RegisterMember extends BasePage {
         Manager m = Manager.getInstance();
         TransactionContainer tc = m.getTransactionContainer();
         this.name = m.getClientContainer().getBuffer();
+        for (Client c : this.name){
+            c.display();
+        }
 
         this.cardContainer = new VBox(10);
         this.cardContainer.setAlignment(Pos.CENTER);
@@ -79,11 +82,11 @@ public class RegisterMember extends BasePage {
 //                    this.getChildren().remove(this.addRegister);
                         this.addRegister.setLayout(770,500);
                         this.addRegister.getConfirm().setOnMouseClicked(event2 -> {
-                            client.makeClientACustomer();
-                            client.makeClientAMember(String.valueOf(this.addRegister.getCustomerName().getTextField()),
-                                    String.valueOf(this.addRegister.getPhoneNumber().getTextField()),
-                                    client.getPoint(),
-                                    client.getActiveStatus());
+                            cardContainer.getChildren().clear();
+                            client.setName(this.addRegister.getCustomerName().getText());
+                            client.setPhoneNumber(String.valueOf(this.addRegister.getPhoneNumber().getText()));
+                            client.makeClientAMember(this.addRegister.getCustomerName().getText(),this.addRegister.getPhoneNumber().getText(),0.0, true);
+
                         });
                         this.getChildren().add(this.addRegister);
                     });
@@ -106,27 +109,30 @@ public class RegisterMember extends BasePage {
         this.searchBar.setLayoutX(410);
         this.searchBar.setLayoutY(130);
         this.searchBar.setOnKeyReleased(event -> {
-            this.cardContainer.getChildren().clear();
+            this.cardContainer.getChildren().removeAll();
             for (Client client : this.name) {
-                if (client.getName() != null && client.getName().toLowerCase().contains(this.searchBar.getText().toLowerCase())) {
-                    if (client.getActiveStatus() != null && client.getActiveStatus()){
-                        CardMember card = new CardMember(client.getName(), client.getId(), client.getPhoneNumber());
-                        card.setLayout(55, 200);
-                        cardContainer.getChildren().add(card);
-                        card.setOnMouseClicked(e -> {
-                            int tot = 0;
-                            for (Integer i : client.getTransactionHistory()){
-                                Bill b = tc.getBillById(client.getId());
-                                tot += b.getTotalPrice();
-                            }
+                if (client.getType() instanceof Customer){
+                    if (client.getName() != null && client.getName().toLowerCase().contains(this.searchBar.getText().toLowerCase())
+                            || String.valueOf(client.getId()).contains(this.searchBar.getText().toLowerCase())) {
+                        if (client.getActiveStatus() != null && client.getActiveStatus()){
+                            CardRegister card = new CardRegister(client.getName(), client.getId(), client.getPhoneNumber());
+                            card.setLayout(55, 200);
+                            cardContainer.getChildren().add(card);
+                            card.setOnMouseClicked(e -> {
+                                int tot = 0;
+                                for (Integer i : client.getTransactionHistory()){
+                                    Bill b = tc.getBillById(client.getId());
+                                    tot += b.getTotalPrice();
+                                }
 
-                            DetailRegister newDetail = new DetailRegister(client.getName(),client.getId(),client.getPhoneNumber(),client.getType(),client.getTransactionHistory().size(),"",tot);
+                                DetailRegister newDetail = new DetailRegister(client.getName(),client.getId(),client.getPhoneNumber(),client.getType(),client.getTransactionHistory().size(),"",tot);
 
-                            this.getChildren().remove(this.currentDetails);
-                            this.currentDetails = newDetail;
-                            this.currentDetails.setLayout(770,180);
-                            this.getChildren().add(this.currentDetails);
-                        });
+                                this.getChildren().remove(this.currentDetails);
+                                this.currentDetails = newDetail;
+                                this.currentDetails.setLayout(770,180);
+                                this.getChildren().add(this.currentDetails);
+                            });
+                        }
                     }
                 }
             }

@@ -110,7 +110,7 @@ public class NewField extends VBox {
     }
 
     public TextField getTextField() {
-        return textField;
+        return this.textField;
     }
 }
 

@@ -24,7 +24,7 @@ public class CardRegister extends BorderPane {
     private String date;
 
     public CardRegister(String itemName, int id, String date) {
-        this.name = new NewLabel(itemName, 24, "#867070", 700);
+        this.name = new NewLabel(itemName, 25, "#867070", 700);
         this.id = id;
         this.date = date;
 

@@ -14,9 +14,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import org.example.program.containers.Manager;
 import org.example.program.containers.TransactionContainer;
-import org.example.program.entities.Bill;
-import org.example.program.entities.Product;
-import org.example.program.entities.Time;
+import org.example.program.entities.bills.Bill;
+import org.example.program.entities.bills.Time;
 import org.example.program.entities.clients.Client;
 import org.example.program.entities.clients.ClientType;
 import org.example.program.entities.clients.Member;
@@ -44,6 +43,7 @@ public class MemberDirectory extends BasePage {
         Manager m = Manager.getInstance();
         TransactionContainer tc = m.getTransactionContainer();
         this.name = m.getClientContainer().getBuffer();
+        System.out.println(name);
 
         this.changeBackground("#FFFFFF");
         this.label = new NewLabel("Member Directory", 48, "#867070", 700);
@@ -57,18 +57,23 @@ public class MemberDirectory extends BasePage {
                     && client.getActiveStatus()).toList();
 
             for (Client clientVIP : vipClients) {
+                System.out.println(clientVIP);
+
                 CardMember card = new CardMember(clientVIP.getName(), clientVIP.getId(), clientVIP.getPhoneNumber());
                 card.setLayout(55, 200);
+
                 cardContainer.getChildren().add(card);
 
                 card.setOnMouseClicked(e -> {
+                    Bill a = tc.getBillById(clientVIP.getId());
+                    Time tgl = a.getTransactionTime();
                     int tot = 0;
                     for (Integer i : clientVIP.getTransactionHistory()){
                         Bill b = tc.getBillById(clientVIP.getId());
                         tot += b.getTotalPrice();
                     }
 
-                    DetailMember newDetail = new DetailMember(clientVIP.getName(),clientVIP.getId(), clientVIP, clientVIP.getTransactionHistory().size(),"",tot);
+                    DetailMember newDetail = new DetailMember(clientVIP.getName(),clientVIP.getId(), clientVIP, clientVIP.getTransactionHistory().size(), tgl.getStringTime(), tot);
 
                     this.getChildren().remove(this.detailMember);
                     this.detailMember = newDetail;
@@ -99,13 +104,15 @@ public class MemberDirectory extends BasePage {
                 cardContainer.getChildren().add(card);
 
                 card.setOnMouseClicked(e -> {
+                    Bill a = tc.getBillById(clientMember.getId());
+                    Time tgl = a.getTransactionTime();
                     int tot = 0;
                     for (Integer i : clientMember.getTransactionHistory()){
                         Bill b = tc.getBillById(clientMember.getId());
                         tot += b.getTotalPrice();
                     }
 
-                    DetailMember newDetail = new DetailMember(clientMember.getName(),clientMember.getId(), clientMember, clientMember.getTransactionHistory().size(),"",tot);
+                    DetailMember newDetail = new DetailMember(clientMember.getName(),clientMember.getId(), clientMember, clientMember.getTransactionHistory().size(), tgl.getStringTime(), tot);
 
                     this.getChildren().remove(this.detailMember);
                     this.detailMember = newDetail;
@@ -139,13 +146,15 @@ public class MemberDirectory extends BasePage {
                 cardContainer.getChildren().add(card);
 
                 card.setOnMouseClicked(e -> {
+                    Bill a = tc.getBillById(deactivated.getId());
+                    Time tgl = a.getTransactionTime();
                     int tot = 0;
                     for (Integer i : deactivated.getTransactionHistory()){
                         Bill b = tc.getBillById(deactivated.getId());
                         tot += b.getTotalPrice();
                     }
 
-                    DetailMember newDetail = new DetailMember(deactivated.getName(),deactivated.getId(), deactivated, deactivated.getTransactionHistory().size(),"",tot);
+                    DetailMember newDetail = new DetailMember(deactivated.getName(),deactivated.getId(), deactivated, deactivated.getTransactionHistory().size(),tgl.getStringTime(),tot);
 
                     this.getChildren().remove(this.detailMember);
                     this.detailMember = newDetail;
@@ -226,13 +235,15 @@ public class MemberDirectory extends BasePage {
                         card.setLayout(55, 200);
                         cardContainer.getChildren().add(card);
                         card.setOnMouseClicked(e -> {
+                            Bill a = tc.getBillById(client.getId());
+                            Time tgl = a.getTransactionTime();
                             int tot = 0;
                             for (Integer i : client.getTransactionHistory()){
                                 Bill b = tc.getBillById(client.getId());
                                 tot += b.getTotalPrice();
                             }
 
-                            DetailMember newDetail = new DetailMember(client.getName(),client.getId(), client, client.getTransactionHistory().size(),"",tot);
+                            DetailMember newDetail = new DetailMember(client.getName(),client.getId(), client, client.getTransactionHistory().size(), tgl.getStringTime(), tot);
 
                             this.getChildren().remove(this.detailMember);
                             this.detailMember = newDetail;
