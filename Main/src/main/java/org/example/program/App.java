@@ -5,6 +5,9 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
+import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 import org.example.program.adapter.Adapter;
 import org.example.program.adapter.JSONAdapter;
 import org.example.program.adapter.OBJAdapter;
@@ -91,7 +94,9 @@ public class App extends Application {
         App.root.getChildren().add(topContainer);
 
         Scene scene = new Scene(App.root);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        String currentPath = new File("").getAbsolutePath() + "/Main/src/resources/style.css";
+        System.out.println(currentPath);
+        scene.getStylesheets().add(getClass().getResource(currentPath).toExternalForm());
         stage.setScene(scene);
 
         // search bar

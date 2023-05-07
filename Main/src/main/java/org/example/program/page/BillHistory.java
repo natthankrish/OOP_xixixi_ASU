@@ -1,4 +1,4 @@
-package org.example.program.components;
+package org.example.program.page;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -16,11 +16,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
-import program.components.*;
-import program.containers.TransactionContainer;
-import program.entities.Bill;
-import program.containers.Manager;
-import program.entities.ReceiptInfo;
+import org.example.program.components.*;
+import org.example.program.containers.TransactionContainer;
+import org.example.program.entities.Bill;
+import org.example.program.containers.Manager;
+import org.example.program.entities.ReceiptInfo;
 
 import static java.lang.Math.round;
 

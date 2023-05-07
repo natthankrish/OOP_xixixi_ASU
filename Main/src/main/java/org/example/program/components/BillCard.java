@@ -12,9 +12,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import lombok.Getter;
-import program.containers.Manager;
-import program.entities.Time;
-import program.page.BillHistory;
+import org.example.program.containers.Manager;
+import org.example.program.entities.Time;
+import org.example.program.page.BillHistory;
 
 public class BillCard extends BorderPane {
 
