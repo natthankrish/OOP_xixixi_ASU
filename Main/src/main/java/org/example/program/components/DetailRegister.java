@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import org.example.program.entities.clients.ClientType;
+import org.example.program.entities.clients.Customer;
 import org.example.program.entities.clients.Member;
 
 
@@ -42,12 +43,12 @@ public class DetailRegister extends BorderPane {
                           int itemCount,
                           String tanggalTransaksi,
                           int total) {
-        this.name = new NewLabel(name, 24, "#867070", 700);
+        this.name = new NewLabel("Customer", 30, "#867070", 700);
         this.id = id;
         this.date = date;
         String valtype = "";
-        if (pelanggan instanceof Member){
-            valtype = "Member";
+        if (pelanggan instanceof Customer){
+            valtype = "Customer";
         } else {
             valtype = "VIP";
         }
@@ -129,7 +130,7 @@ public class DetailRegister extends BorderPane {
 
         // Set up the main content of the card
         StackPane contentPane = new StackPane();
-        contentPane.getChildren().addAll(topBox, status, isi, data,bottom);
+        contentPane.getChildren().addAll(topBox, isi, data,bottom,status);
         setCenter(contentPane);
     }
 

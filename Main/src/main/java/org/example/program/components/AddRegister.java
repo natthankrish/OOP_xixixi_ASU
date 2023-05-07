@@ -21,58 +21,42 @@ public class AddRegister extends BorderPane{
     NewLabel phone;
     NewField customerName;
     NewField phoneNumber;
+
     public AddRegister(String name,
                        String phone)
     {
-        this.confirm = new CustomButton("Confirm Registration",16,"#FFFFFF","#867070", "bold", 10,10,10,10);
+        this.confirm = new CustomButton("Confirm Registration",14,"#FFFFFF","#867070", "bold", 10,10,10,10);
         this.name = new NewLabel(name,24, "#867070",700);
         this.phone = new NewLabel(phone, 24, "#867070", 700);
-        this.customerName = new NewField(2,2,"#867070","#FFFFFF",20);
-        this.phoneNumber = new NewField(100, 2, "#867070","#FFFFFF",20);
+//        this.customerName = new NewField(50,20,"#867070","#FFFFFF",20);
+//        this.phoneNumber = new NewField(50, 20, "#867070","#FFFFFF",20);
+        this.customerName = new NewField("Your Name...", 100,20);
+        this.phoneNumber = new NewField("Your Phone Number...", 100,20);
         setPadding(new Insets(10));
         setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.CENTER_LEFT);
+
         // Set the preferred width and height of the card
         setPrefSize(394, 225);
-        HBox custLabel = new HBox(5, this.name);
-        custLabel.setAlignment(Pos.TOP_LEFT);
-        HBox custName = new HBox(5,this.customerName);
-        custName.setAlignment(Pos.TOP_CENTER);
 
-        HBox phoneLabel = new HBox(5, this.phone);
-        phoneLabel.setAlignment(Pos.CENTER_LEFT);
-        HBox number = new HBox(5,this.phoneNumber);
-        number.setAlignment(Pos.TOP_CENTER);
-        VBox register = new VBox(40,
-                this.name,
-                this.phone);
-        register.setAlignment(Pos.TOP_LEFT);
-
-        VBox confirm = new VBox(5,this.confirm);
-        confirm.setAlignment(Pos.BOTTOM_RIGHT);
-
-        StackPane contentPane = new StackPane();
-        contentPane.getChildren().addAll(confirm,register,custName,number);
-        setCenter(contentPane);
-
-//        setOnMouseClicked(event -> {
-//            System.out.println("customer clicked!");
-//            // Add code here to perform the desired action when the card is click
-//        });
-//
-//        // Add event handlers for mouse enter and exit
-//        setOnMouseEntered(event -> {
-//            setCursor(Cursor.HAND);
-//            setBackground(new Background(new BackgroundFill(Color.web("EAD7D7"), new CornerRadii(10), Insets.EMPTY)));
-//        });
-//
-//        setOnMouseExited(event -> {
-//            setCursor(Cursor.DEFAULT);
-//            setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
-//        });
+        vBox.getChildren().addAll(this.name, this.customerName, this.phone, this.phoneNumber, this.confirm);
+        setCenter(vBox);
     }
     public void setLayout(double x, double y) {
         this.setLayoutX(x);
         this.setLayoutY(y);
+    }
+
+    public CustomButton getConfirm() {
+        return confirm;
+    }
+
+    public NewField getCustomerName(){
+        return this.customerName;
+    }
+    public NewField getPhoneNumber(){
+        return this.phoneNumber;
     }
 }

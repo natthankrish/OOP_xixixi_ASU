@@ -21,7 +21,7 @@ public class NewTab extends HBox {
     private Button tabButton;
     private String textButton;
     private CloseButton closeButton;
-    private Group page;
+    private BasePage page;
 
     public NewTab(String tabText, ObservableList<Node> listTabs, double width, CloseAllButton closeAllButton, VBox tabBuffer) {
         NewTab.listTabs = listTabs;
@@ -91,7 +91,7 @@ public class NewTab extends HBox {
         });
     }
 
-    public NewTab(String tabText, ObservableList<Node> listTabs, double width, CloseAllButton closeAllButton, VBox tabBuffer, Group page) {
+    public NewTab(String tabText, ObservableList<Node> listTabs, double width, CloseAllButton closeAllButton, VBox tabBuffer, BasePage page) {
         NewTab.listTabs = listTabs;
         NewTab.closeAllButton = closeAllButton;
         NewTab.tabBuffer = tabBuffer;

@@ -67,7 +67,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
 
-        ArrayList<String> test = getClassNameFromJarString( new java.io.File("").getAbsolutePath() + "/PluginCurrency/target/PluginCurrency-1.0-SNAPSHOT.jar");
+        ArrayList<String> test = getClassNameFromJarString( new java.io.File("").getAbsolutePath() + "/Plugin/target/Plugin-1.0-SNAPSHOT.jar");
         for (String s : test){
             System.out.println(s);
         }

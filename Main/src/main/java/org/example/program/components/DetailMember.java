@@ -42,7 +42,7 @@ public class DetailMember extends BorderPane {
                         int transaksiCount,
                         String terakhirTransaksi,
                         int total) {
-        this.name = new NewLabel(name, 24, "#867070", 700);
+        this.name = new NewLabel(name, 25, "#867070", 700);
         this.id = id;
         String valtype = "";
         if (pelanggan.getType() instanceof Member
@@ -157,7 +157,7 @@ public class DetailMember extends BorderPane {
 
         // Set up the main content of the card
         StackPane contentPane = new StackPane();
-        contentPane.getChildren().addAll(topBox, status, isi, data,bottom);
+        contentPane.getChildren().addAll(topBox, isi, data, bottom, status);
         setCenter(contentPane);
 
         // Add event handler for mouse click
@@ -200,5 +200,13 @@ public class DetailMember extends BorderPane {
     public void setLayout(double x, double y) {
         this.setLayoutX(x);
         this.setLayoutY(y);
+    }
+
+    public CustomButton getKanan() {
+        return this.kanan;
+    }
+
+    public CustomButton getKiri() {
+        return this.kiri;
     }
 }

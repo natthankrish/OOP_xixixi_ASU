@@ -1,6 +1,7 @@
 package org.example.program.topbar;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import org.example.program.page.BasePage;
 import org.example.program.sidebar.ScrollTabPane;
 
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class TopbarFunctional extends MenuBar {
         }
     }
 
-    public void addMenuITem(String text, Group page) {
+    public void addMenuITem(String text, BasePage page) {
         MenuItem item = new MenuItem(text);
         this.itemMenuList.get(0).add(item);
         this.menuList.get(0).getItems().add(item);

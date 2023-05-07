@@ -1,27 +1,55 @@
 package plugin;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.chart.*;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.stage.Screen;
+import org.example.program.containers.InventoryContainer;
+import org.example.program.containers.Manager;
+import org.example.program.containers.TransactionContainer;
+import org.example.program.entities.Bill;
+import org.example.program.entities.ReceiptInfo;
+import org.example.program.page.BasePage;
+import org.example.program.topbar.TopContainer;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class BasePlugin {
-    public static Group page;
+    public static BasePage page;
     private static boolean loaded = false;
     // show empty page
     public static void showEmptyPage() {
         Background background;
         background = new Background(Screen.getPrimary().getVisualBounds().getWidth() * 4 / 5, Screen.getPrimary().getVisualBounds().getHeight() * 14 / 15, "#FFFFFF");
-        page = new Group();
-        page.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 5);
-        page.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() / 15);
+        page = new BasePage();
         page.getChildren().add(background);
         loaded = true;
     }
 
-    public static void addLineChart(String x, String y, String title, String seriesName, Map<String, Double> map) {
+    public static void addLineChart(String x, String y, String title, String seriesName, Manager manager) {
+        Map<String, Double> map = new HashMap<>();
+        TransactionContainer tc = manager.getTransactionContainer();
+        InventoryContainer ic = manager.getInventoryContainer();
+        for (Bill b : tc.getBuffer()) {
+            for (ReceiptInfo r : b.getReceipt()) {
+                String foodName = ic.getProductById(r.getProductID()).getName();
+                Double value = r.getSubtotal();
+                if (map.containsKey(foodName)) {
+                    Double newValue = map.get(foodName) + value;
+                    map.replace(foodName, map.get(foodName), newValue);
+                } else {
+                    map.put(foodName, value);
+                }
+            }
+        }
+
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName(seriesName);
+        for (Map.Entry<String, Double> entry : map.entrySet()) {
+            String foodName = entry.getKey();
+            Double value = entry.getValue();
+            series.getData().add(new XYChart.Data<>(foodName, value));
+        }
+
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel(x);
@@ -32,20 +60,14 @@ public class BasePlugin {
         lineChart.setTitle(title);
 
         // Add data to the chart
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName(seriesName);
-        for (Map.Entry<String, Double> entry : map.entrySet()) {
-            String foodName = entry.getKey();
-            Double value = entry.getValue();
-            series.getData().add(new XYChart.Data<>(foodName, value));
-        }
+
         lineChart.setPrefSize(800,300);
         lineChart.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 0.5 / 5);
         lineChart.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 1 / 15);
         lineChart.getData().add(series);
         page.getChildren().add(lineChart);
     }
-    public static void addBarChart(String x, String y, String title, String seriesName, Map<String, Double> map) {
+    public static void addBarChart(String x, String y, String title, String seriesName, Manager manager) {
         // add bar chart to the page
         // Create the line chart
         CategoryAxis xAxis1 = new CategoryAxis();
@@ -55,7 +77,22 @@ public class BasePlugin {
         BarChart<String, Number> barChart = new BarChart<>(xAxis1, yAxis1);
         barChart.setTitle(title);
 
-        // Add data to the chart
+        Map<String, Double> map = new HashMap<>();
+        TransactionContainer tc = manager.getTransactionContainer();
+        InventoryContainer ic = manager.getInventoryContainer();
+        for (Bill b : tc.getBuffer()) {
+            for (ReceiptInfo r : b.getReceipt()) {
+                String foodName = ic.getProductById(r.getProductID()).getName();
+                Double value = r.getSubtotal();
+                if (map.containsKey(foodName)) {
+                    Double newValue = map.get(foodName) + value;
+                    map.replace(foodName, map.get(foodName), newValue);
+                } else {
+                    map.put(foodName, value);
+                }
+            }
+        }
+
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName(seriesName);
         for (Map.Entry<String, Double> entry : map.entrySet()) {
@@ -70,6 +107,7 @@ public class BasePlugin {
         page.getChildren().add(barChart);
         System.out.println("adding bar chart");
     }
+
 
     public static boolean hasBeenLoaded() {
         return loaded;

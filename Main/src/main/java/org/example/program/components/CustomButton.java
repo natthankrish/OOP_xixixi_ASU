@@ -97,7 +97,8 @@ public class CustomButton extends Button {
             setStyle(getStyle() + hoverStyle);
 
         });
-        setOnMouseExited(event -> setStyle(getDefaultStyle()));    }
+        setOnMouseExited(e -> setStyle(getStyle().replace(hoverStyle, "")));
+        ;}
 
     public void setLayout(double x, double y) {
         this.setLayoutX(x);

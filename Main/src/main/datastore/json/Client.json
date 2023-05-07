@@ -24,18 +24,18 @@
       3
     ],
     "id": 3,
-    "type": "vip",
+    "type": "member",
     "point": 500000.0
   },
   {
     "phoneNumber": "081245450088",
     "name": "Brigita Tri Carolina",
-    "active": false,
+    "active": true,
     "transactionHistory": [
       4
     ],
     "id": 4,
-    "type": "vip",
+    "type": "member",
     "point": 60000.0
   },
   {
@@ -63,7 +63,7 @@
   {
     "phoneNumber": "081257571010",
     "name": "Ilham Akbar",
-    "active": true,
+    "active": false,
     "transactionHistory": [
       7
     ],

@@ -1,11 +1,14 @@
 package org.example.program.page;
 
-import org.example.program.components.NewLabel;
-import org.example.program.components.SearchBar;
+import javafx.geometry.Pos;
+import javafx.stage.Screen;
+import org.example.program.components.*;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
+
 import java.util.ArrayList;
 import java.util.List;
 import javafx.geometry.Pos;
-import org.example.program.components.AddRegister;
 import org.example.program.components.CardRegister;
 import org.example.program.components.DetailRegister;
 import org.example.program.components.NewLabel;
@@ -17,17 +20,20 @@ import org.example.program.containers.TransactionContainer;
 import org.example.program.entities.Bill;
 import org.example.program.entities.clients.Client;
 import org.example.program.entities.clients.ClientType;
+import org.example.program.entities.clients.Customer;
+import org.example.program.entities.clients.Member;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RegisterMember extends BasePage {
     private NewLabel label;
-    private SearchBar searchBar;
+    private NewField searchBar;
     private VBox cardContainer;
     private ScrollPane scrollPane;
     private DetailRegister currentDetails;
     private AddRegister addRegister;
+    private List<Client> name;
 
 
     public RegisterMember() {
@@ -37,7 +43,7 @@ public class RegisterMember extends BasePage {
 
         Manager m = Manager.getInstance();
         TransactionContainer tc = m.getTransactionContainer();
-        List<Client> name = m.getClientContainer().getBuffer();
+        this.name = m.getClientContainer().getBuffer();
 
         this.cardContainer = new VBox(10);
         this.cardContainer.setAlignment(Pos.CENTER);
@@ -46,41 +52,41 @@ public class RegisterMember extends BasePage {
         this.cardContainer.setLayoutY(200);
 
         for (Client client : name) {
-            CardRegister card = new CardRegister(client.getName(),
-                    client.getId(),
-                    client.getPhoneNumber());
+            if (client.getType() instanceof Customer){
+                CardRegister card = new CardRegister(client.getName(),
+                        client.getId(),
+                        client.getPhoneNumber());
 
-            card.setOnMouseClicked(event -> {
-                String nama = client.getName();
-                int id = client.getId();
-                String pune = client.getPhoneNumber();
-                ClientType membership = client.getType();
+                card.setOnMouseClicked(event -> {
+                    String tglTransaksi = "";
+                    int tot = 0;
+                    // Iterate to calculate total spend
+                    for (Integer i : client.getTransactionHistory()){
+                        Bill b = tc.getBillById(client.getId());
+                        tot += b.getTotalPrice();
+                    }
 
-                int count = client.getTransactionHistory().size();
-                String tglTransaksi = "";
+                    DetailRegister newDetails = new DetailRegister(client.getName(),client.getId(),client.getPhoneNumber(),client.getType(),client.getTransactionHistory().size(),tglTransaksi,tot);
+                    this.getChildren().remove(this.currentDetails);
+                    this.currentDetails= newDetails;
+                    this.currentDetails.setLayout(770,180);
+                    this.getChildren().add(this.currentDetails);
 
-                int tot = 0;
-                // Iterate to calculate total spend
-                for (Integer i : client.getTransactionHistory()){
-                    Bill b = tc.getBillById(id);
-                    tot += b.getTotalPrice();
-                }
-
-                DetailRegister newDetails = new DetailRegister(nama,id,pune,membership,count,tglTransaksi,tot);
-                this.getChildren().remove(this.currentDetails);
-                this.currentDetails= newDetails;
-                this.currentDetails.setLayout(770,180);
-                this.getChildren().add(this.currentDetails);
-
-                this.currentDetails.getRegisterButton().setOnMouseClicked(event1 -> {
-                    this.addRegister = new AddRegister("Customer Name", "Phone Number");
+                    this.currentDetails.getRegisterButton().setOnMouseClicked(event1 -> {
+                        this.addRegister = new AddRegister("Customer Name", "Phone Number");
 //                    this.getChildren().remove(this.addRegister);
-                    this.addRegister.setLayout(770,500);
-                    this.getChildren().add(this.addRegister);
+                        this.addRegister.setLayout(770,500);
+                        this.addRegister.getConfirm().setOnMouseClicked(event2 -> {
+//                            this.addRegister.getCustomerName().getTextField();
+//                            this.addRegister.getPhoneNumber().getTextField();
+                            client.makeClientAMember(String.valueOf(this.addRegister.getCustomerName().getTextField()), String.valueOf(this.addRegister.getPhoneNumber().getTextField()),client.getPoint(),client.getActiveStatus());
+                        });
+                        this.getChildren().add(this.addRegister);
+                    });
                 });
-            });
-            card.setLayout(55, 200);
-            cardContainer.getChildren().add(card);
+                card.setLayout(55, 200);
+                cardContainer.getChildren().add(card);
+            }
         }
 
         // Mengubah VBox menjadi ScrollPane dan menambahkan cardContainer ke dalam ScrollPane
@@ -92,28 +98,41 @@ public class RegisterMember extends BasePage {
         this.scrollPane.setLayoutX(55);
         this.scrollPane.setLayoutY(180);
 
-        List<String> itemList = new ArrayList<String>();
-        itemList.add("kon 1");
-        itemList.add("kon 2");
-        itemList.add("kon 3");
-        itemList.add("kon 4");
-        itemList.add("kon 5");
-        itemList.add("kon 6");
-        itemList.add("kon 7");
-        itemList.add("kon 8");
+        this.searchBar = new NewField("Search", Screen.getPrimary().getVisualBounds().getWidth() * 3 / 16, 40);
+        this.searchBar.setLayoutX(410);
+        this.searchBar.setLayoutY(130);
+        this.searchBar.setOnKeyReleased(event -> {
+            this.cardContainer.getChildren().clear();
+            for (Client client : this.name) {
+                if (client.getName() != null && client.getName().toLowerCase().contains(this.searchBar.getText().toLowerCase())) {
+                    if (client.getActiveStatus() != null && client.getActiveStatus()){
+                        CardMember card = new CardMember(client.getName(), client.getId(), client.getPhoneNumber());
+                        card.setLayout(55, 200);
+                        cardContainer.getChildren().add(card);
+                        card.setOnMouseClicked(e -> {
+                            int tot = 0;
+                            for (Integer i : client.getTransactionHistory()){
+                                Bill b = tc.getBillById(client.getId());
+                                tot += b.getTotalPrice();
+                            }
 
-        this.searchBar = new SearchBar(itemList);
-        this.searchBar.setLayout(477,140);
+                            DetailRegister newDetail = new DetailRegister(client.getName(),client.getId(),client.getPhoneNumber(),client.getType(),client.getTransactionHistory().size(),"",tot);
+
+                            this.getChildren().remove(this.currentDetails);
+                            this.currentDetails = newDetail;
+                            this.currentDetails.setLayout(770,180);
+                            this.getChildren().add(this.currentDetails);
+                        });
+                    }
+                }
+            }
+
+
+        });
 
         this.getChildren().addAll(this.label,
                 this.scrollPane,
                 this.searchBar
         );
-    }
-
-    public void changeCurrentDetails(DetailRegister newDetails){
-        this.getChildren().remove(this.currentDetails);
-        this.currentDetails = newDetails;
-        this.getChildren().add(this.currentDetails);
     }
 }

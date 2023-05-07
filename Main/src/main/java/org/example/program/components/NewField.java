@@ -1,12 +1,8 @@
 package org.example.program.components;
 
-import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -14,7 +10,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-
 
 public class NewField extends VBox {
     private TextField textField;
@@ -104,7 +99,7 @@ public class NewField extends VBox {
             radius = String.format("-fx-background-radius: %dpx", this.radius);
         }
 
-        String style = width + height + bgColor + color + radius;
+        String style = width + height + bgColor + color + radius + "-fx-border-color: #867070; " + "-fx-border-radius: 10px; ";
         textField.setStyle(style);
         setStyle(style);
 
@@ -113,5 +108,10 @@ public class NewField extends VBox {
         this.setLayoutX(x);
         this.setLayoutY(y);
     }
+
+    public TextField getTextField() {
+        return textField;
+    }
 }
+
 
