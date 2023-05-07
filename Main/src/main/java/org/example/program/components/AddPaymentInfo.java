@@ -25,6 +25,7 @@ public class AddPaymentInfo extends BorderPane {
     public CheckBox pointsCheckBox;
 
     public AddPaymentInfo(Bill bill, Client client, Double reducePoints, PaymentNominal paymentNominal){
+        
         // Set up the labels
         this.bill = bill;
         this.client = client;
@@ -40,7 +41,32 @@ public class AddPaymentInfo extends BorderPane {
         NewLabel customerNameField = new NewLabel(" ", 16, "#867070", 700);
         NewLabel statusField = new NewLabel(" ", 16, "#867070", 700);
         NewLabel pointsField = new NewLabel(" ", 16, "#867070", 700);
+
+        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(213, 180, 180, 0.3), new CornerRadii(30), Insets.EMPTY);
+        Background bg = new Background(backgroundFill);
         
+        BorderPane IDCustomerPane = new BorderPane();
+        VBox IDCustomerBox = new VBox(5, IDCustomerField);
+        IDCustomerPane.setCenter(IDCustomerBox);
+        IDCustomerPane.setPadding(new Insets(10));
+        IDCustomerPane.setBackground(bg);
+        IDCustomerPane.setPrefSize(340, 30);
+
+        BorderPane customerNamePane = new BorderPane();
+        VBox customerNameBox = new VBox(5, customerNameField);
+        customerNamePane.setCenter(customerNameBox);
+        customerNamePane.setPadding(new Insets(10));
+        customerNamePane.setBackground(bg);
+        customerNamePane.setPrefSize(340, 30);
+
+        BorderPane statusPane = new BorderPane();
+        VBox statusBox = new VBox(5, statusField);
+        statusPane.setCenter(statusBox);
+        statusPane.setPadding(new Insets(10));
+        statusPane.setBackground(bg);
+        statusPane.setPrefSize(500, 30);
+
+
         NewLabel usePointsLabel = new NewLabel("Use Points", 20, "#867070", 700);
         this.pointsCheckBox = new CheckBox("");
         pointsCheckBox.setDisable(true);
@@ -57,7 +83,6 @@ public class AddPaymentInfo extends BorderPane {
             } else {
                 type = "VIP";
             }
-                statusField.setText(type);
             searchItems.add(Integer.toString(c.getId()) + " - " + c.getName() + " - " + type);
         }
         
@@ -66,8 +91,9 @@ public class AddPaymentInfo extends BorderPane {
         HBox searchBox = new HBox(5, searchBar, addButton);
 
         VBox container = new VBox(5);
-        container.getChildren().addAll(titleLabel, searchBox, idCustomLabel, IDCustomerField, customerNameLabel, customerNameField, statusLabel, statusField, pointsLabel, pointsField, usePointsBox);
+        container.getChildren().addAll(titleLabel, searchBox, idCustomLabel, IDCustomerPane, customerNameLabel, customerNamePane, statusLabel, statusPane, pointsLabel, pointsField, usePointsBox);
         setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
+        setPadding(new Insets(20));
         setCenter(container);
 
         addButton.setOnAction(event -> {

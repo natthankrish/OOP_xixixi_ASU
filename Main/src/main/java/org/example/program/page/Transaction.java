@@ -43,6 +43,7 @@ public class Transaction extends BasePage {
         
         AddNew addNew = new AddNew(this.bill, cart);        
         CustomButton checkoutButton = new CustomButton("Proceed To Checkout", 30, "#F5EBEB", "#867070", "bold", 10, 10, 10, 10);
+        checkoutButton.setPrefWidth(540);
         VBox rightSide = new VBox(10, addNew, checkoutButton);
         rightSide.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 3);
         rightSide.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
@@ -53,14 +54,14 @@ public class Transaction extends BasePage {
         CustomButton backButton = new CustomButton("Back", 24, "#F5EBEB", "#867070", "bold", 10, 10, 10, 10  );
         backButton.setPrefWidth(240);
         backButton.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 2);
-        backButton.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 1 / 10);
+        backButton.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() /5);
         PaymentNominal paymentNominal = new PaymentNominal(this.bill, this.client, this.reducePoints);
-        paymentNominal.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 3);
-        paymentNominal.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 1/4);
+        paymentNominal.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 2 / 5);
+        paymentNominal.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 11 / 40);
         
         AddPaymentInfo addPaymentInfo = new AddPaymentInfo(this.bill, this.client, this.reducePoints, paymentNominal);
         addPaymentInfo.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
-        addPaymentInfo.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
+        addPaymentInfo.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() / 5);
 
 
         // this.getChildren().addAll(addPaymentInfo, paymentNominal);
@@ -68,6 +69,7 @@ public class Transaction extends BasePage {
             List<ReceiptInfo> receipts = bill.getReceipt();
             Boolean valid = true;
             for (ReceiptInfo receipt : receipts){
+                receipt.recalculate(receipt.getQuantity());
                 if (receipt.getIsValid() == false) {
                     valid = false;
                     break;

@@ -30,6 +30,7 @@ public class Cart extends BorderPane {
         }
         
         ScrollPane scrollPane = new ScrollPane(contentPane);
+        scrollPane.setStyle("-fx-background:white;-fx-background-color:transparent;");
         scrollPane.setPrefHeight(520); // Set the preferred height of the scroll pane
         scrollPane.setFitToWidth(true);
 
