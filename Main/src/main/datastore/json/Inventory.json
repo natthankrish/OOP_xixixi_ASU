@@ -130,7 +130,7 @@
     "category": "Cake"
   },
   {
-    "image": "Main/assets/products/No_Available_Image.jpg",
+    "image": "Main\\assets\\products\\images.png",
     "price": 35000.0,
     "name": "Red Velvet Cake",
     "active": true,
