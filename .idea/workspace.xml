@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fea4c96f-431b-4523-8385-8774328b4c5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/obj/Inventory.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/obj/Inventory.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/adapter/DataDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/adapter/DataDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BillHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BillHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Transaction.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Transaction.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddNew.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddNew.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddPaymentInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddPaymentInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/PaymentNominal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/PaymentNominal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/containers/InventoryContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/containers/InventoryContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/containers/TransactionContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/containers/TransactionContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/sidebar/ScrollTabPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/sidebar/ScrollTabPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/sidebar/SideContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/sidebar/SideContainer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,24 +52,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Kuliah/Semester 4/OOP/temp/OOP_xixixi_ASU&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "transaction-page",
+    "last_opened_file_path": "D:/Kuliah/Semester 4/OOP/temp/OOP_xixixi_ASU",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Application.DataDriver">
+}]]></component>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="DataDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.program.adapter.DataDriver" />
       <module name="Main" />
@@ -103,8 +109,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DataDriver" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.DataDriver" />
       </list>
     </recent_temporary>
   </component>
@@ -129,5 +135,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Main/src/main/java/org/example/program/sidebar/ScrollTabPane.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

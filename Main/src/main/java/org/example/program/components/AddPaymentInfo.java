@@ -21,6 +21,7 @@ public class AddPaymentInfo extends BorderPane {
     private Bill bill;
     @Getter
     private Client client;
+    @Getter
     private Double reducePoints;
     public CheckBox pointsCheckBox;
 
@@ -99,7 +100,8 @@ public class AddPaymentInfo extends BorderPane {
         addButton.setOnAction(event -> {
             String text = searchBar.textField.getText();
             if (searchItems.indexOf(text) != -1) {
-                this.client = clients.get(searchItems.indexOf(text));   
+                this.client = clients.get(searchItems.indexOf(text));
+                this.bill.setIdClient(this.client.getId());   
                 IDCustomerField.setText(Integer.toString(this.client.getId()));
                 customerNameField.setText(this.client.getName());
                 String type = "";
@@ -119,7 +121,8 @@ public class AddPaymentInfo extends BorderPane {
 
 
             } else {
-                this.client = null;   
+                this.client = null; 
+                this.bill.setIdClient(-1);     
                 paymentNominal.setCustomerPayNominal(bill.getTotalPrice());
                 paymentNominal.setCustomerGetPoints(0.0);
                 IDCustomerField.setText("");
