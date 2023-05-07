@@ -18,7 +18,7 @@ public class LogoThread extends Thread {
         if (this.id == 13) {
             this.id = 1;
         }
-        this.img.changeImage("assets/logo/" + this.id + ".png");
+        this.img.changeImage("Main/assets/logo/" + this.id + ".png");
     }
 
     @Override
