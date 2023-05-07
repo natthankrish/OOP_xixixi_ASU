@@ -8,17 +8,17 @@
         <purchasePrice>15000.0</purchasePrice>
         <category>Coffee</category>
         <image>assets/products/No_Available_Image.jpg</image>
-        <active>true</active>
+        <active>false</active>
     </Product>
     <Product>
         <id>2</id>
-        <stock>5</stock>
+        <stock>10</stock>
         <name>Vanila Latte</name>
-        <price>25000.0</price>
-        <purchasePrice>15000.0</purchasePrice>
+        <price>30000.0</price>
+        <purchasePrice>20000.0</purchasePrice>
         <category>Coffee</category>
         <image>assets/products/No_Available_Image.jpg</image>
-        <active>true</active>
+        <active>false</active>
     </Product>
     <Product>
         <id>3</id>
@@ -28,7 +28,7 @@
         <purchasePrice>10000.0</purchasePrice>
         <category>Coffee</category>
         <image>assets/products/No_Available_Image.jpg</image>
-        <active>true</active>
+        <active>false</active>
     </Product>
     <Product>
         <id>4</id>
@@ -38,7 +38,7 @@
         <purchasePrice>20000.0</purchasePrice>
         <category>Tea</category>
         <image>assets/products/No_Available_Image.jpg</image>
-        <active>true</active>
+        <active>false</active>
     </Product>
     <Product>
         <id>5</id>
@@ -47,7 +47,7 @@
         <price>15000.0</price>
         <purchasePrice>8000.0</purchasePrice>
         <category>Tea</category>
-        <image>assets/products/No_Available_Image.jpg</image>
+        <image>assets\products\No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
     <Product>
@@ -58,7 +58,7 @@
         <purchasePrice>9000.0</purchasePrice>
         <category>Tea</category>
         <image>assets/products/No_Available_Image.jpg</image>
-        <active>true</active>
+        <active>false</active>
     </Product>
     <Product>
         <id>7</id>
@@ -170,5 +170,34 @@
         <image>assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
-    <Amount>17</Amount>
+    <Product>
+        <id>18</id>
+        <stock>12</stock>
+        <name>Thai Tea</name>
+        <price>40000.0</price>
+        <purchasePrice>50000.0</purchasePrice>
+        <category>Tea</category>
+        <active>false</active>
+    </Product>
+    <Product>
+        <id>19</id>
+        <stock>3</stock>
+        <name>Lychee Tea</name>
+        <price>15000.0</price>
+        <purchasePrice>5000.0</purchasePrice>
+        <category>Tea</category>
+        <image>assets\products\No_Available_Image.jpg</image>
+        <active>true</active>
+    </Product>
+    <Product>
+        <id>20</id>
+        <stock>12</stock>
+        <name>Lemon Tea</name>
+        <price>8000.0</price>
+        <purchasePrice>2000.0</purchasePrice>
+        <category>Tea</category>
+        <image>assets\products\No_Available_Image.jpg</image>
+        <active>true</active>
+    </Product>
+    <Amount>20</Amount>
 </InventoryContainer>
