@@ -60,6 +60,7 @@ public class App extends Application {
         map.put("Pisang Cincin", 2000.0);
         map.put("Pisang Kolek", 2000.0);
 
+        Manager m = Manager.getInstance();
 
         SideContainer sideContainer = new SideContainer();
         App.root.getChildren().add(sideContainer);
@@ -74,7 +75,7 @@ public class App extends Application {
 
         // How to call loadPlugin
         String cwd = System.getProperty("user.dir");
-        Manager m = Manager.getInstance();
+
         loadPlugin(cwd + "/Plugin/target/Plugin-1.0-SNAPSHOT.jar", topContainer, m);
         loadPlugin(cwd + "/PluginChart2/target/PluginChart2-1.0-SNAPSHOT.jar", topContainer, m);
 

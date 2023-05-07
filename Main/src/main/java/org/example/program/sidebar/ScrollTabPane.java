@@ -6,9 +6,15 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import lombok.Getter;
+
+import java.util.List;
+
 import org.example.program.components.CloseAllButton;
 import org.example.program.components.NewTab;
+import org.example.program.containers.Manager;
+import org.example.program.entities.bills.Bill;
 import org.example.program.page.BasePage;
+import org.example.program.page.Transaction;
 
 @Getter
 public class ScrollTabPane extends ScrollPane {
@@ -25,6 +31,18 @@ public class ScrollTabPane extends ScrollPane {
         this.setContent(this.buffer);
         this.setFitToWidth(true);
         this.buffer.setSpacing(10);
+
+        Manager m = Manager.getInstance();
+        List<Bill> bills = m.getTransactionContainer().getBuffer();
+        if (bills.size() != 0){
+            for (Bill bill : bills) {
+                if (!bill.getIsFixedBill()){
+                    addTab("Transaction");
+                    Transaction tab = (Transaction)((NewTab) this.buffer.getChildren().get(this.buffer.getChildren().size() - 1)).getPage();
+                    // tab.setBill(bill);
+                }
+            }
+        }
     }
 
     public void addTab(String text) {

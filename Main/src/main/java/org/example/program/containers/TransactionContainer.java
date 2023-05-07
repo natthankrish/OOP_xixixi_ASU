@@ -79,4 +79,20 @@ public class TransactionContainer implements Serializable {
         }
         return max;
     }
+    public Integer getMinID() {
+        Integer min = 0;
+        boolean first = true;
+        for (Bill obj: buffer){
+            Integer tempID = obj.getIdBill();
+            if (first) {
+                min = tempID;
+                first = false;
+            } else {
+                if (tempID.intValue() < min.intValue()){
+                    min = tempID;
+                }
+            }
+        }
+        return min;
+    }
 }

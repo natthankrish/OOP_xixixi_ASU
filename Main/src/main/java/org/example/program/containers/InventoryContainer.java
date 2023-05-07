@@ -1,8 +1,6 @@
 package org.example.program.containers;
 
 import org.example.program.entities.commodities.Commodity;
-import org.example.program.entities.commodities.Product;
-
 
 import lombok.*;
 
