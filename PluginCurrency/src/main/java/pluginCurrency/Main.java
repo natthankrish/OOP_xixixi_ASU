@@ -13,6 +13,7 @@ import java.lang.reflect.*;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import org.example.program.entities.Product;
 
 public class Main {
 
@@ -66,11 +67,13 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
 
-        ArrayList<String> test = getClassNameFromJarString( new java.io.File("").getAbsolutePath() + "/out/artifacts/MainProgram_jar/MainProgram.jar");
+        ArrayList<String> test = getClassNameFromJarString( new java.io.File("").getAbsolutePath() + "/PluginCurrency/target/PluginCurrency-1.0-SNAPSHOT.jar");
         for (String s : test){
             System.out.println(s);
         }
-        System.out.println("Hello world!");
+//        System.out.println("Hello world!");
+//        Product p = new Product(20, 5, "Hehe", 40000.0, 25000.0, "test", "", true);
+//        p.display();
 
     }
 }

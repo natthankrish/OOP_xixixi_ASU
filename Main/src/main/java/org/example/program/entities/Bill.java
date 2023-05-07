@@ -1,6 +1,7 @@
 package org.example.program.entities;
 
 import java.io.Serializable;
+import java.util.Observer;
 import java.util.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class Bill implements Serializable {
     private Double totalPrice;
     private Boolean isFixedBill;
     private Time transactionTime;
+
 
     public void addBillItem(Integer id, Integer quantity, Double subtotal){
         // subtotal is the value of product's price * quantity
