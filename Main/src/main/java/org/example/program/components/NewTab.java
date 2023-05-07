@@ -173,7 +173,7 @@ public class NewTab extends HBox {
             this.textButton = "Settings";
             this.page = new Settings();
         } else if (tabText.equals("Sales Report")) {
-            this.page = new SaleReport();
+            SaleReport.export();
         } else if (tabText.equals("Bill History")) {
             this.page = new BillHistory();
         }
