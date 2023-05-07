@@ -2,6 +2,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+**/target/
+.idea/
 src/main/java/program/MainBrigita.java
 src/main/java/program/plugin/PluginClassLoader.java
 

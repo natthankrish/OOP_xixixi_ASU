@@ -17,4 +17,5 @@ module MainProgram {
     exports org.example.program.topbar;
     exports org.example.program.page;
     exports org.example.program.containers;
+    exports org.example.program.entities.clients;
 }

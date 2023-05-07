@@ -57,7 +57,6 @@ public class App extends Application {
         map.put("Pisang Kolek", 2000.0);
 
 
-
         SideContainer sideContainer = new SideContainer();
         App.root.getChildren().add(sideContainer);
 
@@ -65,6 +64,7 @@ public class App extends Application {
         App.root.getChildren().add(topContainer);
 
         Scene scene = new Scene(App.root);
+
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.setScene(scene);
 
@@ -73,11 +73,14 @@ public class App extends Application {
         Manager m = Manager.getInstance();
         loadPlugin(cwd + "/Plugin/target/Plugin-1.0-SNAPSHOT.jar", topContainer, m);
         loadPlugin(cwd + "/PluginChart2/target/PluginChart2-1.0-SNAPSHOT.jar", topContainer, m);
+
+
         // Show Main Window
         Image applogo = new Image("file:Main/assets/logo.png");
         stage.getIcons().add(applogo);
         stage.setTitle("BNMO");
         stage.setMaximized(true);
+
         stage.show();
     }
 

@@ -88,29 +88,31 @@ public class BasePlugin {
         } else {
             iterate = 5;
         }
-        for (int i = 0; i < )
-        for (int i = 0; i < purchaseList.size(); i++){
-            if (){}
+        for (int i = 0; i < iterate; i++){
+            for (int j = 0; j < purchaseList.size(); j++){
+                System.out.println("test");
+            }
         }
 
 
 
-        PieChart pieChart = new PieChart();
-        pieChart.setTitle("Top Client's Purchase");
 
-        // Add data to the chart
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-        for (Map.Entry<String, Double> entry : map.entrySet()) {
-            String foodName = entry.getKey();
-            Double value = entry.getValue();
-            pieChartData.add(new PieChart.Data(foodName, value));
-        }
-        pieChart.getData().addAll(pieChartData);
-        pieChart.setPrefSize(800,500);
-        pieChart.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 0);
-        pieChart.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
-        page.getChildren().add(pieChart);
-        System.out.println("adding pie chart");
+//        PieChart pieChart = new PieChart();
+//        pieChart.setTitle("Top Client's Purchase");
+//
+//        // Add data to the chart
+//        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+//        for (Map.Entry<String, Double> entry : map.entrySet()) {
+//            String foodName = entry.getKey();
+//            Double value = entry.getValue();
+//            pieChartData.add(new PieChart.Data(foodName, value));
+//        }
+//        pieChart.getData().addAll(pieChartData);
+//        pieChart.setPrefSize(800,500);
+//        pieChart.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 0);
+//        pieChart.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
+//        page.getChildren().add(pieChart);
+//        System.out.println("adding pie chart");
     }
 
     public static boolean hasBeenLoaded() {
