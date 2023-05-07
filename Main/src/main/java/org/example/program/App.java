@@ -155,7 +155,6 @@ public class App extends Application {
     public String readConfig() {
         try {
             String configurePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\configure.txt";
-            System.out.println(configurePath);
             File file = new File(configurePath);
 
             BufferedReader br = new BufferedReader(new FileReader(file));
