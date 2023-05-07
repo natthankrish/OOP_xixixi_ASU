@@ -1,10 +1,9 @@
 package org.example.program.components;
 
-import java.util.List;
-
+import org.example.program.entities.Bill;
+import org.example.program.entities.clients.Client;
+import org.example.program.entities.clients.VIP;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -13,22 +12,33 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class PaymentNominal extends BorderPane {
+    private Bill bill;
+    private Client client;
+    private Double customerPayNominal;
+    private NewLabel customerPayNominalLabel;
+    private Double customerGetPoints = 0.0;
+    private NewLabel customerGetPointsLabel;
     private NewLabel grandTotalNominal;
-    private NewLabel customerPayNominal;
-    private NewLabel pointsLabel;
-
     
-    
-    public PaymentNominal(int grandTotal, int customerPay, int points){
+    public PaymentNominal(Bill bill, Client client, Double reducePoint){
         // set the labels;
-        this.grandTotalNominal = new NewLabel("IDR " + Integer.toString(grandTotal), 60, "#867070", 700 );
-        this.customerPayNominal = new NewLabel("IDR " + Integer.toString(customerPay), 60, "#867070", 700 );
-        this.pointsLabel = new NewLabel("CUSTOMER GET " + Integer.toString(points) + " POINTS", 24, "WHITE", 700 );
+        this.bill = bill;
+        this.client = client;
+        this.grandTotalNominal = new NewLabel("IDR " + Double.toString(this.bill.getTotalPrice()), 60, "#867070", 700 );
+        
+        if (this.client!=null){
+            if (this.client.getType() instanceof VIP){
+                this.customerPayNominal = this.bill.getTotalPrice() * 0.9;
+            }
+        }
+
+        this.customerPayNominalLabel = new NewLabel("IDR " +  Double.toString(bill.getTotalPrice()), 60, "#867070", 700 );
+        this.customerGetPointsLabel = new NewLabel("CUSTOMER GET " + Double.toString(this.customerGetPoints) + " POINTS", 24, "WHITE", 700 );
 
         NewLabel grandTotalLabel = new NewLabel("Grand Total", 24, "#867070", 700 );
         NewLabel customerPayLabel = new NewLabel("Customer Pay", 24, "#867070", 700 );
 
-        NewLabel paymentCompletedLabel = new NewLabel("Payment Completed", 24, "WHITE", 700 );
+        CustomButton completePaymentButton = new CustomButton("Complete Payment", 24, "#F5EBEB", "#867070", "bold", 10, 10, 10, 10  );
 
         // make border pane for each part
         BorderPane grandTotalPane = new BorderPane();
@@ -39,21 +49,21 @@ public class PaymentNominal extends BorderPane {
         grandTotalPane.setPrefWidth(470);
         
         BorderPane customerPayPane = new BorderPane();
-        VBox customerPayBox = new VBox(5, customerPayLabel, customerPayNominal);
+        VBox customerPayBox = new VBox(5, customerPayLabel, customerPayNominalLabel);
         customerPayPane.setCenter(customerPayBox);
         customerPayPane.setPadding(new Insets(20));
         customerPayPane.setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
         customerPayPane.setPrefWidth(470);
 
         BorderPane pointsPane = new BorderPane();
-        VBox pointsBox = new VBox(5, pointsLabel);
+        VBox pointsBox = new VBox(5, customerGetPointsLabel);
         pointsPane.setCenter(pointsBox);
         pointsPane.setPadding(new Insets(20));
         pointsPane.setBackground(new Background(new BackgroundFill(Color.web("#D5B4B4"), new CornerRadii(10), Insets.EMPTY)));
         pointsPane.setPrefWidth(470);
 
         BorderPane paymentCompletedPane = new BorderPane();
-        VBox paymentCompletedBox = new VBox(5, paymentCompletedLabel);
+        VBox paymentCompletedBox = new VBox(5, completePaymentButton);
         paymentCompletedPane.setCenter(paymentCompletedBox);
         paymentCompletedPane.setPadding(new Insets(20));
         paymentCompletedPane.setBackground(new Background(new BackgroundFill(Color.web("#867070"), new CornerRadii(10), Insets.EMPTY)));
@@ -61,18 +71,28 @@ public class PaymentNominal extends BorderPane {
         
         VBox mainVBox = new VBox(10, grandTotalPane, customerPayPane, pointsPane, paymentCompletedPane );
         setCenter(mainVBox);
+
     }
 
-    public void setGrandTotalNominal(int newNominal){
-        this.grandTotalNominal.setText("IDR " + Integer.toString(newNominal));
-
+    public void setGrandTotalNominal(Double newNominal){
+        this.grandTotalNominal.setText("IDR " + Double.toString(newNominal));
     }   
-    public void setCustomerPayNominal(int newNominal){
-        this.customerPayNominal.setText("IDR " + Integer.toString(newNominal));
+
+    public void reduceCustomerPayNominal(Double number) {
+        this.customerPayNominal = this.customerPayNominal - number;
+        this.customerPayNominalLabel.setText("IDR " + Double.toString(this.customerPayNominal));
+        System.out.println("tesdalam");
     }
-    public void setPoints(int newPoints){
-        this.pointsLabel.setText("CUSTOMER GET " + Integer.toString(newPoints) + " POINTS");
+    public void setCustomerPayNominal(Double newNominal){
+        this.customerPayNominal = newNominal;
+        this.customerPayNominalLabel.setText("IDR " + Double.toString(customerPayNominal));
     }
-    
-    
+    public Double getCustomerPayNominal(){
+        return this.customerPayNominal;
+    }
+
+    public void setCustomerGetPoints(Double newPoints){
+        this.customerGetPoints = newPoints;
+        this.customerGetPointsLabel.setText("CUSTOMER GET " + Double.toString(this.customerGetPoints) + " POINTS");
+    };
 }
