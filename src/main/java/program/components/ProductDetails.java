@@ -79,7 +79,7 @@ public class ProductDetails extends ScrollPanel {
 
         this.name = new NewLabel(product.getName(), 27, "#867070", 700);
         name.getChildren().add(this.name);
-        name.getChildren().add(new NewLabel(String.valueOf(product.getId()), 20, "#867070", 700));
+        name.getChildren().add(new NewLabel("ID"+ product.getId(), 20, "#867070", 700));
 
         this.status = new NewButton(product.getStock() == 0 ? "Sold" : "Available", 100, 40);
         this.status.setDisable(true);

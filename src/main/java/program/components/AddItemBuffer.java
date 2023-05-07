@@ -10,15 +10,11 @@ import lombok.*;
 import java.nio.file.Files;
 import java.io.*;
 
-import javax.swing.*;
-import java.awt.FileDialog;
-import java.awt.Frame;
 import java.io.File;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+
 @Getter
 public class AddItemBuffer extends Group {
     private NewImage image;
@@ -29,11 +25,12 @@ public class AddItemBuffer extends Group {
     private NewField sellingPrice;
     private NewField purchasedPrice;
     private NewButton submitButton;
-    private Background background;
+    private Background bg;
+    private String url;
 
     public AddItemBuffer() {
-        this.background = new Background(Screen.getPrimary().getVisualBounds().getWidth()*7/10, Screen.getPrimary().getVisualBounds().getHeight()/2, "#F5EBEB");
-        this.getChildren().add(background);
+        this.bg = new Background(Screen.getPrimary().getVisualBounds().getWidth()*7/10, Screen.getPrimary().getVisualBounds().getHeight()/2, "#F5EBEB");
+        this.getChildren().add(bg);
         this.image = new NewImage("assets/products/No_Available_Image.jpg");
 
         HBox hbox = new HBox();
@@ -41,7 +38,7 @@ public class AddItemBuffer extends Group {
         hbox.setPadding(new Insets(40));
         hbox.setSpacing(40);
 
-        this.image.setDimension(background.getHeight() * 7/ 10,background.getHeight() * 7/ 10);
+        this.image.setDimension(bg.getHeight() * 7/ 10, bg.getHeight() * 7/ 10);
         this.changeimg = new NewButton("Change Image", 150, 40);
         this.changeimg.setOnMouseClicked(event -> {
             FileChooser fd = new FileChooser();
@@ -60,7 +57,6 @@ public class AddItemBuffer extends Group {
                 this.image.changeImage(dest.toString());
             }
         });
-
 
 
         VBox vBox = new VBox(this.image, this.changeimg);
@@ -84,17 +80,17 @@ public class AddItemBuffer extends Group {
         NewLabel label4 = new NewLabel("Purchased Price", 22, "#867070", 700);
         NewLabel label5 = new NewLabel("Name", 22, "#867070", 700);
 
-        label1.setPrefWidth(background.getWidth()/4);
-        label2.setPrefWidth(background.getWidth()/4);
-        label3.setPrefWidth(background.getWidth()/4);
-        label4.setPrefWidth(background.getWidth()/4);
-        label5.setPrefWidth(background.getWidth()/4);
+        label1.setPrefWidth(bg.getWidth()/4);
+        label2.setPrefWidth(bg.getWidth()/4);
+        label3.setPrefWidth(bg.getWidth()/4);
+        label4.setPrefWidth(bg.getWidth()/4);
+        label5.setPrefWidth(bg.getWidth()/4);
 
-        this.category = new NewField("Category", background.getWidth()/3, 40);
-        this.stock = new NewField("Stock", background.getWidth()/3, 40);
-        this.sellingPrice = new NewField("Selling Price", background.getWidth()/3, 40);
-        this.purchasedPrice = new NewField("Purchased price", background.getWidth()/3, 40);
-        this.name = new NewField("Name", background.getWidth()/3, 40);
+        this.category = new NewField("Category", bg.getWidth()/3, 40);
+        this.stock = new NewField("Stock", bg.getWidth()/3, 40);
+        this.sellingPrice = new NewField("Selling Price", bg.getWidth()/3, 40);
+        this.purchasedPrice = new NewField("Purchased price", bg.getWidth()/3, 40);
+        this.name = new NewField("Name", bg.getWidth()/3, 40);
 
         hbox1.getChildren().addAll(label1, this.category);
         hbox2.getChildren().addAll(label2, this.stock);
@@ -105,12 +101,9 @@ public class AddItemBuffer extends Group {
         vBox2.getChildren().addAll(hbox5, hbox1, hbox2, hbox3, hbox4);
 
         this.submitButton = new NewButton("Add", 200, 35);
-        this.submitButton.setOnMouseClicked(event -> {
-            // CALL DATABASE HERE
-        });
 
         HBox buttons = new HBox(this.submitButton);
-        buttons.setPrefWidth(background.getWidth());
+        buttons.setPrefWidth(bg.getWidth());
         buttons.setAlignment(Pos.CENTER);
 
         buttons.setPadding(new Insets(20, 0, 0, 0));

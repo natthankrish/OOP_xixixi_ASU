@@ -17,6 +17,7 @@ import java.util.List;
 public class ItemDirectory extends BasePage {
     private Group detailpage;
     private Group addItemPage;
+    public AddItemBuffer addItemBuffer;
     private NewButton backToItemDetails;
     private NewButton addItemButton;
     private List<Product> data;
@@ -74,20 +75,26 @@ public class ItemDirectory extends BasePage {
         headAdd.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
         headAdd.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight()*2/ 20);
 
-        AddItemBuffer addItemBuffer = new AddItemBuffer();
+        this.addItemBuffer = new AddItemBuffer();
 
-        this.addItemPage.getChildren().addAll(headAdd, addItemBuffer);
-        addItemBuffer.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
-        addItemBuffer.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight()*4/ 20);
+        this.addItemPage.getChildren().addAll(headAdd, this.addItemBuffer);
+        this.addItemBuffer.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
+        this.addItemBuffer.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight()*4/ 20);
 
         this.backToItemDetails = new NewButton("Cancel", 140, 30);
         this.backToItemDetails.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight()*5/ 40);
-        this.backToItemDetails.setLayoutX(addItemBuffer.getBackground().getWidth() - this.backToItemDetails.getPrefWidth());
+        this.backToItemDetails.setLayoutX(this.addItemBuffer.getBg().getWidth() - this.backToItemDetails.getPrefWidth());
         this.addItemPage.getChildren().add(this.backToItemDetails);
         this.backToItemDetails.setOnMouseClicked(event -> {
             this.getChildren().remove(this.addItemPage);
             this.getChildren().add(this.detailpage);
+            this.resetAddItemBuffer();
         });
+
+        this.addItemBuffer.getSubmitButton().setOnMouseClicked(event -> {
+            this.testItem();
+        });
+
         this.itemDetails = -1;
     }
 
@@ -101,6 +108,67 @@ public class ItemDirectory extends BasePage {
             this.detailpage.getChildren().add(this.currentDetails);
         } else {
             this.itemDetails = -1;
+        }
+    }
+
+    public void resetAddItemBuffer() {
+        this.addItemBuffer.getImage().changeImage("assets/products/No_Available_Image.png");
+        this.addItemBuffer.getName().getTextField().clear();
+        this.addItemBuffer.getCategory().getTextField().clear();
+        this.addItemBuffer.getSellingPrice().getTextField().clear();
+        this.addItemBuffer.getPurchasedPrice().getTextField().clear();
+        this.addItemBuffer.getStock().getTextField().clear();
+    }
+
+    public void testItem() {
+        boolean change = true;
+        int newStock = 0;
+        double newSellingPrice = 0, newPurchasedPrice = 0;
+        if (!this.addItemBuffer.getStock().getTextField().getText().isEmpty()) {
+            try {
+                newStock = Integer.parseInt(this.addItemBuffer.getStock().getTextField().getText());
+            } catch (NumberFormatException e) {
+                change = false;
+            }
+        } else {
+            change = false;
+        }
+
+        if (!this.addItemBuffer.getSellingPrice().getTextField().getText().isEmpty()) {
+            try {
+                newSellingPrice = Double.parseDouble(this.addItemBuffer.getSellingPrice().getTextField().getText());
+            } catch (NumberFormatException e) {
+                change = false;
+            }
+        } else {
+            change = false;
+        }
+
+        if (!this.addItemBuffer.getPurchasedPrice().getTextField().getText().isEmpty()) {
+            try {
+                newPurchasedPrice = Double.parseDouble(this.addItemBuffer.getPurchasedPrice().getTextField().getText());
+            } catch (NumberFormatException e) {
+                change = false;
+            }
+        } else {
+            change = false;
+        }
+
+        if (this.addItemBuffer.getName().getTextField().getText().isEmpty() || this.addItemBuffer.getCategory().getTextField().getText().isEmpty()) {
+            change = false;
+        }
+
+
+        if (change) {
+            Manager m = Manager.getInstance();
+            int id = m.getInventoryContainer().getMaxID();
+            Product product = new Product(id+1, newStock, this.addItemBuffer.getName().getTextField().getText(), newSellingPrice, newPurchasedPrice, this.addItemBuffer.getCategory().getTextField().getText(), this.addItemBuffer.getImage().getPath(), true);
+            m.getInventoryContainer().addProduct(product);
+            this.changeCurrentDetails(null);
+            this.getChildren().remove(this.addItemPage);
+            this.getChildren().add(this.detailpage);
+            this.resetAddItemBuffer();
+            this.refreshData();
         }
     }
 
@@ -162,6 +230,7 @@ public class ItemDirectory extends BasePage {
                     m.getInventoryContainer().getProductById(productItem.getDetails().getProductid()).setPurchasePrice(newPurchasedPrice);
                     productItem.getDetails().getPurchasedPrice().getTextField().clear();
                 }
+                m.getInventoryContainer().getProductById(productItem.getDetails().getProductid()).setImage(productItem.getDetails().getImage().getPath());
 
             }
             this.changeCurrentDetails(null);
