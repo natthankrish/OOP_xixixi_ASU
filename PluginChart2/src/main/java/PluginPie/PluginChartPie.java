@@ -20,7 +20,8 @@ public class PluginChartPie implements Plugin {
         if (!BasePlugin.hasBeenLoaded()) {
             BasePlugin.showEmptyPage();
         }
-        BasePlugin.addPieChart(manager);
+        BasePlugin.addPieChartProduct(manager);
+        BasePlugin.addPieChartClient(manager);
         System.out.println("showing line chart");
         return BasePlugin.page;
     }
