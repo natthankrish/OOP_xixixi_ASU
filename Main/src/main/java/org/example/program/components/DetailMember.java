@@ -98,7 +98,7 @@ public class DetailMember extends BorderPane {
 //        phoneText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15) );
 //        phoneText.setFill(Color.web("#867070"));
 
-        Text idText = new Text("ID " + String.valueOf(id));
+        Text idText = new Text("ID" + String.valueOf(id));
         idText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
         idText.setFill(Color.web("#867070"));
 
@@ -157,7 +157,7 @@ public class DetailMember extends BorderPane {
 
         // Set up the main content of the card
         StackPane contentPane = new StackPane();
-        contentPane.getChildren().addAll(topBox, isi, data, bottom, status);
+        contentPane.getChildren().addAll(topBox,status, isi, data, bottom);
         setCenter(contentPane);
 
         // Add event handler for mouse click

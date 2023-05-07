@@ -5,55 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03c77ed3-b304-43ce-ae21-6c2737c33aec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/assets/products/No_Available_Image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/assets/products/images.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/assets/search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddItemBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ScrollPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/AddItemPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/plugin/Plugin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PluginChart2/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PluginChart2/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/Background.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/BasePlugin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/PluginChartPie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Main_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PluginCurrency_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Client.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Client.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/xml/Inventory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/xml/Inventory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CardMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CardMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CardRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CardRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CloseAllButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CloseAllButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CloseButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CloseButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CustomButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/DetailMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/DetailMember.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/DetailRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/DetailRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewField.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BasePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/MemberDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/MemberDirectory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/RegisterMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/RegisterMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/sidebar/ScrollTabPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/sidebar/ScrollTabPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/topbar/TopbarFunctional.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/topbar/TopbarFunctional.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/src/main/java/plugin/BasePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/src/main/java/plugin/BasePlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/src/main/java/plugin/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/src/main/java/plugin/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/src/main/java/plugin/PluginChartLineBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/src/main/java/plugin/PluginChartLineBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PluginCurrency/src/main/java/pluginCurrency/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/PluginCurrency/src/main/java/pluginCurrency/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,19 +88,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="PluginChart2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="PluginChart2" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.org.example.program.Main" />
@@ -164,6 +108,7 @@
       <workItem from="1683464921398" duration="479000" />
       <workItem from="1683465445428" duration="526000" />
       <workItem from="1683465998725" duration="480000" />
+      <workItem from="1683488919054" duration="3860000" />
     </task>
     <servers />
   </component>

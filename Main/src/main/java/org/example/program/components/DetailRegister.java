@@ -130,7 +130,7 @@ public class DetailRegister extends BorderPane {
 
         // Set up the main content of the card
         StackPane contentPane = new StackPane();
-        contentPane.getChildren().addAll(topBox, isi, data,bottom,status);
+        contentPane.getChildren().addAll(topBox, status,isi, data,bottom);
         setCenter(contentPane);
     }
 

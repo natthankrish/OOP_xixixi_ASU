@@ -18,6 +18,7 @@ import javafx.scene.layout.VBox;
 import org.example.program.containers.Manager;
 import org.example.program.containers.TransactionContainer;
 import org.example.program.entities.Bill;
+import org.example.program.entities.Time;
 import org.example.program.entities.clients.Client;
 import org.example.program.entities.clients.ClientType;
 import org.example.program.entities.clients.Customer;
@@ -58,7 +59,8 @@ public class RegisterMember extends BasePage {
                         client.getPhoneNumber());
 
                 card.setOnMouseClicked(event -> {
-                    String tglTransaksi = "";
+                    Bill a = tc.getBillById(client.getId());
+                    Time tgl = a.getTransactionTime();
                     int tot = 0;
                     // Iterate to calculate total spend
                     for (Integer i : client.getTransactionHistory()){
@@ -66,7 +68,7 @@ public class RegisterMember extends BasePage {
                         tot += b.getTotalPrice();
                     }
 
-                    DetailRegister newDetails = new DetailRegister(client.getName(),client.getId(),client.getPhoneNumber(),client.getType(),client.getTransactionHistory().size(),tglTransaksi,tot);
+                    DetailRegister newDetails = new DetailRegister(client.getName(),client.getId(), client.getPhoneNumber(), client.getType(), client.getTransactionHistory().size(),tgl.getStringTime(),tot);
                     this.getChildren().remove(this.currentDetails);
                     this.currentDetails= newDetails;
                     this.currentDetails.setLayout(770,180);
@@ -77,9 +79,11 @@ public class RegisterMember extends BasePage {
 //                    this.getChildren().remove(this.addRegister);
                         this.addRegister.setLayout(770,500);
                         this.addRegister.getConfirm().setOnMouseClicked(event2 -> {
-//                            this.addRegister.getCustomerName().getTextField();
-//                            this.addRegister.getPhoneNumber().getTextField();
-                            client.makeClientAMember(String.valueOf(this.addRegister.getCustomerName().getTextField()), String.valueOf(this.addRegister.getPhoneNumber().getTextField()),client.getPoint(),client.getActiveStatus());
+                            client.makeClientACustomer();
+                            client.makeClientAMember(String.valueOf(this.addRegister.getCustomerName().getTextField()),
+                                    String.valueOf(this.addRegister.getPhoneNumber().getTextField()),
+                                    client.getPoint(),
+                                    client.getActiveStatus());
                         });
                         this.getChildren().add(this.addRegister);
                     });

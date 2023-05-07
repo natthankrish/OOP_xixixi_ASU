@@ -16,6 +16,7 @@ import org.example.program.containers.Manager;
 import org.example.program.containers.TransactionContainer;
 import org.example.program.entities.Bill;
 import org.example.program.entities.Product;
+import org.example.program.entities.Time;
 import org.example.program.entities.clients.Client;
 import org.example.program.entities.clients.ClientType;
 import org.example.program.entities.clients.Member;
@@ -177,13 +178,17 @@ public class MemberDirectory extends BasePage {
                 cardContainer.getChildren().add(card);
 
                 card.setOnMouseClicked(event -> {
+                    Bill a = tc.getBillById(client.getId());
+                    Time date = a.getTransactionTime();
                     int tot = 0;
+
                     for (Integer i : client.getTransactionHistory()){
                         Bill b = tc.getBillById(client.getId());
                         tot += b.getTotalPrice();
                     }
 
-                    DetailMember newDetail = new DetailMember(client.getName(),client.getId(), client, client.getTransactionHistory().size(),"",tot);
+
+                    DetailMember newDetail = new DetailMember(client.getName(),client.getId(), client, client.getTransactionHistory().size(),date.getStringTime(),tot);
 
                     this.getChildren().remove(this.detailMember);
                     this.detailMember = newDetail;
