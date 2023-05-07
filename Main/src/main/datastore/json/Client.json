@@ -70,5 +70,20 @@
     "id": 7,
     "type": "vip",
     "point": 100000.0
+  },
+  {
+    "transactionHistory": [],
+    "id": 8,
+    "type": "customer"
+  },
+  {
+    "transactionHistory": [],
+    "id": 9,
+    "type": "customer"
+  },
+  {
+    "transactionHistory": [],
+    "id": 10,
+    "type": "customer"
   }
 ]

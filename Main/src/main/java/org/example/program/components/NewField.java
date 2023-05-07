@@ -4,6 +4,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
 public class NewField extends VBox {
     private TextField textField;
@@ -25,12 +31,12 @@ public class NewField extends VBox {
         textField.setPromptText("Field...");
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             textProperty.set(newValue);
-            });
+        });
 
         getChildren().add(textField);
         setSpacing(5);
         setStyle();
-        }
+    }
     public NewField(double width, double height){
         super();
         this.height = height;
@@ -62,6 +68,7 @@ public class NewField extends VBox {
         setSpacing(5);
         setStyle();
     }
+
     public String getText() {
         return textProperty.get();
     }

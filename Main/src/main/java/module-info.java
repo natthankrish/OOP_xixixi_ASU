@@ -9,8 +9,9 @@ module MainProgram {
     requires annotations;
     requires com.google.gson;
     requires jakarta.xml.bind;
-    requires java.desktop;
-//    requires barcodes;
+    requires kernel;
+    requires layout;
+
     opens org.example.program;
     opens org.example.program.containers to jakarta.xml.bind;
     opens org.example.program.entities.commodities to jakarta.xml.bind, com.sun.xml.bind;

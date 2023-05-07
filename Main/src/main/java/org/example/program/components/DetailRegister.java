@@ -16,9 +16,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import org.example.program.page.Transaction;
+import org.example.program.entities.clients.ClientType;
+import org.example.program.entities.clients.Customer;
+import org.example.program.entities.clients.Member;
+
 
 public class DetailRegister extends BorderPane {
     private NewLabel name;
@@ -30,20 +31,28 @@ public class DetailRegister extends BorderPane {
 
     private String tanggalTransaksi;
 
-    private String pelanggan;
+    private ClientType pelanggan;
+
+    private AddRegister masukin;
 
     private int total;
     public DetailRegister(String name,
                           int id,
                           String date,
-                          String pelanggan,
+                          ClientType pelanggan,
                           int itemCount,
                           String tanggalTransaksi,
                           int total) {
-        this.name = new NewLabel(name, 24, "#867070", 700);
+        this.name = new NewLabel("Customer", 30, "#867070", 700);
         this.id = id;
         this.date = date;
-        this.statusButton = new CustomButton(pelanggan, 12,"#FFFFFF","#BEB2B2","bold",10,10,10,10);
+        String valtype = "";
+        if (pelanggan instanceof Customer){
+            valtype = "Customer";
+        } else {
+            valtype = "VIP";
+        }
+        this.statusButton = new CustomButton(valtype, 12,"#FFFFFF","#BEB2B2","bold",10,10,10,10);
         this.registerButton = new CustomButton("Register", 16, "#FFFFFF", "#867070", "bold", 10,10,10,10);
         this.itemCount = itemCount;
         this.pelanggan = pelanggan;
@@ -54,7 +63,7 @@ public class DetailRegister extends BorderPane {
         setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 
         // Set the preferred width and height of the card
-        setPrefSize(394, 345);
+        setPrefSize(394, 310);
 
 
 
@@ -93,7 +102,7 @@ public class DetailRegister extends BorderPane {
 
         VBox bottom = new VBox(20,
                 this.registerButton
-                );
+        );
         bottom.setAlignment(Pos.BOTTOM_CENTER);
 
         VBox data = new VBox(20,
@@ -121,25 +130,8 @@ public class DetailRegister extends BorderPane {
 
         // Set up the main content of the card
         StackPane contentPane = new StackPane();
-        contentPane.getChildren().addAll(topBox, status, isi, data,bottom);
+        contentPane.getChildren().addAll(topBox, status,isi, data,bottom);
         setCenter(contentPane);
-
-        // Add event handler for mouse click
-        setOnMouseClicked(event -> {
-            System.out.println("customer clicked!");
-            // Add code here to perform the desired action when the card is click
-        });
-
-        // Add event handlers for mouse enter and exit
-        setOnMouseEntered(event -> {
-            setCursor(Cursor.HAND);
-            setBackground(new Background(new BackgroundFill(Color.web("EAD7D7"), new CornerRadii(10), Insets.EMPTY)));
-        });
-
-        setOnMouseExited(event -> {
-            setCursor(Cursor.DEFAULT);
-            setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
-        });
     }
 
 
@@ -147,5 +139,8 @@ public class DetailRegister extends BorderPane {
         this.setLayoutX(x);
         this.setLayoutY(y);
     }
-}
 
+    public CustomButton getRegisterButton(){
+        return this.registerButton;
+    }
+}

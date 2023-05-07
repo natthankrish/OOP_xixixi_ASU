@@ -23,7 +23,7 @@ public class DataDriver {
 //        xa.readDataInventory(m.getInventoryContainer());
 //        xa.readDataTransaction(m.getTransactionContainer());
 
-//        oa.readDataClient(m.getClientContainer());
+        oa.readDataClient(m.getClientContainer());
 //        oa.readDataInventory(m.getInventoryContainer());
 //        oa.readDataTransaction(m.getTransactionContainer());
 
@@ -40,11 +40,11 @@ public class DataDriver {
 //        }
 
 
-//        ja.writeDataClient(m.getClientContainer());
+        ja.writeDataClient(m.getClientContainer());
 //        ja.writeDataInventory(m.getInventoryContainer());
 //        ja.writeDataTransaction(m.getTransactionContainer());
 //
-//        xa.writeDataClient(m.getClientContainer());
+        xa.writeDataClient(m.getClientContainer());
 //        xa.writeDataInventory(m.getInventoryContainer());
 //        xa.writeDataTransaction(m.getTransactionContainer());
 //

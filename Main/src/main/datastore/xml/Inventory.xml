@@ -7,7 +7,7 @@
         <price>25000.0</price>
         <purchasePrice>15000.0</purchasePrice>
         <category>Coffee</category>
-        <image>Main\assets\products\ふたり寄り添い.jpg</image>
+        <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
     <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
@@ -137,7 +137,7 @@
         <price>35000.0</price>
         <purchasePrice>24000.0</purchasePrice>
         <category>Cake</category>
-        <image>Main\assets\products\images.png</image>
+        <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
     <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">

@@ -4,13 +4,11 @@
         <idBill>1</idBill>
         <idClient>2</idClient>
         <receipt>
-            <isValid>true</isValid>
             <productID>14</productID>
             <quantity>1</quantity>
             <subtotal>35000.0</subtotal>
         </receipt>
         <receipt>
-            <isValid>true</isValid>
             <productID>4</productID>
             <quantity>2</quantity>
             <subtotal>56000.0</subtotal>
@@ -31,30 +29,16 @@
         <idBill>2</idBill>
         <idClient>2</idClient>
         <receipt>
-            <isValid>true</isValid>
             <productID>2</productID>
             <quantity>1</quantity>
             <subtotal>25000.0</subtotal>
         </receipt>
         <receipt>
-            <isValid>true</isValid>
             <productID>11</productID>
             <quantity>3</quantity>
             <subtotal>72000.0</subtotal>
         </receipt>
-        <receipt>
-            <isValid>true</isValid>
-            <productID>9</productID>
-            <quantity>2</quantity>
-            <subtotal>60000.0</subtotal>
-        </receipt>
-        <receipt>
-            <isValid>true</isValid>
-            <productID>1</productID>
-            <quantity>2</quantity>
-            <subtotal>50000.0</subtotal>
-        </receipt>
-        <totalPrice>207000.0</totalPrice>
+        <totalPrice>97000.0</totalPrice>
         <isFixedBill>false</isFixedBill>
         <transactionTime>
             <date>13</date>
@@ -70,19 +54,16 @@
         <idBill>3</idBill>
         <idClient>3</idClient>
         <receipt>
-            <isValid>true</isValid>
             <productID>9</productID>
             <quantity>2</quantity>
             <subtotal>60000.5</subtotal>
         </receipt>
         <receipt>
-            <isValid>true</isValid>
             <productID>10</productID>
             <quantity>1</quantity>
             <subtotal>19000.0</subtotal>
         </receipt>
         <receipt>
-            <isValid>true</isValid>
             <productID>14</productID>
             <quantity>2</quantity>
             <subtotal>70000.0</subtotal>
@@ -103,7 +84,6 @@
         <idBill>4</idBill>
         <idClient>4</idClient>
         <receipt>
-            <isValid>true</isValid>
             <productID>9</productID>
             <quantity>1</quantity>
             <subtotal>30000.0</subtotal>
@@ -124,13 +104,11 @@
         <idBill>5</idBill>
         <idClient>5</idClient>
         <receipt>
-            <isValid>true</isValid>
             <productID>2</productID>
             <quantity>2</quantity>
             <subtotal>50000.0</subtotal>
         </receipt>
         <receipt>
-            <isValid>true</isValid>
             <productID>5</productID>
             <quantity>1</quantity>
             <subtotal>15000.0</subtotal>
@@ -151,13 +129,11 @@
         <idBill>6</idBill>
         <idClient>6</idClient>
         <receipt>
-            <isValid>true</isValid>
             <productID>15</productID>
             <quantity>1</quantity>
             <subtotal>40000.0</subtotal>
         </receipt>
         <receipt>
-            <isValid>true</isValid>
             <productID>7</productID>
             <quantity>3</quantity>
             <subtotal>36000.0</subtotal>
@@ -178,13 +154,11 @@
         <idBill>7</idBill>
         <idClient>7</idClient>
         <receipt>
-            <isValid>true</isValid>
             <productID>12</productID>
             <quantity>1</quantity>
             <subtotal>28000.0</subtotal>
         </receipt>
         <receipt>
-            <isValid>true</isValid>
             <productID>14</productID>
             <quantity>1</quantity>
             <subtotal>35000.0</subtotal>

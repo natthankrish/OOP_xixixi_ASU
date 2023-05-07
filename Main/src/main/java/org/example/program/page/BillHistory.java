@@ -1,8 +1,20 @@
 package org.example.program.page;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -10,12 +22,17 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Screen;
 import org.example.program.components.*;
 import org.example.program.containers.TransactionContainer;
 import org.example.program.entities.bills.Bill;
 import org.example.program.containers.Manager;
 import org.example.program.entities.bills.ReceiptInfo;
+
+
+import com.itextpdf.layout.border.Border;
+
 
 public class BillHistory extends BasePage {
     private TransactionContainer tc;
@@ -125,26 +142,14 @@ class BillInfo extends BorderPane {
         this.body = new ReceiptScroll(receipts);
         DownloadButton downloadButton = new DownloadButton();
         downloadButton.setOnAction(e -> {
-            System.out.println(this.stringify());
-                });
-//            DirectoryChooser directoryChooser = new DirectoryChooser();
-//            File selectedDirectory = directoryChooser.showDialog(null);
-//            if (selectedDirectory != null) {
-//                String filePath = selectedDirectory.getPath() + File.separator + "invoice" + this.bill.getIdBill() + ".pdf";
-//                Document document = new Document(PageSize.A4, 36, 72, 108, 180);
-//                try {
-//                    PdfWriter.getInstance(document,new FileOutputStream(filePath));
-//                    document.open();
-//                    document.add(new Paragraph(this.stringify()));
-//                    System.out.println("Text is inserted into pdf file");
-//                    document.close();
-//                } catch (FileNotFoundException er) {
-//                    System.out.println("PPP");
-//                } catch (DocumentException ed) {
-//                    System.out.println("PPP");
-//                }
-//            }
-//        });
+
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            File selectedDirectory = directoryChooser.showDialog(null);
+            if (selectedDirectory != null) {
+                String filePath = selectedDirectory.getPath() + File.separator + "invoice" + this.bill.getIdBill() + ".pdf";
+                this.export(filePath);
+            }
+        });
 
         PriceCard bottom = new PriceCard(bill.getTotalPrice() * 0.1, bill.getTotalPrice() * 0.1);
 
@@ -154,23 +159,117 @@ class BillInfo extends BorderPane {
         setMargin(layout, new Insets(0));
         setAlignment(layout, Pos.CENTER);
     }
-    public String stringify() {
-        String result =
-                "BILL ID       : " + this.head.getIdBill() + "\n"
-                        +"CLIENT ID     : " + this.head.getIdCustomer() + "\n"
-                        +"CUSTOMER NAME : " + Manager.getInstance().getClientContainer().getClientById(this.head.getIdCustomer()).getName()
-                        +"\n\n";
+    private void export(String path) {
+        try {
+            PdfWriter pdfWriter = new PdfWriter(path);
+            PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+            Document document = new Document(pdfDocument);
+            pdfDocument.setDefaultPageSize(PageSize.A4);
 
-        List<List<String>> data = this.body.stringify();
-        result += String.format("%-4s%-25s%-15s%-15s\n", "#", "Item Name", "Quantity", "Subtotal");
-        for (int i = 0; i < data.size(); i++) {
-            List<String> row = data.get(i);
-            result += String.format("%-4d%-25s%-15s%-15s\n", i + 1, row.get(0), row.get(1), row.get(2));
+            float col = 280.f;
+            float columnWidth[] = {col, col};
+            Table table = new Table(columnWidth);
+            table.setBackgroundColor(new DeviceRgb(213, 180, 180))
+                            .setFontColor(new DeviceRgb(0, 0, 0));
+
+            table.addCell(new Cell().add("INVOICE")
+                    .setTextAlignment(TextAlignment.CENTER)
+                    .setVerticalAlignment(VerticalAlignment.MIDDLE)
+                    .setMarginTop(30f)
+                    .setMarginBottom(30f)
+                    .setFontSize(30f)
+                    .setBorder(Border.NO_BORDER)
+            );
+            table.addCell(new Cell().add("Nama Perusahaan \n1234 Alamat Perusahaan\n+62 34567890")
+                    .setTextAlignment(TextAlignment.RIGHT)
+                    .setMarginTop(30f)
+                    .setMarginBottom(30f)
+                    .setMarginRight(10f)
+                    .setBorder(Border.NO_BORDER)
+            );
+
+            float colWidth[] = {80, 300, 100, 80};
+            Table customerInfoTable = new Table(colWidth);
+
+            customerInfoTable.addCell(new Cell (0, 4)
+                    .add("Customer Information")
+                    .setBold()
+                    .setBorder(Border.NO_BORDER)
+            );
+
+            customerInfoTable.addCell(new Cell().add("Name").setBorder(Border.NO_BORDER));
+            customerInfoTable.addCell(new Cell()
+                    .add(Manager.
+                            getInstance()
+                            .getClientContainer()
+                            .getClientById(this.head.getIdCustomer()).getName()
+                    ).setBorder(Border.NO_BORDER)
+            );
+            customerInfoTable.addCell(new Cell().add("Invoice No.").setBorder(Border.NO_BORDER));
+            customerInfoTable.addCell(new Cell().add(this.bill.getIdBill() + "").setBorder(Border.NO_BORDER));
+
+            customerInfoTable.addCell(new Cell().add("Client No.").setBorder(Border.NO_BORDER));
+            customerInfoTable.addCell(new Cell().add(this.bill.getIdClient() + "").setBorder(Border.NO_BORDER));
+            customerInfoTable.addCell(new Cell().add("Date/Time").setBorder(Border.NO_BORDER));
+            customerInfoTable.addCell(new Cell().add(this.bill.getTransactionTime().getStringTime()).setBorder(Border.NO_BORDER));
+
+            float itemInfoColWidth[] = {140, 140, 140, 140};
+            Table itemInfoTable = new Table(itemInfoColWidth);
+            itemInfoTable.addCell(new Cell()
+                    .add("Item Name")
+                    .setBackgroundColor(new DeviceRgb(134, 112, 112))
+                    .setFontColor(new DeviceRgb(255, 255, 255))
+            );
+            itemInfoTable.addCell(new Cell()
+                    .add("Quantity")
+                    .setBackgroundColor(new DeviceRgb(134, 112, 112))
+                    .setFontColor(new DeviceRgb(255, 255, 255))
+            );
+            itemInfoTable.addCell(new Cell()
+                    .add("Unit Price")
+                    .setBackgroundColor(new DeviceRgb(134, 112, 112))
+                    .setFontColor(new DeviceRgb(255, 255, 255))
+            );
+            itemInfoTable.addCell(new Cell()
+                    .add("Subtotal")
+                    .setBackgroundColor(new DeviceRgb(134, 112, 112))
+                    .setFontColor(new DeviceRgb(255, 255, 255))
+            );
+            List<ReceiptInfo> receiptInfos = this.bill.getReceipt();
+            for(ReceiptInfo elm: receiptInfos) {
+                itemInfoTable.addCell(new Cell().add(Manager.getInstance().getInventoryContainer().getProductById(elm.getProductID()).getName()));
+                itemInfoTable.addCell(new Cell().add(elm.getQuantity() + ""));
+                itemInfoTable.addCell(new Cell().add(elm.getSubtotal()/ elm.getQuantity() + ""));
+                itemInfoTable.addCell(new Cell().add(elm.getSubtotal() + ""));
+            }
+            itemInfoTable.addCell(new Cell().setBorder(Border.NO_BORDER)).addCell(new Cell().setBorder(Border.NO_BORDER));
+            itemInfoTable.addCell(new Cell()
+                    .add("Total Price")
+                    .setBackgroundColor(new DeviceRgb(134, 112, 112))
+                    .setBorder(Border.NO_BORDER)
+                    .setFontColor(new DeviceRgb(255, 255, 255))
+            );
+            itemInfoTable.addCell(new Cell()
+                    .add(this.bill.getTotalPrice() + "")
+                    .setBackgroundColor(new DeviceRgb(134, 112, 112))
+                    .setBorder(Border.NO_BORDER)
+                    .setFontColor(new DeviceRgb(255, 255, 255))
+            );
+
+            document.add(table);
+            document.add(new Paragraph("\n"));
+            document.add(customerInfoTable);
+            document.add(new Paragraph("\n"));
+            document.add(itemInfoTable);
+            document.add(new Paragraph("\n"));
+            document.add(new Paragraph("\nAuthorised Signatory")
+                    .setTextAlignment(TextAlignment.RIGHT)
+            );
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        result += "\nTOTAL PRICE   : " + String.valueOf(this.bill.getTotalPrice())
-                +"\nDATE/TIME     : " + this.head.getTime().getStringTime();
-        System.out.println(result);
-        return result;
+
     }
 }
 
@@ -208,6 +307,7 @@ class ReceiptCard extends BorderPane {
         ArrayList<String> res = new ArrayList<>(Arrays.asList(
                 m.getInventoryContainer().getProductById(receiptInfo.getProductID()).getName(),
                 String.valueOf(receiptInfo.getQuantity()),
+                String.valueOf(receiptInfo.getSubtotal()/receiptInfo.getQuantity()),
                 String.valueOf(receiptInfo.getSubtotal())
         ));
         return res;
