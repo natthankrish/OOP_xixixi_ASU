@@ -74,7 +74,7 @@ public class App extends Application {
         loadPlugin(cwd + "/Plugin/target/Plugin-1.0-SNAPSHOT.jar", topContainer, m);
         loadPlugin(cwd + "/PluginChart2/target/PluginChart2-1.0-SNAPSHOT.jar", topContainer, m);
         // Show Main Window
-        Image applogo = new Image("file:assets/logo.png");
+        Image applogo = new Image("file:Main/assets/logo.png");
         stage.getIcons().add(applogo);
         stage.setTitle("BNMO");
         stage.setMaximized(true);
