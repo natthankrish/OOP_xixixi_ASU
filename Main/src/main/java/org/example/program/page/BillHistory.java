@@ -17,9 +17,6 @@ import org.example.program.entities.bills.Bill;
 import org.example.program.containers.Manager;
 import org.example.program.entities.bills.ReceiptInfo;
 
-//import com.itextpdf.text.*;
-
-
 public class BillHistory extends BasePage {
     private TransactionContainer tc;
 

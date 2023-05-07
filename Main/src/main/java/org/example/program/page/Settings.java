@@ -39,21 +39,29 @@ public class Settings extends BasePage {
         this.changeBackground("white");
         NewLabel title = new NewLabel("Settings", 60, "#867070", 700);
         title.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
-        title.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 1 / 25);
+        title.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() / 20);
 
         TopRight topRight = new TopRight();
-        TopLeft topLeft = new TopLeft();
-        HBox top = new HBox(10, topLeft, topRight);
+        topRight.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 17/40);
+        topRight.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 40);
 
-        NewLabel pluginTitle = new NewLabel("Customize", 32, "#867070", 700);
+        TopLeft topLeft = new TopLeft();
+        topLeft.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
+        topLeft.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 40);
+
+        NewLabel pluginTitle = new NewLabel("Customize", 40, "#867070", 700);
+        pluginTitle.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
+        pluginTitle.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 19/ 40);
 
         BotLeft botLeft = new BotLeft(this);
+        botLeft.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
+        botLeft.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 11/ 20);
+
         this.botRight = new BotRight();
-        HBox bot = new HBox(10, botLeft, this.botRight);
+        this.botRight.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 17/40);
+        this.botRight.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 11/ 20);
 
-
-        VBox layout = new VBox(10, title, top, pluginTitle, bot);
-        this.getChildren().add(layout);
+        this.getChildren().addAll(title, topLeft, topRight, pluginTitle, botLeft, botRight);
     }
 
     public void instantiatePluginSetting(String pluginName) {
@@ -71,28 +79,36 @@ class TopRight extends GridPane {
         this.setStyle("""
             -fx-background-color: #F5EBEB;
             -fx-background-radius: 14;
-            -fx-pref-width: 461;
-            -fx-pref-height: 249;
         """);
 
-        NewLabel title = new NewLabel("Add New Plugin", 32, "#867070", 700);
+        this.setPrefHeight(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 20);
+        this.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
+
+        NewLabel title = new NewLabel("Add New Plugin", 40, "#867070", 700);
         title.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
         title.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 1 / 25);
 
-        NewLabel pathLabel = new NewLabel("Path", 16, "#867070", 700);
+        NewLabel pathLabel = new NewLabel("Path", 22, "#867070", 700);
+        pathLabel.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 80);
         ChooseFileButton pathButton = new ChooseFileButton("Choose Plugin File");
 
+        NewLabel pluginLabel = new NewLabel("Plugin Name", 22, "#867070", 700);
+        pluginLabel.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 80);
 
-
-        NewLabel pluginLabel = new NewLabel("Plugin Name", 16, "#867070", 700);
         SettingsTextField pluginName = new SettingsTextField("Enter plugin name here");
+        pluginName.setPrefWidth(pathButton.getPrefWidth());
 
         SettingButton addButton = new SettingButton("Add Plugin");
 
-        VBox label = new VBox(18, pathLabel, pluginLabel);
-        VBox setup = new VBox(10, pathButton, pluginName);
-        HBox body = new HBox(10, label, setup);
-        VBox container = new VBox(10, title, body, addButton);
+        HBox body = new HBox(10, pathLabel, pathButton);
+        HBox body2 = new HBox(10, pluginLabel, pluginName);
+
+        VBox container = new VBox(10, title, body, body2, addButton);
+        container.setAlignment(Pos.CENTER);
+        container.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
+        container.setSpacing(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 200);
+        container.setPadding(new Insets(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 200));
+
         this.add(container, 0, 0);
     }
 }
@@ -102,17 +118,18 @@ class TopLeft extends BorderPane {
         this.setStyle("""
             -fx-background-color: #F5EBEB;
             -fx-background-radius: 14;
-            -fx-pref-width: 461;
-            -fx-pref-height: 249;
         """);
 
-        NewLabel title = new NewLabel("Data Store", 32, "#867070", 700);
+        this.setPrefHeight(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 20);
+        this.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
+
+        NewLabel title = new NewLabel("Data Store", 40, "#867070", 700);
         title.setPadding(new Insets(10));
         title.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
         title.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 1 / 25);
 
-
-        NewLabel dataStoreLabel = new NewLabel("Data Store Type", 16, "#867070", 700);
+        NewLabel dataStoreLabel = new NewLabel("Data Store Type", 22, "#867070", 700);
+        dataStoreLabel.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 80);
 
         DropDown dataStoreType = new DropDown(new String[]{"XML", "JSON", "OBJ"});
         dataStoreType.setPrefSize(254.11, 27.46);
@@ -133,8 +150,12 @@ class TopLeft extends BorderPane {
         });
 
         HBox setup = new HBox(10, dataStoreLabel, dataStoreType);
+
         VBox layout = new VBox(10, title, setup, confirmButton);
         layout.setAlignment(Pos.CENTER);
+        layout.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
+        layout.setSpacing(Screen.getPrimary().getVisualBounds().getHeight() * 12/ 200);
+        layout.setPadding(new Insets(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 200));
 
         setCenter(layout);
     }
@@ -146,10 +167,11 @@ class BotLeft extends GridPane {
         this.setStyle("""
             -fx-background-color: WHITE;
             -fx-background-radius: 14;
-            -fx-pref-width: 461;
-            -fx-pref-height: 249;
         """);
         this.master = master;
+
+        this.setPrefHeight(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 20);
+        this.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
 
         List pluginCards = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -173,34 +195,46 @@ class BotRight extends GridPane {
         this.setStyle("""
             -fx-background-color: transparent;
             -fx-background-radius: 14;
-            -fx-pref-width: 461;
-            -fx-pref-height: 249;
         """);
+        this.setPrefHeight(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 20);
+        this.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
         this.content = new VBox();
         this.getChildren().add(content);
     }
+
 }
 
-class PluginSetting extends GridPane {
+class PluginSetting extends VBox {
     public PluginSetting(String PluginName){
         this.setStyle("""
             -fx-background-color: #F5EBEB;
             -fx-background-radius: 14;
-            -fx-pref-width: 461;
-            -fx-pref-height: 249;
         """);
-        NewLabel pluginName = new NewLabel("Path", 32, "#867070", 700);
+
+        this.setPrefHeight(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 20);
+        this.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
+
+        NewLabel pluginName = new NewLabel(PluginName, 40, "#867070", 700);
         NewLabel pathLabel = new NewLabel("Path", 16, "#867070", 700);
+        pathLabel.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 80);
+
         ChooseFileButton pathButton = new ChooseFileButton("Choose Plugin Path");
+
         pathButton.setPrefSize(254.11, 27.46);
 
         SettingButton confirm = new SettingButton("Confirm Changes");
-        SettingButton remove = new SettingButton("Remove Button");
-        this.add(pluginName, 0, 0);
-        this.add(pathLabel, 1, 1);
-        this.add(pathButton, 2, 1);
-        this.add(confirm, 2,2);
-        this.add(remove, 1,2);
+        SettingButton remove = new SettingButton("Remove Plugin");
+
+        HBox hb1 = new HBox(pathLabel, pathButton);
+        HBox hbutton = new HBox(confirm, remove);
+        hbutton.setAlignment(Pos.CENTER);
+        hbutton.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
+        hbutton.setSpacing(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 80);
+
+        this.setAlignment(Pos.CENTER);
+        this.getChildren().addAll(pluginName, hb1, hbutton);
+        this.setSpacing(Screen.getPrimary().getVisualBounds().getHeight() * 12 / 200);
+        this.setPadding(new Insets(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 200));
     }
 
 }
@@ -262,7 +296,6 @@ class SettingsTextField extends TextField {
                 -fx-font-weight: bold;
                 -fx-background-color: #D5B4B4;
                 -fx-pref-height: 27.46;
-                -fx-pref-width: 254.11;
                 -fx-background-radius: 9;
                 -fx-border-radius: 9;
                 -fx-border-color: BLACK;
@@ -282,10 +315,11 @@ class PluginCard extends GridPane {
         this.setStyle("""
             -fx-background-color: #F5EBEB;
             -fx-background-radius: 14;
-            -fx-pref-width: 456;
-            -fx-pref-height: 80;
         """);
+        this.setPrefHeight(70);
+        this.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
         this.pluginName = pluginName;
+
         NewLabel title = new NewLabel(pluginName, 24, "#867070", 700);
         this.editButton = new SettingButton("Edit Plugin");
 
@@ -295,22 +329,21 @@ class PluginCard extends GridPane {
         this.setAlignment(Pos.CENTER_LEFT);
         this.setHgrow(title, Priority.ALWAYS);
         this.setHalignment(editButton, HPos.RIGHT);
+        this.setPadding(new Insets(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 200));
     }
 }
 class PluginContainer extends BorderPane {
     private VBox contentPane;
 
     public PluginContainer(List<PluginCard> cards) {
-        this.setStyle("""
-            -fx-pref-width: 460;
-            -fx-pref-height: 258;
-        """);
         this.contentPane = new VBox(10);
-
+        this.contentPane.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
         this.contentPane.getChildren().addAll(cards);
 
         ScrollPane scrollPane = new ScrollPane(contentPane);
-        scrollPane.setPrefHeight(460);
+        scrollPane.setPrefHeight(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 20);
+        scrollPane.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
+        scrollPane.setStyle("-fx-background:white;-fx-background-color:transparent;");
         scrollPane.setFitToWidth(true);
 
         VBox container = new VBox(scrollPane);
