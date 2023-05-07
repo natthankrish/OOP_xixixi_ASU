@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchBar extends VBox {
-    private TextField textField;
+    public TextField textField;
     private ListView<String> listView;
     private NewLabel label;
     private ObservableList<String> data;
@@ -30,7 +30,7 @@ public class SearchBar extends VBox {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 List<String> filteredList = new ArrayList<String>();
                 for (String item : itemList) {
-                    if (item.toLowerCase().startsWith(newValue.toLowerCase())) {
+                    if (item.toLowerCase().contains(newValue.toLowerCase())) {
                         filteredList.add(item);
                     }
                 }
