@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -15,6 +14,9 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -24,13 +26,12 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Screen;
+import javafx.util.Duration;
 import org.example.program.components.*;
 import org.example.program.containers.TransactionContainer;
 import org.example.program.entities.bills.Bill;
 import org.example.program.containers.Manager;
 import org.example.program.entities.bills.ReceiptInfo;
-
-
 import com.itextpdf.layout.border.Border;
 
 
@@ -61,13 +62,14 @@ public class BillHistory extends BasePage {
             }
         });
 
-        leftLayout = new VBox(10, title, this.searchBar, this.billContainer);
+        leftLayout = new VBox(10, this.searchBar, this.billContainer);
 
 
         info = new BillInfo();
         rightLayout = new VBox(10, info);
         refreshContainer(-1);
-        HBox layout = new HBox(40, leftLayout, rightLayout);
+        HBox hlayout = new HBox(40, leftLayout, rightLayout);
+        VBox layout = new VBox(10, title, hlayout);
         layout.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth()/20);
         this.getChildren().add(layout);
     }
@@ -97,18 +99,41 @@ public class BillHistory extends BasePage {
 
 }
 class DownloadButton extends Button {
-    public DownloadButton() {
-        setStyle("""
+    public DownloadButton(int i) {
+        String style = ("""
         -fx-text-fill: #F5EBEB;
-        -fx-background-color: #867070;
-        -fx-pref-height: 23.3;
-        -fx-pref-width: 72;
-        -fx-font-size: 8;
+        -fx-pref-height: 25;
+        -fx-pref-width: 90;
+        -fx-font-size: 12;
         -fx-font-weight: bold;
         -fx-background-radius: 9;
-        
         """);
+        this.setStyle(style + "-fx-background-color: " + ((i == 0)? "#E57F78" : "#867070"));
+        setTransition(i);
         this.setText("Download");
+    }
+    public void setTransition(int i){
+        if (i == 0) {
+            RotateTransition rotateTransition = new RotateTransition(Duration.millis(100), this);
+            rotateTransition.setByAngle(10);
+            rotateTransition.setCycleCount(2);
+            rotateTransition.setAutoReverse(true);
+            rotateTransition.setInterpolator(Interpolator.EASE_BOTH);
+            this.setOnMousePressed(event -> rotateTransition.playFromStart());
+        } else {
+            ScaleTransition scaleTransition = new ScaleTransition(new Duration(0.2), this);
+            scaleTransition.setFromX(1);
+            scaleTransition.setFromY(1);
+            scaleTransition.setToX(0.8);
+            scaleTransition.setToY(0.8);
+            scaleTransition.setAutoReverse(true);
+            this.setOnMousePressed(event -> scaleTransition.playFromStart());
+            this.setOnMouseReleased(event -> {
+                scaleTransition.stop();
+                this.setScaleX(1);
+                this.setScaleY(1);
+            });
+        }
     }
 }
 class BillInfo extends BorderPane {
@@ -118,16 +143,22 @@ class BillInfo extends BorderPane {
     public BillInfo() {
         this.setStyle("""
             -fx-background-color: transparent;
-            -fx-pref-height: 518;
-            -fx-pref-width: 432;
+            -fx-min-height: 470;
+            -fx-max-height: 470;
+            -fx-min-width: 432;
+            -fx-max-width: 432;
         """);
     }
     public BillInfo(int idBill) {
         this.setStyle("""
             -fx-background-color: #F5EBEB;
-            -fx-pref-height: 518;
-            -fx-pref-width: 432;
+            -fx-background-radius: 16;
+            -fx-min-height: 630;
+            -fx-max-height: 630;
+            -fx-min-width: 432;
+            -fx-max-width: 432;
         """);
+
 
         this.bill = Manager.getInstance().getTransactionContainer().getBillById(idBill);
 
@@ -140,9 +171,11 @@ class BillInfo extends BorderPane {
             receipts.add(receiptCard);
         }
         this.body = new ReceiptScroll(receipts);
-        DownloadButton downloadButton = new DownloadButton();
+        DownloadButton downloadButton = new DownloadButton((this.bill.getIsFixedBill()? 1 : 0));
         downloadButton.setOnAction(e -> {
-
+            if (!this.bill.getIsFixedBill()) {
+                return;
+            }
             DirectoryChooser directoryChooser = new DirectoryChooser();
             File selectedDirectory = directoryChooser.showDialog(null);
             if (selectedDirectory != null) {
@@ -151,9 +184,10 @@ class BillInfo extends BorderPane {
             }
         });
 
-        PriceCard bottom = new PriceCard(bill.getTotalPrice() * 0.1, bill.getTotalPrice() * 0.1);
+        PriceCard bottom = new PriceCard(String.format("%.2f",bill.getTotalPrice() * 0.1), String.format("%.2f",bill.getTotalPrice() * 0.1));
 
         VBox layout = new VBox(0, head, body, bottom, downloadButton);
+        layout.setAlignment(Pos.TOP_CENTER);
 
         setTop(layout);
         setMargin(layout, new Insets(0));
@@ -269,7 +303,7 @@ class BillInfo extends BorderPane {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        System.out.println("Foobar");
     }
 }
 
@@ -324,11 +358,11 @@ class ReceiptScroll extends BorderPane{
         this.cards = new ArrayList<>();
         this.titleLabel = new NewLabel("", 44, "#867070", 700);
 
-        this.contentPane = new VBox(10);
+        this.contentPane = new VBox(2);
 
         ScrollPane scrollPane = new ScrollPane(contentPane);
 
-        scrollPane.setPrefHeight(520);
+        scrollPane.setPrefHeight(500);
         scrollPane.setFitToWidth(true);
 
         VBox container = new VBox(5, this.titleLabel, scrollPane);
@@ -339,22 +373,29 @@ class ReceiptScroll extends BorderPane{
     }
 
     public ReceiptScroll(List<ReceiptCard> cards) {
-        this.contentPane = new VBox(10);
-
+        this.setStyle("""
+        -fx-background-color: #F5EBEB;
+        -fx-background: #F5EBEB;
+        -fx-min-width: 432;
+        -fx-max-width: 432;
+        -fx-min-height: 400;
+        -fx-max-height: 400;
+        """);
+        this.contentPane = new VBox(2);
         this.cards = cards;
-
         contentPane.getChildren().addAll(cards);
 
         ScrollPane scrollPane = new ScrollPane(contentPane);
-        scrollPane.setPrefHeight(520);
+        scrollPane.setStyle("""
+            -fx-background-color: transparent;
+            -fx-background: transparent;
+            """);
+        scrollPane.setFitToHeight(true);
         scrollPane.setFitToWidth(true);
 
-
-        VBox container = new VBox(5, scrollPane);
+        VBox container = new VBox(0, scrollPane);
         container.setAlignment(Pos.TOP_LEFT);
-
         setCenter(container);
-        setPrefWidth(470);
     }
 
     public List<List<String>> stringify() {
@@ -367,11 +408,11 @@ class ReceiptScroll extends BorderPane{
 }
 
 class PriceCard extends BorderPane {
-    public PriceCard(double tax, double serviceCharge){
+    public PriceCard(String tax, String serviceCharge){
         NewLabel taxLabel = new NewLabel("Tax (10%)", 24, "#867070", 700);
         NewLabel serviceChargeLabel = new NewLabel("Service Charge (10%)", 24, "#867070", 700);
-        NewLabel numTax = new NewLabel(tax + "".toString(), 24, "#867070", 700);
-        NewLabel numServiceCharge = new NewLabel(serviceCharge + "".toString(), 24, "#867070", 700);
+        NewLabel numTax = new NewLabel(tax, 24, "#867070", 700);
+        NewLabel numServiceCharge = new NewLabel(serviceCharge, 24, "#867070", 700);
 
         setBackground(new javafx.scene.layout.Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 

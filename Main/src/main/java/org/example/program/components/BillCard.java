@@ -28,7 +28,13 @@ public class BillCard extends BorderPane {
 
 
     public BillCard(int idBill, int idCustomer, Time time, BillHistory master){
-
+        this.setStyle("""
+        -fx-background-color: #F5EBEB ;
+        -fx-background-radius: 15;
+        -fx-padding: 10;
+        -fx-pref-width: 457;
+        -fx-pref-height: 80;
+        """);
         this.idBill = idBill;
         this.idCustomer = idCustomer;
         this.time = time;
@@ -36,20 +42,15 @@ public class BillCard extends BorderPane {
         NewLabel idCustomerLabel = new NewLabel("ID CLIENT : "+idCustomer, 24, "#867070", 700);
         NewLabel dateLabel = new NewLabel(time.getDate() + "/" +time.getMonth() + "/" + time.getYear(), 24, "#867070", 700);
 
-        setPadding(new Insets(10));
-        Background bg = new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY));
-        setBackground(bg);
-
-        setPrefSize(457, 80);
-
         VBox leftBox = new VBox(5, idBillLabel, idCustomerLabel);
         leftBox.setAlignment(Pos.CENTER_LEFT);
+        leftBox.setMinWidth(this.getPrefWidth()/2);
 
-        VBox rightBox = new VBox(5, dateLabel);
+        VBox rightBox = new VBox(2, dateLabel);
         rightBox.setAlignment(Pos.CENTER_RIGHT);
-        rightBox.setPrefWidth(this.getPrefWidth()/ 2);
+        rightBox.setMinWidth(this.getPrefWidth()/2);
 
-        HBox layout = new HBox(20, leftBox, rightBox);
+        HBox layout = new HBox(50, leftBox, rightBox);
         StackPane contentPane = new StackPane();
         contentPane.getChildren().add(layout);
         setCenter(contentPane);
