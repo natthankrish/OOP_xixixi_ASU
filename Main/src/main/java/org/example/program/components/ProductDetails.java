@@ -2,13 +2,12 @@ package org.example.program.components;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
-import org.example.program.containers.Manager;
-import org.example.program.entities.Product;
+import org.example.program.entities.commodities.Commodity;
+import org.example.program.entities.commodities.Product;
 import lombok.*;
 
 import java.io.File;
@@ -35,7 +34,7 @@ public class ProductDetails extends ScrollPanel {
     private NewButton changeImage;
     private NewButton confirmChanges;
 
-    public ProductDetails(Product product) {
+    public ProductDetails(Commodity product) {
         super(Screen.getPrimary().getVisualBounds().getWidth() * 5 / 16, Screen.getPrimary().getVisualBounds().getHeight() * 5 / 8);
         this.productid = product.getId();
 
@@ -55,7 +54,7 @@ public class ProductDetails extends ScrollPanel {
             File filename = fd.showOpenDialog(null);
             if (filename != null) {
                 Path src = Paths.get(filename.getPath());
-                Path dest = Paths.get("assets/products/" + src.getFileName());
+                Path dest = Paths.get("Main/assets/products/" + src.getFileName());
                 File destFile = new File(dest.toString());
                 if (!destFile.exists()) {
                     try {

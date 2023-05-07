@@ -1,7 +1,6 @@
-package org.example.program.entities;
+package org.example.program.entities.bills;
 
 import java.io.Serializable;
-import java.util.Observer;
 import java.util.*;
 import lombok.*;
 
@@ -28,7 +27,7 @@ public class Bill implements Serializable {
         // subtotal is the value of product's price * quantity
         // search for it first from the product's list before insert is as the parameter
         if (!isFixedBill){
-            ReceiptInfo info = new ReceiptInfo(id, quantity, subtotal);
+            ReceiptInfo info = new ReceiptInfo(id, quantity, subtotal, true);
             this.receipt.add(info);
             updateTransactionTime();
             recalculateTotalPrice();
@@ -95,7 +94,7 @@ public class Bill implements Serializable {
     public void display() {
         System.out.println("ID: " + idBill + ", IDClient: " + idClient);
         for (ReceiptInfo i : receipt) {
-            System.out.println("[ " + i.getProductID() + ", " + i.getQuantity() + ", " + i.getSubtotal() + " ]");
+            System.out.println("[ " + i.getProductID() + ", " + i.getQuantity() + ", " + i.getSubtotal() + " ] -- " + i.getIsValid());
         }
         System.out.println("Total price: " + totalPrice);
         System.out.println("Fix status: " + isFixedBill + ", Time: " + transactionTime.getStringTime());

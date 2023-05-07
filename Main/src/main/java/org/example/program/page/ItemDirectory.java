@@ -1,15 +1,13 @@
 package org.example.program.page;
 
 import javafx.scene.Group;
-import javafx.scene.Node;
-import org.example.program.App;
 import javafx.stage.Screen;
 import org.example.program.components.*;
 import org.example.program.containers.Manager;
-import org.example.program.entities.Product;
+import org.example.program.entities.commodities.Commodity;
+import org.example.program.entities.commodities.Product;
 import lombok.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +18,10 @@ public class ItemDirectory extends BasePage {
     public AddItemBuffer addItemBuffer;
     private NewButton backToItemDetails;
     private NewButton addItemButton;
-    private List<Product> data;
+    private List<Commodity> data;
 
     private ScrollPanel buffer;
-    private SearchBar searchBar;
+    private NewField searchBar;
     private ProductDetails currentDetails;
     private int itemDetails;
 
@@ -46,16 +44,32 @@ public class ItemDirectory extends BasePage {
             this.getChildren().add(this.addItemPage);
         });
 
-        NewImage search = new NewImage("assets/search.png");
+        NewImage search = new NewImage("Main/assets/search.png");
         double dim = Screen.getPrimary().getVisualBounds().getHeight() * 1 / 45;
         search.setDimension(dim, dim);
         search.setPosition(Screen.getPrimary().getVisualBounds().getWidth() * 4 / 20, Screen.getPrimary().getVisualBounds().getHeight() * 7 / 40);
         this.detailpage.getChildren().add(search);
 
-        List<String> hehe = new ArrayList();
-        this.searchBar = new SearchBar(hehe);
-        this.searchBar.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 5 / 20);
+        this.searchBar = new NewField("Search", Screen.getPrimary().getVisualBounds().getWidth() * 3 / 16, 40);
+        this.searchBar.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 9 / 40);
         this.searchBar.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 7 / 40);
+        this.searchBar.setOnKeyReleased(event -> {
+            this.buffer.removeAll();
+            boolean change = false;
+            Manager m = Manager.getInstance();
+            for (Commodity item: this.data) {
+                if (item.getActive() && (item.getName().toLowerCase().contains(this.searchBar.getText().toLowerCase()) || item.getCategory().toLowerCase().contains(this.searchBar.getText().toLowerCase()) || String.valueOf(item.getId()).contains(this.searchBar.getText()) || String.valueOf(item.getPrice()).contains(this.searchBar.getText()))) {
+                    this.addProductItem(item);
+                    if (item.getId() == this.itemDetails) {
+                        change = true;
+                    }
+                }
+            }
+            if (!change) {
+                this.changeCurrentDetails(null);
+            }
+        });
+
         this.detailpage.getChildren().add(searchBar);
 
         this.buffer = new ScrollPanel(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8, Screen.getPrimary().getVisualBounds().getHeight() * 5 / 8);
@@ -65,7 +79,7 @@ public class ItemDirectory extends BasePage {
 
         Manager m = Manager.getInstance();
         this.data = m.getInventoryContainer().getBuffer();
-        for (Product item: this.data) {
+        for (Commodity item: this.data) {
             if (item.getActive()) {
                 this.addProductItem(item);
             }
@@ -112,7 +126,7 @@ public class ItemDirectory extends BasePage {
     }
 
     public void resetAddItemBuffer() {
-        this.addItemBuffer.getImage().changeImage("assets/products/No_Available_Image.png");
+        this.addItemBuffer.getImage().changeImage("Main/assets/products/No_Available_Image.png");
         this.addItemBuffer.getName().getTextField().clear();
         this.addItemBuffer.getCategory().getTextField().clear();
         this.addItemBuffer.getSellingPrice().getTextField().clear();
@@ -162,7 +176,7 @@ public class ItemDirectory extends BasePage {
         if (change) {
             Manager m = Manager.getInstance();
             int id = m.getInventoryContainer().getMaxID();
-            Product product = new Product(id+1, newStock, this.addItemBuffer.getName().getTextField().getText(), newSellingPrice, newPurchasedPrice, this.addItemBuffer.getCategory().getTextField().getText(), this.addItemBuffer.getImage().getPath(), true);
+            Commodity product = new Product(new ArrayList<>(), id+1, newStock, this.addItemBuffer.getName().getTextField().getText(), newSellingPrice, newPurchasedPrice, this.addItemBuffer.getCategory().getTextField().getText(), this.addItemBuffer.getImage().getPath(), true);
             m.getInventoryContainer().addProduct(product);
             this.changeCurrentDetails(null);
             this.getChildren().remove(this.addItemPage);
@@ -172,7 +186,7 @@ public class ItemDirectory extends BasePage {
         }
     }
 
-    public void addProductItem(Product product) {
+    public void addProductItem(Commodity product) {
         ProductItem productItem = new ProductItem(product);
         if (product.getId().equals(this.itemDetails)) {
             this.changeCurrentDetails(productItem.getDetails());
@@ -244,7 +258,7 @@ public class ItemDirectory extends BasePage {
         this.buffer.removeAll();
         boolean change = false;
         Manager m = Manager.getInstance();
-        for (Product item: this.data) {
+        for (Commodity item: this.data) {
             if (item.getActive()) {
                 this.addProductItem(item);
                 if (item.getId() == this.itemDetails) {

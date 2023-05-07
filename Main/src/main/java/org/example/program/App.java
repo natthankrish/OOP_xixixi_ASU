@@ -5,6 +5,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 import org.example.program.adapter.Adapter;
 import org.example.program.adapter.JSONAdapter;
 import org.example.program.adapter.OBJAdapter;
@@ -29,6 +31,8 @@ import java.util.Map;
 
 
 public class App extends Application {
+    @Setter
+    @Getter
 
     private static Adapter adapter;
     private static Group root;
@@ -57,7 +61,6 @@ public class App extends Application {
         map.put("Pisang Kolek", 2000.0);
 
 
-
         SideContainer sideContainer = new SideContainer();
         App.root.getChildren().add(sideContainer);
 
@@ -65,6 +68,7 @@ public class App extends Application {
         App.root.getChildren().add(topContainer);
 
         Scene scene = new Scene(App.root);
+
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.setScene(scene);
 
@@ -73,11 +77,14 @@ public class App extends Application {
         Manager m = Manager.getInstance();
         loadPlugin(cwd + "/Plugin/target/Plugin-1.0-SNAPSHOT.jar", topContainer, m);
         loadPlugin(cwd + "/PluginChart2/target/PluginChart2-1.0-SNAPSHOT.jar", topContainer, m);
+
+
         // Show Main Window
         Image applogo = new Image("file:Main/assets/logo.png");
         stage.getIcons().add(applogo);
         stage.setTitle("BNMO");
         stage.setMaximized(true);
+
         stage.show();
     }
 
@@ -103,7 +110,7 @@ public class App extends Application {
             ArrayList<String> interfaceName = getInterfaceName(clazz);
             for (String interfacez : interfaceName) {
                 if (interfacez.equals("Plugin")) {
-                    System.out.println(clazz.getName());
+                    System.out.println("Equal Plugin Class  :  " + clazz.getName());
                     pluginClass = clazz.getDeclaredConstructor().newInstance();
                     break;
                 }
@@ -152,7 +159,6 @@ public class App extends Application {
     public String readConfig() {
         try {
             String configurePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\configure.txt";
-            System.out.println(configurePath);
             File file = new File(configurePath);
 
             BufferedReader br = new BufferedReader(new FileReader(file));

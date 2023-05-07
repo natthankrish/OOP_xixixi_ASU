@@ -1,6 +1,6 @@
 [
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 25000.0,
     "name": "Caramel Latte",
     "active": true,
@@ -10,7 +10,7 @@
     "category": "Coffee"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 25000.0,
     "name": "Vanila Latte",
     "active": true,
@@ -20,7 +20,7 @@
     "category": "Coffee"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 18000.0,
     "name": "Americano",
     "active": true,
@@ -30,7 +30,7 @@
     "category": "Coffee"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 28000.0,
     "name": "Milk Tea",
     "active": true,
@@ -40,7 +40,7 @@
     "category": "Tea"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 15000.0,
     "name": "Green Tea",
     "active": true,
@@ -50,7 +50,7 @@
     "category": "Tea"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 15000.0,
     "name": "Earl Grey Tea",
     "active": true,
@@ -60,7 +60,7 @@
     "category": "Tea"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 12000.0,
     "name": "Soy Milk",
     "active": false,
@@ -70,7 +70,7 @@
     "category": "Milk"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 15000.0,
     "name": "Almond Milk",
     "active": true,
@@ -80,7 +80,7 @@
     "category": "Milk"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 30000.0,
     "name": "Croissant",
     "active": true,
@@ -90,7 +90,7 @@
     "category": "Pastry"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 19000.0,
     "name": "Croffle",
     "active": false,
@@ -100,7 +100,7 @@
     "category": "Pastry"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 24000.0,
     "name": "Creme Brulee",
     "active": true,
@@ -110,7 +110,7 @@
     "category": "Custard"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 28000.0,
     "name": "Pumpkin Flan",
     "active": true,
@@ -120,7 +120,7 @@
     "category": "Custard"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 29000.0,
     "name": "Cheese Cake",
     "active": true,
@@ -130,7 +130,7 @@
     "category": "Cake"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 35000.0,
     "name": "Red Velvet Cake",
     "active": true,
@@ -140,7 +140,7 @@
     "category": "Cake"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 40000.0,
     "name": "Blackforest Cake",
     "active": true,
@@ -150,7 +150,7 @@
     "category": "Cake"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 24000.0,
     "name": "Vanilla Milkshake",
     "active": true,
@@ -160,7 +160,7 @@
     "category": "Milk"
   },
   {
-    "image": "assets/products/No_Available_Image.jpg",
+    "image": "Main/assets/products/No_Available_Image.jpg",
     "price": 24000.0,
     "name": "Strawberry Milkshake",
     "active": true,
@@ -168,5 +168,15 @@
     "purchasePrice": 18000.0,
     "stock": 10,
     "category": "Milk"
+  },
+  {
+    "image": "Main\\assets\\products\\images.png",
+    "price": 10000.0,
+    "name": "Lemon Tea",
+    "active": false,
+    "id": 18,
+    "purchasePrice": 7000.0,
+    "stock": 5,
+    "category": "Tea"
   }
 ]

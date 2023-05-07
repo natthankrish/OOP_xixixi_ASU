@@ -1,14 +1,13 @@
 package plugin;
-import javafx.scene.Group;
 import javafx.scene.chart.*;
 import javafx.stage.Screen;
+import org.example.program.entities.commodities.Commodity;
 import org.example.program.containers.InventoryContainer;
 import org.example.program.containers.Manager;
 import org.example.program.containers.TransactionContainer;
-import org.example.program.entities.Bill;
-import org.example.program.entities.ReceiptInfo;
+import org.example.program.entities.bills.Bill;
+import org.example.program.entities.bills.ReceiptInfo;
 import org.example.program.page.BasePage;
-import org.example.program.topbar.TopContainer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +30,8 @@ public class BasePlugin {
         InventoryContainer ic = manager.getInventoryContainer();
         for (Bill b : tc.getBuffer()) {
             for (ReceiptInfo r : b.getReceipt()) {
-                String foodName = ic.getProductById(r.getProductID()).getName();
+                Commodity food = ic.getProductById(r.getProductID());
+                String foodName = food.getName();
                 Double value = r.getSubtotal();
                 if (map.containsKey(foodName)) {
                     Double newValue = map.get(foodName) + value;
