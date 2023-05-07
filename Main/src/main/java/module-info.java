@@ -9,8 +9,11 @@ module MainProgram {
     requires annotations;
     requires com.google.gson;
     requires jakarta.xml.bind;
+    requires kernel;
+    requires layout;
+    requires javafx.web;
+
     requires java.desktop;
-    requires barcodes;
     opens org.example.program;
     exports org.example.program;
     exports org.example.program.entities;

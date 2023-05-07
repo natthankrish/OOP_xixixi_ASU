@@ -4,19 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="03c77ed3-b304-43ce-ae21-6c2737c33aec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Main/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddItemBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddItemBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" afterDir="false" />
-=======
-    <list default="true" id="fea4c96f-431b-4523-8385-8774328b4c5c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/BasePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/BasePlugin.java" afterDir="false" />
->>>>>>> d78be29745d81a88ba018a812ccba3cbb0b95c3a
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BillHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BillHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/SaleReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/SaleReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PluginChart2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PluginChart2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PluginCurrency/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PluginCurrency/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +36,19 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="1e459247-e6fa-41b6-8433-c2b1e224f0d7" />
+        <option name="url" value="https://github.com/natthankrish/OOP_xixixi_ASU.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -41,11 +57,6 @@
       <MavenGeneralSettings>
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
-    </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="false" />
-      </MavenImportingSettings>
     </option>
   </component>
   <component name="ProjectId" id="2PT1iLkiMg3OuibqnUYlMPpzadb" />
@@ -57,6 +68,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/Kuliah/Semester 4/OOP/temp/OOP_xixixi_ASU",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -90,8 +102,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
@@ -102,23 +114,19 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fea4c96f-431b-4523-8385-8774328b4c5c" name="Changes" comment="" />
+      <changelist id="03c77ed3-b304-43ce-ae21-6c2737c33aec" name="Changes" comment="" />
       <created>1683466386112</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-<<<<<<< HEAD
       <updated>1682922297364</updated>
       <workItem from="1682922297446" duration="17100000" />
       <workItem from="1683368468940" duration="61136000" />
       <workItem from="1683464921398" duration="479000" />
       <workItem from="1683465445428" duration="526000" />
       <workItem from="1683465998725" duration="4907000" />
-=======
-      <updated>1683466386112</updated>
-      <workItem from="1683466388348" duration="809000" />
-      <workItem from="1683467211107" duration="147000" />
-      <workItem from="1683467371876" duration="2181000" />
->>>>>>> d78be29745d81a88ba018a812ccba3cbb0b95c3a
+      <workItem from="1683477811453" duration="1576000" />
+      <workItem from="1683479411414" duration="10157000" />
+      <workItem from="1683489718973" duration="467000" />
     </task>
     <servers />
   </component>
