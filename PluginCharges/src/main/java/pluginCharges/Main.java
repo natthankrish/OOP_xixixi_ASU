@@ -1,4 +1,4 @@
-package com.ajg;
+package pluginCharges;
 
 public class Main {
     public static void main(String[] args) {

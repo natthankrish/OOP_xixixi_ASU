@@ -1,6 +1,6 @@
 package org.example.program.components;
 
-import org.example.program.entities.Bill;
+import org.example.program.entities.bills.Bill;
 import org.example.program.entities.clients.Client;
 import org.example.program.entities.clients.VIP;
 import javafx.geometry.Insets;

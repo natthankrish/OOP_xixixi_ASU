@@ -2,18 +2,11 @@ package pluginCurrency;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 import java.net.URL;
-import java.io.File;
-import java.lang.reflect.*;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import org.example.program.entities.Product;
 
 public class Main {
 

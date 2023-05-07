@@ -1,6 +1,6 @@
 [
   {
-    "image": "Main/assets/products/No_Available_Image.jpg",
+    "image": "Main\\assets\\products\\ふたり寄り添い.jpg",
     "price": 25000.0,
     "name": "Caramel Latte",
     "active": true,
@@ -130,7 +130,7 @@
     "category": "Cake"
   },
   {
-    "image": "Main/assets/products/No_Available_Image.jpg",
+    "image": "Main\\assets\\products\\images.png",
     "price": 35000.0,
     "name": "Red Velvet Cake",
     "active": true,

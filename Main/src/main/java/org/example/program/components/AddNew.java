@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.example.program.containers.Manager;
-import org.example.program.entities.Bill;
-import org.example.program.entities.Product;
-import org.example.program.entities.ReceiptInfo;
+import org.example.program.entities.bills.Bill;
+import org.example.program.entities.commodities.Commodity;
+import org.example.program.entities.bills.ReceiptInfo;
+
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -24,7 +25,7 @@ public class AddNew extends BorderPane {
 
     private Bill bill;
     private Cart cart;
-    private Product product = null;
+    private Commodity product = null;
     private Integer quantity;
     
     public AddNew(Bill bill, Cart cart){
@@ -41,9 +42,9 @@ public class AddNew extends BorderPane {
         NewLabel quantityLabel = new NewLabel("Quanitity", 20, "#867070", 700);
 
         Manager m = Manager.getInstance();
-        List<Product> products = m.getInventoryContainer().getBuffer();
+        List<Commodity> products = m.getInventoryContainer().getBuffer();
         List<String> searchItems = new ArrayList<>();
-        for (Product p : products){
+        for (Commodity p : products){
             searchItems.add(Integer.toString(p.getId()) + " - " + p.getName() + " - " + p.getCategory());
         }
 

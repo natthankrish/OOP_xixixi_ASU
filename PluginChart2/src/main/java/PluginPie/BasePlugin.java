@@ -1,9 +1,7 @@
 package PluginPie;
-import javafx.scene.Group;
 import javafx.scene.chart.*;
 import javafx.stage.Screen;
 import javafx.util.Pair;
-import org.example.program.topbar.TopContainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.example.program.page.BasePage;
@@ -13,8 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.example.program.containers.*;
-import org.example.program.entities.Bill;
-import org.example.program.entities.ReceiptInfo;
+import org.example.program.entities.bills.Bill;
+import org.example.program.entities.bills.ReceiptInfo;
 import org.example.program.entities.clients.Client;
 import org.jetbrains.annotations.NotNull;
 

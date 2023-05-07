@@ -2,7 +2,7 @@ package org.example.program.containers;
 
 
 import lombok.*;
-import org.example.program.entities.Bill;
+import org.example.program.entities.bills.Bill;
 
 import jakarta.xml.bind.annotation.*;
 

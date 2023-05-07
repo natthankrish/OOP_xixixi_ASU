@@ -1,5 +1,4 @@
 package org.example.program.page;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,16 +10,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.Screen;
 import org.example.program.components.*;
 import org.example.program.containers.TransactionContainer;
-import org.example.program.entities.Bill;
+import org.example.program.entities.bills.Bill;
 import org.example.program.containers.Manager;
-import org.example.program.entities.ReceiptInfo;
-
-//import com.itextpdf.text.*;
-
+import org.example.program.entities.bills.ReceiptInfo;
 
 public class BillHistory extends BasePage {
     private TransactionContainer tc;
