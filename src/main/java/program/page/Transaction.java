@@ -1,8 +1,11 @@
 package program.page;
 import java.util.ArrayList;
 
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import program.components.AddNew;
+import program.components.AddPaymentInfo;
 import program.components.Cart;
 import program.components.ItemCard;
 import program.components.NewImage;
@@ -32,6 +35,7 @@ public class Transaction extends BasePage {
         // itemcard1.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 10);
         // itemcard1.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 5 / 15);
         // this.getChildren().add(itemcard1);
+
         ArrayList<ItemCard> itemCards = new ArrayList<ItemCard>();
         Cart cart = new Cart(itemCards);
         cart.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
@@ -45,21 +49,30 @@ public class Transaction extends BasePage {
         cart.addItemCard(itemcard7);
         cart.addItemCard(itemcard8);
         cart.addItemCard(itemcard9);
-        this.getChildren().add(cart);
-
-
-        // AddNew addNew = new AddNew();
-        // addNew.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 2);
-        // addNew.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
-        // addNew.addToList("1", "melvin", "manusia");
-        // this.getChildren().add(addNew);
-
         
-
+        // PAGE 1
+        AddNew addNew = new AddNew();
+        addNew.addToList("1", "melvin", "manusia");
+        
+        Button checkoutButton = new Button("Proceed To Checkout");
+        checkoutButton.setStyle("-fx-background-color: #867070; -fx-text-fill: #F5EBEB; -fx-font-size: 30px; -fx-font-weight: bold;");
+        VBox rightSide = new VBox(10, addNew, checkoutButton);
+        rightSide.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 3);
+        rightSide.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
+        
+        this.getChildren().addAll(cart, rightSide);
+        
+        // PAGE 2
+        AddPaymentInfo addPaymentInfo = new AddPaymentInfo();
+        addPaymentInfo.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
+        addPaymentInfo.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
+        
         PaymentNominal paymentNominal = new PaymentNominal(0, 0, 0);
-        paymentNominal.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 2);
+        paymentNominal.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 3);
         paymentNominal.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
         paymentNominal.setCustomerPayNominal(50000);
-        this.getChildren().add(paymentNominal);
+        
+        // this.getChildren().addAll(addPaymentInfo, paymentNominal);
+        
     }
 }
