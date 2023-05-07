@@ -42,13 +42,23 @@ public class MemberDirectory extends BasePage {
         this.searchBar.setLayout(55,140);
 
         this.buttonVIP = new CustomButton("VIP", 12, "#FFFFFF", "#867070", "bold", 10,0,0,10);
+        this.buttonVIP.setOnMouseClicked(event -> {
+            setStyle("-fx-background-color: #121212;");
+        });
         this.buttonVIP.setLayout(330,142);
 
         this.buttonMember = new CustomButton("Member", 12, "#FFFFFF", "#867070", "bold",1,1,1,1);
+        this.buttonMember.setOnMouseClicked(event -> {
+            setStyle("-fx-background-color: #121212;");
+        });
         this.buttonMember.setLayout(363, 142);
 
         this.buttonDeactivated = new CustomButton("Deactivated", 12, "#FFFFFF", "#867070", "bold", 0,10,10,0);
+        this.buttonDeactivated.setOnMouseClicked(event -> {
+            setStyle("-fx-background-color: #121212;");
+        });
         this.buttonDeactivated.setLayout(423,142);
+        Manager m = Manager.getInstance();
 
         String[][] cardData = {
                 {"nolan", "123", "29/20/2020"},
@@ -73,6 +83,19 @@ public class MemberDirectory extends BasePage {
             CardMember card = new CardMember(data[0], Integer.parseInt(data[1]), data[2]);
             card.setLayout(55, 200);
             cardContainer.getChildren().add(card);
+
+            card.setOnMouseClicked(event -> {
+                String name = data[0];
+                int id = Integer.parseInt(data[1]);
+                String joinDate = data[2];
+
+                DetailMember newDetail = new DetailMember(name,id,joinDate,"Member", 0,"",0);
+
+                this.getChildren().remove(this.detailMember);
+                this.detailMember = newDetail;
+                this.detailMember.setLayout(770,180);
+                this.getChildren().add(this.detailMember);
+            });
         }
 
         // Mengubah VBox menjadi ScrollPane dan menambahkan cardContainer ke dalam ScrollPane
@@ -84,27 +107,13 @@ public class MemberDirectory extends BasePage {
         this.scrollPane.setLayoutX(55);
         this.scrollPane.setLayoutY(180);
 
-        this.detailMember = new DetailMember(
-                "kuntul",
-                123,
-                "0866666666",
-                "VIP",
-                12,
-                "13/13/2013",
-                2222222);
-        this.detailMember.setLayout(770,180);
-
-        this.newField = new NewField(200,20);
-        this.newField.setLayout(200,200);
 
         this.getChildren().addAll(this.label,
-                this.searchBar,
                 this.buttonVIP,
                 this.buttonMember,
                 this.buttonDeactivated,
                 this.scrollPane,
-                this.detailMember,
-                this.newField
+                this.searchBar
         );
     }
 }

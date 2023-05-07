@@ -23,7 +23,7 @@ import program.page.Transaction;
 public class DetailMember extends BorderPane {
     private NewLabel name;
     private int id;
-    private String phone;
+    private String date;
     private CustomButton statusButton;
     private CustomButton makeVIP;
     private CustomButton deactivated;
@@ -36,14 +36,14 @@ public class DetailMember extends BorderPane {
     private int total;
     public DetailMember(String name,
                           int id,
-                          String phone,
+                          String date,
                           String pelanggan,
                           int transaksiCount,
                           String terakhirTransaksi,
                           int total) {
         this.name = new NewLabel(name, 24, "#867070", 700);
         this.id = id;
-        this.phone = phone;
+        this.date = date;
         this.statusButton = new CustomButton(pelanggan, 12,"#FFFFFF","#BEB2B2","bold",10,10,10,10);
         this.makeVIP = new CustomButton("Make VIP", 16, "#FFFFFF", "#867070", "bold", 10,10,10,10);
         this.deactivated = new CustomButton("Deactivated", 16, "#FFFFFF", "#867070", "bold", 10,10,10,10);
@@ -61,11 +61,11 @@ public class DetailMember extends BorderPane {
 
 
         // Set up the item name and quantity
-        Text phoneText = new Text(String.valueOf(phone));
+        Text phoneText = new Text(this.date);
         phoneText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15) );
         phoneText.setFill(Color.web("#867070"));
 
-        Text idText = new Text("ID " + String.valueOf(id) + " - " + String.valueOf(phone));
+        Text idText = new Text("ID " + String.valueOf(id) + " - " + this.date);
         idText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
         idText.setFill(Color.web("#867070"));
 
@@ -144,6 +144,24 @@ public class DetailMember extends BorderPane {
             setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
         });
     }
+
+//    public void setData(String name,
+//                        int id,
+//                        String phone,
+//                        String pelanggan,
+//                        int transaksiCount,
+//                        String terakhirTransaksi,
+//                        int total) {
+//        // Set the data for the DetailMember object
+//        // This code will depend on how you want to display the data in the DetailMember object
+//        this.name.setText(name);
+//        this.id.setText(String.valueOf(id));
+//        this.phone.setText(phone);
+//        this.pelanggan.setText(pelanggan);
+//        this.transaksiCount.setText(String.valueOf(transaksiCount));
+//        this.terakhirTransaksi.setText(terakhirTransaksi);
+//        this.total.setText(String.valueOf(total));
+//    }
 
 
     public void setLayout(double x, double y) {

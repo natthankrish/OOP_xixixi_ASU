@@ -1,6 +1,7 @@
 package program.page;
 
 import javafx.geometry.Pos;
+import program.components.AddRegister;
 import program.components.CardRegister;
 import program.components.DetailRegister;
 import program.components.NewLabel;
@@ -16,7 +17,9 @@ public class RegisterMember extends BasePage {
     private SearchBar searchBar;
     private VBox cardContainer;
     private ScrollPane scrollPane;
-    private DetailRegister detailRegister;
+    private DetailRegister currentDetails;
+    private AddRegister addRegister;
+
 
     public RegisterMember() {
         this.changeBackground("#FFFFFF");
@@ -24,15 +27,15 @@ public class RegisterMember extends BasePage {
         this.label.setLayout(45, 35);
 
         String[][] cardData = {
-                {"nolan", "123", "29/20/2020"},
-                {"mike", "456", "30/20/2020"},
-                {"jane", "789", "01/21/2021"},
-                {"june", "289", "01/21/2021"},
-                {"dune", "729", "01/21/2021"},
-                {"jake", "489", "01/21/2021"},
-                {"jake", "489", "01/21/2021"},
-                {"k", "489", "01/21/2021"},
-                {"i", "489", "01/21/2021"},
+                {"nolan", "123", "29/20/2020", "Member", "123", "20/20/2021", "90000000"},
+                {"mike", "456", "30/20/2020", "Member", "123", "20/20/2021", "90000000"},
+                {"jane", "789", "01/21/2021", "Member", "123", "20/20/2021", "90000000"},
+                {"june", "289", "01/21/2021", "Member", "123", "20/20/2021", "90000000"},
+                {"dune", "729", "01/21/2021", "Member", "123", "20/20/2021", "90000000"},
+                {"jake", "489", "01/21/2021", "Member", "123", "20/20/2021", "90000000"},
+                {"jake", "489", "01/21/2021", "Member", "123", "20/20/2021", "90000000"},
+                {"k", "489", "01/21/2021", "Member", "123", "20/20/2021", "90000000"},
+                {"i", "489", "01/21/2021", "Member", "123", "20/20/2021", "90000000"},
 
         };
 
@@ -43,7 +46,37 @@ public class RegisterMember extends BasePage {
         this.cardContainer.setLayoutY(200);
 
         for (String[] data : cardData) {
-            CardRegister card = new CardRegister(data[0], Integer.parseInt(data[1]), data[2]);
+            CardRegister card = new CardRegister(data[0],
+                    Integer.parseInt(data[1]),
+                    data[2],
+                    data[3],
+                    Integer.parseInt(data[4]),
+                    data[5],
+                    Integer.parseInt(data[6]));
+
+            card.setOnMouseClicked(event -> {
+                String name = data[0];
+                int id = Integer.parseInt(data[1]);
+                String date = data[3];
+                String pelanggan = data[3];
+                int count = Integer.parseInt(data[4]);
+                String tglTransaksi = data[5];
+                int tot = Integer.parseInt(data[6]);
+
+                DetailRegister newDetails = new DetailRegister(name,id,date,pelanggan,count,tglTransaksi,tot);
+                this.getChildren().remove(this.currentDetails);
+                this.currentDetails= newDetails;
+                this.currentDetails.setLayout(770,180);
+                this.getChildren().add(this.currentDetails);
+
+                this.currentDetails.getRegisterButton().setOnMouseClicked(event1 -> {
+                    AddRegister newRegister = new AddRegister("Customer Name", "Phone Number");
+                    this.getChildren().remove(this.addRegister);
+                    this.addRegister = newRegister;
+                    this.addRegister.setLayout(770,500);
+                    this.getChildren().add(this.addRegister);
+                });
+            });
             card.setLayout(55, 200);
             cardContainer.getChildren().add(card);
         }
@@ -70,16 +103,15 @@ public class RegisterMember extends BasePage {
         this.searchBar = new SearchBar(itemList);
         this.searchBar.setLayout(477,140);
 
-        this.detailRegister = new DetailRegister("Nama Customer",
-                123,
-                "12/12/2012",
-                "Member",
-                123,
-                "20/20/2020",
-                20000000
+        this.getChildren().addAll(this.label,
+                this.scrollPane,
+                this.searchBar
                 );
-        this.detailRegister.setLayout(770,180);
+    }
 
-        this.getChildren().addAll(this.label, this.scrollPane, this.searchBar, this.detailRegister);
+    public void changeCurrentDetails(DetailRegister newDetails){
+        this.getChildren().remove(this.currentDetails);
+        this.currentDetails = newDetails;
+        this.getChildren().add(this.currentDetails);
     }
 }

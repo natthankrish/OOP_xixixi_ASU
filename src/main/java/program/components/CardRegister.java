@@ -15,25 +15,44 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import lombok.*;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
 import java.util.Date;
-
+@Getter
 public class CardRegister extends BorderPane {
-    private NewLabel itemName;
-    private int id;
+    private NewLabel name;
+    private int idCard;
     private String date;
-    private CloseButton closeButton;
+//    private CloseButton closeButton;
+    private DetailRegister details;
+    private int itemCount;
 
-    public CardRegister(String itemName, int id, String date) {
-        this.itemName = new NewLabel(itemName, 24, "#867070", 700);
-        this.id = id;
+    private String tanggalTransaksi;
+
+    private String pelanggan;
+
+    private int total;
+
+    public CardRegister(String name,
+                        int id,
+                        String date,
+                        String pelanggan,
+                        int itemCount,
+                        String tanggalTransaksi,
+                        int total) {
+        this.name = new NewLabel(name, 24, "#867070", 700);
+        this.idCard = id;
         this.date = date;
-        this.closeButton = new CloseButton();
-        this.closeButton.img.setFitWidth(25);
-        this.closeButton.img.setFitHeight(25);
+        this.itemCount=itemCount;
+        this.pelanggan = pelanggan;
+        this.tanggalTransaksi = tanggalTransaksi;
+        this.total = total;
+//        this.closeButton = new CloseButton();
+//        this.closeButton.img.setFitWidth(25);
+//        this.closeButton.img.setFitHeight(25);
 
         // Set up the card's layout
         setPadding(new Insets(10));
@@ -48,15 +67,15 @@ public class CardRegister extends BorderPane {
         Text quantityText = new Text(String.valueOf(date));
         quantityText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15) );
         quantityText.setFill(Color.web("#867070"));
-        Text priceText = new Text("{ID " + String.valueOf(id) + "}");
+        Text priceText = new Text("ID" + String.valueOf(id));
         priceText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
         priceText.setFill(Color.web("#867070"));
-        VBox nameQuantityBox = new VBox(5, this.itemName, quantityText);
+        VBox nameQuantityBox = new VBox(5, this.name, quantityText);
         nameQuantityBox.setAlignment(Pos.TOP_LEFT);
 
         // Set up the close button and price
-        VBox closeButtonPriceBox = new VBox(5, this.closeButton, priceText);
-        closeButtonPriceBox.setAlignment(Pos.TOP_RIGHT);
+        VBox PriceBox = new VBox(5, priceText);
+        PriceBox.setAlignment(Pos.CENTER_RIGHT);
 
         // Combine the nameQuantityBox and imageView in an HBox
         HBox topBox = new HBox(10, nameQuantityBox);
@@ -64,7 +83,7 @@ public class CardRegister extends BorderPane {
 
         // Set up the main content of the card
         StackPane contentPane = new StackPane();
-        contentPane.getChildren().addAll(topBox, closeButtonPriceBox);
+        contentPane.getChildren().addAll(topBox,PriceBox);
         setCenter(contentPane);
 
         // Add event handler for mouse click
@@ -87,7 +106,6 @@ public class CardRegister extends BorderPane {
             setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
         });
     }
-
 
     public void setLayout(double x, double y) {
         this.setLayoutX(x);

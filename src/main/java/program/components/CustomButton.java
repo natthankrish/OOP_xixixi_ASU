@@ -1,4 +1,5 @@
 package program.components;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 
 public class CustomButton extends Button {
@@ -91,7 +92,11 @@ public class CustomButton extends Button {
 
     public void setHoverStyle() {
         String hoverStyle = "-fx-background-color: #CCCCCC;";
-        setOnMouseEntered(e -> setStyle(getStyle() + hoverStyle));
+        setOnMouseEntered(event -> {
+            setCursor(Cursor.HAND);
+            setStyle(getStyle() + hoverStyle);
+
+        });
         setOnMouseExited(e -> setStyle(getStyle().replace(hoverStyle, "")));
     }
 

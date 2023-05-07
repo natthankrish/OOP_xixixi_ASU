@@ -16,9 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import program.page.Transaction;
+
 
 public class DetailRegister extends BorderPane {
     private NewLabel name;
@@ -31,6 +29,8 @@ public class DetailRegister extends BorderPane {
     private String tanggalTransaksi;
 
     private String pelanggan;
+
+    private AddRegister masukin;
 
     private int total;
     public DetailRegister(String name,
@@ -54,7 +54,7 @@ public class DetailRegister extends BorderPane {
         setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 
         // Set the preferred width and height of the card
-        setPrefSize(394, 345);
+        setPrefSize(394, 310);
 
 
 
@@ -123,29 +123,16 @@ public class DetailRegister extends BorderPane {
         StackPane contentPane = new StackPane();
         contentPane.getChildren().addAll(topBox, status, isi, data,bottom);
         setCenter(contentPane);
-
-        // Add event handler for mouse click
-        setOnMouseClicked(event -> {
-            System.out.println("customer clicked!");
-            // Add code here to perform the desired action when the card is click
-        });
-
-        // Add event handlers for mouse enter and exit
-        setOnMouseEntered(event -> {
-            setCursor(Cursor.HAND);
-            setBackground(new Background(new BackgroundFill(Color.web("EAD7D7"), new CornerRadii(10), Insets.EMPTY)));
-        });
-
-        setOnMouseExited(event -> {
-            setCursor(Cursor.DEFAULT);
-            setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
-        });
     }
 
 
     public void setLayout(double x, double y) {
         this.setLayoutX(x);
         this.setLayoutY(y);
+    }
+
+    public CustomButton getRegisterButton(){
+        return this.registerButton;
     }
 }
 
