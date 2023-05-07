@@ -2,6 +2,7 @@ package org.example.program.adapter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.example.program.entities.commodities.Commodity;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -9,10 +10,10 @@ import org.json.simple.parser.ParseException;
 import org.example.program.containers.ClientContainer;
 import org.example.program.containers.InventoryContainer;
 import org.example.program.containers.TransactionContainer;
-import org.example.program.entities.Bill;
-import org.example.program.entities.Product;
-import org.example.program.entities.ReceiptInfo;
-import org.example.program.entities.Time;
+import org.example.program.entities.bills.Bill;
+import org.example.program.entities.commodities.Product;
+import org.example.program.entities.bills.ReceiptInfo;
+import org.example.program.entities.bills.Time;
 import org.example.program.entities.clients.Client;
 import org.example.program.entities.clients.Customer;
 import org.example.program.entities.clients.Member;
@@ -157,7 +158,7 @@ public class JSONAdapter implements Adapter{
         String image = (String) p.get("image");
         Boolean active = (Boolean) p.get("active");
 
-        Product pr = new Product(id, stock, name, price, purchasePrice, category, image, active);
+        Product pr = new Product(new ArrayList<>(), id, stock, name, price, purchasePrice, category, image, active);
         ic.getBuffer().add(pr);
         ic.increaseAmount();
 
@@ -166,7 +167,7 @@ public class JSONAdapter implements Adapter{
     public void writeDataInventory(InventoryContainer ic) {
         // Make array
         JSONArray productsArr = new JSONArray();
-        for (Product p : ic.getBuffer()) {
+        for (Commodity p : ic.getBuffer()) {
             JSONObject productObj = new JSONObject();
             productObj.put("id", p.getId());
             productObj.put("stock", p.getStock());
@@ -246,7 +247,8 @@ public class JSONAdapter implements Adapter{
         Integer idP = ((Long) o.get("idProduct")).intValue();
         Integer quantity = ((Long) o.get("quantity")).intValue();
         Double subtotal = (Double) o.get("subtotal");
-        ReceiptInfo info = new ReceiptInfo(idP, quantity, subtotal);
+        Boolean valid = (Boolean) o.get("isValid");
+        ReceiptInfo info = new ReceiptInfo(idP, quantity, subtotal, valid);
         return info;
     }
 
@@ -264,6 +266,7 @@ public class JSONAdapter implements Adapter{
                 rec.put("idProduct", r.getProductID());
                 rec.put("quantity", r.getQuantity());
                 rec.put("subtotal", r.getSubtotal());
+                rec.put("isValid", r.getIsValid());
                 receiptArr.add(rec);
             }
             billObj.put("receipt", receiptArr);

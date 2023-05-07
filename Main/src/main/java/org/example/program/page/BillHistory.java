@@ -1,5 +1,5 @@
 package org.example.program.page;
-import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,12 +26,10 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Screen;
 import org.example.program.components.*;
 import org.example.program.containers.TransactionContainer;
-import org.example.program.entities.Bill;
+import org.example.program.entities.bills.Bill;
 import org.example.program.containers.Manager;
-import org.example.program.entities.ReceiptInfo;
+import org.example.program.entities.bills.ReceiptInfo;
 
-
-import javax.print.Doc;
 
 import com.itextpdf.layout.border.Border;
 

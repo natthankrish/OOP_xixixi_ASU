@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <InventoryContainer>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>1</id>
-        <stock>10</stock>
+        <stock>11</stock>
         <name>Caramel Latte</name>
         <price>25000.0</price>
         <purchasePrice>15000.0</purchasePrice>
         <category>Coffee</category>
-        <image>Main/assets/products/No_Available_Image.jpg</image>
-        <active>false</active>
+        <image>Main\assets\products\ふたり寄り添い.jpg</image>
+        <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>2</id>
-        <stock>10</stock>
+        <stock>5</stock>
         <name>Vanila Latte</name>
-        <price>30000.0</price>
-        <purchasePrice>20000.0</purchasePrice>
+        <price>25000.0</price>
+        <purchasePrice>15000.0</purchasePrice>
         <category>Coffee</category>
         <image>Main/assets/products/No_Available_Image.jpg</image>
-        <active>false</active>
+        <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>3</id>
         <stock>8</stock>
         <name>Americano</name>
@@ -28,9 +28,9 @@
         <purchasePrice>10000.0</purchasePrice>
         <category>Coffee</category>
         <image>Main/assets/products/No_Available_Image.jpg</image>
-        <active>false</active>
+        <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>4</id>
         <stock>4</stock>
         <name>Milk Tea</name>
@@ -38,19 +38,19 @@
         <purchasePrice>20000.0</purchasePrice>
         <category>Tea</category>
         <image>Main/assets/products/No_Available_Image.jpg</image>
-        <active>false</active>
+        <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>5</id>
         <stock>20</stock>
         <name>Green Tea</name>
         <price>15000.0</price>
         <purchasePrice>8000.0</purchasePrice>
         <category>Tea</category>
-        <image>Main/assets\products\No_Available_Image.jpg</image>
+        <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>6</id>
         <stock>0</stock>
         <name>Earl Grey Tea</name>
@@ -58,9 +58,9 @@
         <purchasePrice>9000.0</purchasePrice>
         <category>Tea</category>
         <image>Main/assets/products/No_Available_Image.jpg</image>
-        <active>false</active>
+        <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>7</id>
         <stock>0</stock>
         <name>Soy Milk</name>
@@ -70,7 +70,7 @@
         <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>false</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>8</id>
         <stock>6</stock>
         <name>Almond Milk</name>
@@ -80,7 +80,7 @@
         <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>9</id>
         <stock>27</stock>
         <name>Croissant</name>
@@ -90,7 +90,7 @@
         <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>10</id>
         <stock>0</stock>
         <name>Croffle</name>
@@ -100,7 +100,7 @@
         <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>false</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>11</id>
         <stock>10</stock>
         <name>Creme Brulee</name>
@@ -110,7 +110,7 @@
         <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>12</id>
         <stock>13</stock>
         <name>Pumpkin Flan</name>
@@ -120,7 +120,7 @@
         <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>13</id>
         <stock>8</stock>
         <name>Cheese Cake</name>
@@ -130,17 +130,17 @@
         <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>14</id>
         <stock>10</stock>
         <name>Red Velvet Cake</name>
         <price>35000.0</price>
         <purchasePrice>24000.0</purchasePrice>
         <category>Cake</category>
-        <image>Main/assets/products/No_Available_Image.jpg</image>
+        <image>Main\assets\products\images.png</image>
         <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>15</id>
         <stock>17</stock>
         <name>Blackforest Cake</name>
@@ -150,7 +150,7 @@
         <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>16</id>
         <stock>10</stock>
         <name>Vanilla Milkshake</name>
@@ -160,7 +160,7 @@
         <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>17</id>
         <stock>10</stock>
         <name>Strawberry Milkshake</name>
@@ -170,34 +170,15 @@
         <image>Main/assets/products/No_Available_Image.jpg</image>
         <active>true</active>
     </Product>
-    <Product>
+    <Product xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
         <id>18</id>
-        <stock>12</stock>
-        <name>Thai Tea</name>
-        <price>40000.0</price>
-        <purchasePrice>50000.0</purchasePrice>
+        <stock>5</stock>
+        <name>Lemon Tea</name>
+        <price>10000.0</price>
+        <purchasePrice>7000.0</purchasePrice>
         <category>Tea</category>
+        <image>Main\assets\products\images.png</image>
         <active>false</active>
     </Product>
-    <Product>
-        <id>19</id>
-        <stock>3</stock>
-        <name>Lychee Tea</name>
-        <price>15000.0</price>
-        <purchasePrice>5000.0</purchasePrice>
-        <category>Tea</category>
-        <image>Main/assets\products\No_Available_Image.jpg</image>
-        <active>true</active>
-    </Product>
-    <Product>
-        <id>20</id>
-        <stock>12</stock>
-        <name>Lemon Tea</name>
-        <price>8000.0</price>
-        <purchasePrice>2000.0</purchasePrice>
-        <category>Tea</category>
-        <image>Main/assets\products\No_Available_Image.jpg</image>
-        <active>true</active>
-    </Product>
-    <Amount>20</Amount>
+    <Amount>18</Amount>
 </InventoryContainer>

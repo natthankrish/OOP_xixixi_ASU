@@ -13,10 +13,9 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import javafx.scene.layout.VBox;
 import org.example.program.containers.Manager;
-import org.example.program.entities.Bill;
-import org.example.program.entities.Time;
+import org.example.program.entities.bills.Bill;
+import org.example.program.entities.bills.Time;
 
-import javafx.scene.web.WebView;
 
 
 import java.io.File;
@@ -30,13 +29,6 @@ public class SaleReport extends BasePage {
         -fx-background-color: white;
         """);
         export("Main/assets/CurrentReport.pdf");
-        WebView webView = new WebView();
-        String filePath = "Main/assets/CurrentReport.pdf";
-        String fileUrl = new File(filePath).toURI().toString();
-        webView.getEngine().loadContent("<embed src=\"" + fileUrl + "\" width=\"100%\" height=\"100%\"/>");
-        VBox container = new VBox(10, webView);
-        container.setPrefSize(800, 800);
-        this.getChildren().add(container);
     }
 
     private void export(String path) {

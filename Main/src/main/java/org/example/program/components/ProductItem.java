@@ -2,21 +2,19 @@ package org.example.program.components;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.Group;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import lombok.*;
-import org.example.program.entities.Product;
-import org.example.program.page.ItemDirectory;
+import org.example.program.entities.commodities.Commodity;
+import org.example.program.entities.commodities.Product;
 
 @Getter
 public class ProductItem extends Button {
     private HBox content;
     private ProductDetails details;
 
-    public ProductItem(Product product) {
+    public ProductItem(Commodity product) {
         this.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8);
         this.setPrefHeight(100);
         this.setStyle("""

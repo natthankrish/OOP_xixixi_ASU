@@ -110,7 +110,7 @@ public class App extends Application {
             ArrayList<String> interfaceName = getInterfaceName(clazz);
             for (String interfacez : interfaceName) {
                 if (interfacez.equals("Plugin")) {
-                    System.out.println(clazz.getName());
+                    System.out.println("Equal Plugin Class  :  " + clazz.getName());
                     pluginClass = clazz.getDeclaredConstructor().newInstance();
                     break;
                 }
@@ -159,7 +159,6 @@ public class App extends Application {
     public String readConfig() {
         try {
             String configurePath = new java.io.File("").getAbsolutePath() + "\\Main\\src\\main\\datastore\\configure.txt";
-            System.out.println(configurePath);
             File file = new File(configurePath);
 
             BufferedReader br = new BufferedReader(new FileReader(file));
