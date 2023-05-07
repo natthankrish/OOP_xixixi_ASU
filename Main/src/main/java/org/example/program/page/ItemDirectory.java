@@ -178,7 +178,7 @@ public class ItemDirectory extends BasePage {
         if (change) {
             Manager m = Manager.getInstance();
             int id = m.getInventoryContainer().getMaxID();
-            Product product = new Product(id+1, newStock, this.addItemBuffer.getName().getTextField().getText(), newSellingPrice, newPurchasedPrice, this.addItemBuffer.getCategory().getTextField().getText(), this.addItemBuffer.getImage().getPath(), true);
+            Product product = new Product(new ArrayList<>(), id+1, newStock, this.addItemBuffer.getName().getTextField().getText(), newSellingPrice, newPurchasedPrice, this.addItemBuffer.getCategory().getTextField().getText(), this.addItemBuffer.getImage().getPath(), true);
             m.getInventoryContainer().addProduct(product);
             this.changeCurrentDetails(null);
             this.getChildren().remove(this.addItemPage);

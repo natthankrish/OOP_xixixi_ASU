@@ -10,8 +10,11 @@ module MainProgram {
     requires com.google.gson;
     requires jakarta.xml.bind;
     requires java.desktop;
-    requires barcodes;
+//    requires barcodes;
     opens org.example.program;
+    opens org.example.program.containers to jakarta.xml.bind;
+    opens org.example.program.entities to jakarta.xml.bind, com.sun.xml.bind;
+    opens org.example.program.entities.clients to jakarta.xml.bind, com.sun.xml.bind, com.sun.xml.bind.core;
     exports org.example.program;
     exports org.example.program.entities;
     exports org.example.program.plugin;

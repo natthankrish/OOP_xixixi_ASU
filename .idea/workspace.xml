@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fea4c96f-431b-4523-8385-8774328b4c5c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/configure.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/configure.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/obj/Client.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/obj/Client.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/obj/Inventory.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/obj/Inventory.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/obj/Transaction.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/obj/Transaction.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BillHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BillHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/Settings.java" afterDir="false" />
-    </list>
+    <list default="true" id="fea4c96f-431b-4523-8385-8774328b4c5c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
