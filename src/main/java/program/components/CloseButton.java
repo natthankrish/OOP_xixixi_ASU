@@ -23,4 +23,5 @@ public class CloseButton extends Button {
         this.setGraphic(this.img);
     }
 
+
 }

@@ -6,6 +6,8 @@ import javafx.scene.chart.Chart;
 import javafx.scene.image.Image;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 import program.containers.Manager;
 import program.adapter.Adapter;
 import program.adapter.JSONAdapter;
@@ -25,8 +27,11 @@ import java.io.*;
 
 
 public class App extends Application {
+    @Setter
+    @Getter
 
     private static Adapter adapter;
+    
     private static Group root;
     private static BasePage page;
     @Override
