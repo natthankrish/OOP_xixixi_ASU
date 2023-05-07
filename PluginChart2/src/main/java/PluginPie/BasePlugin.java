@@ -16,6 +16,7 @@ import org.example.program.containers.*;
 import org.example.program.entities.Bill;
 import org.example.program.entities.ReceiptInfo;
 import org.example.program.entities.clients.Client;
+import org.jetbrains.annotations.NotNull;
 
 public class BasePlugin {
     public static BasePage page;
@@ -64,6 +65,16 @@ public class BasePlugin {
         System.out.println("adding pie chart");
     }
 
+    @NotNull
+    public static boolean isContain(List<Pair<String, Double>> l, String s){
+        for (Pair<String, Double> p : l ){
+            if (p.getKey().equals(s)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void addPieChartClient(Manager manager) {
         // add the pie chart to the page
 
@@ -88,31 +99,57 @@ public class BasePlugin {
         } else {
             iterate = 5;
         }
+
+
+        // Get 5 top to Top5
         for (int i = 0; i < iterate; i++){
+            Double max = 0.0;
+            int idx = 0;
             for (int j = 0; j < purchaseList.size(); j++){
-                System.out.println("test");
+                if (!isContain(top5, purchaseList.get(j).getKey())){
+                    if ( j == 0){
+                        max = purchaseList.get(j).getValue();
+                        idx = 0;
+                    }
+                    else {
+                        if (purchaseList.get(j).getValue() > max){
+                            max = purchaseList.get(j).getValue();
+                            idx = j;
+                        }
+                    }
+                }
             }
+            top5.add(purchaseList.get(idx));
+        }
+
+        Double totalVal = 0.0;
+        Double totalValTop5 = 0.0;
+        for (Pair<String, Double> temp : purchaseList) {
+            totalVal += temp.getValue();
+        }
+        for(Pair<String, Double> temp : top5){
+            totalValTop5 += temp.getValue();
         }
 
 
+        PieChart pieChart = new PieChart();
+        pieChart.setTitle("Top Client's Purchases");
 
+        // Add data to the chart
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+        for (Pair<String, Double> entry : top5) {
+            String clientName = entry.getKey();
+            Double value = entry.getValue();
+            pieChartData.add(new PieChart.Data(clientName, value));
+        }
+        pieChartData.add(new PieChart.Data("Others", totalVal-totalValTop5));
 
-//        PieChart pieChart = new PieChart();
-//        pieChart.setTitle("Top Client's Purchase");
-//
-//        // Add data to the chart
-//        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-//        for (Map.Entry<String, Double> entry : map.entrySet()) {
-//            String foodName = entry.getKey();
-//            Double value = entry.getValue();
-//            pieChartData.add(new PieChart.Data(foodName, value));
-//        }
-//        pieChart.getData().addAll(pieChartData);
-//        pieChart.setPrefSize(800,500);
-//        pieChart.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 0);
-//        pieChart.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
-//        page.getChildren().add(pieChart);
-//        System.out.println("adding pie chart");
+        pieChart.getData().addAll(pieChartData);
+        pieChart.setPrefSize(800,500);
+        pieChart.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 5/15);
+        pieChart.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
+        page.getChildren().add(pieChart);
+        System.out.println("adding pie chart");
     }
 
     public static boolean hasBeenLoaded() {

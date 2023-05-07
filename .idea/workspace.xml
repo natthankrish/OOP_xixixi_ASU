@@ -5,31 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fea4c96f-431b-4523-8385-8774328b4c5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/assets/products/No_Available_Image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/assets/products/images.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/assets/search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddItemBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CardMember.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CardRegister.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/DetailMember.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/DetailRegister.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ScrollPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/AddItemPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/xml/Inventory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/xml/Inventory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CloseAllButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CloseAllButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CloseButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CloseButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewField.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/MemberDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/MemberDirectory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/RegisterMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/RegisterMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/BasePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/BasePlugin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +76,7 @@
       <updated>1683466386112</updated>
       <workItem from="1683466388348" duration="809000" />
       <workItem from="1683467211107" duration="147000" />
-      <workItem from="1683467371876" duration="81000" />
+      <workItem from="1683467371876" duration="2181000" />
     </task>
     <servers />
   </component>
