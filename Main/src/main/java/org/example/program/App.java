@@ -11,6 +11,7 @@ import org.example.program.adapter.OBJAdapter;
 import org.example.program.adapter.XMLAdapter;
 import org.example.program.containers.Manager;
 import org.example.program.page.HomePage;
+import org.example.program.plugin.ChartPluginLineBar;
 import org.example.program.plugin.Loader;
 import org.example.program.sidebar.ClockThread;
 import org.example.program.sidebar.SideContainer;
@@ -42,7 +43,7 @@ public class App extends Application {
         root.getChildren().add(App.page);
 
         String cwd = System.getProperty("user.dir");
-        ArrayList<Class<?>> classes = loadPlugin(cwd + "/Main/test/PluginChart-1.0.0.jar");
+        ArrayList<Class<?>> classes = loadPlugin(cwd + "/Plugin/target/Plugin-1.0-SNAPSHOT.jar");
 //        ChartPlugin chartPlugin1 = null;
 //        ChartPluginLineBar chartLine = null;
         Map<String, Double> map = new HashMap<>();
@@ -73,11 +74,12 @@ public class App extends Application {
         }
 
 
-        method.invoke(pluginClass, "Product Name", "Total Sales", "Food Income", "Food ID", map);
-        Group basepluginpage = (Group) method2.invoke(pluginClass, "Product Name", "Total Sales", "Food Income", "Food ID", map);
+//        method.invoke(pluginClass, "Product Name", "Total Sales", "Food Income", "Food ID", map);
+//        Group basepluginpage = (Group) method2.invoke(pluginClass, "Product Name", "Total Sales", "Food Income", "Food ID", map);
 
-//        ChartPlugin chartPlugin = (ChartPlugin) pluginClass;
-
+        ChartPluginLineBar chartPlugin = (ChartPluginLineBar) pluginClass;
+        chartPlugin.showLineChart("Product Name", "Total Sales", "Food Income", "Food ID", map);
+        Group basepluginpage = chartPlugin.showBarChart("Product Name", "Total Sales", "Food Income", "Food ID", map);
 //        App.root.getChildren().add(basepluginpage);
 
         SideContainer sideContainer = new SideContainer();

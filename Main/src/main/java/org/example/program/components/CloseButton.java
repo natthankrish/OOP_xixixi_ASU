@@ -9,7 +9,7 @@ public class CloseButton extends Button {
     private ImageView img;
     public CloseButton() {
         super();
-        this.img = new ImageView("file:assets/Close.png");
+        this.img = new ImageView("file:Main/assets/Close.png");
         this.setStyle("""
             -fx-border-color: transparent;
             -fx-border-width: 0;

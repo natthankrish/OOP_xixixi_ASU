@@ -1,9 +1,8 @@
 package plugin;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.chart.*;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.stage.Screen;
+import org.example.program.topbar.TopContainer;
 
 import java.util.Map;
 
