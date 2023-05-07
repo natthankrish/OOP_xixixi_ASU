@@ -18,7 +18,7 @@ public class TopContainer extends Group {
         this.component = new Background(Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight() / 15, "#E4D0D0");
         this.getChildren().addAll(this.component, this.topbar);
 
-        this.logo = new NewImage("assets/logo/1.png");
+        this.logo = new NewImage("Main/assets/logo/1.png");
         this.logo.setDimension(this.component.getHeight() * 32 / 27, this.component.getHeight() * 2 / 3);
         this.logo.setPosition(this.component.getWidth() - (this.logo.getFitWidth() * 1.5), this.component.getHeight()/2 - this.logo.getFitHeight()/2);
         this.getChildren().add(this.logo);

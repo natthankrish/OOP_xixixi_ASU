@@ -2,16 +2,20 @@ package PluginPie;
 import javafx.scene.Group;
 import javafx.scene.chart.*;
 import javafx.stage.Screen;
+import javafx.util.Pair;
 import org.example.program.topbar.TopContainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.example.program.page.BasePage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.example.program.containers.*;
 import org.example.program.entities.Bill;
 import org.example.program.entities.ReceiptInfo;
+import org.example.program.entities.clients.Client;
 
 public class BasePlugin {
     public static BasePage page;
@@ -25,11 +29,11 @@ public class BasePlugin {
         loaded = true;
     }
 
-    public static void addPieChart(Manager manager) {
+    public static void addPieChartProduct(Manager manager) {
         // add the pie chart to the page
         Map<String, Double> map = new HashMap<>();
         PieChart pieChart = new PieChart();
-        pieChart.setTitle("Food Category");
+        pieChart.setTitle("Food Category Total Sales");
         TransactionContainer tc = manager.getTransactionContainer();
         InventoryContainer ic = manager.getInventoryContainer();
         for (Bill b : tc.getBuffer()) {
@@ -54,7 +58,56 @@ public class BasePlugin {
         }
         pieChart.getData().addAll(pieChartData);
         pieChart.setPrefSize(800,500);
-        pieChart.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 0.5 / 5);
+        pieChart.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 0);
+        pieChart.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
+        page.getChildren().add(pieChart);
+        System.out.println("adding pie chart");
+    }
+
+    public static void addPieChartClient(Manager manager) {
+        // add the pie chart to the page
+
+        List<Pair<String, Double>> purchaseList = new ArrayList<>();
+        TransactionContainer tc = manager.getTransactionContainer();
+        ClientContainer cc = manager.getClientContainer();
+        for (Client c : cc.getBuffer()) {
+            String clientName = c.getName();
+            Double value = 0.0;
+            for (Integer i : c.getTransactionHistory()) {
+                Bill b = tc.getBillById(i);
+                value += b.getTotalPrice();
+            }
+            purchaseList.add(new Pair<>(clientName, value));
+        }
+
+        // Get top 5
+        List<Pair<String, Double>> top5 = new ArrayList<>();
+        int iterate = 0;
+        if (purchaseList.size() < 5){
+            iterate = purchaseList.size();
+        } else {
+            iterate = 5;
+        }
+        for (int i = 0; i < )
+        for (int i = 0; i < purchaseList.size(); i++){
+            if (){}
+        }
+
+
+
+        PieChart pieChart = new PieChart();
+        pieChart.setTitle("Top Client's Purchase");
+
+        // Add data to the chart
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+        for (Map.Entry<String, Double> entry : map.entrySet()) {
+            String foodName = entry.getKey();
+            Double value = entry.getValue();
+            pieChartData.add(new PieChart.Data(foodName, value));
+        }
+        pieChart.getData().addAll(pieChartData);
+        pieChart.setPrefSize(800,500);
+        pieChart.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 0);
         pieChart.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 2 / 15);
         page.getChildren().add(pieChart);
         System.out.println("adding pie chart");
