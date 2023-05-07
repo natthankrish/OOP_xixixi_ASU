@@ -1,0 +1,172 @@
+[
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 25000.0,
+    "name": "Caramel Latte",
+    "active": true,
+    "id": 1,
+    "purchasePrice": 15000.0,
+    "stock": 10,
+    "category": "Coffee"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 25000.0,
+    "name": "Vanila Latte",
+    "active": true,
+    "id": 2,
+    "purchasePrice": 15000.0,
+    "stock": 5,
+    "category": "Coffee"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 18000.0,
+    "name": "Americano",
+    "active": true,
+    "id": 3,
+    "purchasePrice": 10000.0,
+    "stock": 8,
+    "category": "Coffee"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 28000.0,
+    "name": "Milk Tea",
+    "active": true,
+    "id": 4,
+    "purchasePrice": 20000.0,
+    "stock": 4,
+    "category": "Tea"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 15000.0,
+    "name": "Green Tea",
+    "active": true,
+    "id": 5,
+    "purchasePrice": 8000.0,
+    "stock": 20,
+    "category": "Tea"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 15000.0,
+    "name": "Earl Grey Tea",
+    "active": true,
+    "id": 6,
+    "purchasePrice": 9000.0,
+    "stock": 0,
+    "category": "Tea"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 12000.0,
+    "name": "Soy Milk",
+    "active": false,
+    "id": 7,
+    "purchasePrice": 7500.0,
+    "stock": 0,
+    "category": "Milk"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 15000.0,
+    "name": "Almond Milk",
+    "active": true,
+    "id": 8,
+    "purchasePrice": 10000.0,
+    "stock": 6,
+    "category": "Milk"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 30000.0,
+    "name": "Croissant",
+    "active": true,
+    "id": 9,
+    "purchasePrice": 20000.0,
+    "stock": 27,
+    "category": "Pastry"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 19000.0,
+    "name": "Croffle",
+    "active": false,
+    "id": 10,
+    "purchasePrice": 10000.0,
+    "stock": 0,
+    "category": "Pastry"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 24000.0,
+    "name": "Creme Brulee",
+    "active": true,
+    "id": 11,
+    "purchasePrice": 20000.0,
+    "stock": 10,
+    "category": "Custard"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 28000.0,
+    "name": "Pumpkin Flan",
+    "active": true,
+    "id": 12,
+    "purchasePrice": 19000.0,
+    "stock": 13,
+    "category": "Custard"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 29000.0,
+    "name": "Cheese Cake",
+    "active": true,
+    "id": 13,
+    "purchasePrice": 19500.0,
+    "stock": 8,
+    "category": "Cake"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 35000.0,
+    "name": "Red Velvet Cake",
+    "active": true,
+    "id": 14,
+    "purchasePrice": 24000.0,
+    "stock": 10,
+    "category": "Cake"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 40000.0,
+    "name": "Blackforest Cake",
+    "active": true,
+    "id": 15,
+    "purchasePrice": 28000.0,
+    "stock": 17,
+    "category": "Cake"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 24000.0,
+    "name": "Vanilla Milkshake",
+    "active": true,
+    "id": 16,
+    "purchasePrice": 18000.0,
+    "stock": 10,
+    "category": "Milk"
+  },
+  {
+    "image": "assets/products/No_Available_Image.jpg",
+    "price": 24000.0,
+    "name": "Strawberry Milkshake",
+    "active": true,
+    "id": 17,
+    "purchasePrice": 18000.0,
+    "stock": 10,
+    "category": "Milk"
+  }
+]
