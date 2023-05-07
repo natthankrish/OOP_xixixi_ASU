@@ -5,7 +5,6 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
-
 public class NewField extends VBox {
     private TextField textField;
     private StringProperty textProperty;
@@ -101,6 +100,10 @@ public class NewField extends VBox {
     public void setLayout(double x, double y) {
         this.setLayoutX(x);
         this.setLayoutY(y);
+    }
+
+    public TextField getTextField() {
+        return this.textField;
     }
 }
 

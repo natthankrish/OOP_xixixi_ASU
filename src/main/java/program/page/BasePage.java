@@ -17,4 +17,6 @@ public class BasePage extends Group {
     public void changeBackground(String hex) {
         this.background.changeBackground(hex);
     }
+
+    public void refreshData() {};
 }

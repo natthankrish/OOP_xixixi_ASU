@@ -8,17 +8,17 @@
         <purchasePrice>15000.0</purchasePrice>
         <category>Coffee</category>
         <image>assets/products/No_Available_Image.jpg</image>
-        <active>true</active>
+        <active>false</active>
     </Product>
     <Product>
         <id>2</id>
-        <stock>5</stock>
+        <stock>10</stock>
         <name>Vanila Latte</name>
-        <price>25000.0</price>
-        <purchasePrice>15000.0</purchasePrice>
+        <price>30000.0</price>
+        <purchasePrice>20000.0</purchasePrice>
         <category>Coffee</category>
         <image>assets/products/No_Available_Image.jpg</image>
-        <active>true</active>
+        <active>false</active>
     </Product>
     <Product>
         <id>3</id>
@@ -28,7 +28,7 @@
         <purchasePrice>10000.0</purchasePrice>
         <category>Coffee</category>
         <image>assets/products/No_Available_Image.jpg</image>
-        <active>true</active>
+        <active>false</active>
     </Product>
     <Product>
         <id>4</id>

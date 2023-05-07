@@ -109,6 +109,7 @@ public class App extends Application {
     public static void setPageBuffer(BasePage newPage) {
         App.root.getChildren().remove(App.page);
         App.page = newPage;
+        newPage.refreshData();
         App.root.getChildren().add(App.page);
     }
     @Override

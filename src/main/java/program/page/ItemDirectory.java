@@ -7,11 +7,13 @@ import javafx.stage.Screen;
 import program.components.*;
 import program.containers.Manager;
 import program.entities.Product;
+import lombok.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class ItemDirectory extends BasePage {
     private Group detailpage;
     private Group addItemPage;
@@ -22,6 +24,7 @@ public class ItemDirectory extends BasePage {
     private ScrollPanel buffer;
     private SearchBar searchBar;
     private ProductDetails currentDetails;
+    private int itemDetails;
 
     public ItemDirectory () {
         this.detailpage = new Group();
@@ -85,22 +88,106 @@ public class ItemDirectory extends BasePage {
             this.getChildren().remove(this.addItemPage);
             this.getChildren().add(this.detailpage);
         });
-
+        this.itemDetails = -1;
     }
 
     public void changeCurrentDetails(ProductDetails newDetails) {
-        this.detailpage.getChildren().remove(this.currentDetails);
+        if (this.currentDetails != null) {
+            this.detailpage.getChildren().remove(this.currentDetails);
+        }
         this.currentDetails = newDetails;
-        this.detailpage.getChildren().add(this.currentDetails);
+        if (newDetails != null) {
+            this.itemDetails = newDetails.getProductid();
+            this.detailpage.getChildren().add(this.currentDetails);
+        } else {
+            this.itemDetails = -1;
+        }
     }
 
     public void addProductItem(Product product) {
         ProductItem productItem = new ProductItem(product);
+        if (product.getId().equals(this.itemDetails)) {
+            this.changeCurrentDetails(productItem.getDetails());
+        }
         productItem.setOnMouseClicked(event -> {
             this.changeCurrentDetails(productItem.getDetails());
         });
+        productItem.getDetails().getNaAnymore().setOnMouseClicked(event -> {
+            this.buffer.removeItem(productItem);
+            this.changeCurrentDetails(null);
+            Manager m = Manager.getInstance();
+            m.getInventoryContainer().getProductById(product.getId()).setActive(false);
+        });
+        productItem.getDetails().getConfirmChanges().setOnMouseClicked(event -> {
+            boolean change = true;
+            int newStock = 0;
+            double newSellingPrice = 0, newPurchasedPrice = 0;
+            if (!productItem.getDetails().getStock().getTextField().getText().isEmpty()) {
+                try {
+                    newStock = Integer.parseInt(productItem.getDetails().getStock().getTextField().getText());
+                } catch (NumberFormatException e) {
+                    change = false;
+                }
+            }
+
+            if (!productItem.getDetails().getSellingPrice().getTextField().getText().isEmpty()) {
+                try {
+                    newSellingPrice = Double.parseDouble(productItem.getDetails().getSellingPrice().getTextField().getText());
+                } catch (NumberFormatException e) {
+                    change = false;
+                }
+            }
+
+            if (!productItem.getDetails().getPurchasedPrice().getTextField().getText().isEmpty()) {
+                try {
+                    newPurchasedPrice = Double.parseDouble(productItem.getDetails().getPurchasedPrice().getTextField().getText());
+                } catch (NumberFormatException e) {
+                    change = false;
+                }
+            }
+
+            if (change) {
+                Manager m = Manager.getInstance();
+                if (!productItem.getDetails().getStock().getTextField().getText().isEmpty()) {
+                    m.getInventoryContainer().getProductById(productItem.getDetails().getProductid()).setStock(newStock);
+                    productItem.getDetails().getStock().getTextField().clear();
+                }
+
+                if (!productItem.getDetails().getSellingPrice().getTextField().getText().isEmpty()) {
+                    m.getInventoryContainer().getProductById(productItem.getDetails().getProductid()).setPrice(newSellingPrice);
+                    productItem.getDetails().getSellingPrice().getTextField().clear();
+                }
+
+                if (!productItem.getDetails().getPurchasedPrice().getTextField().getText().isEmpty()) {
+                    m.getInventoryContainer().getProductById(productItem.getDetails().getProductid()).setPurchasePrice(newPurchasedPrice);
+                    productItem.getDetails().getPurchasedPrice().getTextField().clear();
+                }
+
+            }
+            this.changeCurrentDetails(null);
+            this.refreshData();
+        });
         this.buffer.addItem(productItem);
     }
+
+    @Override
+    public void refreshData() {
+        this.buffer.removeAll();
+        boolean change = false;
+        Manager m = Manager.getInstance();
+        for (Product item: this.data) {
+            if (item.getActive()) {
+                this.addProductItem(item);
+                if (item.getId() == this.itemDetails) {
+                    change = true;
+                }
+            }
+        }
+        if (!change) {
+            this.changeCurrentDetails(null);
+        }
+    }
+
 
 
 }

@@ -7,7 +7,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
+import program.containers.Manager;
 import program.entities.Product;
+import lombok.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,14 +19,15 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class ProductDetails extends ScrollPanel {
 
-    private Integer id;
+    private int productid;
     private NewField stock;
     private NewLabel name;
     private NewField purchasedPrice;
     private NewField sellingPrice;
-    private NewField category;
+    private NewLabel category;
     private NewButton status;
     private NewImage image;
 
@@ -34,6 +37,8 @@ public class ProductDetails extends ScrollPanel {
 
     public ProductDetails(Product product) {
         super(Screen.getPrimary().getVisualBounds().getWidth() * 5 / 16, Screen.getPrimary().getVisualBounds().getHeight() * 5 / 8);
+        this.productid = product.getId();
+
         this.buffer.setPadding(new Insets(30, this.getPrefWidth()/20, 30, this.getPrefWidth()/20));
         this.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() * 9 / 20);
         this.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 7 / 40);
@@ -102,7 +107,7 @@ public class ProductDetails extends ScrollPanel {
         label4.setPrefWidth(this.getPrefWidth()/2);
 
         List<String> wkwk = new ArrayList<>();
-        this.category = new NewField(product.getCategory(), this.getPrefWidth()/3, 40);
+        this.category = new NewLabel(product.getCategory(), 22, "#867070", 700);
         this.stock = new NewField(String.valueOf(product.getStock()), this.getPrefWidth()/3, 40);
         this.sellingPrice = new NewField(String.valueOf(product.getPrice()), this.getPrefWidth()/3, 40);
         this.purchasedPrice = new NewField(String.valueOf(product.getPurchasePrice()), this.getPrefWidth()/3, 40);

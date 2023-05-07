@@ -26,5 +26,12 @@ public class ScrollPanel extends ScrollPane {
     public void addItem(Node item) {
         this.buffer.getChildren().add(item);
     }
+    public void removeItem(Node item) {
+        this.buffer.getChildren().remove(item);
+    }
+
+    public void removeAll() {
+        this.buffer.getChildren().clear();
+    }
 
 }
