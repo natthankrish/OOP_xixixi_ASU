@@ -33,9 +33,12 @@ import java.util.Map;
 public class App extends Application {
     @Setter
     @Getter
-
     private static Adapter adapter;
+    @Setter
+    @Getter
     private static Group root;
+    @Setter
+    @Getter
     private static Group page;
     @Override
     public void start(Stage stage) throws Exception {
@@ -75,8 +78,8 @@ public class App extends Application {
         // How to call loadPlugin
         String cwd = System.getProperty("user.dir");
         Manager m = Manager.getInstance();
-        loadPlugin(cwd + "/Plugin/target/Plugin-1.0-SNAPSHOT.jar", topContainer, m);
-        loadPlugin(cwd + "/PluginChart2/target/PluginChart2-1.0-SNAPSHOT.jar", topContainer, m);
+//        loadPlugin(cwd + "/Plugin/target/Plugin-1.0-SNAPSHOT.jar", topContainer, m);
+//        loadPlugin(cwd + "/PluginChart2/target/PluginChart2-1.0-SNAPSHOT.jar", topContainer, m);
 
 
         // Show Main Window

@@ -11,6 +11,7 @@ module MainProgram {
     requires jakarta.xml.bind;
     requires kernel;
     requires layout;
+    requires io;
 
     opens org.example.program;
     opens org.example.program.containers to jakarta.xml.bind;
