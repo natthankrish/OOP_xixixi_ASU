@@ -35,7 +35,7 @@ public class TransactionContainer implements Serializable {
         amount--;
     }
 
-    public Bill getProductById(Integer id){
+    public Bill getBillById(Integer id){
         for (Bill obj : buffer){
             Integer tempID = obj.getIdBill();
             if (tempID.equals(id)){
@@ -45,12 +45,12 @@ public class TransactionContainer implements Serializable {
         return null;
     }
 
-    public void addProduct(Bill obj){
+    public void addBill(Bill obj){
         buffer.add(obj);
         amount++;
     }
 
-//    public void removeProduct(Integer id){
+//    public void removeBill(Integer id){
 //        int idx = 0;
 //        for (Bill obj : buffer){
 //            Integer tempID = obj.getIdBill();
