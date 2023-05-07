@@ -11,6 +11,7 @@
     <modules>
         <module>Main</module>
         <module>Plugin</module>
+        <module>PluginCurrency</module>
     </modules>
 
     <properties>
