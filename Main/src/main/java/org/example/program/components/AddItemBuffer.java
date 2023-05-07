@@ -31,7 +31,7 @@ public class AddItemBuffer extends Group {
     public AddItemBuffer() {
         this.bg = new Background(Screen.getPrimary().getVisualBounds().getWidth()*7/10, Screen.getPrimary().getVisualBounds().getHeight()/2, "#F5EBEB");
         this.getChildren().add(bg);
-        this.image = new NewImage("assets/products/No_Available_Image.jpg");
+        this.image = new NewImage("Main/assets/products/No_Available_Image.jpg");
 
         HBox hbox = new HBox();
         hbox.setAlignment(Pos.CENTER_LEFT);
@@ -45,7 +45,7 @@ public class AddItemBuffer extends Group {
             File filename = fd.showOpenDialog(null);
             if (filename != null) {
                 Path src = Paths.get(filename.getPath());
-                Path dest = Paths.get("assets/products/" + src.getFileName());
+                Path dest = Paths.get("Main/assets/products/" + src.getFileName());
                 File destFile = new File(dest.toString());
                 if (!destFile.exists()) {
                     try {
