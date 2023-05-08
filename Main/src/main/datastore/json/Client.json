@@ -19,7 +19,7 @@
   {
     "phoneNumber": "081121213030",
     "name": "Antonio Natthan Krishna",
-    "active": true,
+    "active": false,
     "transactionHistory": [
       3
     ],
@@ -30,12 +30,12 @@
   {
     "phoneNumber": "081245450088",
     "name": "Brigita Tri Carolina",
-    "active": false,
+    "active": true,
     "transactionHistory": [
       4
     ],
     "id": 4,
-    "type": "vip",
+    "type": "member",
     "point": 60000.0
   },
   {
@@ -46,7 +46,7 @@
       5
     ],
     "id": 5,
-    "type": "member",
+    "type": "vip",
     "point": 120000.0
   },
   {
@@ -68,7 +68,7 @@
       7
     ],
     "id": 7,
-    "type": "vip",
+    "type": "member",
     "point": 100000.0
   },
   {

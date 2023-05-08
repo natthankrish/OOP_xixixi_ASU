@@ -65,5 +65,17 @@
             <active>true</active>
         </type>
     </Client>
-    <Amount>7</Amount>
+    <Client>
+        <id>8</id>
+        <type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="customer"/>
+    </Client>
+    <Client>
+        <id>9</id>
+        <type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="customer"/>
+    </Client>
+    <Client>
+        <id>10</id>
+        <type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="customer"/>
+    </Client>
+    <Amount>10</Amount>
 </ClientContainer>
