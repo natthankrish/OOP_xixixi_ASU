@@ -72,7 +72,7 @@ public class DetailRegister extends BorderPane {
         dateText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15) );
         dateText.setFill(Color.web("#867070"));
 
-        Text idText = new Text("ID " + String.valueOf(id));
+        Text idText = new Text("ID" + String.valueOf(id));
         idText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
         idText.setFill(Color.web("#867070"));
 

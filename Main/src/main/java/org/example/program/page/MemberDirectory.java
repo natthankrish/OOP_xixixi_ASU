@@ -223,8 +223,8 @@ public class MemberDirectory extends BasePage {
                 });
             }
         }
-        this.searchBar = new NewField("Search", Screen.getPrimary().getVisualBounds().getWidth() * 3 / 16, 40);
-        this.searchBar.setLayoutX(100);
+        this.searchBar = new NewField("Search", 300, 40);
+        this.searchBar.setLayoutX(55);
         this.searchBar.setLayoutY(130);
         this.searchBar.setOnKeyReleased(event -> {
             this.cardContainer.getChildren().clear();
