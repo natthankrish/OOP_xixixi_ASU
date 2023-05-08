@@ -1,6 +1,10 @@
 package org.example.program.components;
 
+import java.util.ArrayList;
+
+import org.example.program.containers.Manager;
 import org.example.program.entities.bills.Bill;
+import org.example.program.entities.bills.Time;
 import org.example.program.entities.clients.Client;
 import org.example.program.entities.clients.VIP;
 import javafx.geometry.Insets;
@@ -10,17 +14,22 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import lombok.Getter;
 
 public class PaymentNominal extends BorderPane {
     private Bill bill;
     private Client client;
+    @Getter
     private Double customerPayNominal;
     private NewLabel customerPayNominalLabel;
+    @Getter                            
     private Double customerGetPoints = 0.0;
     private NewLabel customerGetPointsLabel;
     private NewLabel grandTotalNominal;
+    @Getter
+    CustomButton completePaymentButton;
     
-    public PaymentNominal(Bill bill, Client client, Double reducePoint){
+    public PaymentNominal(Bill bill, Client client){
         // set the labels;
         this.bill = bill;
         this.client = client;
@@ -38,7 +47,7 @@ public class PaymentNominal extends BorderPane {
         NewLabel grandTotalLabel = new NewLabel("Grand Total", 24, "#867070", 700 );
         NewLabel customerPayLabel = new NewLabel("Customer Pay", 24, "#867070", 700 );
 
-        CustomButton completePaymentButton = new CustomButton("Complete Payment", 24, "#F5EBEB", "#867070", "bold", 10, 10, 10, 10  );
+        this.completePaymentButton = new CustomButton("Complete Payment", 24, "#F5EBEB", "#867070", "bold", 10, 10, 10, 10  );
 
         // make border pane for each part
         BorderPane grandTotalPane = new BorderPane();
@@ -90,7 +99,6 @@ public class PaymentNominal extends BorderPane {
     public Double getCustomerPayNominal(){
         return this.customerPayNominal;
     }
-
     public void setCustomerGetPoints(Double newPoints){
         this.customerGetPoints = newPoints;
         this.customerGetPointsLabel.setText("CUSTOMER GET " + Double.toString(this.customerGetPoints) + " POINTS");

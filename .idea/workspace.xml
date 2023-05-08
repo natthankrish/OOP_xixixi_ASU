@@ -4,145 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03c77ed3-b304-43ce-ae21-6c2737c33aec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Main/assets/products/ふたり寄り添い.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/adapter/DataDriver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddNew.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddPaymentInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/Cart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ItemCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/PaymentNominal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/bills/Observer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/bills/ObserverXMLAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/bills/ReceiptInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/commodities/Commodity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/commodities/CommodityXMLAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/commodities/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/commodities/Subject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PluginCharges/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PluginCharges/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PluginCharges/src/main/java/pluginCharges/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PluginCurrency/src/main/java/pluginCurrency/Converter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PluginCurrency/src/main/java/pluginCurrency/PluginCurrency.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/obj/Client.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/obj/Client.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/obj/Inventory.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/obj/Inventory.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/obj/Transaction.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/obj/Transaction.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/xml/Inventory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/xml/Inventory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/xml/Transaction.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/xml/Transaction.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/adapter/JSONAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/adapter/JSONAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/adapter/XMLAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/adapter/XMLAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/BillCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/BillCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/ProductItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/SearchBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/SearchBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/containers/InventoryContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/containers/InventoryContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/containers/TransactionContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/containers/TransactionContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/bills/Bill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/ReceiptInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/bills/Time.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/clients/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/entities/clients/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BillHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BillHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/ItemDirectory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/SaleReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/SaleReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/Settings.java" afterDir="false" />
+    <list default="true" id="799669a7-646b-439c-b34d-4dda222764b1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Client.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Client.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Transaction.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Transaction.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/NewTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/test/PluginChart-1.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/src/main/java/plugin/BasePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/src/main/java/plugin/BasePlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PluginChart2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PluginChart2/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/BasePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/PluginChart2/src/main/java/PluginPie/BasePlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PluginCurrency/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PluginCurrency/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PluginCurrency/src/main/java/pluginCurrency/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/PluginCurrency/src/main/java/pluginCurrency/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/sidebar/ScrollTabPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/sidebar/ScrollTabPane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="1e459247-e6fa-41b6-8433-c2b1e224f0d7" />
-        <option name="url" value="https://github.com/natthankrish/OOP_xixixi_ASU.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="2PT1iLkiMg3OuibqnUYlMPpzadb" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Kuliah/Semester 4/OOP/temp/OOP_xixixi_ASU&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="DataDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.program.adapter.DataDriver" />
-      <module name="Main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.program.adapter.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+}]]></component>
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.program.Main" />
       <module name="Main" />
@@ -156,47 +40,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Unnamed" />
-      <item itemvalue="Application.DataDriver" />
-      <item itemvalue="Application.Main" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.DataDriver" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="fea4c96f-431b-4523-8385-8774328b4c5c" name="Changes" comment="" />
-      <created>1683466386112</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1683466386112</updated>
-      <workItem from="1682922297446" duration="17100000" />
-      <workItem from="1683368468940" duration="61136000" />
-      <workItem from="1683464921398" duration="479000" />
-      <workItem from="1683465445428" duration="526000" />
-      <workItem from="1683465998725" duration="480000" />
-      <workItem from="1683488919054" duration="3860000" />
-      <workItem from="1683465998725" duration="4907000" />
-      <workItem from="1683466388348" duration="809000" />
-      <workItem from="1683467211107" duration="147000" />
-      <workItem from="1683467371876" duration="2181000" />
-      <workItem from="1683491723770" duration="5000" />
-      <workItem from="1683491734335" duration="44000" />
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
 </project>

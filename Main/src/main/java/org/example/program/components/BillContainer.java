@@ -14,14 +14,14 @@ public class BillContainer extends BorderPane{
     private VBox contentPane;
 
     public BillContainer(){
-        this.titleLabel = new NewLabel("", 44, "#867070", 700);
-
+        this.setStyle("""
+        -fx-background-color: WHITE;
+        """);
         this.contentPane = new VBox(10);
-
         ScrollPane scrollPane = new ScrollPane(contentPane);
-
-        scrollPane.setPrefHeight(520);
-        scrollPane.setFitToWidth(true);
+        scrollPane.setStyle("""
+        -fx-background-color: WHITE;
+        """);
 
         VBox container = new VBox(5, this.titleLabel, scrollPane);
         container.setAlignment(Pos.TOP_LEFT);
@@ -31,18 +31,23 @@ public class BillContainer extends BorderPane{
     }
 
     public BillContainer(List<BillCard> cards) {
-        this.titleLabel = new NewLabel("", 44, "#867070", 700);
-
-        this.contentPane = new VBox(10);
+        this.setStyle("""
+        -fx-background-color: WHITE;
+        """);
+        this.contentPane = new VBox(2);
 
         contentPane.getChildren().addAll(cards);
 
         ScrollPane scrollPane = new ScrollPane(contentPane);
-        scrollPane.setPrefHeight(520);
+        scrollPane.setStyle("""
+        -fx-background-color: WHITE;
+        -fx-background: WHITE;
+        """);
+        scrollPane.setPrefHeight(585);
         scrollPane.setFitToWidth(true);
 
 
-        VBox container = new VBox(5, this.titleLabel, scrollPane);
+        VBox container = new VBox(0, scrollPane);
         container.setAlignment(Pos.TOP_LEFT);
 
         setCenter(container);

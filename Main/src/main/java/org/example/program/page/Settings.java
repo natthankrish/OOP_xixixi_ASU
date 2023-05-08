@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -14,6 +15,10 @@ import javafx.stage.Screen;
 import lombok.Getter;
 import lombok.Setter;
 import org.controlsfx.tools.Borders;
+import org.example.program.containers.Manager;
+import org.example.program.plugin.Loader;
+import org.example.program.plugin.Plugin;
+import org.example.program.topbar.TopContainer;
 import org.json.XML;
 import org.example.program.App;
 import org.example.program.adapter.Adapter;
@@ -92,24 +97,77 @@ class TopRight extends GridPane {
         pathLabel.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 80);
         ChooseFileButton pathButton = new ChooseFileButton("Choose Plugin File");
 
-        NewLabel pluginLabel = new NewLabel("Plugin Name", 22, "#867070", 700);
-        pluginLabel.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 80);
+//        NewLabel pluginLabel = new NewLabel("Plugin Name", 22, "#867070", 700);
+//        pluginLabel.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 80);
 
         SettingsTextField pluginName = new SettingsTextField("Enter plugin name here");
         pluginName.setPrefWidth(pathButton.getPrefWidth());
 
         SettingButton addButton = new SettingButton("Add Plugin");
+        addButton.setOnMouseClicked(event -> {
+            String path = pathButton.getPath();
+            if (path == null) {
+                return;
+            }
+
+            for (Node node : App.getRoot().getChildren()) {
+                if (node instanceof TopContainer) {
+                    try {
+                        loadPlugin(path, (TopContainer) node, Manager.getInstance());
+                        break;
+                    } catch (Exception err) {
+                        err.printStackTrace();
+                    }
+                }
+            }
+        });
 
         HBox body = new HBox(10, pathLabel, pathButton);
-        HBox body2 = new HBox(10, pluginLabel, pluginName);
+//        HBox body2 = new HBox(10, pluginLabel, pluginName);
 
-        VBox container = new VBox(10, title, body, body2, addButton);
+        VBox container = new VBox(10, title, body, addButton);
         container.setAlignment(Pos.CENTER);
         container.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 13/ 40);
         container.setSpacing(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 200);
         container.setPadding(new Insets(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 200));
 
         this.add(container, 0, 0);
+    }
+    public ArrayList<Class<?>> loadPlugin(String jarPath, TopContainer topContainer, Manager manager) throws Exception {
+        Loader jarLoader = new Loader();
+        ArrayList<Class<?>> classes = jarLoader.loadJarFile(jarPath);
+        Object pluginClass = null;
+        for (Class<?> clazz: classes) {
+            ArrayList<String> interfaceName = getInterfaceName(clazz);
+            for (String interfacez : interfaceName) {
+                if (interfacez.equals("Plugin")) {
+                    System.out.println("Equal Plugin Class  :  " + clazz.getName());
+                    pluginClass = clazz.getDeclaredConstructor().newInstance();
+                    break;
+                }
+            }
+        }
+        if (pluginClass == null) {
+            System.out.println("Jar file not found");
+        } else {
+            Plugin pluginInstance = (Plugin) pluginClass;
+            pluginInstance.setup(topContainer, manager);
+        }
+        return jarLoader.loadJarFile(jarPath);
+    }
+    public ArrayList<String> getInterfaceName(Class clazz) {
+        Class<?>[] interfaces = clazz.getInterfaces();
+        ArrayList<String> interfaceName = new ArrayList<>();
+        for (Class interfacez : interfaces) {
+            int index = interfacez.getName().lastIndexOf(".");
+            if (index >= 0) {
+                String newName = interfacez.getName().substring(index + 1);
+                interfaceName.add(newName);
+            } else {
+                interfaceName.add(interfacez.getName());
+            }
+        }
+        return interfaceName;
     }
 }
 
@@ -237,9 +295,12 @@ class PluginSetting extends VBox {
         this.setPadding(new Insets(Screen.getPrimary().getVisualBounds().getHeight() * 6/ 200));
     }
 
+
 }
 
 class ChooseFileButton extends Button {
+    @Getter
+    @Setter
     private String path;
     ChooseFileButton(String placeHolder) {
         this.setText(placeHolder);
@@ -281,8 +342,19 @@ class SettingButton extends Button {
             -fx-font-weight: bold;
             -fx-background-radius: 9;
         """);
-
         this.setText(title);
+        ScaleTransition scaleTransition = new ScaleTransition(new Duration(0.2), this);
+        scaleTransition.setFromX(1);
+        scaleTransition.setFromY(1);
+        scaleTransition.setToX(0.8);
+        scaleTransition.setToY(0.8);
+        scaleTransition.setAutoReverse(true);
+        this.setOnMousePressed(event -> scaleTransition.playFromStart());
+        this.setOnMouseReleased(event -> {
+            scaleTransition.stop();
+            this.setScaleX(1);
+            this.setScaleY(1);
+        });
     }
 }
 

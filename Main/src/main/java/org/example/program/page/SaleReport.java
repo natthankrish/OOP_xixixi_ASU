@@ -12,6 +12,7 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import org.example.program.containers.Manager;
 import org.example.program.entities.bills.Bill;
 import org.example.program.entities.bills.Time;
@@ -23,16 +24,16 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SaleReport extends BasePage {
-    public SaleReport() {
-        this.setStyle("""
-        -fx-background-color: white;
-        """);
-        export("Main/assets/CurrentReport.pdf");
-    }
-
-    private void export(String path) {
+public class SaleReport {
+    public static void export() {
         try {
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            File selectedDirectory = directoryChooser.showDialog(null);
+            if (selectedDirectory == null) {
+                return;
+            }
+
+            String path = selectedDirectory.getPath() + File.separator + "SalesReport.pdf";
             PdfWriter pdfWriter = new PdfWriter(path);
             PdfDocument pdfDocument = new PdfDocument(pdfWriter);
             Document document = new Document(pdfDocument);
