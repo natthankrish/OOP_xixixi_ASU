@@ -73,7 +73,7 @@ public class RegisterMember extends BasePage {
 
                     DetailRegister newDetails = new DetailRegister(client.getName(),client.getId(), client.getPhoneNumber(), client.getType(), client.getTransactionHistory().size(),tgl.getStringTime(),tot);
                     this.getChildren().remove(this.currentDetails);
-                    this.currentDetails= newDetails;
+                    this.currentDetails = newDetails;
                     this.currentDetails.setLayout(770,180);
                     this.getChildren().add(this.currentDetails);
 

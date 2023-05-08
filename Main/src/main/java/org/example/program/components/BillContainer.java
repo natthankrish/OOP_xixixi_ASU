@@ -5,8 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-
-
+import javafx.stage.Screen;
 
 
 public class BillContainer extends BorderPane{
@@ -37,13 +36,14 @@ public class BillContainer extends BorderPane{
         this.contentPane = new VBox(2);
 
         contentPane.getChildren().addAll(cards);
+        contentPane.setSpacing(10);
+        contentPane.setPrefSize(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8, Screen.getPrimary().getVisualBounds().getHeight() * 5 / 8);
 
         ScrollPane scrollPane = new ScrollPane(contentPane);
         scrollPane.setStyle("""
         -fx-background-color: WHITE;
         -fx-background: WHITE;
         """);
-        scrollPane.setPrefHeight(585);
         scrollPane.setFitToWidth(true);
 
 
@@ -51,7 +51,6 @@ public class BillContainer extends BorderPane{
         container.setAlignment(Pos.TOP_LEFT);
 
         setCenter(container);
-        setPrefWidth(470);
     }
 
     public void addBillCard(BillCard BillCard) {

@@ -1,7 +1,7 @@
 [
   {
     "image": "Main/assets/products/No_Available_Image.jpg",
-    "price": 25000.0,
+    "price": 27000.0,
     "name": "Caramel Latte",
     "active": true,
     "id": 1,
@@ -10,7 +10,7 @@
     "category": "Coffee"
   },
   {
-    "image": "Main/assets/products/No_Available_Image.jpg",
+    "image": "Main\\assets\\products\\images.png",
     "price": 25000.0,
     "name": "Vanila Latte",
     "active": true,
@@ -111,7 +111,7 @@
   },
   {
     "image": "Main/assets/products/No_Available_Image.jpg",
-    "price": 28000.0,
+    "price": 30000.0,
     "name": "Pumpkin Flan",
     "active": true,
     "id": 12,
