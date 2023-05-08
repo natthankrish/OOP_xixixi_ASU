@@ -25,15 +25,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SaleReport {
-    public static void export() {
+    public static void export(String path) {
         try {
-            DirectoryChooser directoryChooser = new DirectoryChooser();
-            File selectedDirectory = directoryChooser.showDialog(null);
-            if (selectedDirectory == null) {
-                return;
-            }
-
-            String path = selectedDirectory.getPath() + File.separator + "SalesReport.pdf";
             PdfWriter pdfWriter = new PdfWriter(path);
             PdfDocument pdfDocument = new PdfDocument(pdfWriter);
             Document document = new Document(pdfDocument);

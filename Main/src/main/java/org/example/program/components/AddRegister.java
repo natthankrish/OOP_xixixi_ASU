@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 
 public class AddRegister extends BorderPane{
     CustomButton confirm;
@@ -26,20 +27,20 @@ public class AddRegister extends BorderPane{
                        String phone)
     {
         this.confirm = new CustomButton("Confirm Registration",14,"#FFFFFF","#867070", "bold", 10,10,10,10);
-        this.name = new NewLabel(name,24, "#867070",700);
-        this.phone = new NewLabel(phone, 24, "#867070", 700);
+        this.name = new NewLabel(name,21, "#867070",700);
+        this.phone = new NewLabel(phone, 21, "#867070", 700);
 //        this.customerName = new NewField(50,20,"#867070","#FFFFFF",20);
 //        this.phoneNumber = new NewField(50, 20, "#867070","#FFFFFF",20);
         this.customerName = new NewField("Your Name...", 100,20);
         this.phoneNumber = new NewField("Your Phone Number...", 100,20);
-        setPadding(new Insets(10));
+        setPadding(new Insets(30));
         setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.CENTER_LEFT);
 
         // Set the preferred width and height of the card
-        setPrefSize(394, 225);
+        setPrefSize(Screen.getPrimary().getVisualBounds().getWidth() * 5 / 16, Screen.getPrimary().getVisualBounds().getHeight() * 3 / 16);
 
         vBox.getChildren().addAll(this.name, this.customerName, this.phone, this.phoneNumber, this.confirm);
         setCenter(vBox);

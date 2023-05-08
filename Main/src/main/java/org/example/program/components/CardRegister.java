@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 
 
 import java.util.Date;
@@ -33,7 +34,7 @@ public class CardRegister extends BorderPane {
         setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 
         // Set the preferred width and height of the card
-        setPrefSize(457, 80);
+        setPrefSize(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8, 80);
 
         // Set up the item name and quantity
         Text ID = new Text("Customer {" + String.valueOf(id) + "}");

@@ -70,6 +70,7 @@ public class BillHistory extends BasePage {
         refreshContainer(-1);
         HBox hlayout = new HBox(40, leftLayout, rightLayout);
         VBox layout = new VBox(10, title, hlayout);
+        layout.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() / 20);
         layout.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth()/20);
         this.getChildren().add(layout);
     }
@@ -143,21 +144,15 @@ class BillInfo extends BorderPane {
     public BillInfo() {
         this.setStyle("""
             -fx-background-color: transparent;
-            -fx-min-height: 470;
-            -fx-max-height: 470;
-            -fx-min-width: 432;
-            -fx-max-width: 432;
         """);
+        this.setPrefSize(Screen.getPrimary().getVisualBounds().getWidth() * 2 / 8, Screen.getPrimary().getVisualBounds().getHeight() * 5 / 8);
     }
     public BillInfo(int idBill) {
         this.setStyle("""
             -fx-background-color: #F5EBEB;
             -fx-background-radius: 16;
-            -fx-min-height: 630;
-            -fx-max-height: 630;
-            -fx-min-width: 432;
-            -fx-max-width: 432;
         """);
+        this.setPrefSize(Screen.getPrimary().getVisualBounds().getWidth() * 2 / 8, Screen.getPrimary().getVisualBounds().getHeight() * 5 / 8);
 
 
         this.bill = Manager.getInstance().getTransactionContainer().getBillById(idBill);
@@ -180,7 +175,16 @@ class BillInfo extends BorderPane {
             File selectedDirectory = directoryChooser.showDialog(null);
             if (selectedDirectory != null) {
                 String filePath = selectedDirectory.getPath() + File.separator + "invoice" + this.bill.getIdBill() + ".pdf";
-                this.export(filePath);
+                Thread printThread = new Thread(()->{
+                    try {
+                        Thread.sleep(10000);
+                        this.export(filePath);
+                    } catch (Exception err) {
+                        err.printStackTrace();
+                    }
+                });
+                printThread.start();
+
             }
         });
 
@@ -318,7 +322,7 @@ class ReceiptCard extends BorderPane {
 
         setBackground(new javafx.scene.layout.Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 
-        setPrefSize(457, 80);
+        setPrefSize(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8, 80);
 
         setPadding(new Insets(10));
 
@@ -361,15 +365,16 @@ class ReceiptScroll extends BorderPane{
         this.contentPane = new VBox(2);
 
         ScrollPane scrollPane = new ScrollPane(contentPane);
+        scrollPane.setStyle("-fx-background:white;-fx-background-color:transparent;");
 
-        scrollPane.setPrefHeight(500);
+        scrollPane.setPrefHeight(Screen.getPrimary().getVisualBounds().getHeight() * 5 / 8);
         scrollPane.setFitToWidth(true);
 
         VBox container = new VBox(5, this.titleLabel, scrollPane);
         container.setAlignment(Pos.TOP_LEFT);
 
         setCenter(container);
-        setPrefWidth(470);
+        setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8);
     }
 
     public ReceiptScroll(List<ReceiptCard> cards) {
@@ -416,7 +421,7 @@ class PriceCard extends BorderPane {
 
         setBackground(new javafx.scene.layout.Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 
-        setPrefSize(457, 80);
+        setPrefSize(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8, 70);
         setPadding(new Insets(10));
 
         VBox leftBox = new VBox(5, taxLabel, serviceChargeLabel);

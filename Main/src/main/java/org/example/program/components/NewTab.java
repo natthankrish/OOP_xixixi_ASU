@@ -6,12 +6,15 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.program.App;
 import org.example.program.containers.Manager;
 import org.example.program.entities.bills.Bill;
 import org.example.program.page.*;
+
+import java.io.File;
 
 @Setter
 @Getter
@@ -143,7 +146,21 @@ public class NewTab extends HBox {
             this.textButton = "Settings";
             this.page = new Settings();
         } else if (tabText.equals("Sales Report")) {
-            SaleReport.export();
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            File selectedDirectory = directoryChooser.showDialog(null);
+            if (selectedDirectory == null) {
+                return;
+            }
+            String path = selectedDirectory.getPath() + File.separator + "SalesReport.pdf";
+            Thread printThread = new Thread(()->{
+                try {
+                    Thread.sleep(10000);
+                    SaleReport.export(path);
+                } catch (Exception err) {
+                    err.printStackTrace();
+                }
+            });
+            printThread.start();
         } else if (tabText.equals("Bill History")) {
             this.page = new BillHistory();
         }

@@ -25,11 +25,13 @@
       {
         "quantity": 1,
         "subtotal": 25000.0,
+        "isValid": true,
         "idProduct": 2
       },
       {
         "quantity": 3,
         "subtotal": 72000.0,
+        "isValid": true,
         "idProduct": 11
       }
     ],
@@ -115,11 +117,12 @@
   },
   {
     "idClient": 7,
-    "totalPrice": 63000.0,
+    "totalPrice": 95000.0,
     "receipt": [
       {
-        "quantity": 1,
-        "subtotal": 28000.0,
+        "quantity": 2,
+        "subtotal": 60000.0,
+        "isValid": true,
         "idProduct": 12
       },
       {
@@ -149,8 +152,21 @@
   },
   {
     "idClient": -1,
-    "totalPrice": 0.0,
-    "receipt": [],
+    "totalPrice": 111000.0,
+    "receipt": [
+      {
+        "quantity": 3,
+        "subtotal": 81000.0,
+        "isValid": true,
+        "idProduct": 1
+      },
+      {
+        "quantity": 1,
+        "subtotal": 30000.0,
+        "isValid": true,
+        "idProduct": 9
+      }
+    ],
     "transactionTime": "8/4/2023/6:4:13",
     "isFixed": false,
     "idBill": 1
