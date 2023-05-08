@@ -180,7 +180,16 @@ class BillInfo extends BorderPane {
             File selectedDirectory = directoryChooser.showDialog(null);
             if (selectedDirectory != null) {
                 String filePath = selectedDirectory.getPath() + File.separator + "invoice" + this.bill.getIdBill() + ".pdf";
-                this.export(filePath);
+                Thread printThread = new Thread(()->{
+                    try {
+                        Thread.sleep(10000);
+                        this.export(filePath);
+                    } catch (Exception err) {
+                        err.printStackTrace();
+                    }
+                });
+                printThread.start();
+
             }
         });
 
