@@ -6,6 +6,8 @@ import org.example.program.containers.Manager;
 import org.example.program.entities.bills.Bill;
 import org.example.program.entities.clients.Client;
 import org.example.program.entities.clients.Member;
+import org.example.program.entities.clients.VIP;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.Background;
@@ -18,12 +20,20 @@ import javafx.scene.paint.Color;
 import lombok.Getter;
 
 public class AddPaymentInfo extends BorderPane {
+    @Getter
     private Bill bill;
     @Getter
     private Client client;
     @Getter
     private Double reducePoints;
     public CheckBox pointsCheckBox;
+    @Getter
+    private CustomButton addButton;
+
+    private NewLabel IDCustomerField;
+    private NewLabel customerNameField;
+    private NewLabel statusField;
+    private NewLabel pointsField;
 
     public AddPaymentInfo(Bill bill, Client client, Double reducePoints, PaymentNominal paymentNominal){
         
@@ -37,11 +47,23 @@ public class AddPaymentInfo extends BorderPane {
         NewLabel statusLabel = new NewLabel("Status", 20, "#867070", 700);
         NewLabel pointsLabel = new NewLabel("Point", 20, "#867070", 700);
 
-        // set up the fields
-        NewLabel IDCustomerField = new NewLabel(" ", 16, "#867070", 700);
-        NewLabel customerNameField = new NewLabel(" ", 16, "#867070", 700);
-        NewLabel statusField = new NewLabel(" ", 16, "#867070", 700);
-        NewLabel pointsField = new NewLabel(" ", 16, "#867070", 700);
+        if (this.client == null ) {
+            // set up the fields
+            this.IDCustomerField = new NewLabel(" ", 16, "#867070", 700);
+            this.customerNameField = new NewLabel(" ", 16, "#867070", 700);
+            this.statusField = new NewLabel(" ", 16, "#867070", 700);
+            this.pointsField = new NewLabel(" ", 16, "#867070", 700);
+        } else {
+            // set up the fields
+            this.IDCustomerField = new NewLabel(Integer.toString(this.client.getId()), 16, "#867070", 700);
+            this.customerNameField = new NewLabel(this.client.getName(), 16, "#867070", 700);
+            if (this.client.getType() instanceof VIP){
+                this.statusField = new NewLabel("VIP", 16, "#867070", 700);
+            } else {
+                this.statusField = new NewLabel("Member", 16, "#867070", 700);
+            }
+            this.pointsField = new NewLabel(Double.toString(this.client.getPoint()), 16, "#867070", 700);
+        }
 
         BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(213, 180, 180, 0.3), new CornerRadii(30), Insets.EMPTY);
         Background bg = new Background(backgroundFill);
@@ -70,7 +92,7 @@ public class AddPaymentInfo extends BorderPane {
 
         NewLabel usePointsLabel = new NewLabel("Use Points", 20, "#867070", 700);
         this.pointsCheckBox = new CheckBox("");
-        pointsCheckBox.setDisable(true);
+        pointsCheckBox.setDisable(this.client == null);
         HBox usePointsBox = new HBox(10, pointsCheckBox, usePointsLabel);
 
         
@@ -88,7 +110,7 @@ public class AddPaymentInfo extends BorderPane {
         }
         
         SearchBar searchBar = new SearchBar(searchItems);
-        CustomButton addButton = new CustomButton("add", 16, "#F5EBEB", "#867070", "bold", 10, 10, 10, 10);
+        this.addButton = new CustomButton("add", 16, "#F5EBEB", "#867070", "bold", 10, 10, 10, 10);
         HBox searchBox = new HBox(5, searchBar, addButton);
 
         VBox container = new VBox(5);
@@ -133,6 +155,7 @@ public class AddPaymentInfo extends BorderPane {
                 pointsCheckBox.setDisable(true);             
             }
         });
+        
         
         pointsCheckBox.setOnAction(event -> {
             if (pointsCheckBox.isSelected()) {

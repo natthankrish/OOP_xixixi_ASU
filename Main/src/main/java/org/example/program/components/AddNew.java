@@ -144,6 +144,14 @@ public class AddNew extends BorderPane {
                     bill.recalculateTotalPrice();
                     cart.addItemCard(receipt);   
                 }
+                product = null;   
+                IDItemField.setText("");
+                itemNameField.setText("");
+                categoryField.setText("");
+                priceEachNumberLabel.setText("IDR ");
+                quantity = 0;
+                quantityNumberLabel.setText("");
+                priceTotalNumberLabel.setText("IDR " );
             }
         });
 

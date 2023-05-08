@@ -95,4 +95,7 @@ public class TransactionContainer implements Serializable {
         }
         return min;
     }
+    public void removeBillByID(Integer id){
+        buffer.removeIf(obj -> obj.getIdBill().equals(id));
+    }
 }
