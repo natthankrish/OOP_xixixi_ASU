@@ -10,6 +10,7 @@ import javafx.stage.DirectoryChooser;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.program.App;
+import org.example.program.containers.Manager;
 import org.example.program.entities.bills.Bill;
 import org.example.program.page.*;
 
@@ -116,6 +117,13 @@ public class NewTab extends HBox {
                 NewTab.currentTab.process(width, true);
             }
 
+            if(this.page instanceof Transaction){
+                Manager m = Manager.getInstance();
+                Transaction p = (Transaction) this.page;
+                if (!p.getBill().getIsFixedBill()){
+                    m.getTransactionContainer().removeBillByID(p.getBill().getIdBill());
+                }
+            }
         });
 
         NewTab.closeAllButton.setOnMouseClicked(event -> {

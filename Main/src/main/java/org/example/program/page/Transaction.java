@@ -6,6 +6,7 @@ import org.example.program.components.AddNew;
 import org.example.program.components.AddPaymentInfo;
 import org.example.program.components.Cart;
 import org.example.program.components.CustomButton;
+import org.example.program.components.NewImage;
 import org.example.program.components.NewLabel;
 import org.example.program.components.PaymentNominal;
 import org.example.program.containers.Manager;
@@ -17,13 +18,18 @@ import org.example.program.entities.clients.VIP;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import lombok.Getter;
+import lombok.Setter;
 
 public class Transaction extends BasePage {
+    @Getter @Setter
     private Client client;
     @Getter
     private Bill bill;
+    @Getter @Setter
     private Double reducePoints = 0.0;
+    @Getter @Setter
     private Double customerRewardPoints = 0.0;
+    @Getter @Setter
     private Double customerPayNominal = 0.0;
     private Cart cart;
     private VBox rightSide;
@@ -33,7 +39,7 @@ public class Transaction extends BasePage {
         Manager m = Manager.getInstance();
         Time time = new Time();
         time.updateCurrentTime();
-        this.bill = new Bill(m.getTransactionContainer().getMinID(), -1, new ArrayList<>(), 0.0, false, time);
+        this.bill = new Bill(m.getTransactionContainer().getMinID() - 1, -1, new ArrayList<>(), 0.0, false, time);
         m.getTransactionContainer().addBill(bill);
         this.changeBackground("white");
         
@@ -112,29 +118,57 @@ public class Transaction extends BasePage {
         });
         
         paymentNominal.getCompletePaymentButton().setOnAction(event -> {
-            System.out.println("Data: ");
+            // System.out.println("Data: ");
             this.client = addPaymentInfo.getClient();
             this.customerPayNominal = paymentNominal.getCustomerPayNominal();
             this.customerRewardPoints = paymentNominal.getCustomerGetPoints();
             this.reducePoints = addPaymentInfo.getReducePoints();
             this.bill.setIdBill(m.getTransactionContainer().getMaxID());
-            this.bill.setIdClient(client.getId());
-            System.out.println("User : " + this.client.getName());
-            System.out.println("Point Used : " + this.reducePoints);
-            System.out.println("Point Get : " + this.customerRewardPoints);
-            System.out.println("Grand total : " + this.bill.getTotalPrice());
-            System.out.println("Customer pay : " + this.customerPayNominal);
+            if (this.client == null) {
+                this.bill.setIdClient(-1);
+            } else {
+                this.bill.setIdClient(client.getId());
+            }
+
             time.updateCurrentTime();
-            this.bill.setTransactionTime(time);
-            this.bill.setFixed();
-            m.getClientContainer().getClientById(client.getId()).addTransaction(this.bill.getIdBill());
-            m.getClientContainer().getClientById(client.getId()).setPoint(client.getPoint() - this.reducePoints + this.customerRewardPoints);
+            if (this.bill.getTotalPrice() != 0) {
+                this.bill.setTransactionTime(time);
+                this.bill.setFixed();
+                if (this.client != null) {
+                    m.getClientContainer().getClientById(this.bill.getIdClient()).addTransaction(this.bill.getIdBill());
+                    m.getClientContainer().getClientById(this.bill.getIdClient()).setPoint(client.getPoint() - this.reducePoints + this.customerRewardPoints);
+                } else {
+                    List<Integer> transactionHistory = new ArrayList<Integer>();
+                    transactionHistory.add(this.bill.getIdBill());
+                    Client client = new Client(m.getClientContainer().getMaxID()+1, transactionHistory, null);
+                    client.makeClientACustomer();
+                    m.getClientContainer().addClient(client);
+                    m.getClientContainer().getClientById(client.getId()).addTransaction(this.bill.getIdBill());
+                }
+                this.getChildren().removeAll(addPaymentInfo, backButton, paymentNominal);  
+                
+                NewImage logo = new NewImage("Main/assets/logo/1.png");
+                double dim = Screen.getPrimary().getVisualBounds().getHeight() * 5 / 30;
+                logo.setDimension(dim * 16 / 9, dim);
+                logo.setPosition(Screen.getPrimary().getVisualBounds().getWidth() / 20, Screen.getPrimary().getVisualBounds().getHeight() * 3 / 30);
+                this.getChildren().add(logo);
+
+                NewLabel productName = new NewLabel("Hooray! Transaction Completed!", 75, "#867070", 700);
+                productName.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 10);
+                productName.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 4 / 15);
+                this.getChildren().add(productName);
+
+            }
         });
     }
 
     public Transaction(Bill bill) {
-        this.client = null;
         Manager m = Manager.getInstance();
+        if (bill.getIdClient() != -1){
+            this.client = m.getClientContainer().getClientById(bill.getIdClient());
+        } else {
+            this.client = null;
+        }
         Time time = new Time();
         time.updateCurrentTime();
         this.bill = bill;
@@ -215,23 +249,47 @@ public class Transaction extends BasePage {
         });
 
         paymentNominal.getCompletePaymentButton().setOnAction(event -> {
-            System.out.println("Data: ");
+            // System.out.println("Data: ");
             this.client = addPaymentInfo.getClient();
             this.customerPayNominal = paymentNominal.getCustomerPayNominal();
             this.customerRewardPoints = paymentNominal.getCustomerGetPoints();
             this.reducePoints = addPaymentInfo.getReducePoints();
             this.bill.setIdBill(m.getTransactionContainer().getMaxID());
-            this.bill.setIdClient(client.getId());
-            System.out.println("User : " + this.client.getName());
-            System.out.println("Point Used : " + this.reducePoints);
-            System.out.println("Point Get : " + this.customerRewardPoints);
-            System.out.println("Grand total : " + this.bill.getTotalPrice());
-            System.out.println("Customer pay : " + this.customerPayNominal);
+            if (this.client == null) {
+                this.bill.setIdClient(-1);
+            } else {
+                this.bill.setIdClient(client.getId());
+            }
+
             time.updateCurrentTime();
-            this.bill.setTransactionTime(time);
-            this.bill.setFixed();
-            m.getClientContainer().getClientById(client.getId()).addTransaction(this.bill.getIdBill());
-            m.getClientContainer().getClientById(client.getId()).setPoint(client.getPoint() - this.reducePoints + this.customerRewardPoints);
+            if (this.bill.getTotalPrice() != 0) {
+                this.bill.setTransactionTime(time);
+                this.bill.setFixed();
+                if (this.client != null) {
+                    m.getClientContainer().getClientById(this.bill.getIdClient()).addTransaction(this.bill.getIdBill());
+                    m.getClientContainer().getClientById(this.bill.getIdClient()).setPoint(client.getPoint() - this.reducePoints + this.customerRewardPoints);
+                } else {
+                    List<Integer> transactionHistory = new ArrayList<Integer>();
+                    transactionHistory.add(this.bill.getIdBill());
+                    Client client = new Client(m.getClientContainer().getMaxID()+1, transactionHistory, null);
+                    client.makeClientACustomer();
+                    m.getClientContainer().addClient(client);
+                    m.getClientContainer().getClientById(client.getId()).addTransaction(this.bill.getIdBill());
+                }
+                this.getChildren().removeAll(addPaymentInfo, backButton, paymentNominal);  
+                
+                NewImage logo = new NewImage("Main/assets/logo/1.png");
+                double dim = Screen.getPrimary().getVisualBounds().getHeight() * 5 / 30;
+                logo.setDimension(dim * 16 / 9, dim);
+                logo.setPosition(Screen.getPrimary().getVisualBounds().getWidth() / 20, Screen.getPrimary().getVisualBounds().getHeight() * 3 / 30);
+                this.getChildren().add(logo);
+
+                NewLabel productName = new NewLabel("Hooray! Transaction Completed!", 75, "#867070", 700);
+                productName.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 10);
+                productName.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 4 / 15);
+                this.getChildren().add(productName);
+
+            }
         });
     }
     public void setBill(Bill bill){
