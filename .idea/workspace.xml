@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="799669a7-646b-439c-b34d-4dda222764b1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Inventory.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Transaction.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Transaction.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/BillContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/BillContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BillHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/BillHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/datastore/json/Client.json" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/datastore/json/Client.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/AddRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CardRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/CardRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/DetailRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/components/DetailRegister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/RegisterMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/org/example/program/page/RegisterMember.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

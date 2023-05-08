@@ -16,6 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import org.example.program.entities.clients.ClientType;
 import org.example.program.entities.clients.Customer;
 import org.example.program.entities.clients.Member;
@@ -59,45 +60,45 @@ public class DetailRegister extends BorderPane {
         this.total = total;
         this.tanggalTransaksi=tanggalTransaksi;
         // Set up the card's layout
-        setPadding(new Insets(10));
+        setPadding(new Insets(30));
         setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 
         // Set the preferred width and height of the card
-        setPrefSize(394, 310);
+        setPrefSize(Screen.getPrimary().getVisualBounds().getWidth() * 5 / 16, Screen.getPrimary().getVisualBounds().getHeight() * 5 / 16);
 
 
 
         // Set up the item name and quantity
         Text dateText = new Text(String.valueOf(date));
-        dateText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15) );
+        dateText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 20) );
         dateText.setFill(Color.web("#867070"));
 
         Text idText = new Text("ID" + String.valueOf(id));
-        idText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+        idText.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 12));
         idText.setFill(Color.web("#867070"));
 
         Text countItem = new Text("Count Item");
-        countItem.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+        countItem.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 20));
         countItem.setFill(Color.web("#867070"));
 
         Text countItemData = new Text(String.valueOf(this.itemCount));
-        countItemData.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+        countItemData.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 20));
         countItemData.setFill(Color.web("#867070"));
 
         Text transactionDate = new Text("Transaction Date");
-        transactionDate.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+        transactionDate.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 20));
         transactionDate.setFill(Color.web("#867070"));
 
         Text transactionDateData = new Text(String.valueOf(this.tanggalTransaksi));
-        transactionDateData.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+        transactionDateData.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 20));
         transactionDateData.setFill(Color.web("#867070"));
 
         Text spendTotal = new Text("Total Spend");
-        spendTotal.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+        spendTotal.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 20));
         spendTotal.setFill(Color.web("#867070"));
 
         Text spendTotalData = new Text(String.valueOf(this.total));
-        spendTotalData.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+        spendTotalData.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 20));
         spendTotalData.setFill(Color.web("#867070"));
 
         VBox bottom = new VBox(20,

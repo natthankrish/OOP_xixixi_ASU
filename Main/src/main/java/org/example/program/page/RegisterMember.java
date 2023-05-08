@@ -1,6 +1,8 @@
 package org.example.program.page;
 
 import javafx.geometry.Pos;
+import javafx.scene.layout.Background;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import org.example.program.components.*;
 import javafx.scene.control.ScrollPane;
@@ -39,8 +41,8 @@ public class RegisterMember extends BasePage {
 
     public RegisterMember() {
         this.changeBackground("#FFFFFF");
-        this.label = new NewLabel("Register Member", 48, "#867070", 700);
-        this.label.setLayout(45, 35);
+        this.label = new NewLabel("Register Member", 60, "#867070", 700);
+        this.label.setLayout(Screen.getPrimary().getVisualBounds().getWidth() / 20, Screen.getPrimary().getVisualBounds().getHeight() * 7/ 80);
 
         Manager m = Manager.getInstance();
         TransactionContainer tc = m.getTransactionContainer();
@@ -50,10 +52,9 @@ public class RegisterMember extends BasePage {
         }
 
         this.cardContainer = new VBox(10);
-        this.cardContainer.setAlignment(Pos.CENTER);
-        this.cardContainer.setPrefWidth(660);
-        this.cardContainer.setLayoutX(55);
-        this.cardContainer.setLayoutY(200);
+        this.cardContainer.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8);
+        this.cardContainer.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
+        this.cardContainer.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight()* 5/ 20);
 
         for (Client client : name) {
             if (client.getType() instanceof Customer){
@@ -76,13 +77,13 @@ public class RegisterMember extends BasePage {
                     DetailRegister newDetails = new DetailRegister(client.getName(),client.getId(), client.getPhoneNumber(), client.getType(), client.getTransactionHistory().size(),"-",tot);
                     this.getChildren().remove(this.currentDetails);
                     this.currentDetails = newDetails;
-                    this.currentDetails.setLayout(770,180);
+                    this.currentDetails.setLayout(Screen.getPrimary().getVisualBounds().getWidth() * 9/ 20,Screen.getPrimary().getVisualBounds().getHeight()* 5/ 20);
                     this.getChildren().add(this.currentDetails);
 
                     this.currentDetails.getRegisterButton().setOnMouseClicked(event1 -> {
                         this.addRegister = new AddRegister("Customer Name", "Phone Number");
 //                    this.getChildren().remove(this.addRegister);
-                        this.addRegister.setLayout(770,500);
+                        this.addRegister.setLayout(Screen.getPrimary().getVisualBounds().getWidth() * 9/ 20,Screen.getPrimary().getVisualBounds().getHeight()* 12/ 20);
                         this.addRegister.getConfirm().setOnMouseClicked(event2 -> {
                             cardContainer.getChildren().clear();
                             client.setName(this.addRegister.getCustomerName().getText());
@@ -101,13 +102,13 @@ public class RegisterMember extends BasePage {
         this.scrollPane.setContent(cardContainer);
         this.scrollPane.setFitToWidth(true);
         this.scrollPane.setStyle("-fx-background:white;-fx-background-color:transparent;");
-        this.scrollPane.setPrefViewportHeight(520);
-        this.scrollPane.setLayoutX(55);
-        this.scrollPane.setLayoutY(180);
+        this.scrollPane.setPrefHeight(Screen.getPrimary().getVisualBounds().getHeight() * 5 / 8);
+        this.scrollPane.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
+        this.scrollPane.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight()* 5/ 20);
 
-        this.searchBar = new NewField("Search", Screen.getPrimary().getVisualBounds().getWidth() * 3 / 16, 40);
-        this.searchBar.setLayoutX(410);
-        this.searchBar.setLayoutY(130);
+        this.searchBar = new NewField("Search", Screen.getPrimary().getVisualBounds().getWidth() * 3 / 16, 35);
+        this.searchBar.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20 + this.scrollPane.getPrefWidth() - this.searchBar.getPrefWidth() / 2);
+        this.searchBar.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight()* 8/ 40);
         this.searchBar.setOnKeyReleased(event -> {
             this.cardContainer.getChildren().remove(this.currentDetails);
             for (Client client : this.name) {
