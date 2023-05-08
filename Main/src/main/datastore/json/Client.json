@@ -1,8 +1,12 @@
 [
   {
+    "phoneNumber": "22222222",
+    "name": "jono",
+    "active": true,
     "transactionHistory": [],
     "id": 1,
-    "type": "customer"
+    "type": "member",
+    "point": 0.0
   },
   {
     "phoneNumber": "081122223333",
