@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 
 public class CardMember extends BorderPane {
     private NewLabel customerName;
@@ -29,11 +30,11 @@ public class CardMember extends BorderPane {
 //        this.closeButton.img.setFitHeight(25);
 
         // Set up the card's layout
-        setPadding(new Insets(10));
+        setPadding(new Insets(20));
         setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 
         // Set the preferred width and height of the card
-        setPrefSize(486, 80);
+        setPrefSize(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8, 80);
 
 
         // Set up the item name and quantity

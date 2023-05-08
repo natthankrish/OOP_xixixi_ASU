@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.example.program.entities.clients.Client;
 import org.example.program.entities.clients.ClientType;
@@ -85,11 +86,11 @@ public class DetailMember extends BorderPane {
         this.total = total;
         this.terakhirTransaksi=terakhirTransaksi;
         // Set up the card's layout
-        setPadding(new Insets(10));
+        setPadding(new Insets(30));
         setBackground(new Background(new BackgroundFill(Color.web("#F5EBEB"), new CornerRadii(10), Insets.EMPTY)));
 
         // Set the preferred width and height of the card
-        setPrefSize(394, 345);
+        setPrefSize(Screen.getPrimary().getVisualBounds().getWidth() * 4 / 16, Screen.getPrimary().getVisualBounds().getWidth() * 5 / 16);
 
 
 

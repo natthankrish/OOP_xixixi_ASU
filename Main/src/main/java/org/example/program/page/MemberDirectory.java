@@ -46,8 +46,8 @@ public class MemberDirectory extends BasePage {
         System.out.println(name);
 
         this.changeBackground("#FFFFFF");
-        this.label = new NewLabel("Member Directory", 48, "#867070", 700);
-        this.label.setLayout(45, 35);
+        this.label = new NewLabel("Member Directory", 60, "#867070", 700);
+        this.label.setLayout(Screen.getPrimary().getVisualBounds().getWidth() / 20, Screen.getPrimary().getVisualBounds().getHeight() / 20);
 
         this.buttonVIP = new CustomButton("VIP", 16, "#FFFFFF", "#867070", "bold", 10,0,0,10);
         this.buttonVIP.setOnMouseClicked(event -> {
@@ -89,7 +89,7 @@ public class MemberDirectory extends BasePage {
             }
 
         });
-        this.buttonVIP.setLayout(480,130);
+        this.buttonVIP.setLayout(Screen.getPrimary().getVisualBounds().getWidth() *5/ 20, Screen.getPrimary().getVisualBounds().getHeight() * 12/ 80);
 
 
         this.buttonMember = new CustomButton("Member", 16, "#FFFFFF", "#867070", "bold",1,1,1,1);
@@ -128,7 +128,7 @@ public class MemberDirectory extends BasePage {
             }
 
         });
-        this.buttonMember.setLayout(522, 130);
+        this.buttonMember.setLayout(Screen.getPrimary().getVisualBounds().getWidth() *5/ 20 +42, Screen.getPrimary().getVisualBounds().getHeight() * 12/ 80);
 
 
         this.buttonDeactivated = new CustomButton("Deactivated", 16, "#FFFFFF", "#867070", "bold", 0,10,10,0);
@@ -172,13 +172,13 @@ public class MemberDirectory extends BasePage {
             }
 
         });
-        this.buttonDeactivated.setLayout(605,130);
+        this.buttonDeactivated.setLayout(Screen.getPrimary().getVisualBounds().getWidth() *5/ 20 + 120, Screen.getPrimary().getVisualBounds().getHeight() * 12/ 80);
 
         this.cardContainer = new VBox(10);
         this.cardContainer.setAlignment(Pos.CENTER);
-        this.cardContainer.setPrefWidth(660);
-        this.cardContainer.setLayoutX(55);
-        this.cardContainer.setLayoutY(200);
+        this.cardContainer.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8);
+        this.cardContainer.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
+        this.cardContainer.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 9 / 40);
 
         for (Client client : this.name) {
             if (client.getActiveStatus() != null && client.getActiveStatus()){
@@ -218,14 +218,14 @@ public class MemberDirectory extends BasePage {
                             client.makeClientAMember(client.getName(),client.getPhoneNumber(), client.getPoint(), client.getActiveStatus());
                         });
                     }
-                    this.detailMember.setLayout(770,180);
+                    this.detailMember.setLayout(Screen.getPrimary().getVisualBounds().getWidth() * 9/ 20,180);
                     this.getChildren().add(this.detailMember);
                 });
             }
         }
         this.searchBar = new NewField("Search", 300, 40);
-        this.searchBar.setLayoutX(55);
-        this.searchBar.setLayoutY(130);
+        this.searchBar.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
+        this.searchBar.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 7 / 40);
         this.searchBar.setOnKeyReleased(event -> {
             this.cardContainer.getChildren().clear();
             for (Client client : this.name) {
@@ -276,9 +276,9 @@ public class MemberDirectory extends BasePage {
         this.scrollPane.setContent(cardContainer);
         this.scrollPane.setFitToWidth(true);
         this.scrollPane.setStyle("-fx-background:white;-fx-background-color:transparent;");
-        this.scrollPane.setPrefViewportHeight(520);
-        this.scrollPane.setLayoutX(55);
-        this.scrollPane.setLayoutY(180);
+        this.scrollPane.setPrefHeight(Screen.getPrimary().getVisualBounds().getWidth() * 3 / 8);
+        this.scrollPane.setLayoutX(Screen.getPrimary().getVisualBounds().getWidth() / 20);
+        this.scrollPane.setLayoutY(Screen.getPrimary().getVisualBounds().getHeight() * 9 / 40);
 
 
         this.getChildren().addAll(this.label,
