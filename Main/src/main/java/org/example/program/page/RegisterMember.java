@@ -60,10 +60,12 @@ public class RegisterMember extends BasePage {
                 CardRegister card = new CardRegister(client.getName(),
                         client.getId(),
                         client.getPhoneNumber());
+                card.setLayout(55, 200);
+                cardContainer.getChildren().add(card);
 
                 card.setOnMouseClicked(event -> {
-                    Bill a = tc.getBillById(client.getId());
-                    Time tgl = a.getTransactionTime();
+//                    Bill a = tc.getBillById(client.getId());
+//                    Time tgl = a.getTransactionTime();
                     int tot = 0;
                     // Iterate to calculate total spend
                     for (Integer i : client.getTransactionHistory()){
@@ -71,7 +73,7 @@ public class RegisterMember extends BasePage {
                         tot += b.getTotalPrice();
                     }
 
-                    DetailRegister newDetails = new DetailRegister(client.getName(),client.getId(), client.getPhoneNumber(), client.getType(), client.getTransactionHistory().size(),tgl.getStringTime(),tot);
+                    DetailRegister newDetails = new DetailRegister(client.getName(),client.getId(), client.getPhoneNumber(), client.getType(), client.getTransactionHistory().size(),"-",tot);
                     this.getChildren().remove(this.currentDetails);
                     this.currentDetails = newDetails;
                     this.currentDetails.setLayout(770,180);
@@ -91,8 +93,6 @@ public class RegisterMember extends BasePage {
                         this.getChildren().add(this.addRegister);
                     });
                 });
-                card.setLayout(55, 200);
-                cardContainer.getChildren().add(card);
             }
         }
 
@@ -109,7 +109,7 @@ public class RegisterMember extends BasePage {
         this.searchBar.setLayoutX(410);
         this.searchBar.setLayoutY(130);
         this.searchBar.setOnKeyReleased(event -> {
-            this.cardContainer.getChildren().clear();
+            this.cardContainer.getChildren().remove(this.currentDetails);
             for (Client client : this.name) {
                 if (client.getName() != null && client.getName().toLowerCase().contains(this.searchBar.getText().toLowerCase())
                         || String.valueOf(client.getId()).contains(this.searchBar.getText().toLowerCase())){
@@ -124,7 +124,7 @@ public class RegisterMember extends BasePage {
                                 tot += b.getTotalPrice();
                             }
 
-                            DetailRegister newDetail = new DetailRegister(client.getName() , client.getId(),client.getPhoneNumber(),client.getType(),client.getTransactionHistory().size(),"",tot);
+                            DetailRegister newDetail = new DetailRegister(client.getName(),client.getId(),client.getPhoneNumber(),client.getType(),client.getTransactionHistory().size(),"",tot);
 
                             this.getChildren().remove(this.currentDetails);
                             this.currentDetails = newDetail;
